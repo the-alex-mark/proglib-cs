@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8188BFB-20FF-4B50-B549-3A2AAEA6FD89}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProgLib</RootNamespace>
+    <AssemblyName>ProgLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CoreAudioApi">
+      <HintPath>..\..\..\..\Desktop\CoreAudioApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\..\..\Desktop\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.Registration" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Instrumentation" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="taglib-sharp">
+      <HintPath>..\..\..\..\Desktop\taglib-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.PdfViewer, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2018.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7" />
+    <Reference Include="Telerik.Windows.Documents.Fixed, Version=2018.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7" />
+    <Reference Include="TelerikCommon, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Animations\Animation.cs" />
+    <Compile Include="Animations\Material\AnimationDirection.cs" />
+    <Compile Include="Animations\Material\AnimationManager.cs" />
+    <Compile Include="Animations\Material\Animations.cs" />
+    <Compile Include="Animations\Metro\AnimationBase.cs" />
+    <Compile Include="Animations\Metro\ColorBlendAnimation.cs" />
+    <Compile Include="Animations\Metro\DelayedCall.cs" />
+    <Compile Include="Animations\Metro\ExpandAnimation.cs" />
+    <Compile Include="Animations\Metro\MoveAnimation.cs" />
+    <Compile Include="Audio\Audio.cs" />
+    <Compile Include="Audio\AudioFormats.cs" />
+    <Compile Include="Audio\Playlist.cs" />
+    <Compile Include="Audio\Radio.cs" />
+    <Compile Include="Audio\Record.cs" />
+    <Compile Include="Audio\Song.cs" />
+    <Compile Include="Audio\Tags\AudioTagsAll.cs" />
+    <Compile Include="Audio\Tags\AudioTagsID3v1.cs" />
+    <Compile Include="Audio\Tags\AudioTagsID3v2.cs" />
+    <Compile Include="Audio\Tags\AudioTags.cs" />
+    <Compile Include="Audio\Visualization\Device.cs" />
+    <Compile Include="Data\CSharp\CSharpResult.cs" />
+    <Compile Include="Data\CSharp\Project.cs" />
+    <Compile Include="Data\CSharp\Property.cs" />
+    <Compile Include="Data\CSharp\Resource.cs" />
+    <Compile Include="Data\CSharp\Resources.cs" />
+    <Compile Include="Data\TSQL\SqlResult.cs" />
+    <Compile Include="Data\TSQL\DataBase.cs" />
+    <Compile Include="Data\TSQL\SqlServer.cs" />
+    <Compile Include="Diagnostics\AssemblyInfo.cs" />
+    <Compile Include="Diagnostics\BaseBoard.cs" />
+    <Compile Include="Diagnostics\BIOS.cs" />
+    <Compile Include="Diagnostics\Device.cs" />
+    <Compile Include="Diagnostics\Drive.cs" />
+    <Compile Include="Diagnostics\KeyBoard.cs" />
+    <Compile Include="Diagnostics\OperatingSystem.cs" />
+    <Compile Include="Diagnostics\PointingDevice.cs" />
+    <Compile Include="Diagnostics\Processor.cs" />
+    <Compile Include="Diagnostics\Software.cs" />
+    <Compile Include="Diagnostics\SoundDevice.cs" />
+    <Compile Include="Diagnostics\SystemInfo.cs" />
+    <Compile Include="Diagnostics\VideoController.cs" />
+    <Compile Include="Unit.cs" />
+    <Compile Include="Windows\Direction.cs" />
+    <Compile Include="Drawing\CMYK.cs" />
+    <Compile Include="Drawing\Convert.cs" />
+    <Compile Include="Drawing\Drawing2D\CustomGraphicsPath.cs" />
+    <Compile Include="Drawing\MetroBrushes.cs" />
+    <Compile Include="Drawing\MetroColors.cs" />
+    <Compile Include="Network\Mail\MailRecipient.cs" />
+    <Compile Include="Network\Mail\MailSender.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Text\Encoding\QRCode\Corner.cs" />
+    <Compile Include="Text\Encoding\QRCode\Finder.cs" />
+    <Compile Include="Text\Encoding\QRCode\Perspective.cs" />
+    <Compile Include="Text\Encoding\QRCode\QRCode.cs" />
+    <Compile Include="Text\Encoding\QRCode\QRCodeToBitmap.cs" />
+    <Compile Include="Text\Encoding\QRCode\QRDecoder.cs" />
+    <Compile Include="Text\Encoding\QRCode\QREncoder.cs" />
+    <Compile Include="Text\Encoding\QRCode\ReedSolomon.cs" />
+    <Compile Include="Drawing\Radius.cs" />
+    <Compile Include="Drawing\HSB.cs" />
+    <Compile Include="Drawing\HSL.cs" />
+    <Compile Include="Drawing\HSLA.cs" />
+    <Compile Include="Drawing\Lab.cs" />
+    <Compile Include="Drawing\RGB.cs" />
+    <Compile Include="Drawing\RGBA.cs" />
+    <Compile Include="Drawing\XYZ.cs" />
+    <Compile Include="Drawing\YCbCr.cs" />
+    <Compile Include="Expansion.cs" />
+    <Compile Include="IO\Archive.cs" />
+    <Compile Include="IO\File.cs" />
+    <Compile Include="IO\ShortCut\ShellLink.cs" />
+    <Compile Include="IO\ShortCut\ShortCut.cs" />
+    <Compile Include="Network\Mail\Email.cs" />
+    <Compile Include="Network\Http.cs" />
+    <Compile Include="Network\IP.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Text\Text.cs" />
+    <Compile Include="Text\Encoding\ASCII.cs" />
+    <Compile Include="Text\Encoding\UTF32.cs" />
+    <Compile Include="Text\Encoding\UTF7.cs" />
+    <Compile Include="Text\Encoding\UTF8.cs" />
+    <Compile Include="Text\StringTable.cs" />
+    <Compile Include="Text\FontFromResources.cs" />
+    <Compile Include="Windows\Adobe\AdobeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Adobe\AdobeComboBox.Designer.cs">
+      <DependentUpon>AdobeComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Adobe\AdobeLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Adobe\AdobeLabel.Designer.cs">
+      <DependentUpon>AdobeLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Adobe\AdobeNumericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Adobe\AdobeNumericUpDown.Designer.cs">
+      <DependentUpon>AdobeNumericUpDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Adobe\AdobeTrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Adobe\AdobeTrackBar.Designer.cs">
+      <DependentUpon>AdobeTrackBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Adobe\IAdobeControl.cs" />
+    <Compile Include="Windows\CustomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Cyotek\ColorCellBorderStyle.cs" />
+    <Compile Include="Windows\Cyotek\ColorCollection.cs" />
+    <Compile Include="Windows\Cyotek\ColorCollectionEventArgs.cs" />
+    <Compile Include="Windows\Cyotek\ColorCollectionSortOrder.cs" />
+    <Compile Include="Windows\Cyotek\ColorComparer.cs" />
+    <Compile Include="Windows\Cyotek\ColorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Cyotek\ColorDialog.Designer.cs">
+      <DependentUpon>ColorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Cyotek\ColorEditingMode.cs" />
+    <Compile Include="Windows\Cyotek\ColorGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Cyotek\ColorGridSelectedCellStyle.cs" />
+    <Compile Include="Windows\Cyotek\ColorHitTestInfo.cs" />
+    <Compile Include="Windows\Cyotek\ColorPalette.cs" />
+    <Compile Include="Windows\Cyotek\ColorPalettes.cs" />
+    <Compile Include="Windows\Cyotek\ColorSource.cs" />
+    <Compile Include="Windows\Cyotek\ColorWheel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Cyotek\EditColorCancelEventArgs.cs" />
+    <Compile Include="Windows\Cyotek\HSBSlider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Cyotek\HSBSlider.Designer.cs">
+      <DependentUpon>HSBSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Cyotek\HslColor.cs" />
+    <Compile Include="Windows\Cyotek\HueSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Cyotek\IPaletteSerializer.cs" />
+    <Compile Include="Windows\Cyotek\NativeMethods.cs" />
+    <Compile Include="Windows\Cyotek\NavigationOrigin.cs" />
+    <Compile Include="Windows\Cyotek\PaletteSerializer.cs" />
+    <Compile Include="Windows\Cyotek\SBSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Cyotek\ScreenColorPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialButton.Designer.cs">
+      <DependentUpon>MaterialButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialCheckBox.Designer.cs">
+      <DependentUpon>MaterialCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Material\ColorScheme.cs" />
+    <Compile Include="Windows\Material\DrawHelper.cs" />
+    <Compile Include="Windows\Material\MaterialDivider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialDivider.Designer.cs">
+      <DependentUpon>MaterialDivider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Metro\MessageType.cs" />
+    <Compile Include="Windows\Metro\MetroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroCheckBox.Designer.cs">
+      <DependentUpon>MetroCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroCollection.cs" />
+    <Compile Include="Windows\Metro\MetroLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroLabel.Designer.cs">
+      <DependentUpon>MetroLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroMessageBox.cs" />
+    <Compile Include="Windows\Metro\MetroPaint.cs" />
+    <Compile Include="Windows\Metro\MetroRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroRadioButton.Designer.cs">
+      <DependentUpon>MetroRadioButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroTabControl.Designer.cs">
+      <DependentUpon>MetroTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroTabSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroTabSelector.Designer.cs">
+      <DependentUpon>MetroTabSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroButton.Designer.cs">
+      <DependentUpon>MetroButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroTile.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroTile.Designer.cs">
+      <DependentUpon>MetroTile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroToggle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Metro\MetroToggle.Designer.cs">
+      <DependentUpon>MetroToggle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Metro\MouseState.cs" />
+    <Compile Include="Windows\Metro\Theme.cs" />
+    <Compile Include="Windows\MinimalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\HslColor.cs" />
+    <Compile Include="Windows\Minimal\MessageType.cs" />
+    <Compile Include="Windows\Minimal\MinimalButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalButton.Designer.cs">
+      <DependentUpon>MinimalButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalColorWheel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalContextMenuRenderer.cs.cs" />
+    <Compile Include="Windows\Minimal\MinimalContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalContextMenuStrip.Designer.cs">
+      <DependentUpon>MinimalContextMenuStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialListView.Designer.cs">
+      <DependentUpon>MaterialListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialRadioButton.Designer.cs">
+      <DependentUpon>MaterialRadioButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialTabControl.Designer.cs">
+      <DependentUpon>MaterialTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialTabSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Material\MaterialTabSelector.Designer.cs">
+      <DependentUpon>MaterialTabSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Material\IMaterialControl.cs" />
+    <Compile Include="Windows\Minimal\MinimalComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalComboBox.Designer.cs">
+      <DependentUpon>MinimalComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalGroupBox.Designer.cs">
+      <DependentUpon>MinimalGroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalHueSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalHueSlider.Designer.cs">
+      <DependentUpon>MinimalHueSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalIColorEditor.cs" />
+    <Compile Include="Windows\Minimal\MinimalMenuRenderer.cs" />
+    <Compile Include="Windows\Minimal\MinimalMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalMenuStrip.Designer.cs">
+      <DependentUpon>MinimalMenuStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalMessageBox.cs" />
+    <Compile Include="Windows\Minimal\MinimalMessageBoxRenderer.cs" />
+    <Compile Include="Windows\Minimal\MinimalProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalSBSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalSBSlider.Designer.cs">
+      <DependentUpon>MinimalSBSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalScrollBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalToolTip.Designer.cs">
+      <DependentUpon>MinimalToolTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Minimal\MinimalTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Minimal\SubClass.cs" />
+    <Compile Include="Windows\Minimal\Win32.cs" />
+    <Compile Include="Windows\MouseMessageFilter.cs" />
+    <Compile Include="Windows\Enum.cs" />
+    <Compile Include="Windows\Window.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Cyotek\ColorDialog.resx">
+      <DependentUpon>ColorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Cyotek\HSBSlider.resx">
+      <DependentUpon>HSBSlider.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CellTransparentBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minimum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
