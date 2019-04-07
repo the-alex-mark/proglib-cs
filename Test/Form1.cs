@@ -15,6 +15,7 @@ using System.IO;
 using ProgLib.Text.Encoding.QRCode;
 using ProgLib.Diagnostics;
 using ProgLib;
+using ProgLib.Network;
 
 namespace Test
 {
@@ -67,6 +68,10 @@ namespace Test
             //MessageBox.Show(('B' == 'B').ToString());
             //.00000000000000000086736
             //MessageBox.Show(String.Format("{0:0.00}", Unit.BitToMegabyte(1024)));
+
+            //LocalNetwork LN = new LocalNetwork();
+            //MessageBox.Show(LN.GetListMachines(1).Aggregate("", (S, I) => S += I + "\n"));
+            //MessageBox.Show(LN.GetListMachines(2).Aggregate("", (S, I) => S += I + "\n"));
         }
     }
 }
