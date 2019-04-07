@@ -42,6 +42,7 @@
     <Reference Include="System.ComponentModel.Composition.Registration" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
@@ -109,6 +110,9 @@
     <Compile Include="Diagnostics\SoundDevice.cs" />
     <Compile Include="Diagnostics\SystemInfo.cs" />
     <Compile Include="Diagnostics\VideoController.cs" />
+    <Compile Include="Number\Binary.cs" />
+    <Compile Include="Number\Hexadecimal.cs" />
+    <Compile Include="Number\Octal.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Windows\Direction.cs" />
     <Compile Include="Drawing\CMYK.cs" />

@@ -3,11 +3,111 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProgLib.Number;
 
 namespace ProgLib
 {
     public class Unit
     {
+        // -- Системы счисления ------------------------------------------------------------------------------------------------------------------------------------------
+
+        private static Int32 ToNumber(Char Number)
+        {
+            switch (Number)
+            {
+                case '1': return 1;
+                case '2': return 2;
+                case '3': return 3;
+                case '4': return 4;
+                case '5': return 5;
+                case '6': return 6;
+                case '7': return 7;
+                case '8': return 8;
+                case '9': return 9;
+
+                case 'A': return 10;
+                case 'B': return 11;
+                case 'C': return 12;
+                case 'D': return 13;
+                case 'E': return 14;
+                case 'F': return 15;
+
+                default: return 0;
+            }
+        }
+
+        // Decimal
+        public static Binary DecimalToBinary(Decimal Value)
+        {
+            String _result = Convert.ToString((int)Value, 2);
+            return (from i in _result.ToArray() select Convert.ToInt32(i - '0')).ToArray();
+        }
+        public static Octal DecimalToOctal(Decimal Value)
+        {
+            return Convert.ToInt32(Convert.ToString((int)Value, 8));
+        }
+        public static Hexadecimal DecimalToHexadecimal(Decimal Value)
+        {
+            return Convert.ToString((int)Value, 16);
+        }
+
+        // Binary
+        public static Decimal BinaryToDecimal(Binary Value)
+        {
+            Decimal Decimal = 0;
+            for (int i = 0; i < Value.Length; i++)
+                Decimal += Value.Values[(Value.Length - 1) - i] * (int)Math.Pow(2, i);
+
+            return Decimal;
+        }
+        public static Octal BinaryToOctal(Binary Value)
+        {
+            return DecimalToOctal(BinaryToDecimal(Value));
+        }
+        public static Hexadecimal BinaryToHexadecimal(Binary Value)
+        {
+            return DecimalToHexadecimal(BinaryToDecimal(Value));
+        }
+
+        // Octal
+        public static Decimal OctalToDecimal(Octal Value)
+        {
+            String _value = Value.ToString();
+            Decimal Decimal = 0;
+            for (int i = 0; i < _value.Length; i++)
+                Decimal += Convert.ToInt32(_value[(_value.Length - 1) - i] - '0') * (int)Math.Pow(8, i);
+
+            return Decimal;
+        }
+        public static Binary OctalToBinary(Octal Value)
+        {
+            return DecimalToBinary(OctalToDecimal(Value));
+        }
+        public static Hexadecimal OctalToHexadecimal(Octal Value)
+        {
+            return DecimalToHexadecimal(OctalToDecimal(Value));
+        }
+        
+        // Hexadecimal
+        public static Decimal HexadecimalToDecimal(Hexadecimal Value)
+        {
+            Decimal Decimal = 0;
+            for (int i = 0; i < Value.Value.Length; i++)
+                Decimal += ToNumber(Value.Value[(Value.Value.Length - 1) - i]) * (int)Math.Pow(16, i);
+
+            return Decimal;
+        }
+        public static Binary HexadecimalToBinary(Hexadecimal Value)
+        {
+            return DecimalToBinary(HexadecimalToDecimal(Value));
+        }
+        public static Hexadecimal HexadecimalToHexadecimal(Hexadecimal Value)
+        {
+            return DecimalToHexadecimal(HexadecimalToDecimal(Value));
+        }
+
+
+
         // -- Типы данных ------------------------------------------------------------------------------------------------------------------------------------------------
 
         // Эксабайт EB

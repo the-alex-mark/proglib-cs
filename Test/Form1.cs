@@ -59,7 +59,13 @@ namespace Test
 
             //MessageBox.Show(/*Name + "\n" + */URL);
 
-            MessageBox.Show(Unit.FahrenheitToKelvin(67).ToString());
+            //int x = 881;
+            //MessageBox.Show(Convert.ToString(85, 10));
+            //MessageBox.Show(Convert.ToString(, 10));
+
+
+            MessageBox.Show(Unit.HexadecimalToDecimal("1AD1").ToString());
+            //MessageBox.Show(('B' == 'B').ToString());
             //.00000000000000000086736
             //MessageBox.Show(String.Format("{0:0.00}", Unit.BitToMegabyte(1024)));
         }
