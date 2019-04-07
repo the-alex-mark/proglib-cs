@@ -44,6 +44,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.IO.Compression" />
@@ -110,6 +111,7 @@
     <Compile Include="Diagnostics\SoundDevice.cs" />
     <Compile Include="Diagnostics\SystemInfo.cs" />
     <Compile Include="Diagnostics\VideoController.cs" />
+    <Compile Include="Network\LocalNetwork.cs" />
     <Compile Include="Number\Binary.cs" />
     <Compile Include="Number\Hexadecimal.cs" />
     <Compile Include="Number\Octal.cs" />
