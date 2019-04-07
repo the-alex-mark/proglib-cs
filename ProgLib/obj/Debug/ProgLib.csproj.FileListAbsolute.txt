@@ -1,0 +1,51 @@
+C:\Users\sasha\source\repos\ColorDialog\ProgLib\bin\Debug\ProgLib.dll
+C:\Users\sasha\source\repos\ColorDialog\ProgLib\bin\Debug\ProgLib.pdb
+C:\Users\sasha\source\repos\ColorDialog\ProgLib\obj\Debug\ProgLib.csprojResolveAssemblyReference.cache
+C:\Users\sasha\source\repos\ColorDialog\ProgLib\obj\Debug\ProgLib.csproj.CoreCompileInputs.cache
+C:\Users\sasha\source\repos\ColorDialog\ProgLib\obj\Debug\ProgLib.dll
+C:\Users\sasha\source\repos\ColorDialog\ProgLib\obj\Debug\ProgLib.pdb
+C:\Users\sasha\source\repos\ProgLib\ProgLib\bin\Debug\ProgLib.dll
+C:\Users\sasha\source\repos\ProgLib\ProgLib\bin\Debug\ProgLib.pdb
+C:\Users\sasha\source\repos\ProgLib\ProgLib\obj\Debug\ProgLib.csproj.CoreCompileInputs.cache
+C:\Users\sasha\source\repos\ProgLib\ProgLib\obj\Debug\ProgLib.dll
+C:\Users\sasha\source\repos\ProgLib\ProgLib\obj\Debug\ProgLib.pdb
+C:\Users\sasha\source\repos\ProgLib\ProgLib\obj\Debug\ProgLib.csprojAssemblyReference.cache
+C:\Users\sasha\source\repos\ProgLib\ProgLib\obj\Debug\ProgLib.csproj.CopyComplete
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.csprojAssemblyReference.cache
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.csproj.CoreCompileInputs.cache
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.dll
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.pdb
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\ProgLib.dll
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\ProgLib.pdb
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.csproj.CopyComplete
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Properties.Resources.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.csproj.GenerateResource.cache
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Cyotek.ColorDialog.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Cyotek.HSBSlider.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\Telerik.Windows.Zip.dll
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\Telerik.WinControls.xml
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\Telerik.WinControls.PdfViewer.xml
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\Telerik.WinControls.UI.xml
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\Telerik.Windows.Documents.Core.xml
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\Telerik.Windows.Documents.Fixed.xml
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\Telerik.Windows.Zip.xml
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.dll.licenses
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\ProgLib.dll
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\ProgLib.pdb
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\Telerik.Windows.Zip.dll
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\Telerik.WinControls.xml
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\Telerik.WinControls.PdfViewer.xml
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\Telerik.WinControls.UI.xml
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\Telerik.Windows.Documents.Core.xml
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\Telerik.Windows.Documents.Fixed.xml
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\Telerik.Windows.Zip.xml
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\obj\Debug\ProgLib.csprojAssemblyReference.cache
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\obj\Debug\ProgLib.Properties.Resources.resources
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Cyotek.ColorDialog.resources
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Cyotek.HSBSlider.resources
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\obj\Debug\ProgLib.csproj.GenerateResource.cache
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\obj\Debug\ProgLib.dll.licenses
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\obj\Debug\ProgLib.csproj.CoreCompileInputs.cache
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\obj\Debug\ProgLib.csproj.CopyComplete
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\obj\Debug\ProgLib.dll
+C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\obj\Debug\ProgLib.pdb
