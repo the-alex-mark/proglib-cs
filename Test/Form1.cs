@@ -70,8 +70,8 @@ namespace Test
             //MessageBox.Show(String.Format("{0:0.00}", Unit.BitToMegabyte(1024)));
 
             //LocalNetwork LN = new LocalNetwork();
-            //MessageBox.Show(LN.GetMachinesList().Aggregate("", (S, I) => S += I + "\n"));
-            //MessageBox.Show(LN.GetServerList(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"));
+            //MessageBox.Show(LN.GetMachines().Aggregate("", (S, I) => S += I + "\n"));
+            //MessageBox.Show(LN.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"));
         }
     }
 }

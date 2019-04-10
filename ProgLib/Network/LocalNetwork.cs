@@ -83,7 +83,7 @@ namespace ProgLib.Network
         /// Получает список компьютеров в локальной сети.
         /// </summary>
         /// <returns></returns>
-        public String[] GetMachinesList()
+        public String[] GetMachines()
         {
             List<String> Computers = new List<String>();
             DirectoryEntry Root = new DirectoryEntry("WinNT:");
@@ -105,7 +105,7 @@ namespace ProgLib.Network
         /// </summary>
         /// <param name="Type">Тип сервера</param>
         /// <returns></returns>
-        public String[] GetServerList(TypeServer Type)
+        public String[] GetServers(TypeServer Type)
         {
             ServerInfo Info;
             IntPtr pInfo = IntPtr.Zero;
