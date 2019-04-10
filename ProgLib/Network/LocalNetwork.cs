@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace ProgLib.Network
 {
+    /// <summary>
+    /// Осуществляет работу с локальной сетью
+    /// </summary>
     public sealed class LocalNetwork
     {
         #region Imports
