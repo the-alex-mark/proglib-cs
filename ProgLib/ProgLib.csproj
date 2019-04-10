@@ -112,6 +112,7 @@
     <Compile Include="Diagnostics\SystemInfo.cs" />
     <Compile Include="Diagnostics\VideoController.cs" />
     <Compile Include="Network\LocalNetwork.cs" />
+    <Compile Include="Network\ServerTypes.cs" />
     <Compile Include="Number\Binary.cs" />
     <Compile Include="Number\Hexadecimal.cs" />
     <Compile Include="Number\Octal.cs" />
