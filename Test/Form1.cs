@@ -42,36 +42,8 @@ namespace Test
 
         private void Form1_Load(Object sender, EventArgs e)
         {
-            //Processor _processor = SystemInfo.Device(new Processor());
-            //MessageBox.Show(_processor.SerialNumber.ToString());
-
-            //Drive[] _drives = SystemInfo.Drives();
-            //MessageBox.Show(_drives.Aggregate("", (S, I) => S += I.Name + "\n" + I.LogicalName + "\n" + I.VolumeLabel + "\n\n"));
-
-
-
-
-            //Playlist _playlist = Playlist.Load(@"D:\Files\Учёба\Курс №3\#Учебная практика\Курсовая работа №1 - Программа\Music\Radios.m3u");
-            //String Name = (_playlist.Records[3] as Radio).Name;
-            //String URL = (_playlist.Records[3] as Radio).URL;
-
-            //Playlist _playlist = Playlist.Load(@"D:\Files\Учёба\Курс №3\#Учебная практика\Курсовая работа №1 - Программа\Music\Songs.m3u");
-            //String URL = (_playlist.Records[3] as Song).Format;
-
-            //MessageBox.Show(/*Name + "\n" + */URL);
-
-            //int x = 881;
-            //MessageBox.Show(Convert.ToString(85, 10));
-            //MessageBox.Show(Convert.ToString(, 10));
-
-            //MessageBox.Show(Unit.HexadecimalToDecimal("1AD1").ToString());
-            //MessageBox.Show(('B' == 'B').ToString());
-            //.00000000000000000086736
-            //MessageBox.Show(String.Format("{0:0.00}", Unit.BitToMegabyte(1024)));
-
-            //LocalNetwork LN = new LocalNetwork();
-            //MessageBox.Show(LN.GetMachines().Aggregate("", (S, I) => S += I + "\n"));
-            //MessageBox.Show(LN.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"));
+            MessageBox.Show(LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"));
+            MessageBox.Show(LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"));
         }
     }
 }
