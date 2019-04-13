@@ -111,6 +111,9 @@
     <Compile Include="Diagnostics\SoundDevice.cs" />
     <Compile Include="Diagnostics\SystemInfo.cs" />
     <Compile Include="Diagnostics\VideoController.cs" />
+    <Compile Include="IO\IniDocument.cs" />
+    <Compile Include="IO\IniKey.cs" />
+    <Compile Include="IO\IniSection.cs" />
     <Compile Include="Network\LocalNetwork.cs" />
     <Compile Include="Network\TypeServer.cs" />
     <Compile Include="Number\Binary.cs" />
