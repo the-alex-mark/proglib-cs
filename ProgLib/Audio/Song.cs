@@ -13,7 +13,7 @@ namespace ProgLib.Audio
     public class Song : Record
     {
         /// <summary>
-        /// Объявляет экземпляр для работы с аудио файлом
+        /// Объявляет экземпляр для работы с аудио файлом.
         /// </summary>
         /// <param name="File"></param>
         public Song(String File)
@@ -28,7 +28,7 @@ namespace ProgLib.Audio
 
                 this.Format = FI.Extension.ToUpper().Remove(0, 1);
                 this.Bitrate = AudioFile.Properties.AudioBitrate;
-                this.Time = AudioFile.Properties.Duration.TotalSeconds;
+                this.Time = AudioFile.Properties.Duration;
             }
             else
             {
@@ -37,9 +37,7 @@ namespace ProgLib.Audio
 
                 this.Format = "";
                 this.Bitrate = 0;
-                this.Time = 0;
-
-                //throw new Exception("Неудалось найти указанный файл.");
+                this.Time = new TimeSpan();
             }
         }
 
@@ -61,10 +59,10 @@ namespace ProgLib.Audio
         /// <summary>
         /// Продолжительность
         /// </summary>
-        public Double Time { get; }
+        public TimeSpan Time { get; }
 
         /// <summary>
-        /// Проверяет файл на существование
+        /// Проверяет файл на существование.
         /// </summary>
         /// <returns></returns>
         public Boolean Exists()

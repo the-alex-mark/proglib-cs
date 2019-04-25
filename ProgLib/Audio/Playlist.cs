@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace ProgLib.Audio
 {
     /// <summary>
-    /// Класс для работы с плейлистами
+    /// Класс для работы с плейлистами.
     /// </summary>
     public class Playlist
     {
         /// <summary>
-        /// Объявляет экземпляр для работы с плейлистом
+        /// Инициализирует экземпляр для работы с плейлистом.
         /// </summary>
         public Playlist()
         {
@@ -21,29 +21,39 @@ namespace ProgLib.Audio
         }
 
         /// <summary>
-        /// Объявляет экземпляр для работы с плейлистом
+        /// Инициализирует экземпляр для работы с плейлистом.
         /// </summary>
         /// <param name="Name"></param>
-        /// <param name="URLs"></param>
-        public Playlist(String Name, String[] URLs)
+        public Playlist(String Name)
+        {
+            this.Name = Name;
+            this.Records = new List<Record>();
+        }
+
+        /// <summary>
+        /// Инициализирует экземпляр для работы с плейлистом.
+        /// </summary>
+        /// <param name="Name">Назвние плейлиста</param>
+        /// <param name="Addresses">Список записей</param>
+        public Playlist(String Name, String[] Addresses)
         {
             this.Name = Name;
             this.Records = new List<Record>();
 
-            foreach (String URL in URLs)
+            foreach (String Address in Addresses)
             {
                 this.Records.Add(
-                    (URL.StartsWith("http", StringComparison.CurrentCultureIgnoreCase) || URL.StartsWith("www", StringComparison.CurrentCultureIgnoreCase))
-                        ? (Record)new Radio(URL)
-                        : (Record)new Song(URL));
+                    (Address.StartsWith("http", StringComparison.CurrentCultureIgnoreCase) || Address.StartsWith("www", StringComparison.CurrentCultureIgnoreCase))
+                        ? (Record)new Radio(Address)
+                        : (Record)new Song(Address));
             }
         }
 
         /// <summary>
-        /// Объявляет экземпляр для работы с плейлистом
+        /// Инициализирует экземпляр для работы с плейлистом.
         /// </summary>
-        /// <param name="Name"></param>
-        /// <param name="Records"></param>
+        /// <param name="Name">Назвние плейлиста</param>
+        /// <param name="Records">Список записей</param>
         public Playlist(String Name, Record[] Records)
         {
             this.Name = Name;
@@ -61,15 +71,7 @@ namespace ProgLib.Audio
         public List<Record> Records { get; set; }
 
         /// <summary>
-        /// Полностью очищает плейлист
-        /// </summary>
-        public void Clear()
-        {
-            this.Records.Clear();
-        }
-
-        /// <summary>
-        /// Получает данные из файла плейлиста
+        /// Получает данные из файла плейлиста.
         /// </summary>
         /// <param name="File"></param>
         /// <returns></returns>
@@ -110,7 +112,7 @@ namespace ProgLib.Audio
         }
 
         /// <summary>
-        /// Сохраняет плейлист в указанный файл
+        /// Сохраняет плейлист по указанному расположению.
         /// </summary>
         /// <param name="File"></param>
         public void Save(String File)
