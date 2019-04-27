@@ -103,10 +103,12 @@
     <Compile Include="IO\IniKey.cs" />
     <Compile Include="IO\IniSection.cs" />
     <Compile Include="Network\LocalNetwork.cs" />
+    <Compile Include="Network\Tcp\TcpServer.cs" />
+    <Compile Include="Network\Tcp\TcpEventArgs.cs" />
     <Compile Include="Network\TypeServer.cs" />
-    <Compile Include="Number\Binary.cs" />
-    <Compile Include="Number\Hexadecimal.cs" />
-    <Compile Include="Number\Octal.cs" />
+    <Compile Include="Numerics\Binary.cs" />
+    <Compile Include="Numerics\Hexadecimal.cs" />
+    <Compile Include="Numerics\Octal.cs" />
     <Compile Include="Plugins\Ionic.Zip\ComHelper.cs" />
     <Compile Include="Plugins\Ionic.Zip\Crc\CRC32.cs" />
     <Compile Include="Plugins\Ionic.Zip\EncryptionAlgorithm.cs" />
