@@ -7,7 +7,7 @@ using Ionic.Zlib;
 namespace ProgLib.IO
 {
     /// <summary>
-    /// осуществляет работу над архивами формата ".zip"
+    /// Осуществляет работу над архивами формата ".zip"
     /// </summary>
     public class Archive
     {

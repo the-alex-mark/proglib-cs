@@ -61,6 +61,7 @@
             this.metroButton2.Text = "Врач";
             this.metroButton2.Theme = ProgLib.Windows.Metro.Theme.Dark;
             this.metroButton2.UseVisualStyleBackColor = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // pictureBoxQRCode
             // 

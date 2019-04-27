@@ -16,6 +16,8 @@ using ProgLib.Text.Encoding.QRCode;
 using ProgLib.Diagnostics;
 using ProgLib;
 using ProgLib.Network;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 namespace Test
 {
@@ -42,8 +44,25 @@ namespace Test
 
         private void Form1_Load(Object sender, EventArgs e)
         {
-            MessageBox.Show(LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"));
-            MessageBox.Show(LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"));
+            //MessageBox.Show(LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"));
+            //MessageBox.Show(LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"));
+        }
+
+        private void metroButton2_Click(Object sender, EventArgs e)
+        {
+            WaveStream mainOutputStream = new WaveFileReader(@"D:\System\User\Музыка\Old school\Laurent Wolf - No Stress resampled 96kHz.wav");
+            WaveChannel32 volumeStream = new WaveChannel32(mainOutputStream);
+
+            WaveOutEvent player = new WaveOutEvent();
+
+            player.Init(volumeStream);
+            player.Play();
+
+
+            Song _song = new Song(@"D:\System\User\Музыка\Old school\Laurent Wolf - No Stress.mp3");
+            MessageBox.Show(_song.Tags.All.Title);
+
+            //ProgLib.IO.Archive.AddFile(@"C:\Users\Александр Макаров\Desktop\TestZipArchive.zip", @"D:\System\User\Музыка\Old school\Laurent Wolf - No Stress.mp3");
         }
     }
 }

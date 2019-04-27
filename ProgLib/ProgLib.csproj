@@ -20,6 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,14 +30,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CoreAudioApi">
-      <HintPath>..\..\..\..\Desktop\CoreAudioApi.dll</HintPath>
-    </Reference>
-    <Reference Include="Ionic.Zip">
-      <HintPath>..\..\..\..\Desktop\Ionic.Zip.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -58,15 +55,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="taglib-sharp">
-      <HintPath>..\..\..\..\Desktop\taglib-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.WinControls, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
-    <Reference Include="Telerik.WinControls.PdfViewer, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.UI, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
-    <Reference Include="Telerik.Windows.Documents.Core, Version=2018.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7" />
-    <Reference Include="Telerik.Windows.Documents.Fixed, Version=2018.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7" />
-    <Reference Include="TelerikCommon, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +107,715 @@
     <Compile Include="Number\Binary.cs" />
     <Compile Include="Number\Hexadecimal.cs" />
     <Compile Include="Number\Octal.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ComHelper.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Crc\CRC32.cs" />
+    <Compile Include="Plugins\Ionic.Zip\EncryptionAlgorithm.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Events.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Exceptions.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ExtractExistingFileAction.cs" />
+    <Compile Include="Plugins\Ionic.Zip\FileSelector.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Crc\Iso8859Dash1Encoding.cs" />
+    <Compile Include="Plugins\Ionic.Zip\OffsetStream.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Shared.cs" />
+    <Compile Include="Plugins\Ionic.Zip\WinZipAes.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipConstants.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipCrypto.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipDirEntry.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipEntry.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipEntry.Extract.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipEntry.Read.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipEntry.Write.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipEntrySource.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipErrorAction.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipFile.AddUpdate.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipFile.Check.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipFile.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipFile.Events.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipFile.Extract.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipFile.Read.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipFile.Save.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipFile.SaveSelfExtractor.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipFile.Selector.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipFile.x-IEnumerable.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipInputStream.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipOutputStream.cs" />
+    <Compile Include="Plugins\Ionic.Zip\ZipSegmentedStream.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\Deflate.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\DeflateStream.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\GZipStream.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\Inflate.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\InfTree.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\ParallelDeflateOutputStream.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\Tree.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\Zlib.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\ZlibBaseStream.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\ZlibCodec.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\ZlibConstants.cs" />
+    <Compile Include="Plugins\Ionic.Zip\Zlib\ZlibStream.cs" />
+    <Compile Include="Plugins\NAudio\Codecs\ALawDecoder.cs" />
+    <Compile Include="Plugins\NAudio\Codecs\ALawEncoder.cs" />
+    <Compile Include="Plugins\NAudio\Codecs\G722Codec.cs" />
+    <Compile Include="Plugins\NAudio\Codecs\MuLawDecoder.cs" />
+    <Compile Include="Plugins\NAudio\Codecs\MuLawEncoder.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioCaptureClient.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioClient.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioClientBufferFlags.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioClientProperties.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioClientShareMode.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioClientStreamFlags.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioClientStreamOptions.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioClockClient.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioEndpointVolume.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioEndpointVolumeCallback.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioEndpointVolumeChannel.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioEndpointVolumeChannels.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioEndpointVolumeNotificationDelegate.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioEndpointVolumeStepInformation.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioEndpointVolumeVolumeRange.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioMeterInformation.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioMeterInformationChannels.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioRenderClient.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioSessionControl.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioSessionEventsCallback.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioSessionManager.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioStreamCategory.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\AudioVolumeNotificationData.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\DataFlow.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\DeviceState.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\EEndpointHardwareSupport.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\AudioVolumeNotificationDataStruct.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\Blob.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\ClsCtx.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\ErrorCodes.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioCaptureClient.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioClient.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioClock2.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioEndpointVolume.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioEndpointVolumeCallback.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioMeterInformation.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioRenderClient.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioSessionControl.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioSessionEvents.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioSessionEventsHandler.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IAudioSessionManager.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IMMDevice.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IMMDeviceCollection.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IMMDeviceEnumerator.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IMMEndpoint.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IMMNotificationClient.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\IPropertyStore.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\ISimpleAudioVolume.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\MMDeviceEnumeratorComObject.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Interfaces\StorageAccessMode.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\MMDevice.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\MMDeviceCollection.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\MMDeviceEnumerator.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\PropertyKey.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\PropertyKeys.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\PropertyStore.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\PropertyStoreProperty.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\PropVariant.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\Role.cs" />
+    <Compile Include="Plugins\NAudio\CoreAudioApi\SimpleAudioVolume.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\AudioMediaSubtypes.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoDescriptor.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoEnumerator.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoEnumFlags.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoGuids.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoHResults.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoInputDataBufferFlags.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoInputStatusFlags.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoInterop.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoMediaType.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoOutputDataBuffer.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoOutputDataBufferFlags.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoPartialMediaType.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoProcessOutputFlags.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\DmoSetTypeFlags.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\IEnumDmo.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\IMediaBuffer.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\IMediaObject.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\IMediaParamInfo.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\InputStreamInfoFlags.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\IWMResamplerProps.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\MediaBuffer.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\MediaObject.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\MediaObjectSizeInfo.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\MediaParamInfo.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\MediaTypes.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\OutputStreamInfoFlags.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\ResamplerMediaObject.cs" />
+    <Compile Include="Plugins\NAudio\Dmo\WindowsMediaMp3Decoder.cs" />
+    <Compile Include="Plugins\NAudio\Dsp\BiQuadFilter.cs" />
+    <Compile Include="Plugins\NAudio\Dsp\Complex.cs" />
+    <Compile Include="Plugins\NAudio\Dsp\EnvelopeDetector.cs" />
+    <Compile Include="Plugins\NAudio\Dsp\EnvelopeGenerator.cs" />
+    <Compile Include="Plugins\NAudio\Dsp\FastFourierTransform.cs" />
+    <Compile Include="Plugins\NAudio\Dsp\ImpulseResponseConvolution.cs" />
+    <Compile Include="Plugins\NAudio\Dsp\SimpleCompressor.cs" />
+    <Compile Include="Plugins\NAudio\Dsp\SimpleGate.cs" />
+    <Compile Include="Plugins\NAudio\Dsp\WdlResampler.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Map\CakewalkDrumMapping.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Map\CakewalkMapFile.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Map\MapBlockHeader.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Mp3\ChannelMode.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Mp3\DmoMp3FrameDecompressor.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Mp3\Id3v2Tag.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Mp3\IMp3FrameDecompressor.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Mp3\Mp3Frame.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Mp3\Mp3FrameDecompressor.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Mp3\MpegLayer.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Mp3\MpegVersion.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Mp3\XingHeader.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Sfz\SfzFileReader.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\Generator.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\GeneratorBuilder.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\GeneratorEnum.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\InfoChunk.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\Instrument.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\InstrumentBuilder.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\Modulator.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\ModulatorBuilder.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\ModulatorType.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\Preset.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\PresetBuilder.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\PresetsChunk.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\RiffChunk.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\SampleDataChunk.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\SampleHeader.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\SampleHeaderBuilder.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\SampleMode.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\SFSampleLink.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\SFVersion.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\SFVersionBuilder.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\SoundFont.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\StructureBuilder.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\Zone.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\SoundFont\ZoneBuilder.cs" />
+    <Compile Include="Plugins\NAudio\FileFormats\Wav\WaveFileChunkReader.cs" />
+    <Compile Include="Plugins\NAudio\Gui\Fader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Gui\PanSlider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Gui\Pot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Gui\Pot.Designer.cs">
+      <DependentUpon>Pot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Gui\VolumeMeter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Gui\VolumeMeter.Designer.cs">
+      <DependentUpon>VolumeMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Gui\VolumeSlider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Gui\WaveformPainter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Gui\WaveformPainter.Designer.cs">
+      <DependentUpon>WaveformPainter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Gui\WaveViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Plugins\NAudio\MediaFoundation\AudioSubtypes.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFActivate.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFAttributes.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFByteStream.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFCollection.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFMediaBuffer.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFMediaEvent.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFMediaType.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFReadWriteClassFactory.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFSample.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFSinkWriter.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFSourceReader.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\IMFTransform.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MediaEventType.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MediaFoundationAttributes.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MediaFoundationErrors.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MediaFoundationHelpers.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MediaFoundationInterop.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MediaFoundationTransform.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MediaFoundationTransformCategories.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MediaType.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MediaTypes.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MFT_INPUT_STREAM_INFO.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MFT_MESSAGE_TYPE.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MFT_OUTPUT_DATA_BUFFER.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MFT_OUTPUT_STREAM_INFO.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MFT_REGISTER_TYPE_INFO.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\MF_SINK_WRITER_STATISTICS.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\_MFT_ENUM_FLAG.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\_MFT_INPUT_STATUS_FLAGS.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\_MFT_INPUT_STREAM_INFO_FLAGS.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\_MFT_OUTPUT_DATA_BUFFER_FLAGS.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\_MFT_OUTPUT_STATUS_FLAGS.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\_MFT_OUTPUT_STREAM_INFO_FLAGS.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\_MFT_PROCESS_OUTPUT_FLAGS.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\_MFT_PROCESS_OUTPUT_STATUS.cs" />
+    <Compile Include="Plugins\NAudio\MediaFoundation\_MFT_SET_TYPE_FLAGS.cs" />
+    <Compile Include="Plugins\NAudio\Midi\ChannelAfterTouchEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\ControlChangeEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\KeySignatureEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MetaEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MetaEventType.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiCommandCode.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiController.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiEventCollection.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiEventComparer.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiFile.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiIn.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiInCapabilities.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiInMessageEventArgs.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiInterop.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiMessage.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiOut.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiOutCapabilities.cs" />
+    <Compile Include="Plugins\NAudio\Midi\MidiOutTechnology.cs" />
+    <Compile Include="Plugins\NAudio\Midi\NoteEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\NoteOnEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\PatchChangeEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\PitchWheelChangeEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\SequencerSpecificEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\SmpteOffsetEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\SysexEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\TempoEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\TextEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\TimeSignatureEvent.cs" />
+    <Compile Include="Plugins\NAudio\Midi\TrackSequenceNumberEvent.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\BooleanMixerControl.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\CustomMixerControl.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\ListTextMixerControl.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\Mixer.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\MixerControl.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\MixerControlType.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\MixerFlags.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\MixerInterop.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\MixerLine.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\MixerLineComponentType.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\SignedMixerControl.cs" />
+    <Compile Include="Plugins\NAudio\Mixer\UnsignedMixerControl.cs" />
+    <Compile Include="Plugins\NAudio\Utils\BufferHelpers.cs" />
+    <Compile Include="Plugins\NAudio\Utils\ByteArrayExtensions.cs" />
+    <Compile Include="Plugins\NAudio\Utils\ByteEncoding.cs" />
+    <Compile Include="Plugins\NAudio\Utils\ChunkIdentifier.cs" />
+    <Compile Include="Plugins\NAudio\Utils\CircularBuffer.cs" />
+    <Compile Include="Plugins\NAudio\Utils\Decibels.cs" />
+    <Compile Include="Plugins\NAudio\Utils\FieldDescriptionAttribute.cs" />
+    <Compile Include="Plugins\NAudio\Utils\FieldDescriptionHelper.cs" />
+    <Compile Include="Plugins\NAudio\Utils\HResult.cs" />
+    <Compile Include="Plugins\NAudio\Utils\IEEE.cs" />
+    <Compile Include="Plugins\NAudio\Utils\IgnoreDisposeStream.cs" />
+    <Compile Include="Plugins\NAudio\Utils\MergeSort.cs" />
+    <Compile Include="Plugins\NAudio\Utils\NativeMethods.cs" />
+    <Compile Include="Plugins\NAudio\Utils\ProgressLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Utils\ProgressLog.Designer.cs">
+      <DependentUpon>ProgressLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\NAudio\Utils\WavePositionExtensions.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Asio\ASIODriver.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Asio\AsioDriverCapability.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Asio\ASIODriverExt.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Asio\ASIOSampleConvertor.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Asio\AsioSampleType.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Asio\ASIOStructures.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmDriver.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmDriverAddFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmDriverDetails.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmDriverDetailsSupportFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmDriverEnumFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmFormat.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmFormatChoose.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmFormatChooseStyleFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmFormatDetails.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmFormatEnumFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmFormatSuggestFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmFormatTag.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmFormatTagDetails.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmInterop.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmMetrics.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmStream.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmStreamConvertFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmStreamHeader.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmStreamHeaderStatusFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmStreamHeaderStruct.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmStreamOpenFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\AcmStreamSizeFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\Compression\WaveFilter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\Manufacturers.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\MmException.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\MmResult.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\MmTime.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\WaveCallbackInfo.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\WaveCallbackStrategy.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\WaveHeader.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\WaveHeaderFlags.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\WaveInCapabilities.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\WaveInEventArgs.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\WaveInterop.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\WaveOutCapabilities.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\WaveOutSupport.cs" />
+    <Compile Include="Plugins\NAudio\Wave\MmeInterop\WaveWindow.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleChunkConverters\ISampleChunkConverter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleChunkConverters\Mono16SampleChunkConverter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleChunkConverters\Mono24SampleChunkConverter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleChunkConverters\Mono8SampleChunkConverter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleChunkConverters\MonoFloatSampleChunkConverter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleChunkConverters\Stereo16SampleChunkConverter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleChunkConverters\Stereo24SampleChunkConverter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleChunkConverters\Stereo8SampleChunkConverter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleChunkConverters\StereoFloatSampleChunkConverter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\AdsrSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\FadeInOutSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\MeteringSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\MixingSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\MonoToStereoSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\MultiplexingSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\NotifyingSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\OffsetSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\PanningSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\Pcm16BitToSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\Pcm24BitToSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\Pcm32BitToSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\Pcm8BitToSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\SampleChannel.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\SampleProviderConverterBase.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\SampleProviderConverters.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\SampleToWaveProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\SampleToWaveProvider16.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\SampleToWaveProvider24.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\SignalGenerator.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\VolumeSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\WaveToSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\WaveToSampleProvider64.cs" />
+    <Compile Include="Plugins\NAudio\Wave\SampleProviders\WdlResamplingSampleProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveExtensionMethods.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\AdpcmWaveFormat.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\Gsm610WaveFormat.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\ImaAdpcmWaveFormat.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\Mp3WaveFormat.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\OggWaveFormat.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\TrueSpeechWaveFormat.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\WaveFormat.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\WaveFormatCustomMarshaler.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\WaveFormatEncoding.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\WaveFormatExtensible.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\WaveFormatExtraData.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveFormats\WmaWaveFormat.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveInputs\IWaveIn.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveInputs\WasapiCapture.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveInputs\WasapiLoopbackCapture.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveInputs\WaveIn.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveInputs\WaveInEvent.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\AiffFileWriter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\AsioAudioAvailableEventArgs.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\AsioOut.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\CueWaveFileWriter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\DirectSoundOut.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\IWaveBuffer.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\IWavePlayer.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\IWaveProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\IWaveProviderFloat.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\MediaFoundationEncoder.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\PlaybackState.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\StoppedEventArgs.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\WasapiOut.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\WaveBuffer.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\WaveFileWriter.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\WaveOut.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveOutputs\WaveOutEvent.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\BufferedWaveProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\MediaFoundationResampler.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\MixingWaveProvider32.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\MonoToStereoProvider16.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\MultiplexingWaveProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\StereoToMonoProvider16.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\VolumeWaveProvider16.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\Wave16toFloatProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\WaveFloatTo16Provider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\WaveInProvider.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\WaveProvider16.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\WaveProvider32.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveProviders\WaveRecorder.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\AiffFileReader.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\AudioFileReader.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\BlockAlignReductionStream.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\CueList.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\CueWaveFileReader.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\ISampleNotifier.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\MediaFoundationReader.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\Mp3FileReader.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\RawSourceWaveStream.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\ResamplerDmoStream.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\RiffChunk.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\SimpleCompressorStream.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\Wave32To16Stream.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveChannel32.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveFileReader.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveFormatConversionStream.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveInBuffer.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveMixerStream32.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveOffsetStream.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveOutBuffer.cs" />
+    <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveStream.cs" />
+    <Compile Include="Plugins\TagLib\Aac\AudioHeader.cs" />
+    <Compile Include="Plugins\TagLib\Aac\BitStream.cs" />
+    <Compile Include="Plugins\TagLib\Aac\File.cs" />
+    <Compile Include="Plugins\TagLib\Aiff\File.cs" />
+    <Compile Include="Plugins\TagLib\Aiff\StreamHeader.cs" />
+    <Compile Include="Plugins\TagLib\Ape\File.cs" />
+    <Compile Include="Plugins\TagLib\Ape\Footer.cs" />
+    <Compile Include="Plugins\TagLib\Ape\Item.cs" />
+    <Compile Include="Plugins\TagLib\Ape\StreamHeader.cs" />
+    <Compile Include="Plugins\TagLib\Ape\Tag.cs" />
+    <Compile Include="Plugins\TagLib\Asf\ContentDescriptionObject.cs" />
+    <Compile Include="Plugins\TagLib\Asf\ContentDescriptor.cs" />
+    <Compile Include="Plugins\TagLib\Asf\DescriptionRecord.cs" />
+    <Compile Include="Plugins\TagLib\Asf\ExtendedContentDescriptionObject.cs" />
+    <Compile Include="Plugins\TagLib\Asf\File.cs" />
+    <Compile Include="Plugins\TagLib\Asf\FilePropertiesObject.cs" />
+    <Compile Include="Plugins\TagLib\Asf\Guid.cs" />
+    <Compile Include="Plugins\TagLib\Asf\HeaderExtensionObject.cs" />
+    <Compile Include="Plugins\TagLib\Asf\HeaderObject.cs" />
+    <Compile Include="Plugins\TagLib\Asf\MetadataLibraryObject.cs" />
+    <Compile Include="Plugins\TagLib\Asf\Object.cs" />
+    <Compile Include="Plugins\TagLib\Asf\PaddingObject.cs" />
+    <Compile Include="Plugins\TagLib\Asf\StreamPropertiesObject.cs" />
+    <Compile Include="Plugins\TagLib\Asf\Tag.cs" />
+    <Compile Include="Plugins\TagLib\Asf\UnknownObject.cs" />
+    <Compile Include="Plugins\TagLib\Audible\File.cs" />
+    <Compile Include="Plugins\TagLib\Audible\Tag.cs" />
+    <Compile Include="Plugins\TagLib\ByteVector.cs" />
+    <Compile Include="Plugins\TagLib\ByteVectorList.cs" />
+    <Compile Include="Plugins\TagLib\CombinedTag.cs" />
+    <Compile Include="Plugins\TagLib\CorruptFileException.cs" />
+    <Compile Include="Plugins\TagLib\Debugger.cs" />
+    <Compile Include="Plugins\TagLib\Dsf\File.cs" />
+    <Compile Include="Plugins\TagLib\Dsf\StreamHeader.cs" />
+    <Compile Include="Plugins\TagLib\File.cs" />
+    <Compile Include="Plugins\TagLib\FileTypes.cs" />
+    <Compile Include="Plugins\TagLib\Flac\Block.cs" />
+    <Compile Include="Plugins\TagLib\Flac\BlockHeader.cs" />
+    <Compile Include="Plugins\TagLib\Flac\File.cs" />
+    <Compile Include="Plugins\TagLib\Flac\Picture.cs" />
+    <Compile Include="Plugins\TagLib\Flac\StreamHeader.cs" />
+    <Compile Include="Plugins\TagLib\Genres.cs" />
+    <Compile Include="Plugins\TagLib\Gif\Codec.cs" />
+    <Compile Include="Plugins\TagLib\Gif\File.cs" />
+    <Compile Include="Plugins\TagLib\Gif\GifCommentTag.cs" />
+    <Compile Include="Plugins\TagLib\ICodec.cs" />
+    <Compile Include="Plugins\TagLib\Id3v1\StringHandler.cs" />
+    <Compile Include="Plugins\TagLib\Id3v1\Tag.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\EventTimeCode.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\EventType.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\ExtendedHeader.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Footer.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\FrameFactory.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\FrameHeader.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\AttachmentFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\CommentsFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\EventTimeCodeFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\MusicCdIdentifierFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\PlayCountFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\PopularimeterFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\PrivateFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\RelativeVolumeFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\SynchronizedLyricsFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\TermsOfUseFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\TextIdentificationFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\UniqueFileIdentifierFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\UnknownFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\UnsynchronisedLyricsFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Frames\UrlLinkFrame.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\FrameTypes.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Header.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\SynchData.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\SynchedTextType.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\Tag.cs" />
+    <Compile Include="Plugins\TagLib\Id3v2\TimestampFormat.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\ByteIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\ByteVectorIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\LongArrayIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\LongIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\MakernoteIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\Rational.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\RationalArrayIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\RationalIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\SByteIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\ShortArrayIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\ShortIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\SLongArrayIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\SLongIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\SRational.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\SRationalArrayIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\SRationalIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\SShortArrayIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\SShortIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\StringIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\StripOffsetsIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\SubIFDArrayEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\SubIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\ThumbnailDataIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\UndefinedIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Entries\UserCommentIFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\IFDDirectory.cs" />
+    <Compile Include="Plugins\TagLib\IFD\IFDEntry.cs" />
+    <Compile Include="Plugins\TagLib\IFD\IFDEntryType.cs" />
+    <Compile Include="Plugins\TagLib\IFD\IFDReader.cs" />
+    <Compile Include="Plugins\TagLib\IFD\IFDRenderer.cs" />
+    <Compile Include="Plugins\TagLib\IFD\IFDStructure.cs" />
+    <Compile Include="Plugins\TagLib\IFD\IFDTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Makernotes\Nikon3MakernoteReader.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\CanonFileInfoEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\CanonMakerNoteEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\CanonPictureInfoEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\ExifEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\GPSEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\IFDEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\IOPEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\Nikon3MakerNoteEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\NikonIsoInfoEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\NikonLensData3EntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\NikonPictureControlEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\NikonPreviewMakerNoteEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\NikonShotInfoEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\NikonVibrationReductionEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\NikonWorldTimeEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\OlympusMakerNoteEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\PanasonicMakerNoteEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\PentaxMakerNoteEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IFD\Tags\SonyMakerNoteEntryTag.cs" />
+    <Compile Include="Plugins\TagLib\IIM\IIMReader.cs" />
+    <Compile Include="Plugins\TagLib\IIM\IIMTag.cs" />
+    <Compile Include="Plugins\TagLib\ILazy.cs" />
+    <Compile Include="Plugins\TagLib\Image\Codec.cs" />
+    <Compile Include="Plugins\TagLib\Image\CombinedImageTag.cs" />
+    <Compile Include="Plugins\TagLib\Image\File.cs" />
+    <Compile Include="Plugins\TagLib\Image\ImageBlockFile.cs" />
+    <Compile Include="Plugins\TagLib\Image\ImageOrientation.cs" />
+    <Compile Include="Plugins\TagLib\Image\ImageTag.cs" />
+    <Compile Include="Plugins\TagLib\Image\NoMetadata\File.cs" />
+    <Compile Include="Plugins\TagLib\Jpeg\Codec.cs" />
+    <Compile Include="Plugins\TagLib\Jpeg\File.cs" />
+    <Compile Include="Plugins\TagLib\Jpeg\JpegCommentTag.cs" />
+    <Compile Include="Plugins\TagLib\Jpeg\Marker.cs" />
+    <Compile Include="Plugins\TagLib\Jpeg\Table.cs" />
+    <Compile Include="Plugins\TagLib\ListBase.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\Attachment.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\AudioTrack.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\EBMLElement.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\EBMLIDs.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\EBMLreader.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\File.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\IUIDElement.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\MatroskaIDs.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\SimpleTag.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\SubtitleTrack.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\Tag.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\Tags.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\TargetType.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\Track.cs" />
+    <Compile Include="Plugins\TagLib\Matroska\VideoTrack.cs" />
+    <Compile Include="Plugins\TagLib\Mpc\File.cs" />
+    <Compile Include="Plugins\TagLib\Mpc\StreamHeader.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\AppleTag.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Box.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\AppleAdditionalInfoBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\AppleAnnotationBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\AppleDataBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\AppleElementaryStreamDescriptor.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\AppleItemListBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\FullBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoAudioSampleEntry.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoChunkLargeOffsetBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoChunkOffsetBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoFreeSpaceBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoHandlerBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoMetaBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoMovieHeaderBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoSampleDescriptionBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoSampleEntry.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoSampleTableBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoUserDataBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\IsoVisualSampleEntry.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\TextBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\UnknownBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\Boxes\UrlBox.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\BoxFactory.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\BoxHeader.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\BoxTypes.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\File.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg4\FileParser.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg\AudioFile.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg\AudioHeader.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg\File.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg\VBRIHeader.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg\VideoHeader.cs" />
+    <Compile Include="Plugins\TagLib\Mpeg\XingHeader.cs" />
+    <Compile Include="Plugins\TagLib\NonContainer\EndTag.cs" />
+    <Compile Include="Plugins\TagLib\NonContainer\File.cs" />
+    <Compile Include="Plugins\TagLib\NonContainer\StartTag.cs" />
+    <Compile Include="Plugins\TagLib\NonContainer\Tag.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\Bitstream.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\Codec.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\Codecs\Opus.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\Codecs\Theora.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\Codecs\Vorbis.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\File.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\GroupedComment.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\Page.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\PageHeader.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\Paginator.cs" />
+    <Compile Include="Plugins\TagLib\Ogg\XiphComment.cs" />
+    <Compile Include="Plugins\TagLib\Picture.cs" />
+    <Compile Include="Plugins\TagLib\PictureLazy.cs" />
+    <Compile Include="Plugins\TagLib\Png\Codec.cs" />
+    <Compile Include="Plugins\TagLib\Png\File.cs" />
+    <Compile Include="Plugins\TagLib\Png\PngTag.cs" />
+    <Compile Include="Plugins\TagLib\Properties.cs" />
+    <Compile Include="Plugins\TagLib\ReadOnlyByteVector.cs" />
+    <Compile Include="Plugins\TagLib\Riff\AviHeaderList.cs" />
+    <Compile Include="Plugins\TagLib\Riff\AviStream.cs" />
+    <Compile Include="Plugins\TagLib\Riff\BitmapInfoHeader.cs" />
+    <Compile Include="Plugins\TagLib\Riff\DivXTag.cs" />
+    <Compile Include="Plugins\TagLib\Riff\File.cs" />
+    <Compile Include="Plugins\TagLib\Riff\InfoTag.cs" />
+    <Compile Include="Plugins\TagLib\Riff\List.cs" />
+    <Compile Include="Plugins\TagLib\Riff\ListTag.cs" />
+    <Compile Include="Plugins\TagLib\Riff\MovieIdTag.cs" />
+    <Compile Include="Plugins\TagLib\Riff\WaveFormatEx.cs" />
+    <Compile Include="Plugins\TagLib\StringList.cs" />
+    <Compile Include="Plugins\TagLib\SupportedMimeType.cs" />
+    <Compile Include="Plugins\TagLib\Tag.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\Arw\File.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\BaseTiffFile.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\Codec.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\Cr2\File.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\Dng\File.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\File.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\Nef\File.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\Pef\File.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\Rw2\File.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\Rw2\IFDReader.cs" />
+    <Compile Include="Plugins\TagLib\Tiff\Rw2\IFDTag.cs" />
+    <Compile Include="Plugins\TagLib\UnsupportedFormatException.cs" />
+    <Compile Include="Plugins\TagLib\WavPack\File.cs" />
+    <Compile Include="Plugins\TagLib\WavPack\StreamHeader.cs" />
+    <Compile Include="Plugins\TagLib\Xmp\XmlNodeExtensions.cs" />
+    <Compile Include="Plugins\TagLib\Xmp\XmpNode.cs" />
+    <Compile Include="Plugins\TagLib\Xmp\XmpNodeType.cs" />
+    <Compile Include="Plugins\TagLib\Xmp\XmpNodeVisitor.cs" />
+    <Compile Include="Plugins\TagLib\Xmp\XmpTag.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Windows\Direction.cs" />
     <Compile Include="Drawing\CMYK.cs" />
@@ -423,7 +1120,24 @@
     <Compile Include="Windows\Window.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Plugins\NAudio\Gui\Fader.resx">
+      <DependentUpon>Fader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\NAudio\Gui\PanSlider.resx">
+      <DependentUpon>PanSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\NAudio\Gui\Pot.resx">
+      <DependentUpon>Pot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\NAudio\Gui\VolumeSlider.resx">
+      <DependentUpon>VolumeSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\NAudio\Gui\WaveViewer.resx">
+      <DependentUpon>WaveViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\NAudio\Utils\ProgressLog.resx">
+      <DependentUpon>ProgressLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -448,6 +1162,8 @@
   <ItemGroup>
     <None Include="Resources\Close.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Plugins\Ionic.Zip\BZip2\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

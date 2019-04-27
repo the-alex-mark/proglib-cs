@@ -1,5 +1,5 @@
 ﻿using System;
-using CoreAudioApi;
+using NAudio.CoreAudioApi;
 
 namespace ProgLib.Audio.Visualization
 {
@@ -12,7 +12,7 @@ namespace ProgLib.Audio.Visualization
         {
             get
             {
-                MMDevice Device = new MMDeviceEnumerator().GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
+                MMDevice Device = new MMDeviceEnumerator().GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
                 return (int)(Device.AudioMeterInformation.PeakValues[1] * 100f);
             }
         }
@@ -24,7 +24,7 @@ namespace ProgLib.Audio.Visualization
         {
             get
             {
-                MMDevice Device = new MMDeviceEnumerator().GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
+                MMDevice Device = new MMDeviceEnumerator().GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
                 return (int)(Device.AudioMeterInformation.PeakValues[0] * 100f);
             }
         }

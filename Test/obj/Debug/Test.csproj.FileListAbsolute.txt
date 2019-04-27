@@ -17,8 +17,6 @@ D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\bin\Debug\
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\bin\Debug\Test.exe
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\bin\Debug\Test.pdb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\bin\Debug\ProgLib.dll
-D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\bin\Debug\Ionic.Zip.dll
-D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\bin\Debug\CoreAudioApi.dll
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\bin\Debug\ProgLib.pdb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.csprojAssemblyReference.cache
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.Form1.resources
