@@ -32,6 +32,7 @@
             this.metroButton2 = new ProgLib.Windows.Metro.MetroButton();
             this.pictureBoxQRCode = new System.Windows.Forms.PictureBox();
             this.textBoxQRCode = new System.Windows.Forms.TextBox();
+            this.iSpectrum1 = new ProgLib.Audio.Visualization.iSpectrum();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQRCode)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,11 +81,23 @@
             this.textBoxQRCode.Size = new System.Drawing.Size(150, 21);
             this.textBoxQRCode.TabIndex = 3;
             // 
+            // iSpectrum1
+            // 
+            this.iSpectrum1.BackProgressColor = System.Drawing.Color.Transparent;
+            this.iSpectrum1.Count = 39;
+            this.iSpectrum1.Location = new System.Drawing.Point(77, 266);
+            this.iSpectrum1.Name = "iSpectrum1";
+            this.iSpectrum1.ProgressColor = System.Drawing.Color.Green;
+            this.iSpectrum1.Size = new System.Drawing.Size(181, 78);
+            this.iSpectrum1.TabIndex = 4;
+            this.iSpectrum1.Text = "iSpectrum1";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(677, 396);
+            this.Controls.Add(this.iSpectrum1);
             this.Controls.Add(this.textBoxQRCode);
             this.Controls.Add(this.pictureBoxQRCode);
             this.Controls.Add(this.metroButton2);
@@ -93,6 +106,7 @@
             this.Name = "Form1";
             this.Text = "Поликлиника";
             this.Theme = ProgLib.Windows.Metro.Theme.Dark;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQRCode)).EndInit();
             this.ResumeLayout(false);
@@ -106,6 +120,7 @@
         private ProgLib.Windows.Metro.MetroButton metroButton2;
         private System.Windows.Forms.PictureBox pictureBoxQRCode;
         private System.Windows.Forms.TextBox textBoxQRCode;
+        private ProgLib.Audio.Visualization.iSpectrum iSpectrum1;
     }
 }
 

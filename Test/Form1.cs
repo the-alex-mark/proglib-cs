@@ -18,6 +18,7 @@ using ProgLib;
 using ProgLib.Network;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
+using ProgLib.Audio.Visualization;
 
 namespace Test
 {
@@ -42,15 +43,34 @@ namespace Test
             pictureBoxQRCode.Image = QRCodeToBitmap.CreateBitmap(QRCodeEncoder, 50, 50);
         }
 
+        //Spectrum V;
         private void Form1_Load(Object sender, EventArgs e)
         {
             //MessageBox.Show(LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"));
             //MessageBox.Show(LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"));
+
+            //V = new Spectrum
+            //{
+            //    Count = iSpectrum1.Count,
+            //    Interval = 1
+            //};
+            //V.Leveling += delegate (Object _object, SpectrumEventArgs _visualizationEventArgs)
+            //{
+            //    iSpectrum1.Set(_visualizationEventArgs.Data);
+            //};
+            //V.Start();
         }
 
         private void metroButton2_Click(Object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            //V.Stop();
+            //V.Free();
+            //V.Dispose();
         }
     }
 }
