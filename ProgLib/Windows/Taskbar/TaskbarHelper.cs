@@ -60,11 +60,11 @@ namespace ProgLib.Windows.Taskbar
 				this.buttonsAdded = true;
 				if (buttons == null || buttons.Length == 0)
 				{
-					throw new ArgumentException("Buttons array is empty", "buttons");
+					throw new ArgumentException("Массив кнопок пуст", "buttons");
 				}
 				if (buttons.Length > 7)
 				{
-					throw new ArgumentException("Buttons amount reaches limit of 7 buttons", "buttons");
+					throw new ArgumentException("Количество кнопок достигает предела 7 кнопок", "buttons");
 				}
 				List<NativeMethods.THUMBBUTTON> list = new List<NativeMethods.THUMBBUTTON>();
 				ThumbnailToolbar thumbnailToolbar = new ThumbnailToolbar(Handle, buttons);
@@ -107,7 +107,7 @@ namespace ProgLib.Windows.Taskbar
 					Process currentProcess = Process.GetCurrentProcess();
 					if (currentProcess == null || currentProcess.MainWindowHandle == IntPtr.Zero)
 					{
-						throw new InvalidOperationException("A main valid window is required");
+						throw new InvalidOperationException("Главное допустимое окно обязательно");
 					}
 					this._MainHandle = currentProcess.MainWindowHandle;
 				}

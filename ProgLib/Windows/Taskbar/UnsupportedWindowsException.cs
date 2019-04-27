@@ -8,7 +8,7 @@ namespace ProgLib.Windows.Taskbar
 		{
 		}
 
-		public UnsupportedWindowsException(string os) : base("It requires" + os + " or later")
+		public UnsupportedWindowsException(string os) : base("Это требует" + os + " или позже")
 		{
 		}
 	}
