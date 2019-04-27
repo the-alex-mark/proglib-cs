@@ -47,3 +47,4 @@ D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Deb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\NAudio.Gui.WaveViewer.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\NAudio.Utils.ProgressLog.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\Un4seen.Bass.SplashScreen.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\MaterialSkin.Controls.MaterialForm.resources

@@ -33,6 +33,9 @@
     <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -530,6 +533,52 @@
     <Compile Include="Plugins\Ionic.Zip\Zlib\ZlibCodec.cs" />
     <Compile Include="Plugins\Ionic.Zip\Zlib\ZlibConstants.cs" />
     <Compile Include="Plugins\Ionic.Zip\Zlib\ZlibStream.cs" />
+    <Compile Include="Plugins\MaterialSkin\Animations\AnimationDirection.cs" />
+    <Compile Include="Plugins\MaterialSkin\Animations\AnimationManager.cs" />
+    <Compile Include="Plugins\MaterialSkin\Animations\Animations.cs" />
+    <Compile Include="Plugins\MaterialSkin\ColorScheme.cs" />
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialCheckbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialDivider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialFlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialRaisedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialSingleLineTextField.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\Controls\MaterialTabSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MaterialSkin\DrawHelper.cs" />
+    <Compile Include="Plugins\MaterialSkin\IMaterialControl.cs" />
+    <Compile Include="Plugins\MaterialSkin\MaterialSkinManager.cs" />
     <Compile Include="Plugins\NAudio\Codecs\ALawDecoder.cs" />
     <Compile Include="Plugins\NAudio\Codecs\ALawEncoder.cs" />
     <Compile Include="Plugins\NAudio\Codecs\G722Codec.cs" />
@@ -1501,6 +1550,9 @@
     <EmbeddedResource Include="Plugins\Bass.Net\Un4seen\Bass\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\MaterialSkin\Controls\MaterialForm.resx">
+      <DependentUpon>MaterialForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Plugins\NAudio\Gui\Fader.resx">
       <DependentUpon>Fader.cs</DependentUpon>
     </EmbeddedResource>
@@ -1533,6 +1585,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CellTransparentBackground.png" />
+    <None Include="Resources\Open_Sans.ttf" />
+    <None Include="Resources\Open_Sans_Bold.ttf" />
+    <None Include="Resources\Open_Sans_Light.ttf" />
+    <None Include="Resources\Roboto-Medium.ttf" />
+    <None Include="Resources\Roboto-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Hide.png" />
@@ -1551,6 +1608,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\basswasapi.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
