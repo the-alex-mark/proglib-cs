@@ -1198,7 +1198,7 @@
     <Compile Include="Plugins\TagLib\Xmp\XmpNodeVisitor.cs" />
     <Compile Include="Plugins\TagLib\Xmp\XmpTag.cs" />
     <Compile Include="Unit.cs" />
-    <Compile Include="Windows\Direction.cs" />
+    <Compile Include="Windows\Forms\Direction.cs" />
     <Compile Include="Drawing\CMYK.cs" />
     <Compile Include="Drawing\Convert.cs" />
     <Compile Include="Drawing\Drawing2D\CustomGraphicsPath.cs" />
@@ -1244,261 +1244,264 @@
     <Compile Include="Text\Encoding\UTF8.cs" />
     <Compile Include="Text\StringTable.cs" />
     <Compile Include="Text\FontFromResources.cs" />
-    <Compile Include="Windows\Adobe\AdobeComboBox.cs">
+    <Compile Include="Windows\Forms\Adobe\AdobeComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Adobe\AdobeComboBox.Designer.cs">
-      <DependentUpon>AdobeComboBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Adobe\AdobeLabel.cs">
+    <Compile Include="Windows\Forms\Adobe\AdobeLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Adobe\AdobeLabel.Designer.cs">
+    <Compile Include="Windows\Forms\Adobe\AdobeLabel.Designer.cs">
       <DependentUpon>AdobeLabel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Adobe\AdobeNumericUpDown.cs">
+    <Compile Include="Windows\Forms\Adobe\AdobeNumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Adobe\AdobeNumericUpDown.Designer.cs">
+    <Compile Include="Windows\Forms\Adobe\AdobeNumericUpDown.Designer.cs">
       <DependentUpon>AdobeNumericUpDown.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Adobe\AdobeTrackBar.cs">
+    <Compile Include="Windows\Forms\Adobe\AdobeTrackBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Adobe\AdobeTrackBar.Designer.cs">
+    <Compile Include="Windows\Forms\Adobe\AdobeTrackBar.Designer.cs">
       <DependentUpon>AdobeTrackBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Adobe\IAdobeControl.cs" />
-    <Compile Include="Windows\CustomForm.cs">
+    <Compile Include="Windows\Forms\Adobe\IAdobeControl.cs" />
+    <Compile Include="Windows\Forms\CustomForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Cyotek\ColorCellBorderStyle.cs" />
-    <Compile Include="Windows\Cyotek\ColorCollection.cs" />
-    <Compile Include="Windows\Cyotek\ColorCollectionEventArgs.cs" />
-    <Compile Include="Windows\Cyotek\ColorCollectionSortOrder.cs" />
-    <Compile Include="Windows\Cyotek\ColorComparer.cs" />
-    <Compile Include="Windows\Cyotek\ColorDialog.cs">
+    <Compile Include="Windows\Forms\Cyotek\ColorCellBorderStyle.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorCollection.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorCollectionEventArgs.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorCollectionSortOrder.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorComparer.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Cyotek\ColorDialog.Designer.cs">
+    <Compile Include="Windows\Forms\Cyotek\ColorDialog.Designer.cs">
       <DependentUpon>ColorDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Cyotek\ColorEditingMode.cs" />
-    <Compile Include="Windows\Cyotek\ColorGrid.cs">
+    <Compile Include="Windows\Forms\Cyotek\ColorEditingMode.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Cyotek\ColorGridSelectedCellStyle.cs" />
-    <Compile Include="Windows\Cyotek\ColorHitTestInfo.cs" />
-    <Compile Include="Windows\Cyotek\ColorPalette.cs" />
-    <Compile Include="Windows\Cyotek\ColorPalettes.cs" />
-    <Compile Include="Windows\Cyotek\ColorSource.cs" />
-    <Compile Include="Windows\Cyotek\ColorWheel.cs">
+    <Compile Include="Windows\Forms\Cyotek\ColorGridSelectedCellStyle.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorHitTestInfo.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorPalette.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorPalettes.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorSource.cs" />
+    <Compile Include="Windows\Forms\Cyotek\ColorWheel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Cyotek\EditColorCancelEventArgs.cs" />
-    <Compile Include="Windows\Cyotek\HSBSlider.cs">
+    <Compile Include="Windows\Forms\Cyotek\EditColorCancelEventArgs.cs" />
+    <Compile Include="Windows\Forms\Cyotek\HSBSlider.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Windows\Cyotek\HSBSlider.Designer.cs">
+    <Compile Include="Windows\Forms\Cyotek\HSBSlider.Designer.cs">
       <DependentUpon>HSBSlider.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Cyotek\HslColor.cs" />
-    <Compile Include="Windows\Cyotek\HueSlider.cs">
+    <Compile Include="Windows\Forms\Cyotek\HslColor.cs" />
+    <Compile Include="Windows\Forms\Cyotek\HueSlider.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Cyotek\IPaletteSerializer.cs" />
-    <Compile Include="Windows\Cyotek\NativeMethods.cs" />
-    <Compile Include="Windows\Cyotek\NavigationOrigin.cs" />
-    <Compile Include="Windows\Cyotek\PaletteSerializer.cs" />
-    <Compile Include="Windows\Cyotek\SBSlider.cs">
+    <Compile Include="Windows\Forms\Cyotek\IPaletteSerializer.cs" />
+    <Compile Include="Windows\Forms\Cyotek\NativeMethods.cs" />
+    <Compile Include="Windows\Forms\Cyotek\NavigationOrigin.cs" />
+    <Compile Include="Windows\Forms\Cyotek\PaletteSerializer.cs" />
+    <Compile Include="Windows\Forms\Cyotek\SBSlider.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Cyotek\ScreenColorPicker.cs">
+    <Compile Include="Windows\Forms\Cyotek\ScreenColorPicker.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Material\MaterialButton.cs">
+    <Compile Include="Windows\Forms\Material\MaterialButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Material\MaterialButton.Designer.cs">
+    <Compile Include="Windows\Forms\Material\MaterialButton.Designer.cs">
       <DependentUpon>MaterialButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Material\MaterialCheckBox.cs">
+    <Compile Include="Windows\Forms\Material\MaterialCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Material\MaterialCheckBox.Designer.cs">
+    <Compile Include="Windows\Forms\Material\MaterialCheckBox.Designer.cs">
       <DependentUpon>MaterialCheckBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Material\ColorScheme.cs" />
-    <Compile Include="Windows\Material\DrawHelper.cs" />
-    <Compile Include="Windows\Material\MaterialDivider.cs">
+    <Compile Include="Windows\Forms\Material\ColorScheme.cs" />
+    <Compile Include="Windows\Forms\Material\DrawHelper.cs" />
+    <Compile Include="Windows\Forms\Material\MaterialDivider.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Material\MaterialDivider.Designer.cs">
+    <Compile Include="Windows\Forms\Material\MaterialDivider.Designer.cs">
       <DependentUpon>MaterialDivider.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Material\MaterialForm.cs">
+    <Compile Include="Windows\Forms\Material\MaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalForm.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Metro\MessageType.cs" />
-    <Compile Include="Windows\Metro\MetroForm.cs">
+    <Compile Include="Windows\Forms\Metro\MessageType.cs" />
+    <Compile Include="Windows\Forms\Metro\MetroForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Metro\MetroCheckBox.cs">
+    <Compile Include="Windows\Forms\Metro\MetroCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Metro\MetroCheckBox.Designer.cs">
+    <Compile Include="Windows\Forms\Metro\MetroCheckBox.Designer.cs">
       <DependentUpon>MetroCheckBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Metro\MetroCollection.cs" />
-    <Compile Include="Windows\Metro\MetroLabel.cs">
+    <Compile Include="Windows\Forms\Metro\MetroCollection.cs" />
+    <Compile Include="Windows\Forms\Metro\MetroLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Metro\MetroLabel.Designer.cs">
+    <Compile Include="Windows\Forms\Metro\MetroLabel.Designer.cs">
       <DependentUpon>MetroLabel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Metro\MetroMessageBox.cs" />
-    <Compile Include="Windows\Metro\MetroPaint.cs" />
-    <Compile Include="Windows\Metro\MetroRadioButton.cs">
+    <Compile Include="Windows\Forms\Metro\MetroMessageBox.cs" />
+    <Compile Include="Windows\Forms\Metro\MetroPaint.cs" />
+    <Compile Include="Windows\Forms\Metro\MetroRadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Metro\MetroRadioButton.Designer.cs">
+    <Compile Include="Windows\Forms\Metro\MetroRadioButton.Designer.cs">
       <DependentUpon>MetroRadioButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Metro\MetroTabControl.cs">
+    <Compile Include="Windows\Forms\Metro\MetroTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Metro\MetroTabControl.Designer.cs">
+    <Compile Include="Windows\Forms\Metro\MetroTabControl.Designer.cs">
       <DependentUpon>MetroTabControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Metro\MetroTabSelector.cs">
+    <Compile Include="Windows\Forms\Metro\MetroTabSelector.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Metro\MetroTabSelector.Designer.cs">
+    <Compile Include="Windows\Forms\Metro\MetroTabSelector.Designer.cs">
       <DependentUpon>MetroTabSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Metro\MetroButton.cs">
+    <Compile Include="Windows\Forms\Metro\MetroButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Metro\MetroButton.Designer.cs">
+    <Compile Include="Windows\Forms\Metro\MetroButton.Designer.cs">
       <DependentUpon>MetroButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Metro\MetroTile.cs">
+    <Compile Include="Windows\Forms\Metro\MetroTile.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Metro\MetroTile.Designer.cs">
+    <Compile Include="Windows\Forms\Metro\MetroTile.Designer.cs">
       <DependentUpon>MetroTile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Metro\MetroToggle.cs">
+    <Compile Include="Windows\Forms\Metro\MetroToggle.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Metro\MetroToggle.Designer.cs">
+    <Compile Include="Windows\Forms\Metro\MetroToggle.Designer.cs">
       <DependentUpon>MetroToggle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Metro\MouseState.cs" />
-    <Compile Include="Windows\Metro\Theme.cs" />
-    <Compile Include="Windows\MinimalForm.cs">
+    <Compile Include="Windows\Forms\Metro\MouseState.cs" />
+    <Compile Include="Windows\Forms\Metro\Theme.cs" />
+    <Compile Include="Windows\Forms\MinimalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\HslColor.cs" />
-    <Compile Include="Windows\Minimal\MessageType.cs" />
-    <Compile Include="Windows\Minimal\MinimalButton.cs">
+    <Compile Include="Windows\Forms\Minimal\HslColor.cs" />
+    <Compile Include="Windows\Forms\Minimal\MessageType.cs" />
+    <Compile Include="Windows\Forms\Minimal\MinimalButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalButton.Designer.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalButton.Designer.cs">
       <DependentUpon>MinimalButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalColorWheel.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalColorWheel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalContextMenuRenderer.cs.cs" />
-    <Compile Include="Windows\Minimal\MinimalContextMenuStrip.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalContextMenuRenderer.cs.cs" />
+    <Compile Include="Windows\Forms\Minimal\MinimalContextMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalContextMenuStrip.Designer.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalContextMenuStrip.Designer.cs">
       <DependentUpon>MinimalContextMenuStrip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Material\MaterialListView.cs">
+    <Compile Include="Windows\Forms\Material\MaterialListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Material\MaterialListView.Designer.cs">
+    <Compile Include="Windows\Forms\Material\MaterialListView.Designer.cs">
       <DependentUpon>MaterialListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Material\MaterialRadioButton.cs">
+    <Compile Include="Windows\Forms\Material\MaterialRadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Material\MaterialRadioButton.Designer.cs">
+    <Compile Include="Windows\Forms\Material\MaterialRadioButton.Designer.cs">
       <DependentUpon>MaterialRadioButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Material\MaterialTabControl.cs">
+    <Compile Include="Windows\Forms\Material\MaterialTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Material\MaterialTabControl.Designer.cs">
+    <Compile Include="Windows\Forms\Material\MaterialTabControl.Designer.cs">
       <DependentUpon>MaterialTabControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Material\MaterialTabSelector.cs">
+    <Compile Include="Windows\Forms\Material\MaterialTabSelector.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Material\MaterialTabSelector.Designer.cs">
+    <Compile Include="Windows\Forms\Material\MaterialTabSelector.Designer.cs">
       <DependentUpon>MaterialTabSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Material\IMaterialControl.cs" />
-    <Compile Include="Windows\Minimal\MinimalComboBox.cs">
+    <Compile Include="Windows\Forms\Material\IMaterialControl.cs" />
+    <Compile Include="Windows\Forms\Minimal\MinimalComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalComboBox.Designer.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalComboBox.Designer.cs">
       <DependentUpon>MinimalComboBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalGroupBox.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalGroupBox.Designer.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalGroupBox.Designer.cs">
       <DependentUpon>MinimalGroupBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalHueSlider.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalHueSlider.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalHueSlider.Designer.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalHueSlider.Designer.cs">
       <DependentUpon>MinimalHueSlider.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalIColorEditor.cs" />
-    <Compile Include="Windows\Minimal\MinimalMenuRenderer.cs" />
-    <Compile Include="Windows\Minimal\MinimalMenuStrip.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalIColorEditor.cs" />
+    <Compile Include="Windows\Forms\Minimal\MinimalMenuRenderer.cs" />
+    <Compile Include="Windows\Forms\Minimal\MinimalMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalMenuStrip.Designer.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalMenuStrip.Designer.cs">
       <DependentUpon>MinimalMenuStrip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalMessageBox.cs" />
-    <Compile Include="Windows\Minimal\MinimalMessageBoxRenderer.cs" />
-    <Compile Include="Windows\Minimal\MinimalProgressBar.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalMessageBox.cs" />
+    <Compile Include="Windows\Forms\Minimal\MinimalMessageBoxRenderer.cs" />
+    <Compile Include="Windows\Forms\Minimal\MinimalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalSBSlider.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalSBSlider.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalSBSlider.Designer.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalSBSlider.Designer.cs">
       <DependentUpon>MinimalSBSlider.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalScrollBar.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalScrollBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalToolTip.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalToolTip.Designer.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalToolTip.Designer.cs">
       <DependentUpon>MinimalToolTip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Minimal\MinimalTabControl.cs">
+    <Compile Include="Windows\Forms\Minimal\MinimalTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Minimal\SubClass.cs" />
-    <Compile Include="Windows\Minimal\Win32.cs" />
-    <Compile Include="Windows\MouseMessageFilter.cs" />
-    <Compile Include="Windows\Enum.cs" />
-    <Compile Include="Windows\Window.cs" />
+    <Compile Include="Windows\Forms\Minimal\SubClass.cs" />
+    <Compile Include="Windows\Forms\Minimal\Win32.cs" />
+    <Compile Include="Windows\Forms\MouseMessageFilter.cs" />
+    <Compile Include="Windows\Forms\Enum.cs" />
+    <Compile Include="Windows\Forms\Window.cs" />
+    <Compile Include="Windows\Taskbar\NativeMethods.cs" />
+    <Compile Include="Windows\Taskbar\TaskbarHelper.cs" />
+    <Compile Include="Windows\Taskbar\TBPFLAG.cs" />
+    <Compile Include="Windows\Taskbar\ThumbnailButton.cs" />
+    <Compile Include="Windows\Taskbar\ThumbnailToolbar.cs" />
+    <Compile Include="Windows\Taskbar\UnsupportedWindowsException.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Plugins\Bass.Net\Un4seen\Bass\SplashScreen.resx">
@@ -1527,10 +1530,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Cyotek\ColorDialog.resx">
+    <EmbeddedResource Include="Windows\Forms\Cyotek\ColorDialog.resx">
       <DependentUpon>ColorDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Cyotek\HSBSlider.resx">
+    <EmbeddedResource Include="Windows\Forms\Cyotek\HSBSlider.resx">
       <DependentUpon>HSBSlider.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

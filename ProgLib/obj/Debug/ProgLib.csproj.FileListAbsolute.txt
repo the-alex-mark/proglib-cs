@@ -19,8 +19,6 @@ D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Deb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\ProgLib.pdb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Properties.Resources.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.csproj.GenerateResource.cache
-D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Cyotek.ColorDialog.resources
-D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Cyotek.HSBSlider.resources
 C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\ProgLib.dll
 C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\ProgLib.pdb
 C:\Users\Александр Макаров\Desktop\ProgLib\ProgLib\bin\Debug\Telerik.Windows.Zip.dll
@@ -47,3 +45,5 @@ D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Deb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\NAudio.Gui.WaveViewer.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\NAudio.Utils.ProgressLog.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\Un4seen.Bass.SplashScreen.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.Cyotek.ColorDialog.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.Cyotek.HSBSlider.resources
