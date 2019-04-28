@@ -19,10 +19,11 @@ using ProgLib.Network;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using ProgLib.Audio.Visualization;
+using ProgLib.Windows.Forms;
 
 namespace Test
 {
-    public partial class Form1 : MetroForm
+    public partial class Form1 : ProgLib.Windows.Forms.Metro.MetroForm
     {
         public Form1()
         {

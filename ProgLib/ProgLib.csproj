@@ -1335,6 +1335,9 @@
     <Compile Include="Windows\Forms\Material\MaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Windows\Forms\MinimalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Windows\Forms\Minimal\MinimalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1395,9 +1398,6 @@
     </Compile>
     <Compile Include="Windows\Forms\Metro\MouseState.cs" />
     <Compile Include="Windows\Forms\Metro\Theme.cs" />
-    <Compile Include="Windows\Forms\MinimalForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Windows\Forms\Minimal\HslColor.cs" />
     <Compile Include="Windows\Forms\Minimal\MessageType.cs" />
     <Compile Include="Windows\Forms\Minimal\MinimalButton.cs">
