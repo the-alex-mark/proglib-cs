@@ -113,6 +113,7 @@
     <Compile Include="IO\IniDocument.cs" />
     <Compile Include="IO\IniKey.cs" />
     <Compile Include="IO\IniSection.cs" />
+    <Compile Include="Network\Internet.cs" />
     <Compile Include="Network\LocalNetwork.cs" />
     <Compile Include="Network\Tcp\TcpServer.cs" />
     <Compile Include="Network\Tcp\TcpEventArgs.cs" />
@@ -1204,8 +1205,8 @@
     <Compile Include="Drawing\Drawing2D\CustomGraphicsPath.cs" />
     <Compile Include="Drawing\MetroBrushes.cs" />
     <Compile Include="Drawing\MetroColors.cs" />
-    <Compile Include="Network\Mail\MailRecipient.cs" />
-    <Compile Include="Network\Mail\MailSender.cs" />
+    <Compile Include="Network\EMail\MailRecipient.cs" />
+    <Compile Include="Network\EMail\MailSender.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1233,9 +1234,7 @@
     <Compile Include="IO\File.cs" />
     <Compile Include="IO\ShortCut\ShellLink.cs" />
     <Compile Include="IO\ShortCut\ShortCut.cs" />
-    <Compile Include="Network\Mail\Email.cs" />
-    <Compile Include="Network\Http.cs" />
-    <Compile Include="Network\IP.cs" />
+    <Compile Include="Network\EMail\Email.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Text\Text.cs" />
     <Compile Include="Text\Encoding\ASCII.cs" />

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ProgLib.IO
 {
+    /// <summary>
+    /// Предоставляет методы для работы с INI файлами.
+    /// </summary>
     public class IniDocument
     {
         #region Import

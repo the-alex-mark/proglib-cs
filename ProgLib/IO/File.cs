@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ProgLib.IO
 {
     public class File
     {
         /// <summary>
-        /// Создаёт ярклык к указанному файлу.
+        /// Создаёт ярклык для указанного файла.
         /// </summary>
         /// <param name="File"></param>
         /// <param name="Path"></param>
         public static void Shortcut(String File, String Path)
         {
-            ProgLib.IO.ShortCut.ShortCut.Create(File, Path, "", "");
+            ShortCut.ShortCut.Create(File, Path, "", "");
         }
         
         /// <summary>
