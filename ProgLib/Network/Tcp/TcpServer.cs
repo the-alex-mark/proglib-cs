@@ -237,7 +237,7 @@ namespace ProgLib.Network.Tcp
         }
 
         /// <summary>
-        /// Освобождает все ресурсы, используемые текущим экземпляром класса <see cref="TcpServer"/>
+        /// Освобождает все ресурсы, используемые текущим экземпляром класса <see cref="TcpServer"/>.
         /// </summary>
         public void Dispose()
         {

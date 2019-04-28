@@ -20,6 +20,7 @@ using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using ProgLib.Audio.Visualization;
 using ProgLib.Windows.Forms;
+using ProgLib.Data.Access;
 
 namespace Test
 {
@@ -64,7 +65,18 @@ namespace Test
 
         private void metroButton2_Click(Object sender, EventArgs e)
         {
+            //String _dataBase       = @"C:\Users\Александр Макаров\Desktop\Extramural-master\БД\Заочное.mdb";
+            //String _systemDataBase = @"C:\Users\Александр Макаров\AppData\Roaming\Microsoft\Access\System.mdw";
+            //String _user           = "Admin";
+            //String _password       = "";
 
+            //AccessDataBase DB = new AccessDataBase(_dataBase);
+            //AccessResult _result = DB.Request("Select * from [Личные данные]");
+            ////AccessResult _result = DB.ShowTables();
+            //DB.Dispose();
+
+            //dataGridView1.DataSource = _result.Table;
+            //MessageBox.Show(_result.Status);
         }
 
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)

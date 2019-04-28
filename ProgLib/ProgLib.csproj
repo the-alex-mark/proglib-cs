@@ -89,14 +89,16 @@
     </Compile>
     <Compile Include="Audio\Visualization\Spectrum.cs" />
     <Compile Include="Audio\Visualization\SpectrumEventArgs.cs" />
+    <Compile Include="Data\Access\AccessResult.cs" />
+    <Compile Include="Data\Access\AccessDataBase.cs" />
     <Compile Include="Data\CSharp\CSharpResult.cs" />
     <Compile Include="Data\CSharp\Project.cs" />
     <Compile Include="Data\CSharp\Property.cs" />
     <Compile Include="Data\CSharp\Resource.cs" />
     <Compile Include="Data\CSharp\Resources.cs" />
-    <Compile Include="Data\TSQL\SqlResult.cs" />
-    <Compile Include="Data\TSQL\DataBase.cs" />
-    <Compile Include="Data\TSQL\SqlServer.cs" />
+    <Compile Include="Data\TSQL\TSqlResult.cs" />
+    <Compile Include="Data\TSQL\TSqlDataBase.cs" />
+    <Compile Include="Data\TSQL\TSqlServer.cs" />
     <Compile Include="Diagnostics\AssemblyInfo.cs" />
     <Compile Include="Diagnostics\BaseBoard.cs" />
     <Compile Include="Diagnostics\BIOS.cs" />
