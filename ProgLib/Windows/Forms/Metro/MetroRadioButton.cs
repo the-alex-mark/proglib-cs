@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Metro
+namespace ProgLib.Windows.Forms.Metro
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.RadioButton))]
     public partial class MetroRadioButton : System.Windows.Forms.RadioButton

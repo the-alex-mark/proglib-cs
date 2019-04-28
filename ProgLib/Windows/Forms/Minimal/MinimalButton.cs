@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Minimal
+namespace ProgLib.Windows.Forms.Minimal
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.Button))]
     public partial class MinimalButton : System.Windows.Forms.Button

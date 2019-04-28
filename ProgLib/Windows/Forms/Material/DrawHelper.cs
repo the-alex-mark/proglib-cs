@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace ProgLib.Windows.Material
+namespace ProgLib.Windows.Forms.Material
 {
     static class DrawHelper
     {

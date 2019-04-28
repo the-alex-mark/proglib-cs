@@ -1,4 +1,4 @@
-﻿using ProgLib.Windows.Minimal;
+﻿using ProgLib.Windows.Forms.Minimal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProgLib.Windows;
-using ProgLib.Windows.Metro;
+using ProgLib.Windows.Forms.Metro;
 using ProgLib.Audio;
 using System.IO;
 using ProgLib.Text.Encoding.QRCode;

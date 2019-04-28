@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProgLib.Animations.Material;
 
-namespace ProgLib.Windows.Metro
+namespace ProgLib.Windows.Forms.Metro
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.TabControl))]
     public partial class MetroTabSelector : Control

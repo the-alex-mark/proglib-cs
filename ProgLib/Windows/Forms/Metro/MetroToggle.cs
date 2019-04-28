@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace ProgLib.Windows.Metro
+namespace ProgLib.Windows.Forms.Metro
 {
     public partial class MetroToggle : System.Windows.Forms.CheckBox
     {

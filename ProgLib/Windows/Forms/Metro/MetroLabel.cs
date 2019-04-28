@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Metro
+namespace ProgLib.Windows.Forms.Metro
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.Label))]
     public partial class MetroLabel : System.Windows.Forms.Label

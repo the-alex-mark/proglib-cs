@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProgLib.Animations.Material;
 
-namespace ProgLib.Windows.Material
+namespace ProgLib.Windows.Forms.Material
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.TabControl))]
     public partial class MaterialTabSelector : Control

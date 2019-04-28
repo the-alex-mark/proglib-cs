@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Minimal
+namespace ProgLib.Windows.Forms.Minimal
 {
     public partial class MinimalContextMenuStrip : System.Windows.Forms.ContextMenuStrip
     {

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.Design;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Minimal
+namespace ProgLib.Windows.Forms.Minimal
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.TabControl))]
     public class MinimalTabControl : System.Windows.Forms.TabControl

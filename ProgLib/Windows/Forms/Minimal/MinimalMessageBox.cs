@@ -1,6 +1,6 @@
 ﻿using ProgLib.Diagnostics;
 using ProgLib.Windows.Forms;
-using ProgLib.Windows.Material;
+using ProgLib.Windows.Forms.Material;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Minimal
+namespace ProgLib.Windows.Forms.Minimal
 {
     public class MinimalMessageBox
     {

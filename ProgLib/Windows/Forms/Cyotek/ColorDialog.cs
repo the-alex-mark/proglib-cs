@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProgLib.Drawing;
 using ProgLib.Properties;
-using ProgLib.Windows.Minimal;
+using ProgLib.Windows.Forms.Minimal;
 
 namespace ProgLib.Windows.Forms.Cyotek
 {

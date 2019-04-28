@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Minimal
+namespace ProgLib.Windows.Forms.Minimal
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.VScrollBar)), DefaultEvent("Scroll")]
     public class MinimalScrollBar : System.Windows.Forms.Control

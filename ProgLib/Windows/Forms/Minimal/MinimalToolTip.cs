@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Minimal
+namespace ProgLib.Windows.Forms.Minimal
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.ToolTip))]
     public partial class MinimalToolTip : System.Windows.Forms.ToolTip, IComponent, IDisposable

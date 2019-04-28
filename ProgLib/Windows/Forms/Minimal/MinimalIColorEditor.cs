@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace ProgLib.Windows.Minimal
+namespace ProgLib.Windows.Forms.Minimal
 {
     public interface IColorEditor
     {

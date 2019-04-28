@@ -1,4 +1,4 @@
-﻿namespace ProgLib.Windows.Material
+﻿namespace ProgLib.Windows.Forms.Material
 {
     partial class MaterialCheckBox
     {

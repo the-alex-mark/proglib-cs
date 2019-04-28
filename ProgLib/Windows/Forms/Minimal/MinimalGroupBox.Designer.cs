@@ -1,4 +1,4 @@
-﻿namespace ProgLib.Windows.Minimal
+﻿namespace ProgLib.Windows.Forms.Minimal
 {
     partial class MinimalGroupBox
     {

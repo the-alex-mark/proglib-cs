@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Minimal
+namespace ProgLib.Windows.Forms.Minimal
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.MenuStrip))]
     public partial class MinimalMenuStrip : System.Windows.Forms.MenuStrip

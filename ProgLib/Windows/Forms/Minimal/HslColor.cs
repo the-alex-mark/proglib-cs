@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Text;
 
-namespace ProgLib.Windows.Minimal
+namespace ProgLib.Windows.Forms.Minimal
 {
     [Serializable]
     public struct HslColor

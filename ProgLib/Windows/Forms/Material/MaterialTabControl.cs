@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Material
+namespace ProgLib.Windows.Forms.Material
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.TabControl))]
     public partial class MaterialTabControl : System.Windows.Forms.TabControl

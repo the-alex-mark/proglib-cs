@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using ProgLib.Animations.Material;
 
-namespace ProgLib.Windows.Material
+namespace ProgLib.Windows.Forms.Material
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.Button))]
     public partial class MaterialButton : System.Windows.Forms.Button

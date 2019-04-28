@@ -5,7 +5,7 @@ using ProgLib.Animations.Metro;
 using ProgLib.Animations;
 using ProgLib.Diagnostics;
 
-namespace ProgLib.Windows.Metro
+namespace ProgLib.Windows.Forms.Metro
 {
     public class MetroMessageBox
     {

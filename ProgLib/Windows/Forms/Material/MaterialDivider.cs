@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Material
+namespace ProgLib.Windows.Forms.Material
 {
     public partial class MaterialDivider : Control
     {

@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Drawing.Text;
 using System.Drawing.Drawing2D;
 
-namespace ProgLib.Windows.Forms
+namespace ProgLib.Windows.Forms.Minimal
 {
     public class MinimalForm : System.Windows.Forms.Form
     {

@@ -1,4 +1,4 @@
-﻿namespace ProgLib.Windows.Metro
+﻿namespace ProgLib.Windows.Forms.Metro
 {
     partial class MetroTabControl
     {

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroButton1 = new ProgLib.Windows.Metro.MetroButton();
-            this.metroButton2 = new ProgLib.Windows.Metro.MetroButton();
+            this.metroButton1 = new ProgLib.Windows.Forms.Metro.MetroButton();
+            this.metroButton2 = new ProgLib.Windows.Forms.Metro.MetroButton();
             this.pictureBoxQRCode = new System.Windows.Forms.PictureBox();
             this.textBoxQRCode = new System.Windows.Forms.TextBox();
             this.iSpectrum1 = new ProgLib.Audio.Visualization.iSpectrum();
@@ -46,7 +46,7 @@
             this.metroButton1.StyleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             this.metroButton1.TabIndex = 0;
             this.metroButton1.Text = "Администратор";
-            this.metroButton1.Theme = ProgLib.Windows.Metro.Theme.Dark;
+            this.metroButton1.Theme = ProgLib.Windows.Forms.Metro.Theme.Dark;
             this.metroButton1.UseVisualStyleBackColor = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
@@ -60,7 +60,7 @@
             this.metroButton2.StyleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             this.metroButton2.TabIndex = 1;
             this.metroButton2.Text = "Врач";
-            this.metroButton2.Theme = ProgLib.Windows.Metro.Theme.Dark;
+            this.metroButton2.Theme = ProgLib.Windows.Forms.Metro.Theme.Dark;
             this.metroButton2.UseVisualStyleBackColor = true;
             this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
@@ -105,7 +105,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "Form1";
             this.Text = "Поликлиника";
-            this.Theme = ProgLib.Windows.Metro.Theme.Dark;
+            this.Theme = ProgLib.Windows.Forms.Metro.Theme.Dark;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQRCode)).EndInit();
@@ -116,8 +116,8 @@
 
         #endregion
 
-        private ProgLib.Windows.Metro.MetroButton metroButton1;
-        private ProgLib.Windows.Metro.MetroButton metroButton2;
+        private ProgLib.Windows.Forms.Metro.MetroButton metroButton1;
+        private ProgLib.Windows.Forms.Metro.MetroButton metroButton2;
         private System.Windows.Forms.PictureBox pictureBoxQRCode;
         private System.Windows.Forms.TextBox textBoxQRCode;
         private ProgLib.Audio.Visualization.iSpectrum iSpectrum1;

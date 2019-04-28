@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Metro
+namespace ProgLib.Windows.Forms.Metro
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.TabControl))]
     public partial class MetroTabControl : System.Windows.Forms.TabControl

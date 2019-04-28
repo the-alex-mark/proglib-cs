@@ -33,8 +33,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.materialTabSelector1 = new ProgLib.Windows.Material.MaterialTabSelector();
-            this.materialTabControl1 = new ProgLib.Windows.Material.MaterialTabControl();
+            this.materialTabSelector1 = new ProgLib.Windows.Forms.Material.MaterialTabSelector();
+            this.materialTabControl1 = new ProgLib.Windows.Forms.Material.MaterialTabControl();
             this.PageSystemColors = new System.Windows.Forms.TabPage();
             this.ListSystemColors = new System.Windows.Forms.ListBox();
             this.PageWebColors = new System.Windows.Forms.TabPage();
@@ -48,8 +48,8 @@
             this.adobeNumericUpDown6 = new ProgLib.Windows.Forms.Adobe.AdobeNumericUpDown();
             this.adobeNumericUpDown3 = new ProgLib.Windows.Forms.Adobe.AdobeNumericUpDown();
             this.adobeNumericUpDown2 = new ProgLib.Windows.Forms.Adobe.AdobeNumericUpDown();
-            this.materialButton2 = new ProgLib.Windows.Material.MaterialButton();
-            this.materialButton1 = new ProgLib.Windows.Material.MaterialButton();
+            this.materialButton2 = new ProgLib.Windows.Forms.Material.MaterialButton();
+            this.materialButton1 = new ProgLib.Windows.Forms.Material.MaterialButton();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -117,7 +117,7 @@
             this.materialTabSelector1.ForeColor = System.Drawing.Color.White;
             this.materialTabSelector1.IndicatorColor = System.Drawing.SystemColors.Control;
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 62);
-            this.materialTabSelector1.MouseState = ProgLib.Windows.Material.MouseState.HOVER;
+            this.materialTabSelector1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
             this.materialTabSelector1.Size = new System.Drawing.Size(482, 33);
             this.materialTabSelector1.TabIndex = 6;
@@ -132,7 +132,7 @@
             this.materialTabControl1.Controls.Add(this.PageWebColors);
             this.materialTabControl1.Controls.Add(this.PageCustomColors);
             this.materialTabControl1.Location = new System.Drawing.Point(12, 103);
-            this.materialTabControl1.MouseState = ProgLib.Windows.Material.MouseState.HOVER;
+            this.materialTabControl1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
             this.materialTabControl1.Size = new System.Drawing.Size(258, 183);

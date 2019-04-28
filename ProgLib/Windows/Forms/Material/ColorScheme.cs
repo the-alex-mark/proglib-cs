@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace ProgLib.Windows.Material
+namespace ProgLib.Windows.Forms.Material
 {
     public class ColorScheme
     {
