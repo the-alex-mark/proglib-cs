@@ -30,7 +30,7 @@ namespace ProgLib.Data.TSQL
         private SqlConnection Connection;
 
         /// <summary>
-        /// Присоединяет базу данных
+        /// Присоединяет базу данных.
         /// </summary>
         /// <param name="DataBase">Расположение подключаемой базы данных</param>
         /// <param name="Log">Расположение Log файла подключаемой базы данных</param>
@@ -54,7 +54,7 @@ namespace ProgLib.Data.TSQL
         }
 
         /// <summary>
-        /// Отсоединяет базу данных
+        /// Отсоединяет базу данных.
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
@@ -76,7 +76,7 @@ namespace ProgLib.Data.TSQL
         }
 
         /// <summary>
-        /// Создаёт новую базу данных
+        /// Создаёт новую базу данных.
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
@@ -93,7 +93,7 @@ namespace ProgLib.Data.TSQL
         }
 
         /// <summary>
-        /// Удаляет указанную базу данных
+        /// Удаляет указанную базу данных.
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
@@ -110,7 +110,7 @@ namespace ProgLib.Data.TSQL
         }
 
         /// <summary>
-        /// Получает список баз данных
+        /// Получает список баз данных.
         /// </summary>
         /// <returns></returns>
         public TSqlResult ShowDataBases()

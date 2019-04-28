@@ -16,12 +16,12 @@ namespace ProgLib.Data.Access
         }
         
         /// <summary>
-        /// Возвращает результат выполнения запроса на выборку
+        /// Возвращает результат выполнения запроса на выборку.
         /// </summary>
         public DataTable Table { get; set; }
 
         /// <summary>
-        /// Возвращает статус выволнения запроса
+        /// Возвращает статус выволнения запроса.
         /// </summary>
         public String Status { get; set; }
     }
