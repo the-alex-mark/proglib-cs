@@ -1495,6 +1495,9 @@
     <Compile Include="Windows\Forms\Minimal\Win32.cs" />
     <Compile Include="Windows\Forms\MouseMessageFilter.cs" />
     <Compile Include="Windows\Forms\Enum.cs" />
+    <Compile Include="Windows\Forms\VSCode\VSCodeMenuStripColors.cs" />
+    <Compile Include="Windows\Forms\VSCode\VSCodeTheme.cs" />
+    <Compile Include="Windows\Forms\VSCode\VSCodeToolStripRenderer.cs" />
     <Compile Include="Windows\Forms\Window.cs" />
     <Compile Include="Windows\Taskbar\NativeMethods.cs" />
     <Compile Include="Windows\Taskbar\TaskbarHelper.cs" />

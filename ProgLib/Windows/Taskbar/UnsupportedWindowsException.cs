@@ -6,10 +6,12 @@ namespace ProgLib.Windows.Taskbar
 	{
 		public UnsupportedWindowsException()
 		{
+
 		}
 
-		public UnsupportedWindowsException(string os) : base("Это требует" + os + " или позже")
+		public UnsupportedWindowsException(string os) : base("Требуется " + os + " или позже!")
 		{
+
 		}
 	}
 }
