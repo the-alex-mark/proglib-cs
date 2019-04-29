@@ -546,7 +546,7 @@ namespace ProgLib.Windows.Forms.Metro
             TextRenderer.DrawText(
                 e.Graphics,
                 Text,
-                Font,
+                new Font(Font.FontFamily, 16, FontStyle.Bold),
                 new Rectangle(6, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT),
                 MetroPaint.ForeColor.Form(_theme),
                 MetroPaint.BackColor.Form(_theme),
