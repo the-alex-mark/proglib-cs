@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Mail;
 
-namespace ProgLib.Network.EMail
+namespace ProgLib.Network.Mail
 {
     /// <summary>
     /// Представляет адрес отправителя электронной почты.

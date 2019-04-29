@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProgLib.Network
 {
-    public class Internet
+    public class Network
     {
         /// <summary>
         /// Получает статус соединение с WEB страницей или сервисом.

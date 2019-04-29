@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 
-namespace ProgLib.Network.EMail
+namespace ProgLib.Network.Mail
 {
     /// <summary>
     /// Предоставляет методы для работы с электронной почтой.
