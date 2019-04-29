@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,27 +14,47 @@ namespace ProgLib.Data.Access
     /// </summary>
     public class AccessDataBase
     {
-        public AccessDataBase(String DataBase)
+        public AccessDataBase(String ConnectionString)
         {
-            Connection = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={DataBase};");
+            Connection = new OleDbConnection(ConnectionString);
             Connection.Open();
         }
 
-        public AccessDataBase(String DataBase, String Password)
+        public AccessDataBase(FileInfo DataBase)
         {
-            Connection = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={DataBase};Jet OLEDB:Database Password={Password};");
+            Connection = new OleDbConnection($"Provider={GetProvider(DataBase.Extension)};Data Source={DataBase.FullName};");
             Connection.Open();
         }
 
-        public AccessDataBase(String DataBase, String SystemDataBase, String User, String Password)
+        public AccessDataBase(FileInfo DataBase, String Password)
         {
-            Connection = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={DataBase};Jet OLEDB:System Database={SystemDataBase};User ID={User};Password={Password};");
+            Connection = new OleDbConnection($"Provider={GetProvider(DataBase.Extension)};Data Source={DataBase.FullName};Jet OLEDB:Database Password={Password};");
+            Connection.Open();
+        }
+
+        public AccessDataBase(FileInfo DataBase, FileInfo SystemDataBase, String User, String Password)
+        {
+            Connection = new OleDbConnection($"Provider={GetProvider(DataBase.Extension)};Data Source={DataBase.FullName};Jet OLEDB:System Database={SystemDataBase.FullName};User ID={User};Password={Password};");
             Connection.Open();
         }
 
         #region Global Variables
 
         private OleDbConnection Connection;
+
+        #endregion
+
+        #region Additional method
+
+        /// <summary>
+        /// Получает провайдер для подключения к базе данных исходя из расширения её файла.
+        /// </summary>
+        /// <param name="DataBase"></param>
+        /// <returns></returns>
+        private String GetProvider(String Extension)
+        {
+            return (Extension == ".accdb") ? "Microsoft.ACE.OLEDB.12.0" : "Microsoft.Jet.OLEDB.4.0";
+        }
 
         #endregion
 
