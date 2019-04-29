@@ -66,15 +66,15 @@ namespace Test
         private void metroButton2_Click(Object sender, EventArgs e)
         {
             //FileInfo _dataBase = new FileInfo(@"C:\Users\Александр Макаров\Desktop\Extramural-master\БД\Заочное.mdb");
-            FileInfo _dataBase = new FileInfo(@"D:\Files\Учёба\Курс №4\!Экзамены\Разработка и администрирование баз данных\Туристическое агенство (Пароль - admin).accdb");
-            FileInfo _systemDataBase = new FileInfo(@"D:\Files\Учёба\Курс №4\!Экзамены\Разработка и администрирование баз данных\Туристическое агенство (Пароль - admin).accdb");
+            //FileInfo _dataBase = new FileInfo(@"D:\Files\Учёба\Курс №4\!Экзамены\Разработка и администрирование баз данных\Туристическое агенство (Пароль - admin).accdb");
+            //FileInfo _systemDataBase = new FileInfo(@"D:\Files\Учёба\Курс №4\!Экзамены\Разработка и администрирование баз данных\Туристическое агенство (Пароль - admin).accdb");
 
-            AccessDataBase DB = new AccessDataBase(_dataBase, "admin");
-            AccessResult _result = DB.Request("Select * from [Сотрудник]");
-            DB.Dispose();
+            //AccessDataBase DB = new AccessDataBase(_dataBase, "admin");
+            //AccessResult _result = DB.Request("Select * from [Сотрудник]");
+            //DB.Dispose();
 
-            dataGridView1.DataSource = _result.Table;
-            MessageBox.Show(_result.Status);
+            //dataGridView1.DataSource = _result.Table;
+            //MessageBox.Show(_result.Status);
         }
 
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
