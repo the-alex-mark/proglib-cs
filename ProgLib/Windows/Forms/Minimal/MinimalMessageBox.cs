@@ -79,27 +79,34 @@ namespace ProgLib.Windows.Forms.Minimal
             MinimalButton _ok = new MinimalButton()
             {
                 Size = new Size(88, 27),
-                StyleColor = Panel.ForeColor,
                 Text = "ОК"
             };
+            _ok.FlatAppearance.BorderSize = 1;
+            _ok.FlatAppearance.BorderColor = Panel.ForeColor;
+
             MinimalButton _yes = new MinimalButton()
             {
                 Size = new Size(88, 27),
-                StyleColor = Panel.ForeColor,
                 Text = "Да"
             };
+            _yes.FlatAppearance.BorderSize = 1;
+            _yes.FlatAppearance.BorderColor = Panel.ForeColor;
+
             MinimalButton _no = new MinimalButton()
             {
                 Size = new Size(88, 27),
-                StyleColor = Panel.ForeColor,
                 Text = "Нет"
             };
+            _no.FlatAppearance.BorderSize = 1;
+            _no.FlatAppearance.BorderColor = Panel.ForeColor;
+
             MinimalButton _cancel = new MinimalButton()
             {
                 Size = new Size(88, 27),
-                StyleColor = Panel.ForeColor,
                 Text = "Отмена"
             };
+            _cancel.FlatAppearance.BorderSize = 1;
+            _cancel.FlatAppearance.BorderColor = Panel.ForeColor;
 
             switch (Buttons)
             {

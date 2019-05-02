@@ -26,6 +26,7 @@ namespace ProgLib.Windows.Forms.Minimal
             ItemHeight = 18;
 
             ForeColor = SystemColors.GrayText;
+            _selectForeColor = ForeColor;
             BackColor = SystemColors.Control;
             _borderColor = SystemColors.ControlDark;
             _arrowColor = SystemColors.ControlDark;
@@ -40,7 +41,7 @@ namespace ProgLib.Windows.Forms.Minimal
 
         [DllImport("user32")]
         private static extern IntPtr GetDC(IntPtr hWnd);
-        private Color _borderColor, _arrowColor, _buttonColor, _selectColor;
+        private Color _selectForeColor, _borderColor, _arrowColor, _buttonColor, _selectColor;
         
         [Category("Appearance"), Description("Цвет выделенного \"Item\"")]
         public Color SelectColor
@@ -49,6 +50,17 @@ namespace ProgLib.Windows.Forms.Minimal
             set
             {
                 _selectColor = value;
+                Invalidate();
+            }
+        }
+
+        [Category("Appearance"), Description("Цвет шрифта выделенного \"Item\"")]
+        public Color SelectForeColor
+        {
+            get { return _selectForeColor; }
+            set
+            {
+                _selectForeColor = value;
                 Invalidate();
             }
         }
@@ -129,6 +141,8 @@ namespace ProgLib.Windows.Forms.Minimal
         {
             base.OnDrawItem(e);
 
+            Color _foreColorSelect = ForeColor;
+
             if (e.Index < 0) return;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
@@ -139,10 +153,12 @@ namespace ProgLib.Windows.Forms.Minimal
                                           e.State ^ DrawItemState.Selected,
                                           e.ForeColor,
                                           _selectColor);
+
+                _foreColorSelect = SelectForeColor;
             }
             e.DrawBackground();
 
-            e.Graphics.DrawString(Items[e.Index].ToString(), Font, new SolidBrush(ForeColor), new Rectangle(2, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 1), StringFormat.GenericDefault);
+            e.Graphics.DrawString(Items[e.Index].ToString(), Font, new SolidBrush(_foreColorSelect), new Rectangle(2, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 1), StringFormat.GenericDefault);
         }
         protected override void OnLostFocus(EventArgs e)
         {

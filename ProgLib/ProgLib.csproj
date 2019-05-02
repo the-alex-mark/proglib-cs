@@ -1316,6 +1316,7 @@
     <Compile Include="Windows\Forms\Cyotek\ScreenColorPicker.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Windows\Forms\FormExpansion.cs" />
     <Compile Include="Windows\Forms\Material\MaterialButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1402,16 +1403,12 @@
     </Compile>
     <Compile Include="Windows\Forms\Metro\MouseState.cs" />
     <Compile Include="Windows\Forms\Metro\Theme.cs" />
-    <Compile Include="Windows\Forms\Minimal\HslColor.cs" />
     <Compile Include="Windows\Forms\Minimal\MessageType.cs" />
     <Compile Include="Windows\Forms\Minimal\MinimalButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Windows\Forms\Minimal\MinimalButton.Designer.cs">
       <DependentUpon>MinimalButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Minimal\MinimalColorWheel.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Windows\Forms\Minimal\MinimalContextMenuRenderer.cs.cs" />
     <Compile Include="Windows\Forms\Minimal\MinimalContextMenuStrip.cs">
@@ -1457,13 +1454,6 @@
     <Compile Include="Windows\Forms\Minimal\MinimalGroupBox.Designer.cs">
       <DependentUpon>MinimalGroupBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Forms\Minimal\MinimalHueSlider.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Minimal\MinimalHueSlider.Designer.cs">
-      <DependentUpon>MinimalHueSlider.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Minimal\MinimalIColorEditor.cs" />
     <Compile Include="Windows\Forms\Minimal\MinimalMenuRenderer.cs" />
     <Compile Include="Windows\Forms\Minimal\MinimalMenuStrip.cs">
       <SubType>Component</SubType>
@@ -1475,12 +1465,6 @@
     <Compile Include="Windows\Forms\Minimal\MinimalMessageBoxRenderer.cs" />
     <Compile Include="Windows\Forms\Minimal\MinimalProgressBar.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Minimal\MinimalSBSlider.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Minimal\MinimalSBSlider.Designer.cs">
-      <DependentUpon>MinimalSBSlider.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\Forms\Minimal\MinimalScrollBar.cs">
       <SubType>Component</SubType>

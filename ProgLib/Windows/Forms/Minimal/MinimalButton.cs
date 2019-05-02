@@ -15,66 +15,83 @@ namespace ProgLib.Windows.Forms.Minimal
     {
         public MinimalButton()
         {
-            Size = new Size(88, 27);
-            _border = true;
-            _styleColor = Drawing.MetroColors.Blue;
+            Size = new Size(140, 27);
+            Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
+
+            BackColor = Color.Gainsboro;
+            FlatStyle = FlatStyle.Flat;
+            FlatAppearance.BorderSize = 1;
+            FlatAppearance.BorderColor = Drawing.MetroColors.Blue;
         }
 
-        private Color _styleColor;
-        private Boolean _border;
+        #region Variables
 
-        [Category("Minimal Appearance"), Description("Цвет оформления.")]
-        public Color StyleColor
+        private Boolean _onMouseEnter;
+        private Boolean _onMouseDown;
+
+        #endregion
+
+        protected override void OnMouseEnter(EventArgs e)
         {
-            get { return _styleColor; }
-            set
-            {
-                _styleColor = value;
-                Invalidate();
-            }
+            base.OnMouseEnter(e);
+            _onMouseEnter = true;
         }
 
-        [Category("Minimal Appearance"), Description("Отображение границ.")]
-        public Boolean Border
+        protected override void OnMouseLeave(EventArgs e)
         {
-            get { return _border; }
-            set
-            {
-                _border = value;
-                Invalidate();
-            }
+            base.OnMouseLeave(e);
+            _onMouseEnter = false;
         }
 
-        protected virtual TextFormatFlags AsTextFormatFlags(ContentAlignment Alignment)
+        protected override void OnMouseDown(MouseEventArgs e)
         {
-            switch (Alignment)
-            {
-                case ContentAlignment.BottomLeft: return TextFormatFlags.Bottom | TextFormatFlags.Left;
-                case ContentAlignment.BottomCenter: return TextFormatFlags.Bottom | TextFormatFlags.HorizontalCenter;
-                case ContentAlignment.BottomRight: return TextFormatFlags.Bottom | TextFormatFlags.Right;
-                case ContentAlignment.MiddleLeft: return TextFormatFlags.VerticalCenter | TextFormatFlags.Left;
-                case ContentAlignment.MiddleCenter: return TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter;
-                case ContentAlignment.MiddleRight: return TextFormatFlags.VerticalCenter | TextFormatFlags.Right;
-                case ContentAlignment.TopLeft: return TextFormatFlags.Top | TextFormatFlags.Left;
-                case ContentAlignment.TopCenter: return TextFormatFlags.Top | TextFormatFlags.HorizontalCenter;
-                case ContentAlignment.TopRight: return TextFormatFlags.Top | TextFormatFlags.Right;
-            }
-            throw new InvalidEnumArgumentException();
+            base.OnMouseDown(e);
+            _onMouseDown = true;
         }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+            _onMouseDown = false;
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.Clear(BackColor);
 
+            
+            if (_onMouseEnter)
+            {
+                // Отрисовка при наведении
+                if (FlatAppearance.MouseOverBackColor != null)
+                    e.Graphics.FillRectangle(new SolidBrush(FlatAppearance.MouseOverBackColor), new Rectangle(0, 0, Width - 1, Height - 1));
+                
+            }
+            else e.Graphics.FillRectangle(new SolidBrush(BackColor), new Rectangle(0, 0, Width - 1, Height - 1));
+
+            if (_onMouseDown)
+            {
+                if (FlatAppearance.MouseDownBackColor != null)
+                {
+                    // Отрисовка при нажатии
+                    e.Graphics.FillRectangle(new SolidBrush(FlatAppearance.MouseDownBackColor), new Rectangle(0, 0, Width - 1, Height - 1));
+                }
+            }
+
+            // Отрисовка текста
             TextRenderer.DrawText(
                 e.Graphics,
                 Text,
                 Font,
                 new Rectangle(0, 0, Width - 1, Height - 1),
                 ForeColor,
-                BackColor,
-                AsTextFormatFlags(TextAlign) | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.EndEllipsis);
+                TextAlign.ToTextFormatFlags() | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.EndEllipsis);
 
-            e.Graphics.DrawRectangle(new Pen(_styleColor, 1), new Rectangle(0, 0, Width - 1, Height - 1));
+            if (FlatAppearance.BorderSize > 0)
+            {
+                // Отрисовка границ
+                e.Graphics.DrawRectangle(new Pen(FlatAppearance.BorderColor, 1), new Rectangle(0, 0, Width - 1, Height - 1));
+            }
         }
     }
 }

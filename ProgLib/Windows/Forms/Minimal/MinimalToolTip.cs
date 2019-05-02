@@ -1,8 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.Minimal
@@ -13,41 +11,44 @@ namespace ProgLib.Windows.Forms.Minimal
         public MinimalToolTip()
         {
             OwnerDraw = true;
+            ForeColor = Color.Black;
+            BackColor = Color.Gainsboro;
+            BorderColor = SystemColors.ControlDark;
+            Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
 
             Popup += new PopupEventHandler(OnPopup);
             Draw += new DrawToolTipEventHandler(OnDraw);
         }
+        
+        #region Properties
 
-        private Size Size;
-        private Color _borderColor;
+        public Color BorderColor { get; set; }
 
-        public Color BorderColor
-        {
-            get { return _borderColor; }
-            set { _borderColor = value; }
-        }
+        public Font Font { get; set; }
 
+        #endregion
+        
         private void OnPopup(object sender, PopupEventArgs e)
         {
-            Size = TextRenderer.MeasureText(GetToolTip(e.AssociatedControl), new Font("Century Gothic", 9f));
-            e.ToolTipSize = new Size(Size.Width, Size.Height + 5);
-
-            Size = e.ToolTipSize;
+            Size _size = TextRenderer.MeasureText(GetToolTip(e.AssociatedControl), Font);
+            e.ToolTipSize = new Size(_size.Width + 35, _size.Height + 8);
         }
+
         private void OnDraw(object sender, DrawToolTipEventArgs e)
         {
-            e.Graphics.Clear(Color.White);
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            e.Graphics.Clear(BackColor);
 
-            e.Graphics.FillRectangle(new SolidBrush(BackColor), e.Bounds);
-            e.Graphics.DrawRectangle(new Pen(new SolidBrush(_borderColor), 1f), new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height - 1));
+            // Отрисовка границ
+            e.Graphics.DrawRectangle(new Pen(new SolidBrush(BorderColor), 1f), new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height - 1));
 
-            e.Graphics.DrawString(
+            // Отрисовка текста
+            TextRenderer.DrawText(
+                e.Graphics,
                 e.ToolTipText,
-                new Font("Century Gothic", 9f),
-                new SolidBrush(ForeColor),
+                Font,
                 e.Bounds,
-                new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center, HotkeyPrefix = HotkeyPrefix.None, FormatFlags = StringFormatFlags.NoWrap });
+                ForeColor,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.EndEllipsis);
         }
     }
 }
