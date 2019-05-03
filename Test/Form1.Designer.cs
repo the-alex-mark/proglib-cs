@@ -86,7 +86,7 @@
             // 
             this.minimalToolTip1.BackColor = System.Drawing.Color.Gainsboro;
             this.minimalToolTip1.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.minimalToolTip1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.minimalToolTip1.Font = new System.Drawing.Font("Century Gothic", 8F);
             this.minimalToolTip1.ForeColor = System.Drawing.Color.Black;
             this.minimalToolTip1.OwnerDraw = true;
             // 

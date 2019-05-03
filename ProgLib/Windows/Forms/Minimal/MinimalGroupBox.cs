@@ -14,19 +14,22 @@ namespace ProgLib.Windows.Forms.Minimal
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
-            ForeColor = SystemColors.GrayText;
-            _borderColor = SystemColors.ControlDark;
+            ForeColor = Color.Black;
+            BorderColor = SystemColors.ControlDark;
         }
 
+        #region Variables
+
         private Color _borderColor;
+
+        #endregion
+
+        #region Properties
 
         [Category("Appearance"), Description("Цвет границ элемента управления")]
         public Color BorderColor
         {
-            get
-            {
-                return _borderColor;
-            }
+            get { return _borderColor; }
             set
             {
                 _borderColor = value;
@@ -34,10 +37,13 @@ namespace ProgLib.Windows.Forms.Minimal
             }
         }
 
+        #endregion
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.Clear(BackColor);
 
+            // Вычисление размеров текста и границ
             SizeF _textSize = e.Graphics.MeasureString(Text, Font);
             Rectangle _rectangle = new Rectangle(
                 ClientRectangle.X,

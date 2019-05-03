@@ -15,24 +15,12 @@ namespace ProgLib.Windows.Forms.Minimal
     [ToolboxBitmap(typeof(System.Windows.Forms.TabControl))]
     public class MinimalTabControl : System.Windows.Forms.TabControl
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
-        private Container components = null;
-        private SubClass scUpDown = null;
-        private Boolean bUpDown; // правда, когда кнопка счетчик не требуется
-        private const Int32 nMargin = 5;
-
-        private Color _BackgroundColor;
-        private Color _BorderColor;
-        private Boolean _RoundTabPage;
-
         public MinimalTabControl()
         {
             // This call is required by the Windows.Forms Form Designer.
             InitializeComponent();
 
-            // double buffering
+            // Double buffering
             this.SetStyle(ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
@@ -46,112 +34,136 @@ namespace ProgLib.Windows.Forms.Minimal
             this.SelectedIndexChanged += new EventHandler(FlatTabControl_SelectedIndexChanged);
 
             BackgroundColor = SystemColors.Control;
-            BorderColor = Color.FromArgb(64, 64, 64);
+            BorderColor = SystemColors.ControlDark;
             RoundTabPage = true;
         }
 
-        /// <summary> 
-        /// Очистите все используемые ресурсы.
+        #region Variables
+        
+        private Container components = null;
+        private SubClass scUpDown = null;
+        private Boolean bUpDown; // правда, когда кнопка счетчик не требуется
+        private const Int32 nMargin = 5;
+
+        private Color _backgroundColor;
+        private Color _borderColor;
+        private Boolean _roundTabPage;
+
+        #endregion
+
+        #region Properties
+
+        [Editor(typeof(TabpageExCollectionEditor), typeof(UITypeEditor))]
+        public new TabPageCollection TabPages
+        {
+            get { return base.TabPages; }
+        }
+
+        [Browsable(true), Category("Appearance"), Description("Положение вкладок.")]
+        new public TabAlignment Alignment
+        {
+            get { return base.Alignment; }
+            set
+            {
+                if ((value != TabAlignment.Top) && (value != TabAlignment.Bottom))
+                    value = TabAlignment.Top;
+
+                base.Alignment = value;
+            }
+        }
+
+        [Browsable(false), Category("Appearance"), Description("")]
+        new public Boolean Multiline
+        {
+            get { return base.Multiline; }
+            set { base.Multiline = false; }
+        }
+
+        [Browsable(true), Category("Appearance"), Description("Фоновый цвет.")]
+        public Color BackgroundColor
+        {
+            get { return _backgroundColor; }
+            set { _backgroundColor = value; this.Invalidate(); }
+        }
+
+        [Browsable(true), Category("Appearance"), Description("Цвет границ.")]
+        public Color BorderColor
+        {
+            get { return _borderColor; }
+            set { _borderColor = value; Invalidate(); }
+        }
+
+        [Browsable(true), Category("Appearance"), Description("Вид отображения вкладок.")]
+        public Boolean RoundTabPage
+        {
+            get { return _roundTabPage; }
+            set { _roundTabPage = value; Invalidate(); }
+        }
+
+        #endregion
+
+        #region Methods
+
+        #region Обработчик событий "WndProc"
+
+        private Int32 scUpDown_SubClassedWndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case Win32.WM_PAINT:
+                    {
+                        // Перерисовывка
+                        IntPtr hDC = Win32.GetWindowDC(scUpDown.Handle);
+                        Graphics g = Graphics.FromHdc(hDC);
+
+                        DrawIcons(g);
+
+                        g.Dispose();
+                        Win32.ReleaseDC(scUpDown.Handle, hDC);
+
+                        // return 0 (processed)
+                        m.Result = IntPtr.Zero;
+
+                        // Проверка currentrect
+                        Rectangle rect = new Rectangle();
+                        Win32.GetClientRect(scUpDown.Handle, ref rect);
+                        Win32.ValidateRect(scUpDown.Handle, ref rect);
+                    }
+                    return 1;
+            }
+
+            return 0;
+        }
+
+        #endregion
+
+        #region Сгенерированный код конструктора компонентов
+
+        /// <summary>
+        /// Обязательный метод для поддержки конструктора - не изменяйте содержимое данного метода при помощи редактора кода.
         /// </summary>
-        protected override void Dispose(bool disposing)
+        private void InitializeComponent()
         {
-            if (disposing)
-            {
-                if (components != null)
-                {
-                    components.Dispose();
-                }
-            }
-            base.Dispose(disposing);
+            components = new Container();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
+        #endregion
 
-            DrawControl(e.Graphics);
+        #region Класс "TabpageExCollectionEditor"
+
+        internal class TabpageExCollectionEditor : CollectionEditor
+        {
+            public TabpageExCollectionEditor(System.Type type) : base(type) { }
+
+            protected override Type CreateCollectionItemType()
+            {
+                return typeof(TabPage);
+            }
         }
 
-        internal void DrawControl(Graphics g)
-        {
-            if (!Visible)
-                return;
+        #endregion
 
-
-
-            Rectangle TabControlArea = this.ClientRectangle;
-            Rectangle TabArea = this.DisplayRectangle;
-
-            //----------------------------
-            // заполнить клиентскую область
-            g.FillRectangle(new SolidBrush(_BackgroundColor), TabControlArea);
-            //----------------------------
-
-            //----------------------------
-            // рисовать границу
-            int nDelta = SystemInformation.Border3DSize.Width;
-
-            Pen border = new Pen(BorderColor);
-            TabArea.Inflate(nDelta, nDelta);
-            g.DrawRectangle(border, TabArea);
-            border.Dispose();
-            //----------------------------
-
-
-            //----------------------------
-            // область зажима для рисования вкладок
-            Region rsaved = g.Clip;
-            Rectangle rreg;
-
-            int nWidth = TabArea.Width + nMargin;
-            if (bUpDown)
-            {
-                // исключить элемент управления обновлениями для рисования
-                if (Win32.IsWindowVisible(scUpDown.Handle))
-                {
-                    Rectangle rupdown = new Rectangle();
-                    Win32.GetWindowRect(scUpDown.Handle, ref rupdown);
-                    Rectangle rupdown2 = this.RectangleToClient(rupdown);
-
-                    nWidth = rupdown2.X;
-                }
-            }
-
-            rreg = new Rectangle(TabArea.Left, TabControlArea.Top, nWidth - nMargin, TabControlArea.Height);
-
-            g.SetClip(rreg);
-
-            // рисовать вкладки
-            for (int i = 0; i < this.TabCount; i++)
-                DrawTab(g, this.TabPages[i], i);
-
-            g.Clip = rsaved;
-            //----------------------------
-
-
-            //----------------------------
-            // рисовать фон для покрытия плоских пограничных областей
-            if (this.SelectedTab != null)
-            {
-                TabPage tabPage = this.SelectedTab;
-                Color color = tabPage.BackColor;
-                border = new Pen(color);
-
-                TabArea.Offset(1, 1);
-                TabArea.Width -= 2;
-                TabArea.Height -= 2;
-
-                g.DrawRectangle(border, TabArea);
-                TabArea.Width -= 1;
-                TabArea.Height -= 1;
-                g.DrawRectangle(border, TabArea);
-
-                border.Dispose();
-            }
-            //----------------------------
-        }
-
-        internal void DrawTab(Graphics G, TabPage tabPage, int nIndex)
+        internal void DrawTab(Graphics G, TabPage TabPage, Int32 nIndex)
         {
             Rectangle recBounds = GetTabRect(nIndex);
             RectangleF tabTextArea = (RectangleF)this.GetTabRect(nIndex);
@@ -178,72 +190,63 @@ namespace ProgLib.Windows.Forms.Minimal
                 Lines[6] = new Point(recBounds.Left, recBounds.Top);
             }
 
-            //----------------------------
-            // заполните эту вкладку цветом фона
-            G.FillPolygon(new SolidBrush(tabPage.BackColor), Lines);
-            //----------------------------
+            // Заполнение вкладки цветом фона
+            G.FillPolygon(new SolidBrush(TabPage.BackColor), Lines);
 
-            //----------------------------
-            // рисовать границу
+            // Отрисовка границы
             if (RoundTabPage) G.DrawPolygon(new Pen(BorderColor), Lines);
             else G.DrawRectangle(new Pen(BorderColor), recBounds);
 
             if ((SelectedIndex == nIndex))
             {
-                //----------------------------
-                // clear bottom lines
-                Pen pen = new Pen(tabPage.BackColor);
-
+                // Очистка нижних строк
                 switch (this.Alignment)
                 {
                     case TabAlignment.Top:
-                        G.DrawLine(pen, recBounds.Left + 1, recBounds.Bottom, recBounds.Right - 1, recBounds.Bottom);
-                        G.DrawLine(pen, recBounds.Left + 1, recBounds.Bottom + 1, recBounds.Right - 1, recBounds.Bottom + 1);
+                        G.DrawLine(new Pen(TabPage.BackColor), recBounds.Left + 1, recBounds.Bottom, recBounds.Right - 1, recBounds.Bottom);
+                        G.DrawLine(new Pen(TabPage.BackColor), recBounds.Left + 1, recBounds.Bottom + 1, recBounds.Right - 1, recBounds.Bottom + 1);
                         break;
 
                     case TabAlignment.Bottom:
-                        G.DrawLine(pen, recBounds.Left + 1, recBounds.Top, recBounds.Right - 1, recBounds.Top);
-                        G.DrawLine(pen, recBounds.Left + 1, recBounds.Top - 1, recBounds.Right - 1, recBounds.Top - 1);
-                        G.DrawLine(pen, recBounds.Left + 1, recBounds.Top - 2, recBounds.Right - 1, recBounds.Top - 2);
+                        G.DrawLine(new Pen(TabPage.BackColor), recBounds.Left + 1, recBounds.Top, recBounds.Right - 1, recBounds.Top);
+                        G.DrawLine(new Pen(TabPage.BackColor), recBounds.Left + 1, recBounds.Top - 1, recBounds.Right - 1, recBounds.Top - 1);
+                        G.DrawLine(new Pen(TabPage.BackColor), recBounds.Left + 1, recBounds.Top - 2, recBounds.Right - 1, recBounds.Top - 2);
                         break;
                 }
-
-                pen.Dispose();
-                //----------------------------
             }
-            //----------------------------
 
-            //----------------------------
-            // draw tab's icon
-            if ((tabPage.ImageIndex >= 0) && (ImageList != null) && (ImageList.Images[tabPage.ImageIndex] != null))
+            // Отрисовка иконки вкладки
+            if ((TabPage.ImageIndex >= 0) && (ImageList != null) && (ImageList.Images[TabPage.ImageIndex] != null))
             {
-                int nLeftMargin = 8;
-                int nRightMargin = 2;
+                Int32 nLeftMargin = 8;
+                Int32 nRightMargin = 2;
 
-                Image img = ImageList.Images[tabPage.ImageIndex];
+                Image img = ImageList.Images[TabPage.ImageIndex];
 
                 Rectangle rimage = new Rectangle(recBounds.X + nLeftMargin, recBounds.Y + 1, img.Width, img.Height);
 
-                // adjust rectangles
+                // Настройка прямоугольников
                 float nAdj = (float)(nLeftMargin + img.Width + nRightMargin);
 
                 rimage.Y += (recBounds.Height - img.Height) / 2;
                 tabTextArea.X += nAdj;
                 tabTextArea.Width -= nAdj;
 
-                // draw icon
+                // Отрисовка иконки
                 G.DrawImage(img, rimage);
             }
-            //----------------------------
 
-            //----------------------------
-            // draw string
-            StringFormat stringFormat = new StringFormat();
-            stringFormat.Alignment = StringAlignment.Center;
-            stringFormat.LineAlignment = StringAlignment.Center;
+            // Отрисовка названия вкладки
+            //G.DrawString(TabPage.Text, Font, new SolidBrush(TabPage.ForeColor), tabTextArea, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
 
-            G.DrawString(tabPage.Text, Font, new SolidBrush(tabPage.ForeColor), tabTextArea, stringFormat);
-            //----------------------------
+            // Отрисовка названия вкладки
+            TextRenderer.DrawText(
+                G,
+                TabPage.Text,
+                Font,
+                new Rectangle((int)tabTextArea.X, (int)tabTextArea.Y, (int)tabTextArea.Width, (int)tabTextArea.Height),
+                TabPage.ForeColor,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.EndEllipsis);
         }
 
         private Image DrawIcon(String Type, Boolean Enabled)
@@ -256,7 +259,7 @@ namespace ProgLib.Windows.Forms.Minimal
                 {
                     case "Left":
 
-                        G.Clear(_BackgroundColor);
+                        G.Clear(_backgroundColor);
 
                         if (!Enabled)
                         {
@@ -266,7 +269,7 @@ namespace ProgLib.Windows.Forms.Minimal
                                 new Point(7, 8),
                                 new Point(11, 12)
                             };
-                            G.DrawPolygon(new Pen(_BorderColor), Lines);
+                            G.DrawPolygon(new Pen(_borderColor), Lines);
                         }
                         else
                         {
@@ -276,14 +279,14 @@ namespace ProgLib.Windows.Forms.Minimal
                                 new Point(6, 8),
                                 new Point(11, 13)
                             };
-                            G.FillPolygon(new SolidBrush(_BorderColor), Lines);
+                            G.FillPolygon(new SolidBrush(_borderColor), Lines);
                         }
 
                         break;
 
                     case "Right":
 
-                        G.Clear(_BackgroundColor);
+                        G.Clear(_backgroundColor);
 
                         if (!Enabled)
                         {
@@ -293,7 +296,7 @@ namespace ProgLib.Windows.Forms.Minimal
                                 new Point(11, 8),
                                 new Point(7, 12)
                             };
-                            G.DrawPolygon(new Pen(_BorderColor), Lines);
+                            G.DrawPolygon(new Pen(_borderColor), Lines);
                         }
                         else
                         {
@@ -303,7 +306,7 @@ namespace ProgLib.Windows.Forms.Minimal
                                 new Point(12, 8),
                                 new Point(7, 13)
                             };
-                            G.FillPolygon(new SolidBrush(_BorderColor), Lines);
+                            G.FillPolygon(new SolidBrush(_borderColor), Lines);
                         }
 
                         break;
@@ -321,7 +324,7 @@ namespace ProgLib.Windows.Forms.Minimal
             Rectangle r0 = new Rectangle();
             Win32.GetClientRect(scUpDown.Handle, ref r0);
 
-            Brush br = new SolidBrush(_BackgroundColor);
+            Brush br = new SolidBrush(_backgroundColor);
             g.FillRectangle(br, r0);
             br.Dispose();
 
@@ -375,48 +378,20 @@ namespace ProgLib.Windows.Forms.Minimal
             }
             //----------------------------
         }
-        protected override void OnCreateControl()
-        {
-            base.OnCreateControl();
-
-            FindUpDown();
-        }
-
-        private void FlatTabControl_ControlAdded(object sender, ControlEventArgs e)
-        {
-            FindUpDown();
-            UpdateUpDown();
-        }
-
-        private void FlatTabControl_ControlRemoved(object sender, ControlEventArgs e)
-        {
-            FindUpDown();
-            UpdateUpDown();
-        }
-
-        private void FlatTabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateUpDown();
-            Invalidate();   // we need to update border and background colors
-        }
 
         private void FindUpDown()
         {
             bool bFound = false;
 
-            // find the UpDown control
+            // Поиск элемена управления UpDown
             IntPtr pWnd = Win32.GetWindow(this.Handle, Win32.GW_CHILD);
 
             while (pWnd != IntPtr.Zero)
             {
-                //----------------------------
-                // Get the window class name
-                char[] className = new char[33];
-
-                int length = Win32.GetClassName(pWnd, className, 32);
-
-                string s = new string(className, 0, length);
-                //----------------------------
+                // Получение имени класса окна 
+                Char[] className = new Char[33];
+                Int32 length = Win32.GetClassName(pWnd, className, 32);
+                String s = new String(className, 0, length);
 
                 if (s == "msctls_updown32")
                 {
@@ -424,11 +399,8 @@ namespace ProgLib.Windows.Forms.Minimal
 
                     if (!bUpDown)
                     {
-                        //----------------------------
-                        // Subclass it
                         this.scUpDown = new SubClass(pWnd, true);
                         this.scUpDown.SubClassedWndProc += new SubClass.SubClassWndProcEventHandler(scUpDown_SubClassedWndProc);
-                        //----------------------------
 
                         bUpDown = true;
                     }
@@ -456,121 +428,96 @@ namespace ProgLib.Windows.Forms.Minimal
             }
         }
 
-        #region scUpDown_SubClassedWndProc Event Handler
-
-        private Int32 scUpDown_SubClassedWndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case Win32.WM_PAINT:
-                    {
-                        //------------------------
-                        // redraw
-                        IntPtr hDC = Win32.GetWindowDC(scUpDown.Handle);
-                        Graphics g = Graphics.FromHdc(hDC);
-
-                        DrawIcons(g);
-
-                        g.Dispose();
-                        Win32.ReleaseDC(scUpDown.Handle, hDC);
-                        //------------------------
-
-                        // return 0 (processed)
-                        m.Result = IntPtr.Zero;
-
-                        //------------------------
-                        // validate current rect
-                        Rectangle rect = new Rectangle();
-
-                        Win32.GetClientRect(scUpDown.Handle, ref rect);
-                        Win32.ValidateRect(scUpDown.Handle, ref rect);
-                        //------------------------
-                    }
-                    return 1;
-            }
-
-            return 0;
-        }
         #endregion
 
-        #region Component Designer generated code
-        /// <summary>
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            FindUpDown();
+        }
+
+        private void FlatTabControl_ControlAdded(object sender, ControlEventArgs e)
+        {
+            FindUpDown();
+            UpdateUpDown();
+        }
+
+        private void FlatTabControl_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            FindUpDown();
+            UpdateUpDown();
+        }
+
+        private void FlatTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateUpDown();
+            Invalidate();   // we need to update border and background colors
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            if (!Visible) return;
+
+            Rectangle _tabControlArea = this.ClientRectangle;
+            Rectangle _tabArea = this.DisplayRectangle;
+            
+            // Заполнение клиентской области
+            e.Graphics.FillRectangle(new SolidBrush(_backgroundColor), _tabControlArea);
+            
+            // Отрисовка границ
+            _tabArea.Inflate(SystemInformation.Border3DSize.Width, SystemInformation.Border3DSize.Width);
+            e.Graphics.DrawRectangle(new Pen(BorderColor), _tabArea);
+            
+            // Область зажима для отрисовки вкладок
+            Int32 nWidth = _tabArea.Width + nMargin;
+            if (bUpDown)
+            {
+                // Исключение элемента управления обновлениями для рисования
+                if (Win32.IsWindowVisible(scUpDown.Handle))
+                {
+                    Rectangle rupdown = new Rectangle();
+                    Win32.GetWindowRect(scUpDown.Handle, ref rupdown);
+                    Rectangle rupdown2 = this.RectangleToClient(rupdown);
+
+                    nWidth = rupdown2.X;
+                }
+            }
+            e.Graphics.SetClip(new Rectangle(_tabArea.Left, _tabControlArea.Top, nWidth - nMargin, _tabControlArea.Height));
+
+            // Отрисовка вкладок
+            for (int i = 0; i < this.TabCount; i++) DrawTab(e.Graphics, this.TabPages[i], i);
+            
+            // Отрисовка фона для покрытия плоских пограничных областей
+            if (this.SelectedTab != null)
+            {
+                TabPage _tabPage = this.SelectedTab;
+
+                _tabArea.Offset(1, 1);
+                _tabArea.Width -= 2;
+                _tabArea.Height -= 2;
+
+                e.Graphics.DrawRectangle(new Pen(_tabPage.BackColor), _tabArea);
+                _tabArea.Width -= 1;
+                _tabArea.Height -= 1;
+                e.Graphics.DrawRectangle(new Pen(_tabPage.BackColor), _tabArea);
+            }
+        }
+
+        /// <summary> 
+        /// Освобождает все ресурсы, используемые текущим экземпляром класса <see cref="MinimalTabControl"/>.
         /// </summary>
-        private void InitializeComponent()
+        protected override void Dispose(Boolean Disposing)
         {
-            components = new Container();
-        }
-
-        #endregion
-
-        #region Properties
-
-        [Editor(typeof(TabpageExCollectionEditor), typeof(UITypeEditor))]
-        public new TabPageCollection TabPages
-        {
-            get { return base.TabPages; }
-        }
-
-        [Browsable(true), Category("Appearance"), Description("Положение вкладок.")]
-        new public TabAlignment Alignment
-        {
-            get { return base.Alignment; }
-            set
+            if (Disposing)
             {
-                if ((value != TabAlignment.Top) && (value != TabAlignment.Bottom))
-                    value = TabAlignment.Top;
-
-                base.Alignment = value;
-            }
-        }
-
-        [Browsable(false), Category("Appearance"), Description("")]
-        new public Boolean Multiline
-        {
-            get { return base.Multiline; }
-            set { base.Multiline = false; }
-        }
-
-        [Browsable(true), Category("Appearance"), Description("Фоновый цвет компонента.")]
-        public Color BackgroundColor
-        {
-            get { return _BackgroundColor; }
-            set { _BackgroundColor = value; this.Invalidate(); }
-        }
-
-        [Browsable(true), Category("Appearance"), Description("Цвет границ компонента.")]
-        public Color BorderColor
-        {
-            get { return _BorderColor; }
-            set { _BorderColor = value; Invalidate(); }
-        }
-
-        [Browsable(true), Category("Appearance"), Description("Вид отображения вкладок.")]
-        public Boolean RoundTabPage
-        {
-            get { return _RoundTabPage; }
-            set { _RoundTabPage = value; Invalidate(); }
-        }
-
-        #endregion
-
-        #region TabpageExCollectionEditor
-
-        internal class TabpageExCollectionEditor : CollectionEditor
-        {
-            public TabpageExCollectionEditor(System.Type type) : base(type)
-            {
+                if (components != null)
+                    components.Dispose();
             }
 
-            protected override Type CreateCollectionItemType()
-            {
-                return typeof(TabPage);
-            }
+            base.Dispose(Disposing);
         }
-
-        #endregion
     }
-
 }

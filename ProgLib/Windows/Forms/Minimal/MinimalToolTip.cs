@@ -14,7 +14,7 @@ namespace ProgLib.Windows.Forms.Minimal
             ForeColor = Color.Black;
             BackColor = Color.Gainsboro;
             BorderColor = SystemColors.ControlDark;
-            Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
+            Font = new Font("Segoe UI", 8F, FontStyle.Bold);
 
             Popup += new PopupEventHandler(OnPopup);
             Draw += new DrawToolTipEventHandler(OnDraw);

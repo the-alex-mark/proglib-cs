@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.Minimal
@@ -18,35 +14,34 @@ namespace ProgLib.Windows.Forms.Minimal
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
+            Orientation = Orientation.Horizontal;
+            Font = new Font("Segoe UI", 7.5F, FontStyle.Regular);
             BackColor = SystemColors.ScrollBar;
             ForeColor = Color.White;
-            Size = new Size(100, 23);
-            _minimum = 0;
-            _maximum = 100;
-            _value = 0;
-            _textVisible = true;
-            _progressColor = Color.FromArgb(255, 128, 128);
-            _textType = FsProgressTextType.AsIs;
-            _orientation = OrientationType.Horizontal;
-        }
+            ProgressColor = ProgLib.Drawing.MetroColors.Blue;
+            TextVisible = true;
+            TextType = FsProgressTextType.AsIs;
 
-        public enum FsProgressTextType
-        {
-            Percent,
-            AsIs
-        }
-        public enum OrientationType
-        {
-            Vertical,
-            Horizontal
-        }
+            Size = new Size(180, 25);
 
-        private Int32 _value, _maximum, _minimum;
+            Minimum = 0;
+            Maximum = 100;
+            Value = 0;
+        }
+        
+        #region Variables
+
+        private Int32 _value = 0, _maximum = 100, _minimum = 0;
+        private Font _font;
         private Color _progressColor;
         private Boolean _textVisible;
         private FsProgressTextType _textType;
-        private OrientationType _orientation;
+        private Orientation _orientation;
         private event EventHandler ValueChanged, ValuesIsMaximum;
+
+        #endregion
+        
+        #region Properties
 
         [Category("Appearance"), Description("Цвет отображения визуального значения.")]
         public Color ProgressColor
@@ -71,7 +66,7 @@ namespace ProgLib.Windows.Forms.Minimal
         }
 
         [Category("Appearance"), Description("Вид контролла.")]
-        public OrientationType Orientation
+        public Orientation Orientation
         {
             get { return _orientation; }
             set
@@ -91,6 +86,18 @@ namespace ProgLib.Windows.Forms.Minimal
                 Invalidate();
             }
         }
+
+        [Category("Appearance")]
+        public new Font Font
+        {
+            get { return _font; }
+            set
+            {
+                _font = value;
+                Invalidate();
+            }
+        }
+
         public new Int32 Maximum
         {
             get { return _maximum; }
@@ -102,6 +109,7 @@ namespace ProgLib.Windows.Forms.Minimal
                 Invalidate();
             }
         }
+
         public new Int32 Minimum
         {
             get { return _minimum; }
@@ -113,6 +121,7 @@ namespace ProgLib.Windows.Forms.Minimal
                 Invalidate();
             }
         }
+
         public new Int32 Value
         {
             get { return _value; }
@@ -127,37 +136,56 @@ namespace ProgLib.Windows.Forms.Minimal
             }
         }
 
+        #endregion
+
+        #region Methods
+
+        public enum FsProgressTextType
+        {
+            Percent,
+            AsIs
+        }
+
+        #endregion
+
         protected override void OnPaint(PaintEventArgs e)
         {
-            e.Graphics.FillRectangle(new SolidBrush(BackColor), new Rectangle(0, 0, Width, Height));
+            e.Graphics.Clear(BackColor);
 
-            switch (Orientation)
+            // Отрисовка состояния в зависимости от ориентации
+            switch (_orientation)
             {
-                case OrientationType.Horizontal:
+                case Orientation.Horizontal:
                     e.Graphics.FillRectangle(new SolidBrush(ProgressColor), new Rectangle(0, 0, Value * Width / Maximum, Height));
                     break;
 
-                case OrientationType.Vertical:
+                case Orientation.Vertical:
                     e.Graphics.FillRectangle(new SolidBrush(this.ProgressColor), new Rectangle(0, Height - Value * Height / Maximum, Width, Value * Height / Maximum));
                     break;
             }
-
-            if (TextVisible)
+            
+            if (_textVisible)
             {
-                String TEXT = string.Empty;
+                String _text = String.Empty;
                 switch (TextType)
                 {
                     case FsProgressTextType.AsIs:
-                        TEXT = Value + " / " + Maximum;
+                        _text = Value + " / " + Maximum;
                         break;
 
                     case FsProgressTextType.Percent:
-                        TEXT = (Value * 100 / Maximum).ToString() + "%";
+                        _text = (Value * 100 / Maximum).ToString() + "%";
                         break;
                 }
 
-                SizeF SIZE = e.Graphics.MeasureString(TEXT, new Font("Century Gothic", 8));
-                e.Graphics.DrawString(TEXT, new Font("Century Gothic", 8), new SolidBrush(ForeColor), new PointF((float)(Width / 2) - SIZE.Width / 2f, (float)(Height / 2) - SIZE.Height / 2f));
+                // Отрисовка текста
+                TextRenderer.DrawText(
+                    e.Graphics,
+                    _text,
+                    Font,
+                    new Rectangle(0, 0, Width - 1, Height - 1),
+                    ForeColor,
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.EndEllipsis);
             }
         }
     }
