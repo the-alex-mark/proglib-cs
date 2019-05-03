@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Un4seen.Bass;
 using Un4seen.BassWasapi;
@@ -16,9 +13,8 @@ namespace ProgLib.Audio.Visualization
     {
         public Spectrum()
         {
-            File.WriteAllBytes("bass.dll", Properties.Resources.bass);
-            File.WriteAllBytes("basswasapi.dll", Properties.Resources.basswasapi);
-
+            Plugins.Bass.Start();
+            
             _timer = new Timer { Interval = 1 };
             _timer.Tick += Getter;
 

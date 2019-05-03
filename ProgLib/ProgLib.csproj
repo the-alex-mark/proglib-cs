@@ -125,6 +125,7 @@
     <Compile Include="Numerics\Binary.cs" />
     <Compile Include="Numerics\Hexadecimal.cs" />
     <Compile Include="Numerics\Octal.cs" />
+    <Compile Include="Plugins\Bass.Net\Bass.cs" />
     <Compile Include="Plugins\Bass.Net\PrivateImplementationDetails.cs" />
     <Compile Include="Plugins\Bass.Net\radio42\Multimedia\Midi\Midi.cs" />
     <Compile Include="Plugins\Bass.Net\radio42\Multimedia\Midi\MIDIControllerType.cs" />
