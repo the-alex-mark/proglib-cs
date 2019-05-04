@@ -23,19 +23,26 @@ namespace ProgLib.Windows.Forms.VSCode
         #region Properties
 
         private Boolean Settings { get; set; }
-        public Color ForeColor { get; set; }
-        public Color SelectForeColor { get; set; }
-        public Color DisabledForeColor { get; set; }
-        public Color SelectColor { get; set; }
-        public Color DropDownMenuSelectColor { get; set; }
-        public Color BackColor { get; set; }
-        public Color DropDownMenuBackColor { get; set; }
-        public Color SeparatorColor { get; set; }
-        public Color CheckColor { get; set; }
-        public Color SelectCheckColor { get; set; }
-        public Color ArrowColor { get; set; }
-        public Color SelectArrowColor { get; set; }
-        public Color CloseColor { get; set; }
+
+        public Color BackColor { get; private set; }
+        public Color ForeColor { get; private set; }
+        public Color DisabledForeColor { get; private set; }
+        public Color SelectColor { get; private set; }
+
+        public Color DropDownMenuBackColor { get; private set; }
+        public Color DropDownMenuForeColor { get; private set; }
+        public Color DropDownMenuSelectForeColor { get; private set; }
+        public Color DropDownMenuSelectColor { get; private set; }
+
+        public Color SeparatorColor { get; private set; }
+        public Color CheckColor { get; private set; }
+        public Color SelectCheckColor { get; private set; }
+        public Color ArrowColor { get; private set; }
+        public Color SelectArrowColor { get; private set; }
+
+        public Color CloseColor { get; private set; }
+        public Color WindowBackColor { get; private set; }
+        public Color SidebarBackColor { get; private set; }
 
         #endregion
 
@@ -63,39 +70,254 @@ namespace ProgLib.Windows.Forms.VSCode
             switch (Theme)
             {
                 case VSCodeTheme.Light:
+                    this.BackColor = Color.FromArgb(221, 221, 221);
                     this.ForeColor = Color.Black;
-                    this.SelectForeColor = Color.White;
                     this.DisabledForeColor = Color.FromArgb(90, 90, 90);
                     this.SelectColor = Color.FromArgb(198, 198, 198);
-                    this.DropDownMenuSelectColor = Color.FromArgb(36, 119, 206);
-                    this.BackColor = Color.FromArgb(221, 221, 221);
+
                     this.DropDownMenuBackColor = Color.FromArgb(243, 243, 243);
+                    this.DropDownMenuForeColor = Color.Black;
+                    this.DropDownMenuSelectForeColor = Color.White;
+                    this.DropDownMenuSelectColor = Color.FromArgb(36, 119, 206);
+
                     this.SeparatorColor = Color.FromArgb(207, 207, 207);
-                    this.CheckColor = Color.Black;
-                    this.SelectCheckColor = Color.White;
-                    this.ArrowColor = Color.Black;
-                    this.SelectArrowColor = Color.White;
+                    this.CheckColor = this.DropDownMenuForeColor;
+                    this.SelectCheckColor = this.DropDownMenuSelectForeColor;
+                    this.ArrowColor = this.DropDownMenuForeColor;
+                    this.SelectArrowColor = this.DropDownMenuSelectForeColor;
+
                     this.CloseColor = Color.FromArgb(232, 38, 55);
+                    this.WindowBackColor = Color.FromArgb(255, 255, 255);
+                    this.SidebarBackColor = Color.FromArgb(240, 240, 240);
                     break;
 
                 case VSCodeTheme.QuietLight:
-                    this.ForeColor = Color.Black;
-                    this.SelectForeColor = Color.Black;
+                    this.BackColor = Color.FromArgb(196, 183, 215);
+                    this.ForeColor = Color.FromArgb(41, 41, 41);
                     this.DisabledForeColor = Color.FromArgb(80, 80, 80);
                     this.SelectColor = Color.FromArgb(176, 164, 193);
+
+                    this.DropDownMenuBackColor = Color.FromArgb(245, 245, 245);
+                    this.DropDownMenuForeColor = Color.FromArgb(70, 70, 70);
+                    this.DropDownMenuSelectForeColor = Color.Black;
                     this.DropDownMenuSelectColor = Color.FromArgb(196, 217, 177);
-                    this.BackColor = Color.FromArgb(196, 183, 215);
-                    this.DropDownMenuBackColor = Color.FromArgb(240, 240, 240);
+
                     this.SeparatorColor = Color.FromArgb(201, 201, 201);
                     this.CheckColor = Color.Black;
                     this.SelectCheckColor = Color.Black;
                     this.ArrowColor = Color.Black;
                     this.SelectArrowColor = Color.Black;
+
                     this.CloseColor = Color.FromArgb(228, 33, 52);
+                    this.WindowBackColor = Color.FromArgb(245, 245, 245);
+                    this.SidebarBackColor = Color.FromArgb(237, 237, 245);
+                    break;
+
+                case VSCodeTheme.SolarizedLight:
+                    this.BackColor = Color.FromArgb(238, 232, 213);
+                    this.ForeColor = Color.FromArgb(41, 41, 41);
+                    this.DisabledForeColor = Color.FromArgb(80, 80, 80);
+                    this.SelectColor = Color.FromArgb(214, 208, 191);
+
+                    this.DropDownMenuBackColor = Color.FromArgb(238, 232, 213);
+                    this.DropDownMenuForeColor = Color.FromArgb(55, 55, 55);
+                    this.DropDownMenuSelectForeColor = Color.Black;
+                    this.DropDownMenuSelectColor = Color.FromArgb(223, 202, 136);
+
+                    this.SeparatorColor = Color.FromArgb(197, 194, 182);
+                    this.CheckColor = Color.Black;
+                    this.SelectCheckColor = Color.Black;
+                    this.ArrowColor = Color.Black;
+                    this.SelectArrowColor = Color.Black;
+
+                    this.CloseColor = Color.FromArgb(232, 38, 53);
+                    this.WindowBackColor = Color.FromArgb(253, 246, 227);
+                    this.SidebarBackColor = Color.FromArgb(221, 214, 193);
+                    break;
+
+                case VSCodeTheme.Abyss:
+                    this.BackColor = Color.FromArgb(16, 25, 44);
+                    this.ForeColor = Color.FromArgb(204, 204, 204);
+                    this.DisabledForeColor = Color.FromArgb(110, 115, 124);
+                    this.SelectColor = Color.FromArgb(40, 48, 66);
+
+                    this.DropDownMenuBackColor = Color.FromArgb(24, 31, 47);
+                    this.DropDownMenuForeColor = Color.White;
+                    this.DropDownMenuSelectForeColor = Color.White;
+                    this.DropDownMenuSelectColor = Color.FromArgb(8, 40, 107);
+
+                    this.SeparatorColor = Color.FromArgb(89, 93, 103);
+                    this.CheckColor = Color.White;
+                    this.SelectCheckColor = Color.White;
+                    this.ArrowColor = Color.White;
+                    this.SelectArrowColor = Color.White;
+
+                    this.CloseColor = Color.FromArgb(221, 17, 36);
+                    this.WindowBackColor = Color.FromArgb(0, 12, 24);
+                    this.SidebarBackColor = Color.FromArgb(5, 19, 54);
+                    break;
+
+                case VSCodeTheme.Dark:
+                    this.BackColor = Color.FromArgb(60, 60, 60);
+                    this.ForeColor = Color.FromArgb(204, 204, 204);
+                    this.DisabledForeColor = Color.FromArgb(104, 104, 104);
+                    this.SelectColor = Color.FromArgb(80, 80, 80);
+
+                    this.DropDownMenuBackColor = Color.FromArgb(37, 37, 38);
+                    this.DropDownMenuForeColor = Color.White;
+                    this.DropDownMenuSelectForeColor = Color.White;
+                    this.DropDownMenuSelectColor = Color.FromArgb(9, 71, 113);
+
+                    this.SeparatorColor = Color.FromArgb(97, 97, 98);
+                    this.CheckColor = Color.White;
+                    this.SelectCheckColor = Color.White;
+                    this.ArrowColor = Color.White;
+                    this.SelectArrowColor = Color.White;
+
+                    this.CloseColor = Color.FromArgb(215, 21, 38);
+                    this.WindowBackColor = Color.FromArgb(30, 30, 30);
+                    this.SidebarBackColor = Color.FromArgb(51, 51, 51);
+                    break;
+
+                case VSCodeTheme.KimbieDark:
+                    this.BackColor = Color.FromArgb(66, 53, 35);
+                    this.ForeColor = Color.FromArgb(204, 204, 204);
+                    this.DisabledForeColor = Color.FromArgb(114, 105, 92);
+                    this.SelectColor = Color.FromArgb(85, 74, 57);
+
+                    this.DropDownMenuBackColor = Color.FromArgb(54, 39, 18);
+                    this.DropDownMenuForeColor = Color.White;
+                    this.DropDownMenuSelectForeColor = Color.White;
+                    this.DropDownMenuSelectColor = Color.FromArgb(124, 80, 33);
+
+                    this.SeparatorColor = Color.FromArgb(107, 98, 86);
+                    this.CheckColor = Color.White;
+                    this.SelectCheckColor = Color.White;
+                    this.ArrowColor = Color.White;
+                    this.SelectArrowColor = Color.White;
+
+                    this.CloseColor = Color.FromArgb(215, 20, 35);
+                    this.WindowBackColor = Color.FromArgb(34, 26, 15);
+                    this.SidebarBackColor = Color.FromArgb(34, 26, 15);
+                    break;
+
+                case VSCodeTheme.Monokai:
+                    this.BackColor = Color.FromArgb(30, 31, 28);
+                    this.ForeColor = Color.FromArgb(204, 204, 204);
+                    this.DisabledForeColor = Color.FromArgb(100, 100, 98);
+                    this.SelectColor = Color.FromArgb(53, 54, 51);
+
+                    this.DropDownMenuBackColor = Color.FromArgb(30, 31, 28);
+                    this.DropDownMenuForeColor = Color.White;
+                    this.DropDownMenuSelectForeColor = Color.White;
+                    this.DropDownMenuSelectColor = Color.FromArgb(117, 113, 94);
+
+                    this.SeparatorColor = Color.FromArgb(93, 93, 92);
+                    this.CheckColor = Color.White;
+                    this.SelectCheckColor = Color.White;
+                    this.ArrowColor = Color.White;
+                    this.SelectArrowColor = Color.White;
+
+                    this.CloseColor = Color.FromArgb(212, 18, 35);
+                    this.WindowBackColor = Color.FromArgb(39, 40, 34);
+                    this.SidebarBackColor = Color.FromArgb(39, 40, 34);
+                    break;
+
+                case VSCodeTheme.MonokaiDimmed:
+                    this.BackColor = Color.FromArgb(80, 80, 80);
+                    this.ForeColor = Color.FromArgb(204, 204, 204);
+                    this.DisabledForeColor = Color.FromArgb(105, 105, 105);
+                    this.SelectColor = Color.FromArgb(98, 98, 98);
+
+                    this.DropDownMenuBackColor = Color.FromArgb(39, 39, 39);
+                    this.DropDownMenuForeColor = Color.White;
+                    this.DropDownMenuSelectForeColor = Color.White;
+                    this.DropDownMenuSelectColor = Color.FromArgb(112, 112, 112);
+
+                    this.SeparatorColor = Color.FromArgb(98, 98, 98);
+                    this.CheckColor = Color.White;
+                    this.SelectCheckColor = Color.White;
+                    this.ArrowColor = Color.White;
+                    this.SelectArrowColor = Color.White;
+
+                    this.CloseColor = Color.FromArgb(217, 23, 40);
+                    this.WindowBackColor = Color.FromArgb(53, 53, 53);
+                    this.SidebarBackColor = Color.FromArgb(30, 30, 30);
+                    break;
+
+                case VSCodeTheme.Red:
+                    this.BackColor = Color.FromArgb(119, 0, 0);
+                    this.ForeColor = Color.FromArgb(204, 204, 204);
+                    this.DisabledForeColor = Color.FromArgb(149, 96, 96);
+                    this.SelectColor = Color.FromArgb(133, 26, 26);
+
+                    this.DropDownMenuBackColor = Color.FromArgb(88, 0, 0);
+                    this.DropDownMenuForeColor = Color.White;
+                    this.DropDownMenuSelectForeColor = Color.White;
+                    this.DropDownMenuSelectColor = Color.FromArgb(136, 0, 0);
+
+                    this.SeparatorColor = Color.FromArgb(128, 75, 75);
+                    this.CheckColor = this.DropDownMenuForeColor;
+                    this.SelectCheckColor = this.DropDownMenuSelectForeColor;
+                    this.ArrowColor = this.DropDownMenuForeColor;
+                    this.SelectArrowColor = this.DropDownMenuSelectForeColor;
+
+                    this.CloseColor = Color.FromArgb(221, 18, 35);
+                    this.WindowBackColor = Color.FromArgb(57, 0, 0);
+                    this.SidebarBackColor = Color.FromArgb(88, 0, 0);
+                    break;
+
+                case VSCodeTheme.SolarizedDark:
+                    this.BackColor = Color.FromArgb(0, 44, 57);
+                    this.ForeColor = Color.FromArgb(204, 204, 204);
+                    this.DisabledForeColor = Color.FromArgb(96, 116, 122);
+                    this.SelectColor = Color.FromArgb(26, 66, 77);
+
+                    this.DropDownMenuBackColor = Color.FromArgb(0, 33, 43);
+                    this.DropDownMenuForeColor = Color.White;
+                    this.DropDownMenuSelectForeColor = Color.White;
+                    this.DropDownMenuSelectColor = Color.FromArgb(0, 90, 111);
+
+                    this.SeparatorColor = Color.FromArgb(75, 95, 101);
+                    this.CheckColor = Color.White;
+                    this.SelectCheckColor = Color.White;
+                    this.ArrowColor = Color.White;
+                    this.SelectArrowColor = Color.White;
+
+                    this.CloseColor = Color.FromArgb(209, 19, 38);
+                    this.WindowBackColor = Color.FromArgb(0, 43, 54);
+                    this.SidebarBackColor = Color.FromArgb(0, 56, 71);
+                    break;
+
+                case VSCodeTheme.TomorrowNightBlue:
+                    this.BackColor = Color.FromArgb(0, 17, 38);
+                    this.ForeColor = Color.FromArgb(204, 204, 204);
+                    this.DisabledForeColor = Color.FromArgb(96, 110, 127);
+                    this.SelectColor = Color.FromArgb(26, 41, 60);
+
+                    this.DropDownMenuBackColor = Color.FromArgb(0, 23, 51);
+                    this.DropDownMenuForeColor = Color.White;
+                    this.DropDownMenuSelectForeColor = Color.White;
+                    this.DropDownMenuSelectColor = Color.FromArgb(97, 111, 129);
+
+                    this.SeparatorColor = Color.FromArgb(75, 89, 105);
+                    this.CheckColor = Color.White;
+                    this.SelectCheckColor = Color.White;
+                    this.ArrowColor = Color.White;
+                    this.SelectArrowColor = Color.White;
+
+                    this.CloseColor = Color.FromArgb(209, 17, 36);
+                    this.WindowBackColor = Color.FromArgb(0, 23, 51);
+                    this.SidebarBackColor = Color.FromArgb(0, 36, 81);
                     break;
             }
         }
 
+        /// <summary>
+        /// Получает список <see cref="ToolStripItem"/> родительского <see cref="ToolStripItem"/>.
+        /// </summary>
+        /// <param name="Item"></param>
+        /// <returns></returns>
         private ToolStripItem[] GetAllChildren(ToolStripItem Item)
         {
             List<ToolStripItem> Items = new List<ToolStripItem>();
@@ -120,6 +342,10 @@ namespace ProgLib.Windows.Forms.VSCode
             return Items.ToArray();
         }
 
+        /// <summary>
+        /// Настраивает "Margin" первого и последнего <see cref="ToolStripItem"/> родительского <see cref="ToolStripItem"/>.
+        /// </summary>
+        /// <param name="Items"></param>
         private void SettingsUpMargin(ToolStripItem[] Items)
         {
             foreach (ToolStripItem Item in Items)
@@ -232,6 +458,14 @@ namespace ProgLib.Windows.Forms.VSCode
             }
         }
 
+        // Отрисовка фонового цвета выпадающего меню
+        protected override void OnRenderImageMargin(ToolStripRenderEventArgs e)
+        {
+            e.Graphics.FillRectangle(
+                new SolidBrush(this.DropDownMenuBackColor),
+                new Rectangle(0, 0, e.ToolStrip.Width, e.ToolStrip.Height));
+        }
+
         // Отрисовка текста Item
         protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
         {
@@ -240,8 +474,8 @@ namespace ProgLib.Windows.Forms.VSCode
                 ShortcutKeys,
                 new Font("Segoe UI", 7.5F, FontStyle.Regular)).Width;
 
-            Color _foreColor = this.ForeColor;
-            Color _selectForeColor = this.SelectForeColor;
+            Color _foreColor = this.DropDownMenuForeColor;
+            Color _selectForeColor = this.DropDownMenuSelectForeColor;
 
             Color _selectColor = this.DropDownMenuSelectColor;
             Color _backColor = this.DropDownMenuBackColor;
@@ -303,7 +537,7 @@ namespace ProgLib.Windows.Forms.VSCode
                     e.Item.Text,
                     (e.Item as ToolStripMenuItem).Font,
                     new Rectangle(0, 0, e.Item.Width, e.Item.Height),
-                    (e.Item.Enabled) ? _foreColor : _disabledFontColor,
+                    (e.Item.Enabled) ? this.ForeColor : _disabledFontColor,
                     Color.Transparent,
                     TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter | TextFormatFlags.EndEllipsis);
             }

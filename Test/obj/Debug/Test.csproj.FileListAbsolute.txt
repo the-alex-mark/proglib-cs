@@ -19,7 +19,6 @@ D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\bin\Debug\
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\bin\Debug\ProgLib.dll
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\bin\Debug\ProgLib.pdb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.csprojAssemblyReference.cache
-D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.Form1.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.Properties.Resources.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.csproj.GenerateResource.cache
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
@@ -41,3 +40,4 @@ C:\Users\Александр Макаров\Desktop\ProgLib\Test\obj\Debug\Test.c
 C:\Users\Александр Макаров\Desktop\ProgLib\Test\obj\Debug\Test.csproj.CopyComplete
 C:\Users\Александр Макаров\Desktop\ProgLib\Test\obj\Debug\Test.exe
 C:\Users\Александр Макаров\Desktop\ProgLib\Test\obj\Debug\Test.pdb
+D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.FormMain.resources
