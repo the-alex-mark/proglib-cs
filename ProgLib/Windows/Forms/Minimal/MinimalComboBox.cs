@@ -25,24 +25,24 @@ namespace ProgLib.Windows.Forms.Minimal
             DrawMode = DrawMode.OwnerDrawVariable;
             ItemHeight = 18;
 
-            ForeColor = SystemColors.GrayText;
-            _selectForeColor = ForeColor;
+            ForeColor = Color.Black;
+            SelectForeColor = Color.White;
             BackColor = SystemColors.Control;
-            _borderColor = SystemColors.ControlDark;
-            _arrowColor = SystemColors.ControlDark;
-            _buttonColor = BackColor;
-
-            try
-            {
-                _selectColor = Color.FromArgb(BackColor.R - 20, BackColor.G - 20, BackColor.B - 20);
-            }
-            catch { }
+            BorderColor = SystemColors.ControlDark;
+            SelectColor = ProgLib.Drawing.MetroColors.Blue;
+            ArrowColor = SystemColors.ControlDark;
+            ButtonColor = BackColor;
+            
         }
 
-        [DllImport("user32")]
-        private static extern IntPtr GetDC(IntPtr hWnd);
+        #region Variables
+
         private Color _selectForeColor, _borderColor, _arrowColor, _buttonColor, _selectColor;
-        
+
+        #endregion
+
+        #region Properties
+
         [Category("Appearance"), Description("Цвет выделенного \"Item\"")]
         public Color SelectColor
         {
@@ -98,6 +98,13 @@ namespace ProgLib.Windows.Forms.Minimal
             }
         }
 
+        #endregion
+
+        #region Methods
+
+        [DllImport("user32")]
+        private static extern IntPtr GetDC(IntPtr hWnd);
+
         protected virtual Image Arrow(Color Border)
         {
             Bitmap Image = new Bitmap(8, 7);
@@ -117,6 +124,8 @@ namespace ProgLib.Windows.Forms.Minimal
             return Image;
         }
 
+        #endregion
+        
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
@@ -137,6 +146,31 @@ namespace ProgLib.Windows.Forms.Minimal
                 ControlPaint.DrawBorder(Graphics.FromHdc(GetDC(Handle)), new Rectangle(0, 0, Width, Height), _borderColor, ButtonBorderStyle.Solid);
             }
         }
+        
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            Invalidate();
+        }
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            base.OnGotFocus(e);
+            Invalidate();
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            Invalidate();
+        }
+
+        protected override void OnMouseHover(EventArgs e)
+        {
+            base.OnMouseHover(e);
+            Invalidate();
+        }
+
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
             base.OnDrawItem(e);
@@ -159,26 +193,6 @@ namespace ProgLib.Windows.Forms.Minimal
             e.DrawBackground();
 
             e.Graphics.DrawString(Items[e.Index].ToString(), Font, new SolidBrush(_foreColorSelect), new Rectangle(2, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 1), StringFormat.GenericDefault);
-        }
-        protected override void OnLostFocus(EventArgs e)
-        {
-            base.OnLostFocus(e);
-            Invalidate();
-        }
-        protected override void OnGotFocus(EventArgs e)
-        {
-            base.OnGotFocus(e);
-            Invalidate();
-        }
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            Invalidate();
-        }
-        protected override void OnMouseHover(EventArgs e)
-        {
-            base.OnMouseHover(e);
-            Invalidate();
         }
     }
 }

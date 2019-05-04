@@ -21,6 +21,7 @@ using NAudio.Wave.SampleProviders;
 using ProgLib.Audio.Visualization;
 using ProgLib.Windows.Forms;
 using ProgLib.Data.Access;
+using ProgLib.Windows.Forms.VSCode;
 
 namespace Test
 {
@@ -61,6 +62,11 @@ namespace Test
             //    iSpectrum1.Set(_visualizationEventArgs.Data);
             //};
             //V.Start();
+
+            //adobeComboBox1.SelectedIndex = 0;
+            
+            menuStrip1.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.QuietLight, true);
+            MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.QuietLight, true);
         }
 
         private void metroButton2_Click(Object sender, EventArgs e)
@@ -75,6 +81,21 @@ namespace Test
 
             //dataGridView1.DataSource = _result.Table;
             //MessageBox.Show(_result.Status);
+
+            //adobeComboBox1.Font = new Font(adobeComboBox1.Font.FontFamily.Name, adobeComboBox1.Font.Size + 2);
+
+            MinimalMessageBoxRenderer _minimalMessageBoxRenderer = new MinimalMessageBoxRenderer
+            {
+                Animation = true,
+                BackColor = SystemColors.Control,
+                Border = true,
+                Font = new Font("Segoe UI", 7.5F, FontStyle.Regular),
+                HeaderColor = Color.Black,
+                StatusBarColor = SystemColors.ControlDark,
+                StyleColor = ProgLib.Drawing.MetroColors.Blue,
+                TextColor = Color.Black
+            };
+            MinimalMessageBox.Show("Сообщение", "Заголовок", _minimalMessageBoxRenderer, ProgLib.Windows.Forms.Minimal.MessageType.Information);
         }
 
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)

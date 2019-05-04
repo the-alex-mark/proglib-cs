@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.VSCode
@@ -13,23 +10,43 @@ namespace ProgLib.Windows.Forms.VSCode
     {
         public VSCodeToolStripRenderer(VSCodeTheme Theme)
         {
-            _renderer = new VSCodeMenuStripColors(Theme);
+            this.GetTheme(Theme);
+            this.Settings = false;
         }
 
-        #region Global Variables
+        public VSCodeToolStripRenderer(VSCodeTheme Theme, Boolean Settings)
+        {
+            this.GetTheme(Theme);
+            this.Settings = Settings;
+        }
 
-        private VSCodeMenuStripColors _renderer;
+        #region Properties
+
+        private Boolean Settings { get; set; }
+        public Color ForeColor { get; set; }
+        public Color SelectForeColor { get; set; }
+        public Color DisabledForeColor { get; set; }
+        public Color SelectColor { get; set; }
+        public Color DropDownMenuSelectColor { get; set; }
+        public Color BackColor { get; set; }
+        public Color DropDownMenuBackColor { get; set; }
+        public Color SeparatorColor { get; set; }
+        public Color CheckColor { get; set; }
+        public Color SelectCheckColor { get; set; }
+        public Color ArrowColor { get; set; }
+        public Color SelectArrowColor { get; set; }
+        public Color CloseColor { get; set; }
 
         #endregion
 
-        #region Additional method
+        #region Method
 
         /// <summary>
-        /// Конвертирует список клавиш в <see cref="String"/>
+        /// Конвертирует список клавиш в <see cref="String"/>.
         /// </summary>
         /// <param name="Keys"></param>
         /// <returns></returns>
-        protected virtual String KeysToString(Keys Keys)
+        private String KeysToString(Keys Keys)
         {
             KeysConverter KC = new KeysConverter();
             String ShortcutKeys = KC.ConvertToString(Keys).ToUpper();
@@ -37,11 +54,136 @@ namespace ProgLib.Windows.Forms.VSCode
             return (ShortcutKeys != "NONE") ? ShortcutKeys : "";
         }
 
+        /// <summary>
+        /// Задаёт цветовую палитру, в зависимости от выбранной темы.
+        /// </summary>
+        /// <param name="Theme"></param>
+        private void GetTheme(VSCodeTheme Theme)
+        {
+            switch (Theme)
+            {
+                case VSCodeTheme.Light:
+                    this.ForeColor = Color.Black;
+                    this.SelectForeColor = Color.White;
+                    this.DisabledForeColor = Color.FromArgb(90, 90, 90);
+                    this.SelectColor = Color.FromArgb(198, 198, 198);
+                    this.DropDownMenuSelectColor = Color.FromArgb(36, 119, 206);
+                    this.BackColor = Color.FromArgb(221, 221, 221);
+                    this.DropDownMenuBackColor = Color.FromArgb(243, 243, 243);
+                    this.SeparatorColor = Color.FromArgb(207, 207, 207);
+                    this.CheckColor = Color.Black;
+                    this.SelectCheckColor = Color.White;
+                    this.ArrowColor = Color.Black;
+                    this.SelectArrowColor = Color.White;
+                    this.CloseColor = Color.FromArgb(232, 38, 55);
+                    break;
+
+                case VSCodeTheme.QuietLight:
+                    this.ForeColor = Color.Black;
+                    this.SelectForeColor = Color.Black;
+                    this.DisabledForeColor = Color.FromArgb(80, 80, 80);
+                    this.SelectColor = Color.FromArgb(176, 164, 193);
+                    this.DropDownMenuSelectColor = Color.FromArgb(196, 217, 177);
+                    this.BackColor = Color.FromArgb(196, 183, 215);
+                    this.DropDownMenuBackColor = Color.FromArgb(240, 240, 240);
+                    this.SeparatorColor = Color.FromArgb(201, 201, 201);
+                    this.CheckColor = Color.Black;
+                    this.SelectCheckColor = Color.Black;
+                    this.ArrowColor = Color.Black;
+                    this.SelectArrowColor = Color.Black;
+                    this.CloseColor = Color.FromArgb(228, 33, 52);
+                    break;
+            }
+        }
+
+        private ToolStripItem[] GetAllChildren(ToolStripItem Item)
+        {
+            List<ToolStripItem> Items = new List<ToolStripItem>();
+            if (Item is ToolStripMenuItem)
+            {
+                foreach (ToolStripItem i in ((ToolStripMenuItem)Item).DropDownItems)
+                    Items.Add(i);
+            }
+
+            else if (Item is ToolStripSplitButton)
+            {
+                foreach (ToolStripItem i in ((ToolStripSplitButton)Item).DropDownItems)
+                    Items.Add(i);
+            }
+
+            else if (Item is ToolStripDropDownButton)
+            {
+                foreach (ToolStripItem i in ((ToolStripDropDownButton)Item).DropDownItems)
+                    Items.Add(i);
+            }
+
+            return Items.ToArray();
+        }
+
+        private void SettingsUpMargin(ToolStripItem[] Items)
+        {
+            foreach (ToolStripItem Item in Items)
+            {
+                ToolStripItem[] _items = GetAllChildren(Item);
+
+                switch (_items.Length)
+                {
+                    case 0:
+                        break;
+
+                    case 1:
+                        _items[0].Margin = new Padding(0, 1, 0, 2);
+                        break;
+
+                    default:
+                        _items[0].Margin = new Padding(0, 1, 0, 0);
+                        _items[_items.Length - 1].Margin = new Padding(0, 0, 0, 2);
+                        break;
+                }
+
+                SettingsUpMargin(_items);
+            }
+        }
+
         #endregion
 
         // Отрисовка фона Item
         protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
         {
+            // Настройка "MenuStrip"
+            if (this.Settings)
+            {
+                if (!e.Item.IsOnDropDown && e.Item.GetCurrentParent() is MenuStrip)
+                {
+                    MenuStrip _menuStrip = e.Item.GetCurrentParent() as MenuStrip;
+                    _menuStrip.BackColor = this.BackColor;
+                    _menuStrip.Padding = new Padding(0);
+
+                    List<ToolStripItem> Items = new List<ToolStripItem>();
+                    foreach (ToolStripItem Item in _menuStrip.Items) Items.Add(Item);
+                    if (Items.Count > 0) SettingsUpMargin(Items.ToArray());
+                }
+
+                switch (e.Item.Name)
+                {
+                    case "mmMinimum":
+                    case "mmMaximum":
+                    case "mmClose":
+                        e.Item.Padding = new Padding(12, 0, 12, 0);
+                        break;
+
+                    default:
+                        if (e.Item.IsOnDropDown)
+                            e.Item.Padding = new Padding(0);
+                        break;
+                }
+            }
+            else
+            {
+                if (!e.Item.IsOnDropDown && e.Item.GetCurrentParent() is MenuStrip)
+                    (e.Item.GetCurrentParent() as MenuStrip).BackColor = this.BackColor;
+            }
+            
             if (e.Item.Enabled)
             {
                 // Выделение Item в главном меню
@@ -60,13 +202,13 @@ namespace ProgLib.Windows.Forms.VSCode
 
                             case "mmClose":
                                 e.Graphics.FillRectangle(
-                                    new SolidBrush(_renderer.CloseColor),
+                                    new SolidBrush(this.CloseColor),
                                     new Rectangle(0, 0, e.Item.Width, e.Item.Height));
                                 break;
 
                             default:
                                 e.Graphics.FillRectangle(
-                                    new SolidBrush(_renderer.SelectColor),
+                                    new SolidBrush(this.SelectColor),
                                     new Rectangle(0, 0, e.Item.Width, e.Item.Height));
                                 break;
                         }
@@ -75,7 +217,7 @@ namespace ProgLib.Windows.Forms.VSCode
                     if ((e.Item as ToolStripMenuItem).DropDown.Visible)
                     {
                         e.Graphics.FillRectangle(
-                            new SolidBrush(_renderer.SelectColor),
+                            new SolidBrush(this.SelectColor),
                             new Rectangle(0, 0, e.Item.Width, e.Item.Height));
                     }
                 }
@@ -84,16 +226,9 @@ namespace ProgLib.Windows.Forms.VSCode
                 if (e.Item.IsOnDropDown && e.Item.Selected)
                 {
                     e.Graphics.FillRectangle(
-                        new SolidBrush(_renderer.SelectItemColor),
+                        new SolidBrush(this.DropDownMenuSelectColor),
                         new Rectangle(1, 1, e.Item.Width, e.Item.Height));
                 }
-
-                //if (e.Item.IsOnDropDown && e.Item.Selected == false)
-                //{
-                //    e.Graphics.FillRectangle(
-                //        new SolidBrush(Color.Red),
-                //        new Rectangle(1, 1, e.Item.Width, e.Item.Height));
-                //}
             }
         }
 
@@ -105,12 +240,12 @@ namespace ProgLib.Windows.Forms.VSCode
                 ShortcutKeys,
                 new Font("Segoe UI", 7.5F, FontStyle.Regular)).Width;
 
-            Color _foreColor = _renderer.ForeColor;
-            Color _selectForeColor = _renderer.SelectForeColor;
+            Color _foreColor = this.ForeColor;
+            Color _selectForeColor = this.SelectForeColor;
 
-            Color _selectColor = _renderer.SelectItemColor;
-            Color _backColor = _renderer.BackItemColor;
-            Color _disabledFontColor = _renderer.DisabledForeColor;
+            Color _selectColor = this.DropDownMenuSelectColor;
+            Color _backColor = this.DropDownMenuBackColor;
+            Color _disabledFontColor = this.DisabledForeColor;
 
             if (e.Item.IsOnDropDown && e.Item.Selected)
             {
@@ -180,7 +315,7 @@ namespace ProgLib.Windows.Forms.VSCode
             base.OnRenderSeparator(e);
 
             e.Graphics.FillRectangle(
-                new SolidBrush(_renderer.SeparatorColor),
+                new SolidBrush(this.SeparatorColor),
                 new Rectangle(6, 3, e.Item.Width - 12, 1));
         }
 
@@ -198,7 +333,7 @@ namespace ProgLib.Windows.Forms.VSCode
             };
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            e.Graphics.DrawLines(new Pen((e.Item.IsOnDropDown && e.Item.Selected) ? _renderer.SelectArrowColor : _renderer.ArrowColor), _lines);
+            e.Graphics.DrawLines(new Pen((e.Item.IsOnDropDown && e.Item.Selected) ? this.SelectArrowColor : this.ArrowColor), _lines);
 
             e.Graphics.SmoothingMode = SmoothingMode.Default;
         }
@@ -217,7 +352,7 @@ namespace ProgLib.Windows.Forms.VSCode
             };
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            e.Graphics.DrawLines(new Pen((e.Item.IsOnDropDown && e.Item.Selected) ? _renderer.SelectCheckColor : _renderer.CheckColor), _lines);
+            e.Graphics.DrawLines(new Pen((e.Item.IsOnDropDown && e.Item.Selected) ? this.SelectCheckColor : this.CheckColor), _lines);
 
             e.Graphics.SmoothingMode = SmoothingMode.Default;
         }

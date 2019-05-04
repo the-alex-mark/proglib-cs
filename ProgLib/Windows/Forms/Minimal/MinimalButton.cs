@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.Minimal
@@ -16,7 +10,7 @@ namespace ProgLib.Windows.Forms.Minimal
         public MinimalButton()
         {
             Size = new Size(140, 27);
-            Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
+            Font = new Font("Segoe UI", 7.5F, FontStyle.Regular);
 
             BackColor = Color.Gainsboro;
             FlatStyle = FlatStyle.Flat;
@@ -59,13 +53,13 @@ namespace ProgLib.Windows.Forms.Minimal
         {
             e.Graphics.Clear(BackColor);
 
-            
+
             if (_onMouseEnter)
             {
                 // Отрисовка при наведении
                 if (FlatAppearance.MouseOverBackColor != null)
                     e.Graphics.FillRectangle(new SolidBrush(FlatAppearance.MouseOverBackColor), new Rectangle(0, 0, Width - 1, Height - 1));
-                
+
             }
             else e.Graphics.FillRectangle(new SolidBrush(BackColor), new Rectangle(0, 0, Width - 1, Height - 1));
 

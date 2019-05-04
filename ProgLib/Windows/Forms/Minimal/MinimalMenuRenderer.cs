@@ -12,12 +12,12 @@ namespace ProgLib.Windows.Forms.Minimal
     {
         public MinimalMenuRenderer()
         {
-            ForeColor = Color.White;
-            BackColor = SystemColors.ControlLight;
-            DropDownMenuBackColor = SystemColors.ControlDark;
-            BorderColor = Color.Black;
+            ForeColor = Color.Black;
+            BackColor = Color.Red;
+            DropDownMenuBackColor = Color.Gainsboro;
+            BorderColor = ProgLib.Drawing.MetroColors.Blue;
             SeparatorColor = SystemColors.ControlDark;
-            SelectColor = SystemColors.ControlDark;
+            SelectColor = ProgLib.Drawing.MetroColors.Blue;
         }
 
         private Rectangle _rectangle;

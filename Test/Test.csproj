@@ -94,5 +94,6 @@
   <ItemGroup>
     <None Include="Resources\basswasapi.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

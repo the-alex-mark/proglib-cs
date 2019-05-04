@@ -17,22 +17,29 @@ namespace ProgLib.Windows.Forms.Minimal
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-
-            Size = new Size(9, 237);
-
+            
             Orientation = ScrollOrientation.VerticalScroll;
-            _thumbHeight = 35;
-
+            ThumbHeight = 35;
             BackColor = SystemColors.Control;
             BorderColor = SystemColors.Control;
             ThumbColor = SystemColors.ControlDarkDark;
             LineColor = Color.Silver;
+
+            Size = new Size(9, 237);
         }
+
+        #region Global Variables
 
         private Int32 _value, _maximum = 100, _thumbHeight;
         private Color _thumbColor, _borderColor, _lineColor;
         private ScrollOrientation _Orientation;
-        public event ScrollEventHandler SCROLL;
+
+        // Событие изменения положения ползунка
+        public event ScrollEventHandler Scroll;
+
+        #endregion
+
+        #region Properties
 
         public Int32 Value
         {
@@ -59,35 +66,35 @@ namespace ProgLib.Windows.Forms.Minimal
             }
         }
 
-        [Category("Appearance"), Description("Цвет ползунка")]
+        [Category("Appearance"), Description("Цвет ползунка.")]
         public Color ThumbColor
         {
             get { return _thumbColor; }
             set { _thumbColor = value; Invalidate(); }
         }
 
-        [Category("Appearance"), Description("Высота ползунка")]
+        [Category("Appearance"), Description("Высота ползунка.")]
         public Int32 ThumbHeight
         {
             get { return _thumbHeight; }
             set { _thumbHeight = value; Invalidate(); }
         }
 
-        [Category("Appearance"), Description("Цвет обводки")]
+        [Category("Appearance"), Description("Цвет обводки.")]
         public Color BorderColor
         {
             get { return _borderColor; }
             set { _borderColor = value; Invalidate(); }
         }
 
-        [Category("Appearance"), Description("Цвет обводки")]
+        [Category("Appearance"), Description("Цвет обводки.")]
         public Color LineColor
         {
             get { return _lineColor; }
             set { _lineColor = value; Invalidate(); }
         }
 
-        [Category("Appearance"), Description("Вид контролла")]
+        [Category("Appearance"), Description("Ориентация контролла.")]
         public ScrollOrientation Orientation
         {
             get { return _Orientation; }
@@ -99,18 +106,10 @@ namespace ProgLib.Windows.Forms.Minimal
             }
         }
 
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left) MouseScroll(e);
+        #endregion
 
-            base.OnMouseDown(e);
-        }
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left) MouseScroll(e);
+        #region Methods
 
-            base.OnMouseMove(e);
-        }
         private void MouseScroll(MouseEventArgs e)
         {
             Int32 V = 0;
@@ -129,31 +128,48 @@ namespace ProgLib.Windows.Forms.Minimal
             Value = Math.Max(0, Math.Min(Maximum, V));
         }
 
+        #endregion
+
         public virtual void OnScroll(ScrollEventType Type = ScrollEventType.ThumbPosition)
         {
-            SCROLL?.Invoke(this, new ScrollEventArgs(Type, Value, Orientation));
+            Scroll?.Invoke(this, new ScrollEventArgs(Type, Value, Orientation));
         }
 
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) MouseScroll(e);
+
+            base.OnMouseDown(e);
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) MouseScroll(e);
+
+            base.OnMouseMove(e);
+        }
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             if (Maximum > 0)
             {
-                Rectangle THUMBRECT = Rectangle.Empty;
+                Rectangle _thumbRectangle = Rectangle.Empty;
 
                 switch (Orientation)
                 {
                     case ScrollOrientation.HorizontalScroll:
-                        e.Graphics.DrawLine(new Pen(_lineColor), new Point(10, Height / 2), new Point(Width - 10, Height / 2));
-                        THUMBRECT = new Rectangle(_value * (Width - ThumbHeight) / Maximum, 2, ThumbHeight, Height - 4);
+                        _thumbRectangle = new Rectangle(_value * (Width - ThumbHeight) / Maximum, 2, ThumbHeight, Height - 4);
                         break;
 
                     case ScrollOrientation.VerticalScroll:
-                        e.Graphics.DrawLine(new Pen(_lineColor), new Point(Width / 2, 10), new Point(Width / 2, Height - 10));
-                        THUMBRECT = new Rectangle(2, _value * (Height - ThumbHeight) / Maximum, Width - 4, ThumbHeight);
+                        _thumbRectangle = new Rectangle(2, _value * (Height - ThumbHeight) / Maximum, Width - 4, ThumbHeight);
                         break;
                 }
 
-                e.Graphics.FillRectangle(new SolidBrush(_thumbColor), THUMBRECT);
+                // Отрисовка ползунка
+                e.Graphics.FillRectangle(new SolidBrush(_thumbColor), _thumbRectangle);
+
+                // Отрисовка границ
                 e.Graphics.DrawRectangle(new Pen(_borderColor), new Rectangle(0, 0, Width - 1, Height - 1));
             }
         }

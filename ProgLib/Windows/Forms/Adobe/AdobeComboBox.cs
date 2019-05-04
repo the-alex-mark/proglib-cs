@@ -1,15 +1,12 @@
-﻿using ProgLib.Drawing;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using ProgLib.Drawing;
+using ProgLib.Drawing.Drawing2D;
 
 namespace ProgLib.Windows.Forms.Adobe
 {
@@ -18,29 +15,58 @@ namespace ProgLib.Windows.Forms.Adobe
     {
         public AdobeComboBox()
         {
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            // Double buffering
+            this.SetStyle(ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.DoubleBuffer, true);
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
             // Таймер для проверки, когда выпадающий список полностью виден
             _dropDownCheck.Interval = 100;
             _dropDownCheck.Tick += new EventHandler(dropDownCheck_Tick);
 
-            BorderColor = Color.White;
-            ArrowColor = Color.White;
-            ButtonColor = Color.FromArgb(26, 26, 26);
-            BackColor = Color.FromArgb(50, 50, 50);
+            Text = Name;
+
+            Font = new Font("Segoe UI", 7.5F, FontStyle.Regular);
+            ForeColor = Color.Black;
+            BorderColor = SystemColors.ControlDark;
+            ArrowColor = SystemColors.ControlDark;
+            SelectColor = ProgLib.Drawing.MetroColors.Blue;
+            SelectForeColor = Color.White;
+            BackColor = SystemColors.Control;
+            BackgroundColor = SystemColors.Control;
 
             DropDownStyle = ComboBoxStyle.DropDownList;
             DrawMode = DrawMode.OwnerDrawVariable;
             ItemHeight = 18;
-
-            _text = Name;
         }
 
-        private String _text;
+        #region Variables
 
-        public new String Text
+        private String _text;
+        private Color  _backgtoundColor, _selectForeColor, _borderColor, _arrowColor, _selectColor;
+        private Font _font;
+
+        #endregion
+
+        #region Properties
+
+        public new Font Font
+        {
+            get { return _font; }
+            set
+            {
+                _font = value;
+                
+                Size _size = TextRenderer.MeasureText(Name, _font);
+                ItemHeight = _size.Height + 1;
+                SetComboBoxHeight(this.Handle, _size.Height + 1);
+                Refresh();
+            }
+        }
+
+        public override String Text
         {
             get { return _text; }
             set
@@ -50,193 +76,67 @@ namespace ProgLib.Windows.Forms.Adobe
             }
         }
 
-        [Category("Appearance"), Description("Цвет кнопки")]
-        public Color ButtonColor
+        [Category("Appearance"), Description("Цвет фона.")]
+        public Color BackgroundColor
         {
-            get;
-            set;
-
-            //get
-            //{
-            //    return this._ButtonColor;
-            //}
-            //set
-            //{
-            //    this._ButtonColor = value;
-            //    this.DropButtonBrush = this.ButtonColor;
-            //    base.Invalidate();
-            //}
+            get { return _backgtoundColor; }
+            set
+            {
+                _backgtoundColor = value;
+                Invalidate();
+            }
         }
 
-        [Category("Appearance"), Description("Цвет стрелки компонента")]
+        [Category("Appearance"), Description("Цвет выделенного \"Item\".")]
+        public Color SelectColor
+        {
+            get { return _selectColor; }
+            set
+            {
+                _selectColor = value;
+                Invalidate();
+            }
+        }
+
+        [Category("Appearance"), Description("Цвет шрифта выделенного \"Item\".")]
+        public Color SelectForeColor
+        {
+            get { return _selectForeColor; }
+            set
+            {
+                _selectForeColor = value;
+                Invalidate();
+            }
+        }
+
+        [Category("Appearance"), Description("Цвет стрелки компонента.")]
         public Color ArrowColor
         {
-            get;
-            set;
-
-            //get
-            //{
-            //    return this._ArrowColor;
-            //}
-            //set
-            //{
-            //    this._ArrowColor = value;
-            //    this._ArrawColor_ = this.ArrowColor;
-            //    base.Invalidate();
-            //}
+            get { return _arrowColor; }
+            set
+            {
+                _arrowColor = value;
+                base.Invalidate();
+            }
         }
 
-        [Category("Appearance"), Description("Цвет границ компонента")]
+        [Category("Appearance"), Description("Цвет границ.")]
         public Color BorderColor
         {
-            get;
-            set;
-
-            //get
-            //{
-            //    return this._BorderColor;
-            //}
-            //set
-            //{
-            //    this._BorderColor = value;
-            //    base.Invalidate();
-            //}
+            get { return _borderColor; }
+            set
+            {
+                _borderColor = value;
+                Invalidate();
+            }
         }
+
+        #endregion
+
+        #region Methods
 
         [DllImport("user32")]
         private static extern IntPtr GetDC(IntPtr hWnd);
-
-        
-        protected virtual GraphicsPath Ellipse(Radius Radius, Rectangle Rectangle)
-        {
-            GraphicsPath GP = new GraphicsPath();
-
-            if (Radius.LeftTop != 0)
-                GP.AddArc(new Rectangle(Rectangle.X, Rectangle.Y, Radius.LeftTop * 2, Radius.LeftTop * 2), 180, 90);
-            else GP.AddLine(new Point(Rectangle.X, Rectangle.Y), new Point(Rectangle.X, Rectangle.Y));
-
-            if (Radius.RightTop != 0)
-                GP.AddArc(new Rectangle(Rectangle.Width - Radius.RightTop * 2, Rectangle.Y, Radius.RightTop * 2, Radius.RightTop * 2), 270, 90);
-            else GP.AddLine(new Point(Rectangle.Width, Rectangle.Y), new Point(Rectangle.Width, Rectangle.Y));
-
-            if (Radius.RightBottom != 0)
-                GP.AddArc(new Rectangle(Rectangle.Width - Radius.RightBottom * 2, Rectangle.Height - Radius.RightBottom * 2, Radius.RightBottom * 2, Radius.RightBottom * 2), 0, 90);
-            else GP.AddLine(new Point(Rectangle.Width, Rectangle.Height), new Point(Rectangle.Width, Rectangle.Height));
-
-            if (Radius.LeftBottom != 0)
-                GP.AddArc(new Rectangle(Rectangle.X, Rectangle.Height - Radius.LeftBottom * 2, Radius.LeftBottom * 2, Radius.LeftBottom * 2), 90, 90);
-            else GP.AddLine(new Point(Rectangle.X, Rectangle.Height), new Point(Rectangle.X, Rectangle.Height));
-
-            GP.CloseFigure();
-
-            return GP;
-        }
-        protected virtual Image Arrow(Color Border)
-        {
-            Bitmap Image = new Bitmap(8, 7);
-            using (Graphics G = Graphics.FromImage(Image))
-            {
-                G.Clear(Color.Transparent);
-
-                Point[] Lines = new Point[]
-                {
-                    new Point(1, 1),
-                    new Point(4, 4),
-                    new Point(7, 1)
-                };
-                G.DrawLines(new Pen(Border, 1), Lines);
-                //G.DrawRectangle(new Pen(Color.Red), new Rectangle(0, 0, 17, 17));
-            }
-
-            return Image;
-        }
-
-
-        protected override void WndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case 15:
-                    base.WndProc(ref m);
-
-                    using (Graphics G = base.CreateGraphics())
-                    {
-                        G.Clear(Color.FromArgb(58, 58, 58));
-                        G.SmoothingMode = SmoothingMode.AntiAlias;
-
-                        G.FillPath(new SolidBrush(Color.FromArgb(50, 50, 50)), Ellipse(new Radius(5, 5, 5, 5), new Rectangle(0, 0, Width - 1, Height - 1)));
-                        G.FillPath(new SolidBrush(Color.FromArgb(50, 50, 50)), Ellipse(new Radius(0, 5, 5, 0), new Rectangle(Width - 17, 0, 17, Height)));
-
-                        G.DrawString("Цветовая модель", Font, new SolidBrush(ForeColor), new Rectangle(5, 0, Bounds.Width - 20, Bounds.Height - 1), new StringFormat { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Center });
-                        G.DrawImage(Arrow(ForeColor), new Point(Width - 16, (Height / 2) - (Arrow(ForeColor).Height / 2)));
-
-                        G.DrawPath(new Pen(BorderColor, 1), Ellipse(new Radius(5, 5, 5, 5), new Rectangle(0, 0, Width - 1, Height - 1)));
-                    }
-                    break;
-
-                case WM_CTLCOLORLISTBOX:
-                    using (Graphics G = base.CreateGraphics())
-                    {
-                        G.Clear(Color.FromArgb(58, 58, 58));
-                        G.SmoothingMode = SmoothingMode.AntiAlias;
-
-                        G.FillPath(new SolidBrush(Color.FromArgb(50, 50, 50)), Ellipse(new Radius(5, 5, 0, 0), new Rectangle(0, 0, Width - 1, Height - 1)));
-                        G.FillPath(new SolidBrush(Color.FromArgb(50, 50, 50)), Ellipse(new Radius(0, 5, 0, 0), new Rectangle(Width - 17, 0, 17, Height)));
-
-                        G.DrawString("Цветовая модель", Font, new SolidBrush(ForeColor), new Rectangle(5, 0, Bounds.Width - 20, Bounds.Height - 1), new StringFormat { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Center });
-                        G.DrawImage(Arrow(ForeColor), new Point(Width - 16, (Height / 2) - (Arrow(ForeColor).Height / 2)));
-
-                        G.DrawPath(new Pen(BorderColor, 1), Ellipse(new Radius(5, 5, 0, 0), new Rectangle(0, 0, Width - 1, Height)));
-                    }
-
-                    DrawNativeBorder(m.LParam);
-                    break;
-
-                default:
-                    base.WndProc(ref m);
-                    break;
-            }
-        }
-        protected override void OnDrawItem(DrawItemEventArgs e)
-        {
-            base.OnDrawItem(e);
-
-            if (e.Index < 0) return;
-            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-            {
-                e = new DrawItemEventArgs(e.Graphics,
-                                          e.Font,
-                                          e.Bounds,
-                                          e.Index,
-                                          e.State ^ DrawItemState.Selected,
-                                          e.ForeColor,
-                                          Color.FromArgb(40, 40, 40));
-            }
-            e.DrawBackground();
-
-            e.Graphics.DrawString(Items[e.Index].ToString(), Font, new SolidBrush(ForeColor), new Rectangle(2, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 1), StringFormat.GenericDefault);
-        }
-        protected override void OnLostFocus(EventArgs e)
-        {
-            base.OnLostFocus(e);
-            Invalidate();
-        }
-        protected override void OnGotFocus(EventArgs e)
-        {
-            base.OnGotFocus(e);
-            Invalidate();
-        }
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            Invalidate();
-        }
-        protected override void OnMouseHover(EventArgs e)
-        {
-            base.OnMouseHover(e);
-            Invalidate();
-        }
-
 
         public enum PenStyles
         {
@@ -357,26 +257,26 @@ namespace ProgLib.Windows.Forms.Adobe
         }
 
 
-        public const int WM_CTLCOLORLISTBOX = 0x0134;
-        private Timer _dropDownCheck = new Timer();      // Таймер, который проверяет, когда раскрывающийся список полностью виден
+        public const Int32 WM_CTLCOLORLISTBOX = 0x0134;
+        private Timer _dropDownCheck = new Timer(); // Таймер, который проверяет, когда раскрывающийся список полностью виден
 
         [DllImport("user32.dll")]
-        public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+        public static extern Boolean GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetWindowDC(IntPtr hWnd);
 
         [DllImport("user32.dll")]
-        public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
+        public static extern Int32 ReleaseDC(IntPtr hWnd, IntPtr hDC);
 
         [DllImport("user32.dll")]
         public static extern IntPtr SetFocus(IntPtr hWnd);
 
         [DllImport("user32.dll")]
-        public static extern bool GetComboBoxInfo(IntPtr hWnd, ref COMBOBOXINFO pcbi);
+        public static extern Boolean GetComboBoxInfo(IntPtr hWnd, ref COMBOBOXINFO pcbi);
 
         [DllImport("gdi32.dll")]
-        public static extern int ExcludeClipRect(IntPtr hdc, int nLeftRect, int nTopRect, int nRightRect, int nBottomRect);
+        public static extern Int32 ExcludeClipRect(IntPtr hdc, int nLeftRect, int nTopRect, int nRightRect, int nBottomRect);
 
         [DllImport("gdi32.dll")]
         public static extern IntPtr CreatePen(PenStyles enPenStyle, int nWidth, int crColor);
@@ -385,25 +285,23 @@ namespace ProgLib.Windows.Forms.Adobe
         public static extern IntPtr SelectObject(IntPtr hdc, IntPtr hObject);
 
         [DllImport("gdi32.dll")]
-        public static extern bool DeleteObject(IntPtr hObject);
+        public static extern Boolean DeleteObject(IntPtr hObject);
 
         [DllImport("gdi32.dll")]
         public static extern void Rectangle(IntPtr hdc, int X1, int Y1, int X2, int Y2);
 
-        public static int RGB(int R, int G, int B)
+        public static Int32 RGB(int R, int G, int B)
         {
             return (R | (G << 8) | (B << 16));
         }
 
-        /// <summary>
-        /// На выпадающем
-        /// </summary>
-        protected override void OnDropDown(EventArgs e)
-        {
-            base.OnDropDown(e);
+        [DllImport("user32.dll")]
+        static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, Int32 wParam, Int32 lParam);
+        private const Int32 CB_SETITEMHEIGHT = 0x153;
 
-            // Начните проверку видимости раскрывающегося списка
-            _dropDownCheck.Start();
+        private void SetComboBoxHeight(IntPtr comboBoxHandle, Int32 comboBoxDesiredHeight)
+        {
+            SendMessage(comboBoxHandle, CB_SETITEMHEIGHT, -1, comboBoxDesiredHeight);
         }
 
         /// <summary>
@@ -446,7 +344,7 @@ namespace ProgLib.Windows.Forms.Adobe
             ExcludeClipRect(dc, clientRect.Left, clientRect.Top, clientRect.Right, clientRect.Bottom);
 
             // Создайте перо и выберите его
-            Color borderColor = Color.FromArgb(90, 90, 90);
+            Color borderColor = _borderColor;
             IntPtr border = CreatePen(PenStyles.PS_SOLID, 1, RGB(borderColor.R, borderColor.G, borderColor.B));
 
             // Нарисуйте прямоугольник границы
@@ -488,6 +386,160 @@ namespace ProgLib.Windows.Forms.Adobe
             info = new COMBOBOXINFO();
             info.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(info);
             return GetComboBoxInfo(handle, ref info) ? info.hwndList : IntPtr.Zero;
+        }
+
+        protected virtual Image Arrow(Color Border)
+        {
+            Bitmap Image = new Bitmap(8, 7);
+            using (Graphics G = Graphics.FromImage(Image))
+            {
+                G.Clear(Color.Transparent);
+
+                Point[] Lines = new Point[]
+                {
+                    new Point(1, 1),
+                    new Point(4, 4),
+                    new Point(7, 1)
+                };
+                G.DrawLines(new Pen(Border, 1), Lines);
+                //G.DrawRectangle(new Pen(Color.Red), new Rectangle(0, 0, 17, 17));
+            }
+
+            return Image;
+        }
+
+        #endregion
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case 15:
+                    base.WndProc(ref m);
+
+                    using (Graphics G = base.CreateGraphics())
+                    {
+                        G.Clear(BackColor);
+                        G.SmoothingMode = SmoothingMode.AntiAlias;
+
+                        // Отрисовка фона
+                        G.FillPath(new SolidBrush(_backgtoundColor), CustomGraphicsPath.Superellipse(new Radius(5, 5, 5, 5), new Rectangle(0, 0, Width - 1, Height - 1)));
+                        G.FillPath(new SolidBrush(_backgtoundColor), CustomGraphicsPath.Superellipse(new Radius(0, 5, 5, 0), new Rectangle(Width - 17, 0, 17, Height)));
+                        
+                        // Отрисовка стрелки
+                        G.DrawImage(Arrow(_arrowColor), new Point(Width - 16, (Height / 2) - (Arrow(_arrowColor).Height / 2)));
+
+                        // Отрисовка границ
+                        G.DrawPath(new Pen(_borderColor, 1), CustomGraphicsPath.Superellipse(new Radius(5, 5, 5, 5), new Rectangle(0, 0, Width - 1, Height - 1)));
+
+                        // Отрисовка текста
+                        TextRenderer.DrawText(
+                            G,
+                            _text,
+                            _font,
+                            new Rectangle(5, 0, Bounds.Width - 20, Bounds.Height - 1),
+                            ForeColor,
+                            TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.EndEllipsis);
+                    }
+                    break;
+
+                case WM_CTLCOLORLISTBOX:
+                    base.WndProc(ref m);
+
+                    using (Graphics G = base.CreateGraphics())
+                    {
+                        G.Clear(BackColor);
+                        G.SmoothingMode = SmoothingMode.AntiAlias;
+
+                        // Отрисовка фона
+                        G.FillPath(new SolidBrush(_backgtoundColor), CustomGraphicsPath.Superellipse(new Radius(5, 5, 0, 0), new Rectangle(0, 0, Width - 1, Height - 1)));
+                        G.FillPath(new SolidBrush(_backgtoundColor), CustomGraphicsPath.Superellipse(new Radius(0, 5, 0, 0), new Rectangle(Width - 17, 0, 17, Height)));
+                        
+                        // Отрисовка стрелки
+                        G.DrawImage(Arrow(_arrowColor), new Point(Width - 16, (Height / 2) - (Arrow(_arrowColor).Height / 2)));
+
+                        // Отрисовка границ
+                        G.DrawPath(new Pen(_borderColor, 1), CustomGraphicsPath.Superellipse(new Radius(5, 5, 0, 0), new Rectangle(0, 0, Width - 1, Height)));
+
+                        // Отрисовка текста
+                        TextRenderer.DrawText(
+                            G,
+                            _text,
+                            _font,
+                            new Rectangle(5, 0, Bounds.Width - 20, Bounds.Height - 1),
+                            ForeColor,
+                            TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.EndEllipsis);
+                    }
+
+                    DrawNativeBorder(m.LParam);
+                    break;
+
+                default:
+                    base.WndProc(ref m);
+                    break;
+            }
+        }
+
+        protected override void OnDrawItem(DrawItemEventArgs e)
+        {
+            base.OnDrawItem(e);
+            Color _foreColorSelect = ForeColor;
+
+            if (e.Index < 0) return;
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e = new DrawItemEventArgs(e.Graphics,
+                                          e.Font,
+                                          e.Bounds,
+                                          e.Index,
+                                          e.State ^ DrawItemState.Selected,
+                                          e.ForeColor,
+                                          _selectColor);
+
+                _foreColorSelect = _selectForeColor;
+            }
+            e.DrawBackground();
+            
+            // Отрисовка текста
+            TextRenderer.DrawText(
+                e.Graphics,
+                Items[e.Index].ToString(),
+                _font,
+                new Rectangle(0, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height - 1),
+                ForeColor,
+                TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.EndEllipsis);
+        }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            Invalidate();
+        }
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            base.OnGotFocus(e);
+            Invalidate();
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            Invalidate();
+        }
+
+        protected override void OnMouseHover(EventArgs e)
+        {
+            base.OnMouseHover(e);
+            Invalidate();
+        }
+
+        protected override void OnDropDown(EventArgs e)
+        {
+            base.OnDropDown(e);
+
+            // Начните проверку видимости раскрывающегося списка
+            _dropDownCheck.Start();
         }
     }
 }

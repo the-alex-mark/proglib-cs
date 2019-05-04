@@ -20,7 +20,7 @@ namespace ProgLib.Windows.Forms.Minimal
             SelectColor = SystemColors.ControlDark;
         }
 
-        private Rectangle _rectangle;
+        //private Rectangle _rectangle;
 
         public Color ForeColor
         {
@@ -87,8 +87,7 @@ namespace ProgLib.Windows.Forms.Minimal
 
         protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
         {
-            bool flag = e.Item != null;
-            if (flag)
+            if (e.Item != null)
             {
                 e.ArrowColor = Color.FromArgb(202, 81, 0);
             }

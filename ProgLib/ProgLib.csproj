@@ -1344,6 +1344,9 @@
     <Compile Include="Windows\Forms\MinimalForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Windows\Forms\Minimal\MinimalButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Windows\Forms\Minimal\MinimalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1405,12 +1408,6 @@
     <Compile Include="Windows\Forms\Metro\MouseState.cs" />
     <Compile Include="Windows\Forms\Metro\Theme.cs" />
     <Compile Include="Windows\Forms\Minimal\MessageType.cs" />
-    <Compile Include="Windows\Forms\Minimal\MinimalButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Minimal\MinimalButton.Designer.cs">
-      <DependentUpon>MinimalButton.cs</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Forms\Minimal\MinimalContextMenuRenderer.cs.cs" />
     <Compile Include="Windows\Forms\Minimal\MinimalContextMenuStrip.cs">
       <SubType>Component</SubType>
@@ -1483,7 +1480,6 @@
     <Compile Include="Windows\Forms\Minimal\Win32.cs" />
     <Compile Include="Windows\Forms\MouseMessageFilter.cs" />
     <Compile Include="Windows\Forms\Enum.cs" />
-    <Compile Include="Windows\Forms\VSCode\VSCodeMenuStripColors.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeTheme.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeToolStripRenderer.cs" />
     <Compile Include="Windows\Forms\Window.cs" />
