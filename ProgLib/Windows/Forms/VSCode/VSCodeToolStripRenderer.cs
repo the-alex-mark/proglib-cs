@@ -15,6 +15,10 @@ namespace ProgLib.Windows.Forms.VSCode
             this.GetTheme(Theme);
             this.ControlBox = new VSCodeControlBox(VSCodeIconTheme.Classic);
             this.Settings = true;
+
+            Index = 0;
+            Count = 0;
+            Counter = true;
         }
 
         public VSCodeToolStripRenderer(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
@@ -23,6 +27,10 @@ namespace ProgLib.Windows.Forms.VSCode
             this.GetTheme(Theme);
             this.ControlBox = new VSCodeControlBox(IconTheme);
             this.Settings = true;
+
+            Index = 0;
+            Count = 0;
+            Counter = true;
         }
 
         public VSCodeToolStripRenderer(VSCodeTheme Theme, Boolean Settings)
@@ -31,7 +39,19 @@ namespace ProgLib.Windows.Forms.VSCode
             this.GetTheme(Theme);
             this.ControlBox = new VSCodeControlBox(VSCodeIconTheme.Classic);
             this.Settings = Settings;
+
+            Index = 0;
+            Count = 0;
+            Counter = true;
         }
+
+        #region Variables
+
+        private Int32 Index;
+        private Int32 Count;
+        private Boolean Counter;
+
+        #endregion
 
         #region Properties
 
@@ -372,6 +392,18 @@ namespace ProgLib.Windows.Forms.VSCode
             return Items.ToArray();
         }
 
+        private Int32 GetCount(ToolStripItem[] Items)
+        {
+            Int32 _count = 0;
+            foreach (ToolStripItem Item in Items)
+            {
+                _count += 1;
+                _count += GetCount(GetChildren(Item));
+            }
+
+            return _count;
+        }
+
         /// <summary>
         /// Задаёт Margin первому и последнему элементам списка.
         /// </summary>
@@ -433,13 +465,25 @@ namespace ProgLib.Windows.Forms.VSCode
                     foreach (ToolStripItem _item in GetChildren(_menuStrip.Items)) UMargin(GetChildren(_item));
 
                     _menuStrip.Padding = new Padding(0);
+                    
+                    if (Counter)
+                    {
+                        Count = GetCount(GetChildren(_menuStrip.Items));
+                        Counter = false;
+                    }
                 }
 
                 // Настройка "ContextMenuStrip"
                 if (e.Item.GetCurrentParent() is ContextMenuStrip)
                 {
-                    ContextMenuStrip _menuStrip = e.Item.GetCurrentParent() as ContextMenuStrip;
-                    UMargin(GetChildren(_menuStrip.Items));
+                    ContextMenuStrip _contextMenuStrip = e.Item.GetCurrentParent() as ContextMenuStrip;
+                    UMargin(GetChildren(_contextMenuStrip.Items));
+
+                    if (Counter)
+                    {
+                        Count = GetCount(GetChildren(_contextMenuStrip.Items));
+                        Counter = false;
+                    }
                 }
 
                 switch (e.Item.Name)
@@ -464,6 +508,9 @@ namespace ProgLib.Windows.Forms.VSCode
                             e.Item.Padding = new Padding(0);
                         break;
                 }
+
+                Index++;
+                if (Count == Index) this.Settings = false;
             }
             
             if (e.Item.Enabled)
