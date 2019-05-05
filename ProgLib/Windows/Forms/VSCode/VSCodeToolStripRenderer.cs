@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.VSCode
@@ -10,19 +11,33 @@ namespace ProgLib.Windows.Forms.VSCode
     {
         public VSCodeToolStripRenderer(VSCodeTheme Theme)
         {
+            this.Theme = Theme;
             this.GetTheme(Theme);
-            this.Settings = false;
+            this.ControlBox = new VSCodeControlBox(VSCodeIconTheme.Classic);
+            this.Settings = true;
+        }
+
+        public VSCodeToolStripRenderer(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
+        {
+            this.Theme = Theme;
+            this.GetTheme(Theme);
+            this.ControlBox = new VSCodeControlBox(IconTheme);
+            this.Settings = true;
         }
 
         public VSCodeToolStripRenderer(VSCodeTheme Theme, Boolean Settings)
         {
+            this.Theme = Theme;
             this.GetTheme(Theme);
+            this.ControlBox = new VSCodeControlBox(VSCodeIconTheme.Classic);
             this.Settings = Settings;
         }
 
         #region Properties
 
         private Boolean Settings { get; set; }
+        public VSCodeTheme Theme { get; private set; }
+        public VSCodeControlBox ControlBox { get; private set; }
 
         public Color BackColor { get; private set; }
         public Color ForeColor { get; private set; }
@@ -318,9 +333,10 @@ namespace ProgLib.Windows.Forms.VSCode
         /// </summary>
         /// <param name="Item"></param>
         /// <returns></returns>
-        private ToolStripItem[] GetAllChildren(ToolStripItem Item)
+        private ToolStripItem[] GetChildren(ToolStripItem Item)
         {
             List<ToolStripItem> Items = new List<ToolStripItem>();
+            
             if (Item is ToolStripMenuItem)
             {
                 foreach (ToolStripItem i in ((ToolStripMenuItem)Item).DropDownItems)
@@ -343,58 +359,103 @@ namespace ProgLib.Windows.Forms.VSCode
         }
 
         /// <summary>
-        /// Настраивает "Margin" первого и последнего <see cref="ToolStripItem"/> родительского <see cref="ToolStripItem"/>.
+        /// Получает список <see cref="ToolStripItem"/> коллекции <see cref="ToolStripItemCollection"/>.
+        /// </summary>
+        /// <param name="Item"></param>
+        /// <returns></returns>
+        private ToolStripItem[] GetChildren(ToolStripItemCollection Collection)
+        {
+            List<ToolStripItem> Items = new List<ToolStripItem>();
+            foreach (ToolStripItem Item in Collection)
+                Items.Add(Item);
+
+            return Items.ToArray();
+        }
+
+        /// <summary>
+        /// Задаёт Margin первому и последнему элементам списка.
         /// </summary>
         /// <param name="Items"></param>
-        private void SettingsUpMargin(ToolStripItem[] Items)
+        private void UMargin(ToolStripItem[] Items)
         {
-            foreach (ToolStripItem Item in Items)
+            switch (Items.Length)
             {
-                ToolStripItem[] _items = GetAllChildren(Item);
+                case 0:
+                    break;
 
-                switch (_items.Length)
-                {
-                    case 0:
-                        break;
+                case 1:
+                    Items[0].Margin = new Padding(0, 1, 0, 2);
+                    break;
 
-                    case 1:
-                        _items[0].Margin = new Padding(0, 1, 0, 2);
-                        break;
+                default:
+                    Items[0].Margin = new Padding(0, 1, 0, 0);
+                    Items[Items.Length - 1].Margin = new Padding(0, 0, 0, 2);
+                    break;
+            }
 
-                    default:
-                        _items[0].Margin = new Padding(0, 1, 0, 0);
-                        _items[_items.Length - 1].Margin = new Padding(0, 0, 0, 2);
-                        break;
-                }
-
-                SettingsUpMargin(_items);
+            if (Items.Length > 0)
+            {
+                foreach (ToolStripItem Item in Items)
+                    UMargin(GetChildren(Item));
             }
         }
 
         #endregion
 
-        // Отрисовка фона Item
+        // Отрисовка фонового цвета главного меню
+        protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
+        {
+            e.Graphics.FillRectangle(
+                new SolidBrush(this.BackColor),
+                new Rectangle(0, 0, e.ToolStrip.Width, e.ToolStrip.Height));
+        }
+
+        // Отрисовка фонового цвета выпадающего меню
+        protected override void OnRenderImageMargin(ToolStripRenderEventArgs e)
+        {
+            e.Graphics.FillRectangle(
+                new SolidBrush(this.DropDownMenuBackColor),
+                new Rectangle(0, 0, e.ToolStrip.Width, e.ToolStrip.Height));
+        }
+
+        // Отрисовка выделенного Item в главном меню
         protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
         {
-            // Настройка "MenuStrip"
             if (this.Settings)
             {
+                Form Parent = null;
+
+                // Настройка "MenuStrip"
                 if (!e.Item.IsOnDropDown && e.Item.GetCurrentParent() is MenuStrip)
                 {
                     MenuStrip _menuStrip = e.Item.GetCurrentParent() as MenuStrip;
-                    _menuStrip.BackColor = this.BackColor;
-                    _menuStrip.Padding = new Padding(0);
+                    if (_menuStrip.Parent is Form) Parent = _menuStrip.Parent as Form;
+                    foreach (ToolStripItem _item in GetChildren(_menuStrip.Items)) UMargin(GetChildren(_item));
 
-                    List<ToolStripItem> Items = new List<ToolStripItem>();
-                    foreach (ToolStripItem Item in _menuStrip.Items) Items.Add(Item);
-                    if (Items.Count > 0) SettingsUpMargin(Items.ToArray());
+                    _menuStrip.Padding = new Padding(0);
+                }
+
+                // Настройка "ContextMenuStrip"
+                if (e.Item.GetCurrentParent() is ContextMenuStrip)
+                {
+                    ContextMenuStrip _menuStrip = e.Item.GetCurrentParent() as ContextMenuStrip;
+                    UMargin(GetChildren(_menuStrip.Items));
                 }
 
                 switch (e.Item.Name)
                 {
                     case "mmMinimum":
+                        e.Item.Image = ControlBox.Minimum(Theme);
+                        e.Item.Padding = new Padding(12, 0, 12, 0);
+                        break;
+
                     case "mmMaximum":
+                        e.Item.Image = (Parent != null) ? ControlBox.Maximum(Theme, Parent.WindowState) : ControlBox.Maximum(Theme, FormWindowState.Normal);
+                        e.Item.Padding = new Padding(12, 0, 12, 0);
+                        break;
+
                     case "mmClose":
+                        e.Item.Image = ControlBox.Close(Theme);
                         e.Item.Padding = new Padding(12, 0, 12, 0);
                         break;
 
@@ -403,11 +464,6 @@ namespace ProgLib.Windows.Forms.VSCode
                             e.Item.Padding = new Padding(0);
                         break;
                 }
-            }
-            else
-            {
-                if (!e.Item.IsOnDropDown && e.Item.GetCurrentParent() is MenuStrip)
-                    (e.Item.GetCurrentParent() as MenuStrip).BackColor = this.BackColor;
             }
             
             if (e.Item.Enabled)
@@ -457,15 +513,7 @@ namespace ProgLib.Windows.Forms.VSCode
                 }
             }
         }
-
-        // Отрисовка фонового цвета выпадающего меню
-        protected override void OnRenderImageMargin(ToolStripRenderEventArgs e)
-        {
-            e.Graphics.FillRectangle(
-                new SolidBrush(this.DropDownMenuBackColor),
-                new Rectangle(0, 0, e.ToolStrip.Width, e.ToolStrip.Height));
-        }
-
+        
         // Отрисовка текста Item
         protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
         {

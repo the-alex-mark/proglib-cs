@@ -22,8 +22,6 @@ using ProgLib.Windows.Forms.Metro;
 using ProgLib.Windows.Forms.Material;
 using ProgLib.Windows.Forms.Minimal;
 using ProgLib.Windows.Forms.VSCode;
-using NAudio.Wave;
-using NAudio.Wave.SampleProviders;
 
 namespace Test
 {
@@ -40,7 +38,7 @@ namespace Test
         #endregion
 
         #region Shadow
-
+        
         private const int WM_NCHITTEST = 0x84;
         private const int HTCLIENT = 0x1;
         private const int HTCAPTION = 0x2;
@@ -81,7 +79,8 @@ namespace Test
         {
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                int enabled = 0; DwmIsCompositionEnabled(ref enabled);
+                int enabled = 0;
+                DwmIsCompositionEnabled(ref enabled);
                 return (enabled == 1) ? true : false;
             }
             return false;
@@ -97,10 +96,10 @@ namespace Test
                         DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
                         MARGINS margins = new MARGINS()
                         {
-                            bottomHeight = 1,
+                            bottomHeight = 0,
                             leftWidth = 0,
                             rightWidth = 0,
-                            topHeight = 0
+                            topHeight = 1
                         };
                         DwmExtendFrameIntoClientArea(this.Handle, ref margins);
                     }
@@ -121,15 +120,16 @@ namespace Test
 
                 default: break;
             }
+
             base.WndProc(ref e);
         }
-
-
+        
         #endregion
-
+        
         public FormMain()
         {
             InitializeComponent();
+            m_aeroEnabled = true;
 
             // Установка максимального размера завёртывания формы
             MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
@@ -158,11 +158,14 @@ namespace Test
         
         private void Form1_Load(Object sender, EventArgs e)
         {
-            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(VSCodeTheme.Red, true);
+            VSCodeTheme Theme = VSCodeTheme.Red;
+
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, VSCodeIconTheme.Custom);
             MainMenu.Renderer = _renderer;
+            contextMenuStrip1.Renderer = _renderer;
             BackColor = _renderer.WindowBackColor;
         }
-        
+
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
         {
 

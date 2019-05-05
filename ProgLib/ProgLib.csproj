@@ -83,14 +83,11 @@
     <Compile Include="Audio\Tags\AudioTagsID3v2.cs" />
     <Compile Include="Audio\Tags\AudioTags.cs" />
     <Compile Include="Audio\Visualization\Device.cs" />
-    <Compile Include="Audio\Visualization\iSpectrum.cs">
+    <Compile Include="Audio\Visualization\Spectrum.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Audio\Visualization\iProgressBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Audio\Visualization\Spectrum.cs" />
-    <Compile Include="Audio\Visualization\SpectrumEventArgs.cs" />
+    <Compile Include="Audio\Visualization\SpectrumAnalyzer.cs" />
+    <Compile Include="Audio\Visualization\SpectrumAnalyzerEventArgs.cs" />
     <Compile Include="Data\Access\AccessResult.cs" />
     <Compile Include="Data\Access\AccessDataBase.cs" />
     <Compile Include="Data\CSharp\CSharpResult.cs" />
@@ -1480,6 +1477,7 @@
     <Compile Include="Windows\Forms\Minimal\Win32.cs" />
     <Compile Include="Windows\Forms\MouseMessageFilter.cs" />
     <Compile Include="Windows\Forms\Enum.cs" />
+    <Compile Include="Windows\Forms\VSCode\VSCodeControlBox.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeTheme.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeToolStripRenderer.cs" />
     <Compile Include="Windows\Forms\Window.cs" />
