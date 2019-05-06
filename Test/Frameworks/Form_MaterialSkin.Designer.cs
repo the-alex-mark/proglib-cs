@@ -92,9 +92,9 @@ namespace Test.Frameworks
             this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton2.Depth = 0;
             this.materialFlatButton2.Icon = null;
-            this.materialFlatButton2.Location = new System.Drawing.Point(427, 386);
+            this.materialFlatButton2.Location = new System.Drawing.Point(569, 386);
             this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton2.MouseState = MouseState.HOVER;
+            this.materialFlatButton2.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialFlatButton2.Name = "materialFlatButton2";
             this.materialFlatButton2.Primary = false;
             this.materialFlatButton2.Size = new System.Drawing.Size(100, 36);
@@ -109,9 +109,9 @@ namespace Test.Frameworks
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
             this.materialFlatButton1.Icon = null;
-            this.materialFlatButton1.Location = new System.Drawing.Point(527, 386);
+            this.materialFlatButton1.Location = new System.Drawing.Point(669, 386);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MouseState.HOVER;
+            this.materialFlatButton1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
             this.materialFlatButton1.Primary = true;
             this.materialFlatButton1.Size = new System.Drawing.Size(80, 36);
@@ -127,9 +127,9 @@ namespace Test.Frameworks
             this.materialDivider1.Depth = 0;
             this.materialDivider1.Location = new System.Drawing.Point(0, 379);
             this.materialDivider1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialDivider1.MouseState = MouseState.HOVER;
+            this.materialDivider1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(625, 1);
+            this.materialDivider1.Size = new System.Drawing.Size(767, 1);
             this.materialDivider1.TabIndex = 16;
             this.materialDivider1.Text = "materialDivider1";
             // 
@@ -144,7 +144,7 @@ namespace Test.Frameworks
             this.materialRadioButton4.Location = new System.Drawing.Point(0, 98);
             this.materialRadioButton4.Margin = new System.Windows.Forms.Padding(0);
             this.materialRadioButton4.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialRadioButton4.MouseState = MouseState.HOVER;
+            this.materialRadioButton4.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialRadioButton4.Name = "materialRadioButton4";
             this.materialRadioButton4.Ripple = true;
             this.materialRadioButton4.Size = new System.Drawing.Size(163, 30);
@@ -161,9 +161,9 @@ namespace Test.Frameworks
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel1.Location = new System.Drawing.Point(-4, 117);
-            this.materialLabel1.MouseState = MouseState.HOVER;
+            this.materialLabel1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(591, 64);
+            this.materialLabel1.Size = new System.Drawing.Size(733, 64);
             this.materialLabel1.TabIndex = 14;
             // 
             // materialRadioButton3
@@ -175,7 +175,7 @@ namespace Test.Frameworks
             this.materialRadioButton3.Location = new System.Drawing.Point(0, 68);
             this.materialRadioButton3.Margin = new System.Windows.Forms.Padding(0);
             this.materialRadioButton3.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialRadioButton3.MouseState = MouseState.HOVER;
+            this.materialRadioButton3.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialRadioButton3.Name = "materialRadioButton3";
             this.materialRadioButton3.Ripple = true;
             this.materialRadioButton3.Size = new System.Drawing.Size(163, 30);
@@ -192,7 +192,7 @@ namespace Test.Frameworks
             this.materialRadioButton2.Location = new System.Drawing.Point(0, 38);
             this.materialRadioButton2.Margin = new System.Windows.Forms.Padding(0);
             this.materialRadioButton2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialRadioButton2.MouseState = MouseState.HOVER;
+            this.materialRadioButton2.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialRadioButton2.Name = "materialRadioButton2";
             this.materialRadioButton2.Ripple = true;
             this.materialRadioButton2.Size = new System.Drawing.Size(163, 30);
@@ -208,7 +208,7 @@ namespace Test.Frameworks
             this.materialCheckbox4.Location = new System.Drawing.Point(0, 98);
             this.materialCheckbox4.Margin = new System.Windows.Forms.Padding(0);
             this.materialCheckbox4.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox4.MouseState = MouseState.HOVER;
+            this.materialCheckbox4.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialCheckbox4.Name = "materialCheckbox4";
             this.materialCheckbox4.Ripple = true;
             this.materialCheckbox4.Size = new System.Drawing.Size(149, 30);
@@ -225,7 +225,7 @@ namespace Test.Frameworks
             this.materialCheckbox3.Location = new System.Drawing.Point(0, 68);
             this.materialCheckbox3.Margin = new System.Windows.Forms.Padding(0);
             this.materialCheckbox3.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox3.MouseState = MouseState.HOVER;
+            this.materialCheckbox3.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialCheckbox3.Name = "materialCheckbox3";
             this.materialCheckbox3.Ripple = true;
             this.materialCheckbox3.Size = new System.Drawing.Size(149, 30);
@@ -243,7 +243,7 @@ namespace Test.Frameworks
             this.materialCheckbox2.Location = new System.Drawing.Point(0, 38);
             this.materialCheckbox2.Margin = new System.Windows.Forms.Padding(0);
             this.materialCheckbox2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox2.MouseState = MouseState.HOVER;
+            this.materialCheckbox2.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialCheckbox2.Name = "materialCheckbox2";
             this.materialCheckbox2.Ripple = true;
             this.materialCheckbox2.Size = new System.Drawing.Size(149, 30);
@@ -262,7 +262,7 @@ namespace Test.Frameworks
             this.materialCheckbox1.Location = new System.Drawing.Point(0, 8);
             this.materialCheckbox1.Margin = new System.Windows.Forms.Padding(0);
             this.materialCheckbox1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox1.MouseState = MouseState.HOVER;
+            this.materialCheckbox1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialCheckbox1.Name = "materialCheckbox1";
             this.materialCheckbox1.Ripple = true;
             this.materialCheckbox1.Size = new System.Drawing.Size(149, 30);
@@ -278,13 +278,13 @@ namespace Test.Frameworks
             this.materialSingleLineTextField2.Hint = "Another example hint";
             this.materialSingleLineTextField2.Location = new System.Drawing.Point(0, 51);
             this.materialSingleLineTextField2.MaxLength = 32767;
-            this.materialSingleLineTextField2.MouseState = MouseState.HOVER;
+            this.materialSingleLineTextField2.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
             this.materialSingleLineTextField2.PasswordChar = '\0';
             this.materialSingleLineTextField2.SelectedText = "";
             this.materialSingleLineTextField2.SelectionLength = 0;
             this.materialSingleLineTextField2.SelectionStart = 0;
-            this.materialSingleLineTextField2.Size = new System.Drawing.Size(583, 23);
+            this.materialSingleLineTextField2.Size = new System.Drawing.Size(725, 23);
             this.materialSingleLineTextField2.TabIndex = 3;
             this.materialSingleLineTextField2.TabStop = false;
             this.materialSingleLineTextField2.UseSystemPasswordChar = false;
@@ -297,13 +297,13 @@ namespace Test.Frameworks
             this.materialSingleLineTextField1.Hint = "This is a hint";
             this.materialSingleLineTextField1.Location = new System.Drawing.Point(0, 14);
             this.materialSingleLineTextField1.MaxLength = 32767;
-            this.materialSingleLineTextField1.MouseState = MouseState.HOVER;
+            this.materialSingleLineTextField1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
             this.materialSingleLineTextField1.PasswordChar = '\0';
             this.materialSingleLineTextField1.SelectedText = "";
             this.materialSingleLineTextField1.SelectionLength = 0;
             this.materialSingleLineTextField1.SelectionStart = 0;
-            this.materialSingleLineTextField1.Size = new System.Drawing.Size(583, 23);
+            this.materialSingleLineTextField1.Size = new System.Drawing.Size(725, 23);
             this.materialSingleLineTextField1.TabIndex = 2;
             this.materialSingleLineTextField1.TabStop = false;
             this.materialSingleLineTextField1.UseSystemPasswordChar = false;
@@ -315,8 +315,8 @@ namespace Test.Frameworks
             this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialButton1.Depth = 0;
             this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(271, 184);
-            this.materialButton1.MouseState = MouseState.HOVER;
+            this.materialButton1.Location = new System.Drawing.Point(413, 184);
+            this.materialButton1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialButton1.Name = "materialButton1";
             this.materialButton1.Primary = true;
             this.materialButton1.Size = new System.Drawing.Size(125, 36);
@@ -334,7 +334,7 @@ namespace Test.Frameworks
             this.materialRadioButton1.Location = new System.Drawing.Point(0, 8);
             this.materialRadioButton1.Margin = new System.Windows.Forms.Padding(0);
             this.materialRadioButton1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialRadioButton1.MouseState = MouseState.HOVER;
+            this.materialRadioButton1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialRadioButton1.Name = "materialRadioButton1";
             this.materialRadioButton1.Ripple = true;
             this.materialRadioButton1.Size = new System.Drawing.Size(163, 30);
@@ -349,9 +349,9 @@ namespace Test.Frameworks
             this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 64);
-            this.materialTabSelector1.MouseState = MouseState.HOVER;
+            this.materialTabSelector1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(625, 48);
+            this.materialTabSelector1.Size = new System.Drawing.Size(767, 48);
             this.materialTabSelector1.TabIndex = 17;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
@@ -367,10 +367,10 @@ namespace Test.Frameworks
             this.materialTabControl1.Controls.Add(this.tabPage5);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Location = new System.Drawing.Point(14, 111);
-            this.materialTabControl1.MouseState = MouseState.HOVER;
+            this.materialTabControl1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(591, 256);
+            this.materialTabControl1.Size = new System.Drawing.Size(733, 256);
             this.materialTabControl1.TabIndex = 18;
             // 
             // tabPage1
@@ -385,7 +385,7 @@ namespace Test.Frameworks
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(583, 230);
+            this.tabPage1.Size = new System.Drawing.Size(725, 230);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -397,13 +397,13 @@ namespace Test.Frameworks
             this.materialSingleLineTextField3.Hint = "This is a password";
             this.materialSingleLineTextField3.Location = new System.Drawing.Point(0, 88);
             this.materialSingleLineTextField3.MaxLength = 32767;
-            this.materialSingleLineTextField3.MouseState = MouseState.HOVER;
+            this.materialSingleLineTextField3.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialSingleLineTextField3.Name = "materialSingleLineTextField3";
             this.materialSingleLineTextField3.PasswordChar = '\0';
             this.materialSingleLineTextField3.SelectedText = "";
             this.materialSingleLineTextField3.SelectionLength = 0;
             this.materialSingleLineTextField3.SelectionStart = 0;
-            this.materialSingleLineTextField3.Size = new System.Drawing.Size(583, 23);
+            this.materialSingleLineTextField3.Size = new System.Drawing.Size(725, 23);
             this.materialSingleLineTextField3.TabIndex = 4;
             this.materialSingleLineTextField3.TabStop = false;
             this.materialSingleLineTextField3.UseSystemPasswordChar = true;
@@ -415,8 +415,8 @@ namespace Test.Frameworks
             this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton1.Depth = 0;
             this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(402, 184);
-            this.materialRaisedButton1.MouseState = MouseState.HOVER;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(544, 184);
+            this.materialRaisedButton1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
             this.materialRaisedButton1.Size = new System.Drawing.Size(181, 36);
@@ -437,7 +437,7 @@ namespace Test.Frameworks
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(583, 230);
+            this.tabPage2.Size = new System.Drawing.Size(725, 230);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -451,7 +451,7 @@ namespace Test.Frameworks
             this.materialCheckBox6.Location = new System.Drawing.Point(0, 158);
             this.materialCheckBox6.Margin = new System.Windows.Forms.Padding(0);
             this.materialCheckBox6.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox6.MouseState = MouseState.HOVER;
+            this.materialCheckBox6.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialCheckBox6.Name = "materialCheckBox6";
             this.materialCheckBox6.Ripple = true;
             this.materialCheckBox6.Size = new System.Drawing.Size(150, 30);
@@ -471,7 +471,7 @@ namespace Test.Frameworks
             this.materialCheckBox5.Location = new System.Drawing.Point(0, 128);
             this.materialCheckBox5.Margin = new System.Windows.Forms.Padding(0);
             this.materialCheckBox5.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox5.MouseState = MouseState.HOVER;
+            this.materialCheckBox5.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialCheckBox5.Name = "materialCheckBox5";
             this.materialCheckBox5.Ripple = true;
             this.materialCheckBox5.Size = new System.Drawing.Size(150, 30);
@@ -489,7 +489,7 @@ namespace Test.Frameworks
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(583, 230);
+            this.tabPage3.Size = new System.Drawing.Size(725, 230);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "MaterialTabPage3";
             // 
@@ -499,7 +499,7 @@ namespace Test.Frameworks
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(583, 230);
+            this.tabPage4.Size = new System.Drawing.Size(725, 230);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "ListView";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -518,11 +518,11 @@ namespace Test.Frameworks
             this.materialListView1.FullRowSelect = true;
             this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.materialListView1.Location = new System.Drawing.Point(3, 3);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(0, 0);
-            this.materialListView1.MouseState = MouseState.HOVER;
+            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialListView1.MouseState = ProgLib.Windows.Forms.Material.MouseState.OUT;
             this.materialListView1.Name = "materialListView1";
             this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(577, 224);
+            this.materialListView1.Size = new System.Drawing.Size(719, 224);
             this.materialListView1.TabIndex = 0;
             this.materialListView1.UseCompatibleStateImageBehavior = false;
             this.materialListView1.View = System.Windows.Forms.View.Details;
@@ -530,7 +530,7 @@ namespace Test.Frameworks
             // columnHeader1
             // 
             this.columnHeader1.Text = "Dessert (100g serving)";
-            this.columnHeader1.Width = 200;
+            this.columnHeader1.Width = 370;
             // 
             // columnHeader2
             // 
@@ -556,7 +556,7 @@ namespace Test.Frameworks
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(583, 230);
+            this.tabPage5.Size = new System.Drawing.Size(725, 230);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "tabPage5";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -569,7 +569,7 @@ namespace Test.Frameworks
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel2.Location = new System.Drawing.Point(3, 15);
-            this.materialLabel2.MouseState = MouseState.HOVER;
+            this.materialLabel2.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(580, 63);
             this.materialLabel2.TabIndex = 3;
@@ -584,7 +584,7 @@ namespace Test.Frameworks
             this.materialFlatButton4.Icon = global::Test.Properties.Resources.minus;
             this.materialFlatButton4.Location = new System.Drawing.Point(7, 95);
             this.materialFlatButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton4.MouseState = MouseState.HOVER;
+            this.materialFlatButton4.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialFlatButton4.Name = "materialFlatButton4";
             this.materialFlatButton4.Primary = false;
             this.materialFlatButton4.Size = new System.Drawing.Size(118, 36);
@@ -601,7 +601,7 @@ namespace Test.Frameworks
             this.materialRaisedButton2.Depth = 0;
             this.materialRaisedButton2.Icon = global::Test.Properties.Resources.plus;
             this.materialRaisedButton2.Location = new System.Drawing.Point(501, 95);
-            this.materialRaisedButton2.MouseState = MouseState.HOVER;
+            this.materialRaisedButton2.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialRaisedButton2.Name = "materialRaisedButton2";
             this.materialRaisedButton2.Primary = true;
             this.materialRaisedButton2.Size = new System.Drawing.Size(76, 36);
@@ -616,7 +616,7 @@ namespace Test.Frameworks
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialProgressBar1.Depth = 0;
             this.materialProgressBar1.Location = new System.Drawing.Point(6, 81);
-            this.materialProgressBar1.MouseState = MouseState.HOVER;
+            this.materialProgressBar1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
             this.materialProgressBar1.Size = new System.Drawing.Size(571, 5);
             this.materialProgressBar1.TabIndex = 0;
@@ -634,7 +634,7 @@ namespace Test.Frameworks
             this.toolStripSeparator1,
             this.item3ToolStripMenuItem});
             this.materialContextMenuStrip1.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
-            this.materialContextMenuStrip1.MouseState = MouseState.HOVER;
+            this.materialContextMenuStrip1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialContextMenuStrip1.Name = "materialContextMenuStrip1";
             this.materialContextMenuStrip1.Size = new System.Drawing.Size(166, 130);
             // 
@@ -697,9 +697,9 @@ namespace Test.Frameworks
             this.materialFlatButton3.Depth = 0;
             this.materialFlatButton3.Enabled = false;
             this.materialFlatButton3.Icon = null;
-            this.materialFlatButton3.Location = new System.Drawing.Point(343, 386);
+            this.materialFlatButton3.Location = new System.Drawing.Point(485, 386);
             this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton3.MouseState = MouseState.HOVER;
+            this.materialFlatButton3.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialFlatButton3.Name = "materialFlatButton3";
             this.materialFlatButton3.Primary = false;
             this.materialFlatButton3.Size = new System.Drawing.Size(84, 36);
@@ -712,7 +712,7 @@ namespace Test.Frameworks
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(617, 429);
+            this.ClientSize = new System.Drawing.Size(759, 429);
             this.ContextMenuStrip = this.materialContextMenuStrip1;
             this.Controls.Add(this.materialFlatButton3);
             this.Controls.Add(this.materialFlatButton2);

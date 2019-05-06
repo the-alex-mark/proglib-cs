@@ -1200,6 +1200,36 @@
     <Compile Include="Plugins\TagLib\Xmp\XmpNodeType.cs" />
     <Compile Include="Plugins\TagLib\Xmp\XmpNodeVisitor.cs" />
     <Compile Include="Plugins\TagLib\Xmp\XmpTag.cs" />
+    <Compile Include="Text\Encoding\Barcode\BarcodeCommon.cs" />
+    <Compile Include="Text\Encoding\Barcode\BarcodeLib.cs" />
+    <Compile Include="Text\Encoding\Barcode\BarcodeLib.Designer.cs">
+      <DependentUpon>BarcodeLib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Text\Encoding\Barcode\IBarcode.cs" />
+    <Compile Include="Text\Encoding\Barcode\Labels.cs" />
+    <Compile Include="Text\Encoding\Barcode\SaveData.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Blank.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Codabar.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Code11.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Code128.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Code39.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Code93.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\EAN13.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\EAN8.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\FIM.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Interleaved2of5.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\ISBN.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\ITF14.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\JAN13.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\MSI.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Pharmacode.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Postnet.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Standard2of5.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\Telepen.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\UPCA.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\UPCE.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\UPCSupplement2.cs" />
+    <Compile Include="Text\Encoding\Barcode\Symbologies\UPCSupplement5.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Windows\Forms\Direction.cs" />
     <Compile Include="Drawing\CMYK.cs" />
@@ -1367,63 +1397,6 @@
     <Compile Include="Windows\Forms\Minimal\MinimalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\Metro\MessageType.cs" />
-    <Compile Include="Windows\Forms\Metro\MetroForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroCheckBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroCheckBox.Designer.cs">
-      <DependentUpon>MetroCheckBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroCollection.cs" />
-    <Compile Include="Windows\Forms\Metro\MetroLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroLabel.Designer.cs">
-      <DependentUpon>MetroLabel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroMessageBox.cs" />
-    <Compile Include="Windows\Forms\Metro\MetroPaint.cs" />
-    <Compile Include="Windows\Forms\Metro\MetroRadioButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroRadioButton.Designer.cs">
-      <DependentUpon>MetroRadioButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroTabControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroTabControl.Designer.cs">
-      <DependentUpon>MetroTabControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroTabSelector.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroTabSelector.Designer.cs">
-      <DependentUpon>MetroTabSelector.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroButton.Designer.cs">
-      <DependentUpon>MetroButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroTile.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroTile.Designer.cs">
-      <DependentUpon>MetroTile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroToggle.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MetroToggle.Designer.cs">
-      <DependentUpon>MetroToggle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Metro\MouseState.cs" />
-    <Compile Include="Windows\Forms\Metro\Theme.cs" />
     <Compile Include="Windows\Forms\Minimal\MessageType.cs" />
     <Compile Include="Windows\Forms\Minimal\MinimalContextMenuRenderer.cs.cs" />
     <Compile Include="Windows\Forms\Minimal\MinimalContextMenuStrip.cs">

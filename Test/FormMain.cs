@@ -14,16 +14,17 @@ using ProgLib.Audio;
 using ProgLib.Audio.Visualization;
 using ProgLib.Data.Access;
 using ProgLib.Data.TSQL;
-using System.IO;
 using ProgLib.Network;
 using ProgLib.Windows;
 using ProgLib.Windows.Forms;
-using ProgLib.Windows.Forms.Metro;
+//using ProgLib.Windows.Forms.Metro;
 using ProgLib.Windows.Forms.Material;
 using ProgLib.Windows.Forms.Minimal;
 using ProgLib.Windows.Forms.VSCode;
 
 using Test.Frameworks;
+using System.Drawing.Imaging;
+using ProgLib.Text.Encoding.Barcode;
 
 namespace Test
 {
@@ -191,7 +192,7 @@ namespace Test
         }
 
         // Окна
-        private void materialWindow_Click(Object sender, EventArgs e)
+        private void mMaterialSkin_Click(Object sender, EventArgs e)
         {
             Form_MaterialSkin MF = new Form_MaterialSkin();
             MF.ShowDialog();
