@@ -98,12 +98,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bass.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\basswasapi.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\minus.png" />
   </ItemGroup>
   <ItemGroup>

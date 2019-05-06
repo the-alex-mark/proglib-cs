@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using MaterialSkin;
-using MaterialSkin.Controls;
+using ProgLib.Windows.Forms.Material;
 
 namespace Test.Frameworks
 {
-    public partial class Form_MaterialSkin : MaterialSkin.Controls.MaterialForm
+    public partial class Form_MaterialSkin : ProgLib.Windows.Forms.Material.MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
         public Form_MaterialSkin()

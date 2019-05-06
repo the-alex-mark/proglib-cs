@@ -1,4 +1,4 @@
-﻿namespace MaterialSkin
+﻿namespace ProgLib.Windows.Forms.Material
 {
     public interface IMaterialControl
     {

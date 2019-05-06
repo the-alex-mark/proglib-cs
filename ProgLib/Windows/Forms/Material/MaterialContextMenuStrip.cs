@@ -5,7 +5,7 @@ using System.Drawing.Text;
 using System.Windows.Forms;
 using ProgLib.Animations.Material;
 
-namespace MaterialSkin.Controls
+namespace ProgLib.Windows.Forms.Material
 {
     public class MaterialContextMenuStrip : ContextMenuStrip, IMaterialControl
     {

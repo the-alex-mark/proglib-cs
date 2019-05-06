@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace MaterialSkin.Controls
+namespace ProgLib.Windows.Forms.Material
 {
     public class MaterialListView : ListView, IMaterialControl
     {

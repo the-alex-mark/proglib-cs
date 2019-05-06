@@ -6,9 +6,9 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ProgLib.Properties;
-using MaterialSkin.Controls;
+using ProgLib.Windows.Forms.Material;
 
-namespace MaterialSkin
+namespace ProgLib.Windows.Forms.Material
 {
     public class MaterialSkinManager
     {
