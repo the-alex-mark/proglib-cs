@@ -19,13 +19,15 @@ using ProgLib.Network;
 using ProgLib.Windows;
 using ProgLib.Windows.Forms;
 using ProgLib.Windows.Forms.Metro;
-using ProgLib.Windows.Forms.Material;
+//using ProgLib.Windows.Forms.Material;
 using ProgLib.Windows.Forms.Minimal;
 using ProgLib.Windows.Forms.VSCode;
 
+using Test.Frameworks;
+
 namespace Test
 {
-    public partial class FormMain : Form// ProgLib.Windows.Forms.Metro.MetroForm
+    public partial class FormMain : Form
     {
         #region Import
 
@@ -130,10 +132,7 @@ namespace Test
         {
             InitializeComponent();
             m_aeroEnabled = true;
-
-            // Установка максимального размера завёртывания формы
-            MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-
+            
             // Оформление MainMenu
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
@@ -149,26 +148,69 @@ namespace Test
                 WindowState = (WindowState == FormWindowState.Maximized)
                     ? FormWindowState.Normal
                     : FormWindowState.Maximized;
+
+                this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             };
             MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
                 Close();
             };
         }
-        
+
+        #region Variables
+
+        private FormWindowState _windowState;
+
+        #endregion
+
+        #region Menu
+
+        // Вид
+        private void mFullScreen_Click(Object sender, EventArgs e)
+        {
+            // Установка максимального размера завёртывания формы
+            switch (mFullScreen.Text)
+            {
+                case "Включить полноэкранный режим":
+                    _windowState = this.WindowState;
+                    this.WindowState = FormWindowState.Normal;
+                    this.MaximizedBounds = Screen.FromHandle(this.Handle).Bounds;
+                    this.WindowState = FormWindowState.Maximized;
+
+                    mFullScreen.Text = "Выключить полноэкранный режим";
+                    break;
+
+                case "Выключить полноэкранный режим":
+                    this.WindowState = FormWindowState.Normal;
+                    this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+                    this.WindowState = _windowState;
+
+                    mFullScreen.Text = "Включить полноэкранный режим";
+                    break;
+            }
+        }
+
+        // Окна
+        private void materialWindow_Click(Object sender, EventArgs e)
+        {
+            Form_MaterialSkin MF = new Form_MaterialSkin();
+            MF.ShowDialog();
+        }
+
+        #endregion
+
         private void Form1_Load(Object sender, EventArgs e)
         {
+            // Установка максимального размера завёртывания формы
+            MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            _windowState = this.WindowState;
+
             VSCodeTheme Theme = VSCodeTheme.Red;
 
-            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, VSCodeIconTheme.Custom);
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, VSCodeIconTheme.Minimal);
             MainMenu.Renderer = _renderer;
             contextMenuStrip1.Renderer = _renderer;
             BackColor = _renderer.WindowBackColor;
-        }
-
-        private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
-        {
-
         }
     }
 }

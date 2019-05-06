@@ -95,7 +95,7 @@ namespace ProgLib.Windows.Forms.Cyotek
         {
             InitializeComponent();
             
-            MovingForm(panel1, materialTabSelector1);
+            MovingForm(panel1/*, materialTabSelector1*/);
         }
 
         private struct ColorInfo
@@ -213,7 +213,7 @@ namespace ProgLib.Windows.Forms.Cyotek
             RedrawingListBox(ListSystemColors, typeof(SystemColors));
             RedrawingListBox(ListWebColors, typeof(Color));
 
-            materialTabControl1.SelectedTab = PageCustomColors;
+            //materialTabControl1.SelectedTab = PageCustomColors;
             //ListWebColors.SelectedIndex = 0;
             //ListSystemColors.SelectedIndex = 0;
 

@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace ProgLib.Windows.Forms.Material
+namespace MaterialSkin.Controls
 {
-    public partial class MaterialDivider : Control
+    public sealed class MaterialDivider : Control, IMaterialControl
     {
+        [Browsable(false)]
+        public int Depth { get; set; }
+        [Browsable(false)]
+        public MaterialSkinManager SkinManager => MaterialSkinManager.Instance;
         [Browsable(false)]
         public MouseState MouseState { get; set; }
 
@@ -18,7 +16,7 @@ namespace ProgLib.Windows.Forms.Material
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             Height = 1;
-            //BackColor = SkinManager.GetDividersColor();
+            BackColor = SkinManager.GetDividersColor();
         }
     }
 }

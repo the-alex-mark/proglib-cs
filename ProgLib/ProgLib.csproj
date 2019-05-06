@@ -1315,28 +1315,48 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Windows\Forms\FormExpansion.cs" />
-    <Compile Include="Windows\Forms\Material\MaterialButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialButton.Designer.cs">
-      <DependentUpon>MaterialButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialCheckBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialCheckBox.Designer.cs">
-      <DependentUpon>MaterialCheckBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Forms\Material\ColorScheme.cs" />
     <Compile Include="Windows\Forms\Material\DrawHelper.cs" />
+    <Compile Include="Windows\Forms\Material\IMaterialControl.cs" />
+    <Compile Include="Windows\Forms\Material\MaterialCheckbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\Material\MaterialContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Windows\Forms\Material\MaterialDivider.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialDivider.Designer.cs">
-      <DependentUpon>MaterialDivider.cs</DependentUpon>
+    <Compile Include="Windows\Forms\Material\MaterialFlatButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Windows\Forms\Material\MaterialForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\Material\MaterialLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\Material\MaterialListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\Material\MaterialProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\Material\MaterialRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\Material\MaterialRaisedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\Material\MaterialSingleLineTextField.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\Material\MaterialSkinManager.cs" />
+    <Compile Include="Windows\Forms\Material\MaterialTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\Material\MaterialTabSelector.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Windows\Forms\MinimalForm.cs">
       <SubType>Form</SubType>
@@ -1412,31 +1432,6 @@
     <Compile Include="Windows\Forms\Minimal\MinimalContextMenuStrip.Designer.cs">
       <DependentUpon>MinimalContextMenuStrip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialListView.Designer.cs">
-      <DependentUpon>MaterialListView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialRadioButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialRadioButton.Designer.cs">
-      <DependentUpon>MaterialRadioButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialTabControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialTabControl.Designer.cs">
-      <DependentUpon>MaterialTabControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialTabSelector.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\MaterialTabSelector.Designer.cs">
-      <DependentUpon>MaterialTabSelector.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Forms\Material\IMaterialControl.cs" />
     <Compile Include="Windows\Forms\Minimal\MinimalComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1524,9 +1519,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CellTransparentBackground.png" />
-    <None Include="Resources\Open_Sans.ttf" />
-    <None Include="Resources\Open_Sans_Bold.ttf" />
-    <None Include="Resources\Open_Sans_Light.ttf" />
     <None Include="Resources\Roboto-Medium.ttf" />
     <None Include="Resources\Roboto-Regular.ttf" />
   </ItemGroup>

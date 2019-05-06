@@ -353,7 +353,7 @@ namespace ProgLib.Windows.Forms.VSCode
         /// </summary>
         /// <param name="Item"></param>
         /// <returns></returns>
-        private ToolStripItem[] GetChildren(ToolStripItem Item)
+        private ToolStripItem[] GetItems(ToolStripItem Item)
         {
             List<ToolStripItem> Items = new List<ToolStripItem>();
             
@@ -383,7 +383,7 @@ namespace ProgLib.Windows.Forms.VSCode
         /// </summary>
         /// <param name="Item"></param>
         /// <returns></returns>
-        private ToolStripItem[] GetChildren(ToolStripItemCollection Collection)
+        private ToolStripItem[] GetItems(ToolStripItemCollection Collection)
         {
             List<ToolStripItem> Items = new List<ToolStripItem>();
             foreach (ToolStripItem Item in Collection)
@@ -398,7 +398,7 @@ namespace ProgLib.Windows.Forms.VSCode
             foreach (ToolStripItem Item in Items)
             {
                 _count += 1;
-                _count += GetCount(GetChildren(Item));
+                _count += GetCount(GetItems(Item));
             }
 
             return _count;
@@ -428,7 +428,7 @@ namespace ProgLib.Windows.Forms.VSCode
             if (Items.Length > 0)
             {
                 foreach (ToolStripItem Item in Items)
-                    UMargin(GetChildren(Item));
+                    UMargin(GetItems(Item));
             }
         }
 
@@ -462,13 +462,13 @@ namespace ProgLib.Windows.Forms.VSCode
                 {
                     MenuStrip _menuStrip = e.Item.GetCurrentParent() as MenuStrip;
                     if (_menuStrip.Parent is Form) Parent = _menuStrip.Parent as Form;
-                    foreach (ToolStripItem _item in GetChildren(_menuStrip.Items)) UMargin(GetChildren(_item));
+                    foreach (ToolStripItem _item in GetItems(_menuStrip.Items)) UMargin(GetItems(_item));
 
                     _menuStrip.Padding = new Padding(0);
                     
                     if (Counter)
                     {
-                        Count = GetCount(GetChildren(_menuStrip.Items));
+                        Count = GetCount(GetItems(_menuStrip.Items));
                         Counter = false;
                     }
                 }
@@ -477,11 +477,11 @@ namespace ProgLib.Windows.Forms.VSCode
                 if (e.Item.GetCurrentParent() is ContextMenuStrip)
                 {
                     ContextMenuStrip _contextMenuStrip = e.Item.GetCurrentParent() as ContextMenuStrip;
-                    UMargin(GetChildren(_contextMenuStrip.Items));
+                    UMargin(GetItems(_contextMenuStrip.Items));
 
                     if (Counter)
                     {
-                        Count = GetCount(GetChildren(_contextMenuStrip.Items));
+                        Count = GetCount(GetItems(_contextMenuStrip.Items));
                         Counter = false;
                     }
                 }

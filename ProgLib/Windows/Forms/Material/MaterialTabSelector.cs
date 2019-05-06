@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing.Text;
 using System.Windows.Forms;
 using ProgLib.Animations.Material;
 
-namespace ProgLib.Windows.Forms.Material
+namespace MaterialSkin.Controls
 {
-    [ToolboxBitmap(typeof(System.Windows.Forms.TabControl))]
-    public partial class MaterialTabSelector : Control
+    public class MaterialTabSelector : Control, IMaterialControl
     {
+        [Browsable(false)]
+        public int Depth { get; set; }
+        [Browsable(false)]
+        public MaterialSkinManager SkinManager => MaterialSkinManager.Instance;
         [Browsable(false)]
         public MouseState MouseState { get; set; }
 
@@ -57,9 +56,7 @@ namespace ProgLib.Windows.Forms.Material
         public MaterialTabSelector()
         {
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
-            Height = 200;
-            _IndicatorColor = Color.FromArgb(255, 128, 128);
-            _animateColor = Color.FromArgb(255, 128, 128);
+            Height = 48;
 
             _animationManager = new AnimationManager
             {
@@ -69,81 +66,80 @@ namespace ProgLib.Windows.Forms.Material
             _animationManager.OnAnimationProgress += sender => Invalidate();
         }
 
-        private Color _IndicatorColor, _animateColor;
-
-        [Category("Appearance"), Description("Цвет индикатора вкладок")]
-        public Color IndicatorColor
-        {
-            get { return _IndicatorColor; }
-            set
-            {
-                _IndicatorColor = value;
-                Invalidate();
-            }
-        }
-
-        [Category("Appearance"), Description("Цвет анимации")]
-        public Color AnimateColor
-        {
-            get { return _animateColor; }
-            set
-            {
-                _animateColor = value;
-                Invalidate();
-            }
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
-            e.Graphics.Clear(BackColor);
+            var g = e.Graphics;
+            g.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+            g.Clear(SkinManager.ColorScheme.PrimaryColor);
 
             if (_baseTabControl == null) return;
+
             if (!_animationManager.IsAnimating() || _tabRects == null || _tabRects.Count != _baseTabControl.TabCount)
                 UpdateTabRects();
 
-            Double animationProgress = _animationManager.GetProgress();
+            var animationProgress = _animationManager.GetProgress();
 
-            // Отрисовка анимации
+            //Click feedback
             if (_animationManager.IsAnimating())
             {
-                Int32 rippleSize = (int)(animationProgress * _tabRects[_baseTabControl.SelectedIndex].Width * 1.75);
+                var rippleBrush = new SolidBrush(Color.FromArgb((int)(51 - (animationProgress * 50)), Color.White));
+                var rippleSize = (int)(animationProgress * _tabRects[_baseTabControl.SelectedIndex].Width * 1.75);
 
-                e.Graphics.SetClip(_tabRects[_baseTabControl.SelectedIndex]);
-                e.Graphics.FillEllipse(
-                    new SolidBrush(Color.FromArgb((int)(51 - (animationProgress * 50)), _animateColor)),
-                    new Rectangle(_animationSource.X - rippleSize / 2, _animationSource.Y - rippleSize / 2, rippleSize, rippleSize));
-                e.Graphics.ResetClip();
+                g.SetClip(_tabRects[_baseTabControl.SelectedIndex]);
+                g.FillEllipse(rippleBrush, new Rectangle(_animationSource.X - rippleSize / 2, _animationSource.Y - rippleSize / 2, rippleSize, rippleSize));
+                g.ResetClip();
+                rippleBrush.Dispose();
             }
 
-            // Отрисовка текста
+            //Draw tab headers
             foreach (TabPage tabPage in _baseTabControl.TabPages)
             {
-                e.Graphics.DrawString(
-                    tabPage.Text,
-                    Font,
-                    new SolidBrush(ForeColor),
-                    _tabRects[_baseTabControl.TabPages.IndexOf(tabPage)],
-                    new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                var currentTabIndex = _baseTabControl.TabPages.IndexOf(tabPage);
+                Brush textBrush = new SolidBrush(Color.FromArgb(CalculateTextAlpha(currentTabIndex, animationProgress), SkinManager.ColorScheme.TextColor));
+
+                g.DrawString(tabPage.Text.ToUpper(), SkinManager.ROBOTO_MEDIUM_10, textBrush, _tabRects[currentTabIndex], new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                textBrush.Dispose();
             }
 
-            // Анимация индикатора вкладок
-            Int32 previousSelectedTabIndexIfHasOne = _previousSelectedTabIndex == -1 ? _baseTabControl.SelectedIndex : _previousSelectedTabIndex;
-            Rectangle previousActiveTabRect = _tabRects[previousSelectedTabIndexIfHasOne];
-            Rectangle activeTabPageRect = _tabRects[_baseTabControl.SelectedIndex];
+            //Animate tab indicator
+            var previousSelectedTabIndexIfHasOne = _previousSelectedTabIndex == -1 ? _baseTabControl.SelectedIndex : _previousSelectedTabIndex;
+            var previousActiveTabRect = _tabRects[previousSelectedTabIndexIfHasOne];
+            var activeTabPageRect = _tabRects[_baseTabControl.SelectedIndex];
 
-            e.Graphics.FillRectangle(
-                new SolidBrush(_IndicatorColor),
-                previousActiveTabRect.X + (int)((activeTabPageRect.X - previousActiveTabRect.X) * animationProgress),
-                activeTabPageRect.Bottom - 2,
-                previousActiveTabRect.Width + (int)((activeTabPageRect.Width - previousActiveTabRect.Width) * animationProgress),
-                TAB_INDICATOR_HEIGHT);
+            var y = activeTabPageRect.Bottom - 2;
+            var x = previousActiveTabRect.X + (int)((activeTabPageRect.X - previousActiveTabRect.X) * animationProgress);
+            var width = previousActiveTabRect.Width + (int)((activeTabPageRect.Width - previousActiveTabRect.Width) * animationProgress);
+
+            g.FillRectangle(SkinManager.ColorScheme.AccentBrush, x, y, width, TAB_INDICATOR_HEIGHT);
         }
+
+        private int CalculateTextAlpha(int tabIndex, double animationProgress)
+        {
+            int primaryA = SkinManager.ACTION_BAR_TEXT.A;
+            int secondaryA = SkinManager.ACTION_BAR_TEXT_SECONDARY.A;
+
+            if (tabIndex == _baseTabControl.SelectedIndex && !_animationManager.IsAnimating())
+            {
+                return primaryA;
+            }
+            if (tabIndex != _previousSelectedTabIndex && tabIndex != _baseTabControl.SelectedIndex)
+            {
+                return secondaryA;
+            }
+            if (tabIndex == _previousSelectedTabIndex)
+            {
+                return primaryA - (int)((primaryA - secondaryA) * animationProgress);
+            }
+            return secondaryA + (int)((primaryA - secondaryA) * animationProgress);
+        }
+
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
 
             if (_tabRects == null) UpdateTabRects();
-            for (int i = 0; i < _tabRects.Count; i++)
+            for (var i = 0; i < _tabRects.Count; i++)
             {
                 if (_tabRects[i].Contains(e.Location))
                 {
@@ -153,23 +149,24 @@ namespace ProgLib.Windows.Forms.Material
 
             _animationSource = e.Location;
         }
+
         private void UpdateTabRects()
         {
             _tabRects = new List<Rectangle>();
 
-            // Если отсутствует элемент управления базовой вкладки, ректы не должны вычисляться
-            // Если в элементе управления "базовая вкладка" нет страниц вкладок, список должен быть пустым, который уже был установлен; выйдите из пустоты
+            //If there isn't a base tab control, the rects shouldn't be calculated
+            //If there aren't tab pages in the base tab control, the list should just be empty which has been set already; exit the void
             if (_baseTabControl == null || _baseTabControl.TabCount == 0) return;
 
-            // Вычисление границ каждого заголовка вкладки, указанного в Базовом элементе управления вкладками
-            using (Bitmap B = new Bitmap(1, 1))
+            //Calculate the bounds of each tab header specified in the base tab control
+            using (var b = new Bitmap(1, 1))
             {
-                using (Graphics G = Graphics.FromImage(B))
+                using (var g = Graphics.FromImage(b))
                 {
-                    _tabRects.Add(new Rectangle(0, 0, TAB_HEADER_PADDING * 2 + (int)G.MeasureString(_baseTabControl.TabPages[0].Text, Font).Width, Height));
+                    _tabRects.Add(new Rectangle(SkinManager.FORM_PADDING, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[0].Text, SkinManager.ROBOTO_MEDIUM_10).Width, Height));
                     for (int i = 1; i < _baseTabControl.TabPages.Count; i++)
                     {
-                        _tabRects.Add(new Rectangle(_tabRects[i - 1].Right, 0, TAB_HEADER_PADDING * 2 + (int)G.MeasureString(_baseTabControl.TabPages[i].Text, Font).Width, Height));
+                        _tabRects.Add(new Rectangle(_tabRects[i - 1].Right, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[i].Text, SkinManager.ROBOTO_MEDIUM_10).Width, Height));
                     }
                 }
             }

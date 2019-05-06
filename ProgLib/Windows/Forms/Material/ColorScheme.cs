@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace ProgLib.Windows.Forms.Material
+namespace MaterialSkin
 {
     public class ColorScheme
     {

@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using System.Drawing;
 using System.ComponentModel;
-using System.Runtime.InteropServices;
+using System.Drawing;
 using System.Drawing.Text;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
-namespace ProgLib.Windows.Forms.Material
+namespace MaterialSkin.Controls
 {
-    public class MaterialForm : System.Windows.Forms.Form
+    public class MaterialForm : Form, IMaterialControl
     {
+        [Browsable(false)]
+        public int Depth { get; set; }
+        [Browsable(false)]
+        public MaterialSkinManager SkinManager => MaterialSkinManager.Instance;
         [Browsable(false)]
         public MouseState MouseState { get; set; }
         public new FormBorderStyle FormBorderStyle { get { return base.FormBorderStyle; } set { base.FormBorderStyle = value; } }
@@ -161,84 +165,6 @@ namespace ProgLib.Windows.Forms.Material
             // This enables the form to trigger the MouseMove event even when mouse is over another control
             Application.AddMessageFilter(new MouseMessageFilter());
             MouseMessageFilter.MouseMove += OnGlobalMouseMove;
-
-            Font = new Font(Font.FontFamily, 12, FontStyle.Bold);
-            BackColor = Color.White;
-            ForeColor = Color.White;
-            _statusBarColor = Color.FromArgb(255, 128, 128);
-            _actionBarColor = Color.FromArgb(255, 100, 100);
-            _borderColor = BackColor;
-            _buttonColor = Color.White;
-            _hoverButtonColor = Color.FromArgb(255, 110, 110);
-            _downButtonColor = Color.FromArgb(255, 100, 100);
-        }
-
-        private Color _statusBarColor, _actionBarColor, _borderColor, _buttonColor, _hoverButtonColor, _downButtonColor;
-
-        [Category("Appearance"), Description("Цвет StatusBar")]
-        public Color StatusBarColor
-        {
-            get { return _statusBarColor; }
-            set
-            {
-                _statusBarColor = value;
-                Invalidate();
-            }
-        }
-
-        [Category("Appearance"), Description("Цвет ActionBar")]
-        public Color ActionBarColor
-        {
-            get { return _actionBarColor; }
-            set
-            {
-                _actionBarColor = value;
-                Invalidate();
-            }
-        }
-
-        [Category("Appearance"), Description("Цвет границ формы")]
-        public Color BorderColor
-        {
-            get { return _borderColor; }
-            set
-            {
-                _borderColor = value;
-                Invalidate();
-            }
-        }
-
-        [Category("Appearance"), Description("Цвет фона кнопок при наведении")]
-        public Color HoverButtonColor
-        {
-            get { return _hoverButtonColor; }
-            set
-            {
-                _hoverButtonColor = value;
-                Invalidate();
-            }
-        }
-
-        [Category("Appearance"), Description("Цвет фона кнопок при нажатии")]
-        public Color DownButtonColor
-        {
-            get { return _downButtonColor; }
-            set
-            {
-                _downButtonColor = value;
-                Invalidate();
-            }
-        }
-
-        [Category("Appearance"), Description("Цвет кнопок")]
-        public Color ButtonColor
-        {
-            get { return _buttonColor; }
-            set
-            {
-                _buttonColor = value;
-                Invalidate();
-            }
         }
 
         protected override void WndProc(ref Message m)
@@ -537,9 +463,9 @@ namespace ProgLib.Windows.Forms.Material
         {
             base.OnResize(e);
 
-            _minButtonBounds = new Rectangle((Width - Padding.All / 2) - 3 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
-            _maxButtonBounds = new Rectangle((Width - Padding.All / 2) - 2 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
-            _xButtonBounds = new Rectangle((Width - Padding.All / 2) - STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
+            _minButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - 3 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
+            _maxButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - 2 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
+            _xButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
             _statusBarBounds = new Rectangle(0, 0, Width, STATUS_BAR_HEIGHT);
             _actionBarBounds = new Rectangle(0, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT);
         }
@@ -549,12 +475,12 @@ namespace ProgLib.Windows.Forms.Material
             var g = e.Graphics;
             g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-            g.Clear(BackColor);
-            g.FillRectangle(new SolidBrush(_statusBarColor), _statusBarBounds);
-            g.FillRectangle(new SolidBrush(_actionBarColor), _actionBarBounds);
+            g.Clear(SkinManager.GetApplicationBackgroundColor());
+            g.FillRectangle(SkinManager.ColorScheme.DarkPrimaryBrush, _statusBarBounds);
+            g.FillRectangle(SkinManager.ColorScheme.PrimaryBrush, _actionBarBounds);
 
             //Draw border
-            using (var borderPen = new Pen(_borderColor, 1))
+            using (var borderPen = new Pen(SkinManager.GetDividersColor(), 1))
             {
                 g.DrawLine(borderPen, new Point(0, _actionBarBounds.Bottom), new Point(0, Height - 2));
                 g.DrawLine(borderPen, new Point(Width - 1, _actionBarBounds.Bottom), new Point(Width - 1, Height - 2));
@@ -564,8 +490,8 @@ namespace ProgLib.Windows.Forms.Material
             // Determine whether or not we even should be drawing the buttons.
             bool showMin = MinimizeBox && ControlBox;
             bool showMax = MaximizeBox && ControlBox;
-            var hoverBrush = new SolidBrush(_hoverButtonColor);
-            var downBrush = new SolidBrush(_downButtonColor);
+            var hoverBrush = SkinManager.GetFlatButtonHoverBackgroundBrush();
+            var downBrush = SkinManager.GetFlatButtonPressedBackgroundBrush();
 
             // When MaximizeButton == false, the minimize button will be painted in its place
             if (_buttonState == ButtonState.MinOver && showMin)
@@ -586,7 +512,7 @@ namespace ProgLib.Windows.Forms.Material
             if (_buttonState == ButtonState.XDown && ControlBox)
                 g.FillRectangle(downBrush, _xButtonBounds);
 
-            using (var formButtonsPen = new Pen(_buttonColor, 2))
+            using (var formButtonsPen = new Pen(SkinManager.ACTION_BAR_TEXT_SECONDARY, 2))
             {
                 // Minimize button.
                 if (showMin)
@@ -636,11 +562,7 @@ namespace ProgLib.Windows.Forms.Material
             }
 
             //Form title
-            g.DrawString(
-                Text,
-                Font,
-                new SolidBrush(ForeColor),
-                new Rectangle(6, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT), new StringFormat { LineAlignment = StringAlignment.Center });
+            g.DrawString(Text, SkinManager.ROBOTO_MEDIUM_12, SkinManager.ColorScheme.TextBrush, new Rectangle(SkinManager.FORM_PADDING, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT), new StringFormat { LineAlignment = StringAlignment.Center });
         }
     }
 

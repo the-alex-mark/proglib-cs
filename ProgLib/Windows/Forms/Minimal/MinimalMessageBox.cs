@@ -1,6 +1,5 @@
 ﻿using ProgLib.Diagnostics;
 using ProgLib.Windows.Forms;
-using ProgLib.Windows.Forms.Material;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

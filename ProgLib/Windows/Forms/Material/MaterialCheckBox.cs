@@ -2,197 +2,249 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.Windows.Forms;
 using ProgLib.Animations.Material;
 
-namespace ProgLib.Windows.Forms.Material
+namespace MaterialSkin.Controls
 {
-    [ToolboxBitmap(typeof(System.Windows.Forms.CheckBox))]
-    public partial class MaterialCheckBox : System.Windows.Forms.CheckBox
+    public class MaterialCheckBox : CheckBox, IMaterialControl
     {
+        [Browsable(false)]
+        public int Depth { get; set; }
+        [Browsable(false)]
+        public MaterialSkinManager SkinManager => MaterialSkinManager.Instance;
+        [Browsable(false)]
+        public MouseState MouseState { get; set; }
+        [Browsable(false)]
+        public Point MouseLocation { get; set; }
+
+        private bool _ripple;
+        [Category("Behavior")]
+        public bool Ripple
+        {
+            get { return _ripple; }
+            set
+            {
+                _ripple = value;
+                AutoSize = AutoSize; //Make AutoSize directly set the bounds.
+
+                if (value)
+                {
+                    Margin = new Padding(0);
+                }
+
+                Invalidate();
+            }
+        }
+
+        private readonly AnimationManager _animationManager;
+        private readonly AnimationManager _rippleAnimationManager;
+
+        private const int CHECKBOX_SIZE = 18;
+        private const int CHECKBOX_SIZE_HALF = CHECKBOX_SIZE / 2;
+        private const int CHECKBOX_INNER_BOX_SIZE = CHECKBOX_SIZE - 4;
+
+        private int _boxOffset;
+        private Rectangle _boxRectangle;
+
         public MaterialCheckBox()
         {
-            ForeColor = SystemColors.GrayText;
-            MinimumSize = new Size((int)CreateGraphics().MeasureString(Text, new Font(Font.Name, Font.Size, Font.Style)).Width + 22, 23);
-            FlatStyle = FlatStyle.Flat;
-            FlatAppearance.BorderSize = 1;
-            FlatAppearance.BorderColor = SystemColors.ControlDark;
-            FlatAppearance.MouseDownBackColor = SystemColors.ControlDarkDark;
-
-            _animation = true;
-            _checkedColor = SystemColors.ControlDarkDark;
-
-            AnimationManager = new AnimationManager
+            _animationManager = new AnimationManager
             {
                 AnimationType = AnimationType.EaseInOut,
                 Increment = 0.05
             };
-            RippleAnimationManager = new AnimationManager(false)
+            _rippleAnimationManager = new AnimationManager(false)
             {
                 AnimationType = AnimationType.Linear,
                 Increment = 0.10,
                 SecondaryIncrement = 0.08
             };
-
-            AnimationManager.OnAnimationProgress += sender => Invalidate();
-            RippleAnimationManager.OnAnimationProgress += sender => Invalidate();
+            _animationManager.OnAnimationProgress += sender => Invalidate();
+            _rippleAnimationManager.OnAnimationProgress += sender => Invalidate();
 
             CheckedChanged += (sender, args) =>
             {
-                AnimationManager.StartNewAnimation(Checked ? AnimationDirection.In : AnimationDirection.Out);
+                _animationManager.StartNewAnimation(Checked ? AnimationDirection.In : AnimationDirection.Out);
             };
+
+            Ripple = true;
+            MouseLocation = new Point(-1, -1);
         }
 
-        private readonly AnimationManager AnimationManager;
-        private readonly AnimationManager RippleAnimationManager;
-
-        private Boolean _animation;
-        private Color _checkedColor;
-        private SizeF _textSize;
-        
-        [Category("Appearance"), Description("Отображение анимации")]
-        public Boolean Animation
+        protected override void OnSizeChanged(EventArgs e)
         {
-            get { return _animation; }
-            set
-            {
-                _animation = value;
-                if (value) Margin = new Padding(0);
+            base.OnSizeChanged(e);
 
-                Invalidate();
-            }
+            _boxOffset = Height / 2 - 9;
+            _boxRectangle = new Rectangle(_boxOffset, _boxOffset, CHECKBOX_SIZE - 1, CHECKBOX_SIZE - 1);
         }
 
-        [Category("Appearance"), Description("Цвет галочки")]
-        public Color CheckedColor
+        public override Size GetPreferredSize(Size proposedSize)
         {
-            get
-            {
-                return _checkedColor;
-            }
-            set
-            {
-                _checkedColor = value;
-                Invalidate();
-            }
+            var w = _boxOffset + CHECKBOX_SIZE + 2 + (int)CreateGraphics().MeasureString(Text, SkinManager.ROBOTO_MEDIUM_10).Width;
+            return Ripple ? new Size(w, 30) : new Size(w, 20);
         }
 
-        public override string Text
+        private static readonly Point[] CheckmarkLine = { new Point(3, 8), new Point(7, 12), new Point(14, 5) };
+        private const int TEXT_OFFSET = 22;
+        protected override void OnPaint(PaintEventArgs pevent)
         {
-            get { return base.Text; }
-            set
+            var g = pevent.Graphics;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+            // clear the control
+            g.Clear(Parent.BackColor);
+
+            var CHECKBOX_CENTER = _boxOffset + CHECKBOX_SIZE_HALF - 1;
+
+            var animationProgress = _animationManager.GetProgress();
+
+            var colorAlpha = Enabled ? (int)(animationProgress * 255.0) : SkinManager.GetCheckBoxOffDisabledColor().A;
+            var backgroundAlpha = Enabled ? (int)(SkinManager.GetCheckboxOffColor().A * (1.0 - animationProgress)) : SkinManager.GetCheckBoxOffDisabledColor().A;
+
+            var brush = new SolidBrush(Color.FromArgb(colorAlpha, Enabled ? SkinManager.ColorScheme.AccentColor : SkinManager.GetCheckBoxOffDisabledColor()));
+            var brush3 = new SolidBrush(Enabled ? SkinManager.ColorScheme.AccentColor : SkinManager.GetCheckBoxOffDisabledColor());
+            var pen = new Pen(brush.Color);
+
+            // draw ripple animation
+            if (Ripple && _rippleAnimationManager.IsAnimating())
             {
-                base.Text = value;
-                _textSize = CreateGraphics().MeasureString(value, new Font(Font.Name, Font.Size, Font.Style));
-                if (AutoSize) Size = GetPreferredSize(new Size(0, 0));
-                Invalidate();
-            }
-        }
-        
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            e.Graphics.Clear(Parent.BackColor);
-
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
-            // Отрисовка анимации
-            Int32 X;
-
-            if (Animation && RippleAnimationManager.IsAnimating())
-            {
-                for (var i = 0; i < RippleAnimationManager.GetAnimationCount(); i++)
+                for (var i = 0; i < _rippleAnimationManager.GetAnimationCount(); i++)
                 {
-                    Int32 rippleSize = (RippleAnimationManager.GetDirection(i) == AnimationDirection.InOutIn) ? (int)(21 * (0.8d + (0.2d * RippleAnimationManager.GetProgress(i)))) : 21;
-
-                    if (CheckAlign == ContentAlignment.MiddleLeft) X = 12 - rippleSize / 2 - 2;
-                    else if (CheckAlign == ContentAlignment.MiddleRight) X = (Width - (12 - rippleSize / 2 - 2) - rippleSize) - 2;
-                    else if (CheckAlign == ContentAlignment.MiddleCenter)X = (Width / 2 - (rippleSize / 2)) - 1;
-                    else X = 12 - rippleSize / 2 - 2;
-
-                    using (GraphicsPath Path = DrawHelper.CreateRoundRect(X, ((Height / 2 - 6) + (18 / 2) - 1) - rippleSize / 2 - 3, rippleSize + 1, rippleSize + 1, rippleSize / 2))
+                    var animationValue = _rippleAnimationManager.GetProgress(i);
+                    var animationSource = new Point(CHECKBOX_CENTER, CHECKBOX_CENTER);
+                    var rippleBrush = new SolidBrush(Color.FromArgb((int)((animationValue * 40)), ((bool)_rippleAnimationManager.GetData(i)[0]) ? Color.Black : brush.Color));
+                    var rippleHeight = (Height % 2 == 0) ? Height - 3 : Height - 2;
+                    var rippleSize = (_rippleAnimationManager.GetDirection(i) == AnimationDirection.InOutIn) ? (int)(rippleHeight * (0.8d + (0.2d * animationValue))) : rippleHeight;
+                    using (var path = DrawHelper.CreateRoundRect(animationSource.X - rippleSize / 2, animationSource.Y - rippleSize / 2, rippleSize, rippleSize, rippleSize / 2))
                     {
-                        e.Graphics.FillPath(new SolidBrush(Color.FromArgb((int)((RippleAnimationManager.GetProgress(i) * 40)), FlatAppearance.MouseDownBackColor)), Path);
+                        g.FillPath(rippleBrush, path);
                     }
+
+                    rippleBrush.Dispose();
                 }
             }
 
-            // Отрисовка поля "Checked"
-            if (CheckAlign == ContentAlignment.MiddleLeft) X = 5;
-            else if (CheckAlign == ContentAlignment.MiddleRight) X = Width - 6 - 12;
-            else if (CheckAlign == ContentAlignment.MiddleCenter) X = (Width / 2 - 6);
-            else X = 5;
+            brush3.Dispose();
 
-            using (GraphicsPath checkmarkPath = DrawHelper.CreateRoundRect(X, (Height / 2 - 6), 12, 12, 1f))
+            var checkMarkLineFill = new Rectangle(_boxOffset, _boxOffset, (int)(17.0 * animationProgress), 17);
+            using (var checkmarkPath = DrawHelper.CreateRoundRect(_boxOffset, _boxOffset, 17, 17, 1f))
             {
+                var brush2 = new SolidBrush(DrawHelper.BlendColor(Parent.BackColor, Enabled ? SkinManager.GetCheckboxOffColor() : SkinManager.GetCheckBoxOffDisabledColor(), backgroundAlpha));
+                var pen2 = new Pen(brush2.Color);
+                g.FillPath(brush2, checkmarkPath);
+                g.DrawPath(pen2, checkmarkPath);
+
+                g.FillRectangle(new SolidBrush(Parent.BackColor), _boxOffset + 2, _boxOffset + 2, CHECKBOX_INNER_BOX_SIZE - 1, CHECKBOX_INNER_BOX_SIZE - 1);
+                g.DrawRectangle(new Pen(Parent.BackColor), _boxOffset + 2, _boxOffset + 2, CHECKBOX_INNER_BOX_SIZE - 1, CHECKBOX_INNER_BOX_SIZE - 1);
+
+                brush2.Dispose();
+                pen2.Dispose();
+
                 if (Enabled)
                 {
-                    e.Graphics.FillPath(new SolidBrush(Parent.BackColor), checkmarkPath);
-                    e.Graphics.DrawPath(new Pen(FlatAppearance.BorderColor), checkmarkPath);
+                    g.FillPath(brush, checkmarkPath);
+                    g.DrawPath(pen, checkmarkPath);
                 }
                 else if (Checked)
                 {
-                    e.Graphics.SmoothingMode = SmoothingMode.None;
-                    e.Graphics.FillRectangle(new SolidBrush(FlatAppearance.BorderColor), (Height / 2 - 6) + 2, (Height / 2 - 6) + 2, 14, 14);
-                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    g.SmoothingMode = SmoothingMode.None;
+                    g.FillRectangle(brush, _boxOffset + 2, _boxOffset + 2, CHECKBOX_INNER_BOX_SIZE, CHECKBOX_INNER_BOX_SIZE);
+                    g.SmoothingMode = SmoothingMode.AntiAlias;
                 }
 
-                Bitmap Tick = new Bitmap(15, 13);
-                using (Graphics GIMG = Graphics.FromImage(Tick))
-                {
-                    PointF[] Lines =
-                    {
-                        new PointF(2, 7),
-                        new PointF(3, 5),
-                        new PointF(5, 8),
-                        new PointF(13, -1),
-                        new PointF(15, 1),
-                        new PointF(5, 11),
-
-                        new PointF(2, 7)
-                    };
-                    GIMG.FillRectangle(new SolidBrush(BackColor), new Rectangle(11, 0, 2, 6));
-                    GIMG.FillPolygon(new SolidBrush(_checkedColor), Lines);
-                }
-
-                e.Graphics.DrawImageUnscaledAndClipped(Tick, new Rectangle(X, (Height / 2) - 6, (int)(15.0 * AnimationManager.GetProgress()), 13));
+                g.DrawImageUnscaledAndClipped(DrawCheckMarkBitmap(), checkMarkLineFill);
             }
 
-            // Отрисовка текста
-            e.Graphics.DrawString(
+            // draw checkbox text
+            SizeF stringSize = g.MeasureString(Text, SkinManager.ROBOTO_MEDIUM_10);
+            g.DrawString(
                 Text,
-                Font,
-                new SolidBrush(ForeColor),
-                new PointF(22, Height / 2 - e.Graphics.MeasureString(Text, Font).Height / 2));
+                SkinManager.ROBOTO_MEDIUM_10,
+                Enabled ? SkinManager.GetPrimaryTextBrush() : SkinManager.GetDisabledOrHintBrush(),
+                _boxOffset + TEXT_OFFSET, Height / 2 - stringSize.Height / 2);
+
+            // dispose used paint objects
+            pen.Dispose();
+            brush.Dispose();
         }
+
+        private Bitmap DrawCheckMarkBitmap()
+        {
+            var checkMark = new Bitmap(CHECKBOX_SIZE, CHECKBOX_SIZE);
+            var g = Graphics.FromImage(checkMark);
+
+            // clear everything, transparent
+            g.Clear(Color.Transparent);
+
+            // draw the checkmark lines
+            using (var pen = new Pen(Parent.BackColor, 2))
+            {
+                g.DrawLines(pen, CheckmarkLine);
+            }
+
+            return checkMark;
+        }
+
+        public override bool AutoSize
+        {
+            get { return base.AutoSize; }
+            set
+            {
+                base.AutoSize = value;
+                if (value)
+                {
+                    Size = new Size(10, 10);
+                }
+            }
+        }
+
+        private bool IsMouseInCheckArea()
+        {
+            return _boxRectangle.Contains(MouseLocation);
+        }
+
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
+            Font = SkinManager.ROBOTO_MEDIUM_10;
 
             if (DesignMode) return;
 
+            MouseState = MouseState.OUT;
+            MouseEnter += (sender, args) =>
+            {
+                MouseState = MouseState.HOVER;
+            };
+            MouseLeave += (sender, args) =>
+            {
+                MouseLocation = new Point(-1, -1);
+                MouseState = MouseState.OUT;
+            };
             MouseDown += (sender, args) =>
             {
-                if (Animation && args.Button == MouseButtons.Left)
+                MouseState = MouseState.DOWN;
+
+                if (Ripple && args.Button == MouseButtons.Left && IsMouseInCheckArea())
                 {
-                    RippleAnimationManager.SecondaryIncrement = 0;
-                    RippleAnimationManager.StartNewAnimation(AnimationDirection.InOutIn, new object[] { Checked });
+                    _rippleAnimationManager.SecondaryIncrement = 0;
+                    _rippleAnimationManager.StartNewAnimation(AnimationDirection.InOutIn, new object[] { Checked });
                 }
             };
             MouseUp += (sender, args) =>
             {
-                RippleAnimationManager.SecondaryIncrement = 0.08;
+                MouseState = MouseState.HOVER;
+                _rippleAnimationManager.SecondaryIncrement = 0.08;
+            };
+            MouseMove += (sender, args) =>
+            {
+                MouseLocation = args.Location;
+                Cursor = IsMouseInCheckArea() ? Cursors.Hand : Cursors.Default;
             };
         }
-        public override Size GetPreferredSize(Size proposedSize)
-        {
-            // Обеспечивает дополнительное пространство для правильного заполнения контента
-            Int32 Extra = 16;
 
-            // 24 - размер значка
-            // 4 - пробел между знаком и текстом
-            Extra += 24 + 4;
-
-            return new Size((int)Math.Ceiling(_textSize.Width) + Extra, 35);
-        }
     }
 }

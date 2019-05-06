@@ -33,8 +33,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.materialTabSelector1 = new ProgLib.Windows.Forms.Material.MaterialTabSelector();
-            this.materialTabControl1 = new ProgLib.Windows.Forms.Material.MaterialTabControl();
+            //this.materialTabSelector1 = new ProgLib.Windows.Forms.Material.MaterialTabSelector();
+            //this.materialTabControl1 = new ProgLib.Windows.Forms.Material.MaterialTabControl();
             this.PageSystemColors = new System.Windows.Forms.TabPage();
             this.ListSystemColors = new System.Windows.Forms.ListBox();
             this.PageWebColors = new System.Windows.Forms.TabPage();
@@ -48,12 +48,12 @@
             this.adobeNumericUpDown6 = new ProgLib.Windows.Forms.Adobe.AdobeNumericUpDown();
             this.adobeNumericUpDown3 = new ProgLib.Windows.Forms.Adobe.AdobeNumericUpDown();
             this.adobeNumericUpDown2 = new ProgLib.Windows.Forms.Adobe.AdobeNumericUpDown();
-            this.materialButton2 = new ProgLib.Windows.Forms.Material.MaterialButton();
-            this.materialButton1 = new ProgLib.Windows.Forms.Material.MaterialButton();
+            //this.materialButton2 = new ProgLib.Windows.Forms.Material.MaterialButton();
+            //this.materialButton1 = new ProgLib.Windows.Forms.Material.MaterialButton();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.materialTabControl1.SuspendLayout();
+            //this.materialTabControl1.SuspendLayout();
             this.PageSystemColors.SuspendLayout();
             this.PageWebColors.SuspendLayout();
             this.PageCustomColors.SuspendLayout();
@@ -68,7 +68,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.materialTabSelector1);
+            //this.panel1.Controls.Add(this.materialTabSelector1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(482, 95);
@@ -107,36 +107,36 @@
             this.label1.Size = new System.Drawing.Size(169, 30);
             this.label1.TabIndex = 2;
             this.label1.Text = "Color Palette";
-            // 
-            // materialTabSelector1
-            // 
-            this.materialTabSelector1.AnimateColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(109)))), ((int)(((byte)(186)))));
-            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
-            this.materialTabSelector1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.materialTabSelector1.Font = new System.Drawing.Font("Segoe UI", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTabSelector1.ForeColor = System.Drawing.Color.White;
-            this.materialTabSelector1.IndicatorColor = System.Drawing.SystemColors.Control;
-            this.materialTabSelector1.Location = new System.Drawing.Point(0, 62);
-            this.materialTabSelector1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
-            this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(482, 33);
-            this.materialTabSelector1.TabIndex = 6;
-            this.materialTabSelector1.Text = "materialTabSelector1";
-            // 
-            // materialTabControl1
-            // 
-            this.materialTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialTabControl1.Controls.Add(this.PageSystemColors);
-            this.materialTabControl1.Controls.Add(this.PageWebColors);
-            this.materialTabControl1.Controls.Add(this.PageCustomColors);
-            this.materialTabControl1.Location = new System.Drawing.Point(12, 103);
-            this.materialTabControl1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
-            this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(258, 183);
-            this.materialTabControl1.TabIndex = 7;
+            //// 
+            //// materialTabSelector1
+            //// 
+            //this.materialTabSelector1.AnimateColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(109)))), ((int)(((byte)(186)))));
+            //this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
+            //this.materialTabSelector1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            //this.materialTabSelector1.Font = new System.Drawing.Font("Segoe UI", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            //this.materialTabSelector1.ForeColor = System.Drawing.Color.White;
+            //this.materialTabSelector1.IndicatorColor = System.Drawing.SystemColors.Control;
+            //this.materialTabSelector1.Location = new System.Drawing.Point(0, 62);
+            //this.materialTabSelector1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
+            //this.materialTabSelector1.Name = "materialTabSelector1";
+            //this.materialTabSelector1.Size = new System.Drawing.Size(482, 33);
+            //this.materialTabSelector1.TabIndex = 6;
+            //this.materialTabSelector1.Text = "materialTabSelector1";
+            //// 
+            //// materialTabControl1
+            //// 
+            //this.materialTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            //| System.Windows.Forms.AnchorStyles.Left) 
+            //| System.Windows.Forms.AnchorStyles.Right)));
+            //this.materialTabControl1.Controls.Add(this.PageSystemColors);
+            //this.materialTabControl1.Controls.Add(this.PageWebColors);
+            //this.materialTabControl1.Controls.Add(this.PageCustomColors);
+            //this.materialTabControl1.Location = new System.Drawing.Point(12, 103);
+            //this.materialTabControl1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
+            //this.materialTabControl1.Name = "materialTabControl1";
+            //this.materialTabControl1.SelectedIndex = 0;
+            //this.materialTabControl1.Size = new System.Drawing.Size(258, 183);
+            //this.materialTabControl1.TabIndex = 7;
             // 
             // PageSystemColors
             // 
@@ -351,38 +351,38 @@
             this.adobeNumericUpDown2.Text = "255";
             this.adobeNumericUpDown2.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.adobeNumericUpDown2.Value = 255;
-            // 
-            // materialButton2
-            // 
-            this.materialButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialButton2.Animation = true;
-            this.materialButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(109)))), ((int)(((byte)(186)))));
-            this.materialButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(109)))), ((int)(((byte)(186)))));
-            this.materialButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.materialButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.materialButton2.ForeColor = System.Drawing.Color.White;
-            this.materialButton2.Location = new System.Drawing.Point(376, 259);
-            this.materialButton2.Name = "materialButton2";
-            this.materialButton2.Size = new System.Drawing.Size(94, 25);
-            this.materialButton2.TabIndex = 11;
-            this.materialButton2.Text = "Отмена";
-            this.materialButton2.UseVisualStyleBackColor = false;
-            // 
-            // materialButton1
-            // 
-            this.materialButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialButton1.Animation = true;
-            this.materialButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(109)))), ((int)(((byte)(186)))));
-            this.materialButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(109)))), ((int)(((byte)(186)))));
-            this.materialButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.materialButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.materialButton1.ForeColor = System.Drawing.Color.White;
-            this.materialButton1.Location = new System.Drawing.Point(276, 259);
-            this.materialButton1.Name = "materialButton1";
-            this.materialButton1.Size = new System.Drawing.Size(94, 25);
-            this.materialButton1.TabIndex = 10;
-            this.materialButton1.Text = "ОК";
-            this.materialButton1.UseVisualStyleBackColor = false;
+            //// 
+            //// materialButton2
+            //// 
+            //this.materialButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            //this.materialButton2.Animation = true;
+            //this.materialButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(109)))), ((int)(((byte)(186)))));
+            //this.materialButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(109)))), ((int)(((byte)(186)))));
+            //this.materialButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            //this.materialButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            //this.materialButton2.ForeColor = System.Drawing.Color.White;
+            //this.materialButton2.Location = new System.Drawing.Point(376, 259);
+            //this.materialButton2.Name = "materialButton2";
+            //this.materialButton2.Size = new System.Drawing.Size(94, 25);
+            //this.materialButton2.TabIndex = 11;
+            //this.materialButton2.Text = "Отмена";
+            //this.materialButton2.UseVisualStyleBackColor = false;
+            //// 
+            //// materialButton1
+            //// 
+            //this.materialButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            //this.materialButton1.Animation = true;
+            //this.materialButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(109)))), ((int)(((byte)(186)))));
+            //this.materialButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(109)))), ((int)(((byte)(186)))));
+            //this.materialButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            //this.materialButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            //this.materialButton1.ForeColor = System.Drawing.Color.White;
+            //this.materialButton1.Location = new System.Drawing.Point(276, 259);
+            //this.materialButton1.Name = "materialButton1";
+            //this.materialButton1.Size = new System.Drawing.Size(94, 25);
+            //this.materialButton1.TabIndex = 10;
+            //this.materialButton1.Text = "ОК";
+            //this.materialButton1.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
@@ -405,10 +405,10 @@
             this.Controls.Add(this.adobeNumericUpDown6);
             this.Controls.Add(this.adobeNumericUpDown3);
             this.Controls.Add(this.adobeNumericUpDown2);
-            this.Controls.Add(this.materialButton2);
-            this.Controls.Add(this.materialButton1);
+            //this.Controls.Add(this.materialButton2);
+            //this.Controls.Add(this.materialButton1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.materialTabControl1);
+            //this.Controls.Add(this.materialTabControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ColorDialog";
@@ -418,7 +418,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.materialTabControl1.ResumeLayout(false);
+            //this.materialTabControl1.ResumeLayout(false);
             this.PageSystemColors.ResumeLayout(false);
             this.PageWebColors.ResumeLayout(false);
             this.PageCustomColors.ResumeLayout(false);
@@ -427,8 +427,8 @@
         }
 
         #endregion
-        private Material.MaterialTabSelector materialTabSelector1;
-        private Material.MaterialTabControl materialTabControl1;
+        //private Material.MaterialTabSelector materialTabSelector1;
+        //private Material.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage PageSystemColors;
         private System.Windows.Forms.TabPage PageWebColors;
         private System.Windows.Forms.TabPage PageCustomColors;
@@ -439,8 +439,8 @@
         private HSBSlider hsbSlider2;
         private System.Windows.Forms.ListBox ListWebColors;
         private System.Windows.Forms.ListBox ListSystemColors;
-        private Material.MaterialButton materialButton1;
-        private Material.MaterialButton materialButton2;
+        //private Material.MaterialButton materialButton1;
+        //private Material.MaterialButton materialButton2;
         private Adobe.AdobeNumericUpDown adobeNumericUpDown2;
         private Adobe.AdobeNumericUpDown adobeNumericUpDown3;
         private Adobe.AdobeNumericUpDown adobeNumericUpDown4;

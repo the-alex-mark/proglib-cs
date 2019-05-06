@@ -1,44 +1,43 @@
-using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace ProgLib.Windows.Forms.Material
+namespace MaterialSkin
 {
     static class DrawHelper
     {
-        public static GraphicsPath CreateRoundRect(float X, float Y, float Width, float Height, float Radius)
+        public static GraphicsPath CreateRoundRect(float x, float y, float width, float height, float radius)
         {
-            GraphicsPath GP = new GraphicsPath();
-            GP.AddLine(X + Radius, Y, X + Width - (Radius * 2), Y);
-            GP.AddArc(X + Width - (Radius * 2), Y, Radius * 2, Radius * 2, 270, 90);
-            GP.AddLine(X + Width, Y + Radius, X + Width, Y + Height - (Radius * 2));
-            GP.AddArc(X + Width - (Radius * 2), Y + Height - (Radius * 2), Radius * 2, Radius * 2, 0, 90);
-            GP.AddLine(X + Width - (Radius * 2), Y + Height, X + Radius, Y + Height);
-            GP.AddArc(X, Y + Height - (Radius * 2), Radius * 2, Radius * 2, 90, 90);
-            GP.AddLine(X, Y + Height - (Radius * 2), X, Y + Radius);
-            GP.AddArc(X, Y, Radius * 2, Radius * 2, 180, 90);
-            GP.CloseFigure();
-            return GP;
+            var gp = new GraphicsPath();
+            gp.AddLine(x + radius, y, x + width - (radius * 2), y);
+            gp.AddArc(x + width - (radius * 2), y, radius * 2, radius * 2, 270, 90);
+            gp.AddLine(x + width, y + radius, x + width, y + height - (radius * 2));
+            gp.AddArc(x + width - (radius * 2), y + height - (radius * 2), radius * 2, radius * 2, 0, 90);
+            gp.AddLine(x + width - (radius * 2), y + height, x + radius, y + height);
+            gp.AddArc(x, y + height - (radius * 2), radius * 2, radius * 2, 90, 90);
+            gp.AddLine(x, y + height - (radius * 2), x, y + radius);
+            gp.AddArc(x, y, radius * 2, radius * 2, 180, 90);
+            gp.CloseFigure();
+            return gp;
         }
 
-        public static GraphicsPath CreateRoundRect(Rectangle Rectangle, float Radius)
+        public static GraphicsPath CreateRoundRect(Rectangle rect, float radius)
         {
-            return CreateRoundRect(Rectangle.X, Rectangle.Y, Rectangle.Width, Rectangle.Height, Radius);
+            return CreateRoundRect(rect.X, rect.Y, rect.Width, rect.Height, radius);
         }
 
-        public static Color BlendColor(Color BackgroundColor, Color FrontColor, double Blend)
+        public static Color BlendColor(Color backgroundColor, Color frontColor, double blend)
         {
-            Double ratio = Blend / 255d;
-            Double invRatio = 1d - ratio;
-            Int32 r = (int)((BackgroundColor.R * invRatio) + (FrontColor.R * ratio));
-            Int32 g = (int)((BackgroundColor.G * invRatio) + (FrontColor.G * ratio));
-            Int32 b = (int)((BackgroundColor.B * invRatio) + (FrontColor.B * ratio));
+            var ratio = blend / 255d;
+            var invRatio = 1d - ratio;
+            var r = (int)((backgroundColor.R * invRatio) + (frontColor.R * ratio));
+            var g = (int)((backgroundColor.G * invRatio) + (frontColor.G * ratio));
+            var b = (int)((backgroundColor.B * invRatio) + (frontColor.B * ratio));
             return Color.FromArgb(r, g, b);
         }
 
-        public static Color BlendColor(Color BackgroundColor, Color FrontColor)
+        public static Color BlendColor(Color backgroundColor, Color frontColor)
         {
-            return BlendColor(BackgroundColor, FrontColor, FrontColor.A);
+            return BlendColor(backgroundColor, frontColor, frontColor.A);
         }
     }
 }
