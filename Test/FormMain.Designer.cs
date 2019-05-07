@@ -101,9 +101,6 @@
             this.mFullScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.показатьСкрытьМенюСтрокуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
-            this.показатьСкрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.переместитьБоковуюПанельВправоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.скрытьСтрокуСостоянияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.скрытьПанельДействийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             this.увеличитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -209,6 +206,21 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimalToolTip1 = new ProgLib.Windows.Forms.Minimal.MinimalToolTip();
+            this.mThemeLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeQuietLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeSolarizedLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator38 = new System.Windows.Forms.ToolStripSeparator();
+            this.mThemeAbyss = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeKimbieDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeMonokai = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeMonokaiDimmed = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeRed = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeSolarizedDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeTomorrowNightBlue = new System.Windows.Forms.ToolStripMenuItem();
+            this.темаИконокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mIconThemeClassic = new System.Windows.Forms.ToolStripMenuItem();
+            this.mIconThemeMinimal = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -773,10 +785,8 @@
             this.mFullScreen,
             this.показатьСкрытьМенюСтрокуToolStripMenuItem,
             this.toolStripSeparator21,
-            this.показатьСкрытьToolStripMenuItem,
-            this.переместитьБоковуюПанельВправоToolStripMenuItem,
-            this.скрытьСтрокуСостоянияToolStripMenuItem,
             this.скрытьПанельДействийToolStripMenuItem,
+            this.темаИконокToolStripMenuItem,
             this.toolStripSeparator22,
             this.увеличитьToolStripMenuItem,
             this.уменьшитьToolStripMenuItem,
@@ -805,29 +815,24 @@
             this.toolStripSeparator21.Name = "toolStripSeparator21";
             this.toolStripSeparator21.Size = new System.Drawing.Size(244, 6);
             // 
-            // показатьСкрытьToolStripMenuItem
-            // 
-            this.показатьСкрытьToolStripMenuItem.Name = "показатьСкрытьToolStripMenuItem";
-            this.показатьСкрытьToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.показатьСкрытьToolStripMenuItem.Text = "Показать / Скрыть боковую панель";
-            // 
-            // переместитьБоковуюПанельВправоToolStripMenuItem
-            // 
-            this.переместитьБоковуюПанельВправоToolStripMenuItem.Name = "переместитьБоковуюПанельВправоToolStripMenuItem";
-            this.переместитьБоковуюПанельВправоToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.переместитьБоковуюПанельВправоToolStripMenuItem.Text = "Переместить боковую панель вправо";
-            // 
-            // скрытьСтрокуСостоянияToolStripMenuItem
-            // 
-            this.скрытьСтрокуСостоянияToolStripMenuItem.Name = "скрытьСтрокуСостоянияToolStripMenuItem";
-            this.скрытьСтрокуСостоянияToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.скрытьСтрокуСостоянияToolStripMenuItem.Text = "Скрыть строку состояния";
-            // 
             // скрытьПанельДействийToolStripMenuItem
             // 
+            this.скрытьПанельДействийToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mThemeLight,
+            this.mThemeQuietLight,
+            this.mThemeSolarizedLight,
+            this.toolStripSeparator38,
+            this.mThemeAbyss,
+            this.mThemeDark,
+            this.mThemeKimbieDark,
+            this.mThemeMonokai,
+            this.mThemeMonokaiDimmed,
+            this.mThemeRed,
+            this.mThemeSolarizedDark,
+            this.mThemeTomorrowNightBlue});
             this.скрытьПанельДействийToolStripMenuItem.Name = "скрытьПанельДействийToolStripMenuItem";
             this.скрытьПанельДействийToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.скрытьПанельДействийToolStripMenuItem.Text = "Скрыть панель действий";
+            this.скрытьПанельДействийToolStripMenuItem.Text = "Цветовая тема";
             // 
             // toolStripSeparator22
             // 
@@ -1572,6 +1577,111 @@
             this.minimalToolTip1.ForeColor = System.Drawing.Color.Black;
             this.minimalToolTip1.OwnerDraw = true;
             // 
+            // mThemeLight
+            // 
+            this.mThemeLight.Name = "mThemeLight";
+            this.mThemeLight.Size = new System.Drawing.Size(180, 22);
+            this.mThemeLight.Text = "Light";
+            this.mThemeLight.Click += new System.EventHandler(this.mThemeLight_Click);
+            // 
+            // mThemeQuietLight
+            // 
+            this.mThemeQuietLight.Name = "mThemeQuietLight";
+            this.mThemeQuietLight.Size = new System.Drawing.Size(180, 22);
+            this.mThemeQuietLight.Text = "Quiet Light";
+            this.mThemeQuietLight.Click += new System.EventHandler(this.mThemeQuietLight_Click);
+            // 
+            // mThemeSolarizedLight
+            // 
+            this.mThemeSolarizedLight.Name = "mThemeSolarizedLight";
+            this.mThemeSolarizedLight.Size = new System.Drawing.Size(180, 22);
+            this.mThemeSolarizedLight.Text = "Solarized Light";
+            this.mThemeSolarizedLight.Click += new System.EventHandler(this.mThemeSolarizedLight_Click);
+            // 
+            // toolStripSeparator38
+            // 
+            this.toolStripSeparator38.Name = "toolStripSeparator38";
+            this.toolStripSeparator38.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mThemeAbyss
+            // 
+            this.mThemeAbyss.Name = "mThemeAbyss";
+            this.mThemeAbyss.Size = new System.Drawing.Size(180, 22);
+            this.mThemeAbyss.Text = "Abyss";
+            this.mThemeAbyss.Click += new System.EventHandler(this.mThemeAbyss_Click);
+            // 
+            // mThemeDark
+            // 
+            this.mThemeDark.Name = "mThemeDark";
+            this.mThemeDark.Size = new System.Drawing.Size(180, 22);
+            this.mThemeDark.Text = "Dark";
+            this.mThemeDark.Click += new System.EventHandler(this.mThemeDark_Click);
+            // 
+            // mThemeKimbieDark
+            // 
+            this.mThemeKimbieDark.Name = "mThemeKimbieDark";
+            this.mThemeKimbieDark.Size = new System.Drawing.Size(180, 22);
+            this.mThemeKimbieDark.Text = "Kimbie Dark";
+            this.mThemeKimbieDark.Click += new System.EventHandler(this.mThemeKimbieDark_Click);
+            // 
+            // mThemeMonokai
+            // 
+            this.mThemeMonokai.Name = "mThemeMonokai";
+            this.mThemeMonokai.Size = new System.Drawing.Size(180, 22);
+            this.mThemeMonokai.Text = "Monokai";
+            this.mThemeMonokai.Click += new System.EventHandler(this.mThemeMonokai_Click);
+            // 
+            // mThemeMonokaiDimmed
+            // 
+            this.mThemeMonokaiDimmed.Name = "mThemeMonokaiDimmed";
+            this.mThemeMonokaiDimmed.Size = new System.Drawing.Size(180, 22);
+            this.mThemeMonokaiDimmed.Text = "Monokai Dimmed";
+            this.mThemeMonokaiDimmed.Click += new System.EventHandler(this.mThemeMonokaiDimmed_Click);
+            // 
+            // mThemeRed
+            // 
+            this.mThemeRed.Name = "mThemeRed";
+            this.mThemeRed.Size = new System.Drawing.Size(180, 22);
+            this.mThemeRed.Text = "Red";
+            this.mThemeRed.Click += new System.EventHandler(this.mThemeRed_Click);
+            // 
+            // mThemeSolarizedDark
+            // 
+            this.mThemeSolarizedDark.Name = "mThemeSolarizedDark";
+            this.mThemeSolarizedDark.Size = new System.Drawing.Size(180, 22);
+            this.mThemeSolarizedDark.Text = "Solarized Dark";
+            this.mThemeSolarizedDark.Click += new System.EventHandler(this.mThemeSolarizedDark_Click);
+            // 
+            // mThemeTomorrowNightBlue
+            // 
+            this.mThemeTomorrowNightBlue.Name = "mThemeTomorrowNightBlue";
+            this.mThemeTomorrowNightBlue.Size = new System.Drawing.Size(180, 22);
+            this.mThemeTomorrowNightBlue.Text = "Tomorrow Night Blue";
+            this.mThemeTomorrowNightBlue.Click += new System.EventHandler(this.mThemeTomorrowNightBlue_Click);
+            // 
+            // темаИконокToolStripMenuItem
+            // 
+            this.темаИконокToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mIconThemeClassic,
+            this.mIconThemeMinimal});
+            this.темаИконокToolStripMenuItem.Name = "темаИконокToolStripMenuItem";
+            this.темаИконокToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.темаИконокToolStripMenuItem.Text = "Иконочная тема";
+            // 
+            // mIconThemeClassic
+            // 
+            this.mIconThemeClassic.Name = "mIconThemeClassic";
+            this.mIconThemeClassic.Size = new System.Drawing.Size(180, 22);
+            this.mIconThemeClassic.Text = "Classic";
+            this.mIconThemeClassic.Click += new System.EventHandler(this.mIconThemeClassic_Click);
+            // 
+            // mIconThemeMinimal
+            // 
+            this.mIconThemeMinimal.Name = "mIconThemeMinimal";
+            this.mIconThemeMinimal.Size = new System.Drawing.Size(180, 22);
+            this.mIconThemeMinimal.Text = "Minimal";
+            this.mIconThemeMinimal.Click += new System.EventHandler(this.mIconThemeMinimal_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1685,9 +1795,6 @@
         private System.Windows.Forms.ToolStripMenuItem mFullScreen;
         private System.Windows.Forms.ToolStripMenuItem показатьСкрытьМенюСтрокуToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
-        private System.Windows.Forms.ToolStripMenuItem показатьСкрытьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem переместитьБоковуюПанельВправоToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem скрытьСтрокуСостоянияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem скрытьПанельДействийToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
         private System.Windows.Forms.ToolStripMenuItem увеличитьToolStripMenuItem;
@@ -1774,6 +1881,21 @@
         private System.Windows.Forms.ToolStripMenuItem mAdobeSkin;
         private System.Windows.Forms.ToolStripMenuItem mMaterialSkin;
         private System.Windows.Forms.ToolStripMenuItem mMinimalSkin;
+        private System.Windows.Forms.ToolStripMenuItem mThemeLight;
+        private System.Windows.Forms.ToolStripMenuItem mThemeQuietLight;
+        private System.Windows.Forms.ToolStripMenuItem mThemeSolarizedLight;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator38;
+        private System.Windows.Forms.ToolStripMenuItem mThemeAbyss;
+        private System.Windows.Forms.ToolStripMenuItem mThemeDark;
+        private System.Windows.Forms.ToolStripMenuItem mThemeKimbieDark;
+        private System.Windows.Forms.ToolStripMenuItem mThemeMonokai;
+        private System.Windows.Forms.ToolStripMenuItem mThemeMonokaiDimmed;
+        private System.Windows.Forms.ToolStripMenuItem mThemeRed;
+        private System.Windows.Forms.ToolStripMenuItem mThemeSolarizedDark;
+        private System.Windows.Forms.ToolStripMenuItem mThemeTomorrowNightBlue;
+        private System.Windows.Forms.ToolStripMenuItem темаИконокToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mIconThemeClassic;
+        private System.Windows.Forms.ToolStripMenuItem mIconThemeMinimal;
     }
 }
 

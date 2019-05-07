@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,16 +16,15 @@ using ProgLib.Audio.Visualization;
 using ProgLib.Data.Access;
 using ProgLib.Data.TSQL;
 using ProgLib.Network;
+using ProgLib.Text.Encoding.QRCode;
+using ProgLib.Text.Encoding.Barcode;
 using ProgLib.Windows;
 using ProgLib.Windows.Forms;
-//using ProgLib.Windows.Forms.Metro;
 using ProgLib.Windows.Forms.Material;
 using ProgLib.Windows.Forms.Minimal;
 using ProgLib.Windows.Forms.VSCode;
 
 using Test.Frameworks;
-using System.Drawing.Imaging;
-using ProgLib.Text.Encoding.Barcode;
 
 namespace Test
 {
@@ -161,6 +161,24 @@ namespace Test
         #region Variables
 
         private FormWindowState _windowState;
+        private VSCodeTheme _vsCodeTheme;
+        private VSCodeIconTheme _vsCodeIconTheme;
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Обновляет цветовую тему.
+        /// </summary>
+        /// <param name="Theme"></param>
+        private void UTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
+        {
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, IconTheme);
+            MainMenu.Renderer = _renderer;
+            contextMenuStrip1.Renderer = _renderer;
+            BackColor = _renderer.WindowBackColor;
+        }
 
         #endregion
 
@@ -191,6 +209,73 @@ namespace Test
             }
         }
 
+        private void mThemeLight_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.Light;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mThemeQuietLight_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.QuietLight;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mThemeSolarizedLight_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.SolarizedLight;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mThemeAbyss_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.Abyss;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mThemeDark_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.Dark;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mThemeKimbieDark_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.KimbieDark;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mThemeMonokai_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.Monokai;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mThemeMonokaiDimmed_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.MonokaiDimmed;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mThemeRed_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.Red;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mThemeSolarizedDark_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.SolarizedDark;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mThemeTomorrowNightBlue_Click(Object sender, EventArgs e)
+        {
+            _vsCodeTheme = VSCodeTheme.TomorrowNightBlue;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+
+        private void mIconThemeClassic_Click(Object sender, EventArgs e)
+        {
+            _vsCodeIconTheme = VSCodeIconTheme.Classic;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+        private void mIconThemeMinimal_Click(Object sender, EventArgs e)
+        {
+            _vsCodeIconTheme = VSCodeIconTheme.Minimal;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+
         // Окна
         private void mMaterialSkin_Click(Object sender, EventArgs e)
         {
@@ -206,12 +291,10 @@ namespace Test
             MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             _windowState = this.WindowState;
 
-            VSCodeTheme Theme = VSCodeTheme.Red;
-
-            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, VSCodeIconTheme.Minimal);
-            MainMenu.Renderer = _renderer;
-            contextMenuStrip1.Renderer = _renderer;
-            BackColor = _renderer.WindowBackColor;
+            // Обновление цветовой темы
+            _vsCodeTheme = VSCodeTheme.Red;
+            _vsCodeIconTheme = VSCodeIconTheme.Minimal;
+            UTheme(_vsCodeTheme, _vsCodeIconTheme);
         }
     }
 }

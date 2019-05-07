@@ -55,10 +55,10 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frameworks\Form_MaterialSkin.cs">
+    <Compile Include="Controls\Form_MaterialSkin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frameworks\Form_MaterialSkin.Designer.cs">
+    <Compile Include="Controls\Form_MaterialSkin.Designer.cs">
       <DependentUpon>Form_MaterialSkin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -66,7 +66,7 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frameworks\Form_MaterialSkin.resx">
+    <EmbeddedResource Include="Controls\Form_MaterialSkin.resx">
       <DependentUpon>Form_MaterialSkin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
