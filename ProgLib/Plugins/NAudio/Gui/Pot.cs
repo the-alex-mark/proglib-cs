@@ -18,6 +18,7 @@ namespace NAudio.Gui
     /// Optional complete draw mode
     /// Tooltip support
     /// </summary>
+    [DesignTimeVisible(false)]
     public partial class Pot : UserControl
     {
         // control properties

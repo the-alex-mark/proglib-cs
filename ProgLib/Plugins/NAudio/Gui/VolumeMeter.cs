@@ -11,6 +11,7 @@ namespace NAudio.Gui
     /// <summary>
     /// Implements a rudimentary volume meter
     /// </summary>
+    [DesignTimeVisible(false)]
     public partial class VolumeMeter : Control
     {
         Brush foregroundBrush;

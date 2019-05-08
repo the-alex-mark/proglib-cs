@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using ProgLib.Windows.Forms.Material;
 
-namespace Test.Frameworks
+namespace Test.Demonstration
 {
     public partial class Form_MaterialSkin : ProgLib.Windows.Forms.Material.MaterialForm
     {

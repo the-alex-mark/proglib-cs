@@ -11,6 +11,7 @@ namespace NAudio.Gui
     /// <summary>
     /// Control for viewing waveforms
     /// </summary>
+    [DesignTimeVisible(false)]
     public class WaveViewer : System.Windows.Forms.UserControl
     {
         /// <summary> 

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using ProgLib.Windows.Forms.Material;
 
-namespace Test.Frameworks
+namespace Test.Demonstration
 {
     partial class Form_MaterialSkin
     {
@@ -275,7 +275,8 @@ namespace Test.Frameworks
             this.materialSingleLineTextField2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialSingleLineTextField2.Depth = 0;
-            this.materialSingleLineTextField2.Hint = "Another example hint";
+            this.materialSingleLineTextField2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.materialSingleLineTextField2.Hint = "Еще один пример подсказки";
             this.materialSingleLineTextField2.Location = new System.Drawing.Point(0, 51);
             this.materialSingleLineTextField2.MaxLength = 32767;
             this.materialSingleLineTextField2.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
@@ -294,7 +295,8 @@ namespace Test.Frameworks
             this.materialSingleLineTextField1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialSingleLineTextField1.Depth = 0;
-            this.materialSingleLineTextField1.Hint = "This is a hint";
+            this.materialSingleLineTextField1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.materialSingleLineTextField1.Hint = "Это подсказка";
             this.materialSingleLineTextField1.Location = new System.Drawing.Point(0, 14);
             this.materialSingleLineTextField1.MaxLength = 32767;
             this.materialSingleLineTextField1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
@@ -315,13 +317,13 @@ namespace Test.Frameworks
             this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialButton1.Depth = 0;
             this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(413, 184);
+            this.materialButton1.Location = new System.Drawing.Point(355, 184);
             this.materialButton1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialButton1.Name = "materialButton1";
             this.materialButton1.Primary = true;
-            this.materialButton1.Size = new System.Drawing.Size(125, 36);
+            this.materialButton1.Size = new System.Drawing.Size(135, 36);
             this.materialButton1.TabIndex = 0;
-            this.materialButton1.Text = "Change Theme";
+            this.materialButton1.Text = "Изменить тему";
             this.materialButton1.UseVisualStyleBackColor = true;
             this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
             // 
@@ -387,14 +389,15 @@ namespace Test.Frameworks
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(725, 230);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "TextBox";
             // 
             // materialSingleLineTextField3
             // 
             this.materialSingleLineTextField3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialSingleLineTextField3.Depth = 0;
-            this.materialSingleLineTextField3.Hint = "This is a password";
+            this.materialSingleLineTextField3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.materialSingleLineTextField3.Hint = "Это пароль";
             this.materialSingleLineTextField3.Location = new System.Drawing.Point(0, 88);
             this.materialSingleLineTextField3.MaxLength = 32767;
             this.materialSingleLineTextField3.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
@@ -415,13 +418,13 @@ namespace Test.Frameworks
             this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton1.Depth = 0;
             this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(544, 184);
+            this.materialRaisedButton1.Location = new System.Drawing.Point(496, 184);
             this.materialRaisedButton1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(181, 36);
+            this.materialRaisedButton1.Size = new System.Drawing.Size(223, 36);
             this.materialRaisedButton1.TabIndex = 21;
-            this.materialRaisedButton1.Text = "Change color scheme";
+            this.materialRaisedButton1.Text = "Изменить цветовую схему";
             this.materialRaisedButton1.UseVisualStyleBackColor = true;
             this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
             // 
@@ -439,7 +442,7 @@ namespace Test.Frameworks
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(725, 230);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "CheckBox";
             // 
             // materialCheckBox6
             // 
@@ -491,7 +494,7 @@ namespace Test.Frameworks
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(725, 230);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "MaterialTabPage3";
+            this.tabPage3.Text = "RadioButton";
             // 
             // tabPage4
             // 
@@ -558,7 +561,7 @@ namespace Test.Frameworks
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(725, 230);
             this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.Text = "ProgressBar";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // materialLabel2
@@ -571,10 +574,10 @@ namespace Test.Frameworks
             this.materialLabel2.Location = new System.Drawing.Point(3, 15);
             this.materialLabel2.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(580, 63);
+            this.materialLabel2.Size = new System.Drawing.Size(716, 63);
             this.materialLabel2.TabIndex = 3;
-            this.materialLabel2.Text = "Here we\'re showcasing the progressbar together with a FlatButton and a RaisedButt" +
-    "on that have support for icons.";
+            this.materialLabel2.Text = "Здесь мы демонстрируем индикатор выполнения вместе с плоской кнопкой и поднятой К" +
+    "нопкой, которые поддерживают значки.";
             // 
             // materialFlatButton4
             // 
@@ -600,7 +603,7 @@ namespace Test.Frameworks
             this.materialRaisedButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton2.Depth = 0;
             this.materialRaisedButton2.Icon = global::Test.Properties.Resources.plus;
-            this.materialRaisedButton2.Location = new System.Drawing.Point(501, 95);
+            this.materialRaisedButton2.Location = new System.Drawing.Point(643, 95);
             this.materialRaisedButton2.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialRaisedButton2.Name = "materialRaisedButton2";
             this.materialRaisedButton2.Primary = true;
@@ -618,7 +621,7 @@ namespace Test.Frameworks
             this.materialProgressBar1.Location = new System.Drawing.Point(6, 81);
             this.materialProgressBar1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
-            this.materialProgressBar1.Size = new System.Drawing.Size(571, 5);
+            this.materialProgressBar1.Size = new System.Drawing.Size(713, 5);
             this.materialProgressBar1.TabIndex = 0;
             this.materialProgressBar1.Value = 45;
             // 

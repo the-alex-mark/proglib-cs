@@ -102,10 +102,25 @@
             this.показатьСкрытьМенюСтрокуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.скрытьПанельДействийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeQuietLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeSolarizedLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator38 = new System.Windows.Forms.ToolStripSeparator();
+            this.mThemeAbyss = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeKimbieDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeMonokai = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeMonokaiDimmed = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeRed = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeSolarizedDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.mThemeTomorrowNightBlue = new System.Windows.Forms.ToolStripMenuItem();
+            this.темаИконокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mIconThemeClassic = new System.Windows.Forms.ToolStripMenuItem();
+            this.mIconThemeMinimal = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
-            this.увеличитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.уменьшитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сброситьМаштабToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mIncreaseScale = new System.Windows.Forms.ToolStripMenuItem();
+            this.mReduceScale = new System.Windows.Forms.ToolStripMenuItem();
+            this.mResetScale = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mAdobeSkin = new System.Windows.Forms.ToolStripMenuItem();
             this.mMaterialSkin = new System.Windows.Forms.ToolStripMenuItem();
@@ -206,21 +221,6 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimalToolTip1 = new ProgLib.Windows.Forms.Minimal.MinimalToolTip();
-            this.mThemeLight = new System.Windows.Forms.ToolStripMenuItem();
-            this.mThemeQuietLight = new System.Windows.Forms.ToolStripMenuItem();
-            this.mThemeSolarizedLight = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator38 = new System.Windows.Forms.ToolStripSeparator();
-            this.mThemeAbyss = new System.Windows.Forms.ToolStripMenuItem();
-            this.mThemeDark = new System.Windows.Forms.ToolStripMenuItem();
-            this.mThemeKimbieDark = new System.Windows.Forms.ToolStripMenuItem();
-            this.mThemeMonokai = new System.Windows.Forms.ToolStripMenuItem();
-            this.mThemeMonokaiDimmed = new System.Windows.Forms.ToolStripMenuItem();
-            this.mThemeRed = new System.Windows.Forms.ToolStripMenuItem();
-            this.mThemeSolarizedDark = new System.Windows.Forms.ToolStripMenuItem();
-            this.mThemeTomorrowNightBlue = new System.Windows.Forms.ToolStripMenuItem();
-            this.темаИконокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mIconThemeClassic = new System.Windows.Forms.ToolStripMenuItem();
-            this.mIconThemeMinimal = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -788,9 +788,9 @@
             this.скрытьПанельДействийToolStripMenuItem,
             this.темаИконокToolStripMenuItem,
             this.toolStripSeparator22,
-            this.увеличитьToolStripMenuItem,
-            this.уменьшитьToolStripMenuItem,
-            this.сброситьМаштабToolStripMenuItem});
+            this.mIncreaseScale,
+            this.mReduceScale,
+            this.mResetScale});
             this.mView.Name = "mView";
             this.mView.Padding = new System.Windows.Forms.Padding(0);
             this.mView.Size = new System.Drawing.Size(257, 20);
@@ -834,28 +834,139 @@
             this.скрытьПанельДействийToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.скрытьПанельДействийToolStripMenuItem.Text = "Цветовая тема";
             // 
+            // mThemeLight
+            // 
+            this.mThemeLight.Name = "mThemeLight";
+            this.mThemeLight.Size = new System.Drawing.Size(163, 22);
+            this.mThemeLight.Text = "Light";
+            this.mThemeLight.Click += new System.EventHandler(this.mThemeLight_Click);
+            // 
+            // mThemeQuietLight
+            // 
+            this.mThemeQuietLight.Name = "mThemeQuietLight";
+            this.mThemeQuietLight.Size = new System.Drawing.Size(163, 22);
+            this.mThemeQuietLight.Text = "Quiet Light";
+            this.mThemeQuietLight.Click += new System.EventHandler(this.mThemeQuietLight_Click);
+            // 
+            // mThemeSolarizedLight
+            // 
+            this.mThemeSolarizedLight.Name = "mThemeSolarizedLight";
+            this.mThemeSolarizedLight.Size = new System.Drawing.Size(163, 22);
+            this.mThemeSolarizedLight.Text = "Solarized Light";
+            this.mThemeSolarizedLight.Click += new System.EventHandler(this.mThemeSolarizedLight_Click);
+            // 
+            // toolStripSeparator38
+            // 
+            this.toolStripSeparator38.Name = "toolStripSeparator38";
+            this.toolStripSeparator38.Size = new System.Drawing.Size(160, 6);
+            // 
+            // mThemeAbyss
+            // 
+            this.mThemeAbyss.Name = "mThemeAbyss";
+            this.mThemeAbyss.Size = new System.Drawing.Size(163, 22);
+            this.mThemeAbyss.Text = "Abyss";
+            this.mThemeAbyss.Click += new System.EventHandler(this.mThemeAbyss_Click);
+            // 
+            // mThemeDark
+            // 
+            this.mThemeDark.Name = "mThemeDark";
+            this.mThemeDark.Size = new System.Drawing.Size(163, 22);
+            this.mThemeDark.Text = "Dark";
+            this.mThemeDark.Click += new System.EventHandler(this.mThemeDark_Click);
+            // 
+            // mThemeKimbieDark
+            // 
+            this.mThemeKimbieDark.Name = "mThemeKimbieDark";
+            this.mThemeKimbieDark.Size = new System.Drawing.Size(163, 22);
+            this.mThemeKimbieDark.Text = "Kimbie Dark";
+            this.mThemeKimbieDark.Click += new System.EventHandler(this.mThemeKimbieDark_Click);
+            // 
+            // mThemeMonokai
+            // 
+            this.mThemeMonokai.Name = "mThemeMonokai";
+            this.mThemeMonokai.Size = new System.Drawing.Size(163, 22);
+            this.mThemeMonokai.Text = "Monokai";
+            this.mThemeMonokai.Click += new System.EventHandler(this.mThemeMonokai_Click);
+            // 
+            // mThemeMonokaiDimmed
+            // 
+            this.mThemeMonokaiDimmed.Name = "mThemeMonokaiDimmed";
+            this.mThemeMonokaiDimmed.Size = new System.Drawing.Size(163, 22);
+            this.mThemeMonokaiDimmed.Text = "Monokai Dimmed";
+            this.mThemeMonokaiDimmed.Click += new System.EventHandler(this.mThemeMonokaiDimmed_Click);
+            // 
+            // mThemeRed
+            // 
+            this.mThemeRed.Name = "mThemeRed";
+            this.mThemeRed.Size = new System.Drawing.Size(163, 22);
+            this.mThemeRed.Text = "Red";
+            this.mThemeRed.Click += new System.EventHandler(this.mThemeRed_Click);
+            // 
+            // mThemeSolarizedDark
+            // 
+            this.mThemeSolarizedDark.Name = "mThemeSolarizedDark";
+            this.mThemeSolarizedDark.Size = new System.Drawing.Size(163, 22);
+            this.mThemeSolarizedDark.Text = "Solarized Dark";
+            this.mThemeSolarizedDark.Click += new System.EventHandler(this.mThemeSolarizedDark_Click);
+            // 
+            // mThemeTomorrowNightBlue
+            // 
+            this.mThemeTomorrowNightBlue.Name = "mThemeTomorrowNightBlue";
+            this.mThemeTomorrowNightBlue.Size = new System.Drawing.Size(163, 22);
+            this.mThemeTomorrowNightBlue.Text = "Tomorrow Night Blue";
+            this.mThemeTomorrowNightBlue.Click += new System.EventHandler(this.mThemeTomorrowNightBlue_Click);
+            // 
+            // темаИконокToolStripMenuItem
+            // 
+            this.темаИконокToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mIconThemeClassic,
+            this.mIconThemeMinimal});
+            this.темаИконокToolStripMenuItem.Name = "темаИконокToolStripMenuItem";
+            this.темаИконокToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.темаИконокToolStripMenuItem.Text = "Иконочная тема";
+            // 
+            // mIconThemeClassic
+            // 
+            this.mIconThemeClassic.Name = "mIconThemeClassic";
+            this.mIconThemeClassic.Size = new System.Drawing.Size(105, 22);
+            this.mIconThemeClassic.Text = "Classic";
+            this.mIconThemeClassic.Click += new System.EventHandler(this.mIconThemeClassic_Click);
+            // 
+            // mIconThemeMinimal
+            // 
+            this.mIconThemeMinimal.Name = "mIconThemeMinimal";
+            this.mIconThemeMinimal.Size = new System.Drawing.Size(105, 22);
+            this.mIconThemeMinimal.Text = "Minimal";
+            this.mIconThemeMinimal.Click += new System.EventHandler(this.mIconThemeMinimal_Click);
+            // 
             // toolStripSeparator22
             // 
             this.toolStripSeparator22.Name = "toolStripSeparator22";
             this.toolStripSeparator22.Size = new System.Drawing.Size(244, 6);
             // 
-            // увеличитьToolStripMenuItem
+            // mIncreaseScale
             // 
-            this.увеличитьToolStripMenuItem.Name = "увеличитьToolStripMenuItem";
-            this.увеличитьToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.увеличитьToolStripMenuItem.Text = "Увеличить";
+            this.mIncreaseScale.Name = "mIncreaseScale";
+            this.mIncreaseScale.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemplus)));
+            this.mIncreaseScale.Size = new System.Drawing.Size(247, 22);
+            this.mIncreaseScale.Text = "Увеличить";
+            this.mIncreaseScale.Click += new System.EventHandler(this.mIncreaseScale_Click);
             // 
-            // уменьшитьToolStripMenuItem
+            // mReduceScale
             // 
-            this.уменьшитьToolStripMenuItem.Name = "уменьшитьToolStripMenuItem";
-            this.уменьшитьToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.уменьшитьToolStripMenuItem.Text = "Уменьшить";
+            this.mReduceScale.Name = "mReduceScale";
+            this.mReduceScale.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.OemMinus)));
+            this.mReduceScale.Size = new System.Drawing.Size(247, 22);
+            this.mReduceScale.Text = "Уменьшить";
+            this.mReduceScale.Click += new System.EventHandler(this.mReduceScale_Click);
             // 
-            // сброситьМаштабToolStripMenuItem
+            // mResetScale
             // 
-            this.сброситьМаштабToolStripMenuItem.Name = "сброситьМаштабToolStripMenuItem";
-            this.сброситьМаштабToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.сброситьМаштабToolStripMenuItem.Text = "Сбросить мсаштаб";
+            this.mResetScale.Name = "mResetScale";
+            this.mResetScale.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.NumPad0)));
+            this.mResetScale.Size = new System.Drawing.Size(247, 22);
+            this.mResetScale.Text = "Сбросить масштаб";
+            this.mResetScale.Click += new System.EventHandler(this.mResetScale_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -1577,114 +1688,10 @@
             this.minimalToolTip1.ForeColor = System.Drawing.Color.Black;
             this.minimalToolTip1.OwnerDraw = true;
             // 
-            // mThemeLight
-            // 
-            this.mThemeLight.Name = "mThemeLight";
-            this.mThemeLight.Size = new System.Drawing.Size(180, 22);
-            this.mThemeLight.Text = "Light";
-            this.mThemeLight.Click += new System.EventHandler(this.mThemeLight_Click);
-            // 
-            // mThemeQuietLight
-            // 
-            this.mThemeQuietLight.Name = "mThemeQuietLight";
-            this.mThemeQuietLight.Size = new System.Drawing.Size(180, 22);
-            this.mThemeQuietLight.Text = "Quiet Light";
-            this.mThemeQuietLight.Click += new System.EventHandler(this.mThemeQuietLight_Click);
-            // 
-            // mThemeSolarizedLight
-            // 
-            this.mThemeSolarizedLight.Name = "mThemeSolarizedLight";
-            this.mThemeSolarizedLight.Size = new System.Drawing.Size(180, 22);
-            this.mThemeSolarizedLight.Text = "Solarized Light";
-            this.mThemeSolarizedLight.Click += new System.EventHandler(this.mThemeSolarizedLight_Click);
-            // 
-            // toolStripSeparator38
-            // 
-            this.toolStripSeparator38.Name = "toolStripSeparator38";
-            this.toolStripSeparator38.Size = new System.Drawing.Size(177, 6);
-            // 
-            // mThemeAbyss
-            // 
-            this.mThemeAbyss.Name = "mThemeAbyss";
-            this.mThemeAbyss.Size = new System.Drawing.Size(180, 22);
-            this.mThemeAbyss.Text = "Abyss";
-            this.mThemeAbyss.Click += new System.EventHandler(this.mThemeAbyss_Click);
-            // 
-            // mThemeDark
-            // 
-            this.mThemeDark.Name = "mThemeDark";
-            this.mThemeDark.Size = new System.Drawing.Size(180, 22);
-            this.mThemeDark.Text = "Dark";
-            this.mThemeDark.Click += new System.EventHandler(this.mThemeDark_Click);
-            // 
-            // mThemeKimbieDark
-            // 
-            this.mThemeKimbieDark.Name = "mThemeKimbieDark";
-            this.mThemeKimbieDark.Size = new System.Drawing.Size(180, 22);
-            this.mThemeKimbieDark.Text = "Kimbie Dark";
-            this.mThemeKimbieDark.Click += new System.EventHandler(this.mThemeKimbieDark_Click);
-            // 
-            // mThemeMonokai
-            // 
-            this.mThemeMonokai.Name = "mThemeMonokai";
-            this.mThemeMonokai.Size = new System.Drawing.Size(180, 22);
-            this.mThemeMonokai.Text = "Monokai";
-            this.mThemeMonokai.Click += new System.EventHandler(this.mThemeMonokai_Click);
-            // 
-            // mThemeMonokaiDimmed
-            // 
-            this.mThemeMonokaiDimmed.Name = "mThemeMonokaiDimmed";
-            this.mThemeMonokaiDimmed.Size = new System.Drawing.Size(180, 22);
-            this.mThemeMonokaiDimmed.Text = "Monokai Dimmed";
-            this.mThemeMonokaiDimmed.Click += new System.EventHandler(this.mThemeMonokaiDimmed_Click);
-            // 
-            // mThemeRed
-            // 
-            this.mThemeRed.Name = "mThemeRed";
-            this.mThemeRed.Size = new System.Drawing.Size(180, 22);
-            this.mThemeRed.Text = "Red";
-            this.mThemeRed.Click += new System.EventHandler(this.mThemeRed_Click);
-            // 
-            // mThemeSolarizedDark
-            // 
-            this.mThemeSolarizedDark.Name = "mThemeSolarizedDark";
-            this.mThemeSolarizedDark.Size = new System.Drawing.Size(180, 22);
-            this.mThemeSolarizedDark.Text = "Solarized Dark";
-            this.mThemeSolarizedDark.Click += new System.EventHandler(this.mThemeSolarizedDark_Click);
-            // 
-            // mThemeTomorrowNightBlue
-            // 
-            this.mThemeTomorrowNightBlue.Name = "mThemeTomorrowNightBlue";
-            this.mThemeTomorrowNightBlue.Size = new System.Drawing.Size(180, 22);
-            this.mThemeTomorrowNightBlue.Text = "Tomorrow Night Blue";
-            this.mThemeTomorrowNightBlue.Click += new System.EventHandler(this.mThemeTomorrowNightBlue_Click);
-            // 
-            // темаИконокToolStripMenuItem
-            // 
-            this.темаИконокToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mIconThemeClassic,
-            this.mIconThemeMinimal});
-            this.темаИконокToolStripMenuItem.Name = "темаИконокToolStripMenuItem";
-            this.темаИконокToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.темаИконокToolStripMenuItem.Text = "Иконочная тема";
-            // 
-            // mIconThemeClassic
-            // 
-            this.mIconThemeClassic.Name = "mIconThemeClassic";
-            this.mIconThemeClassic.Size = new System.Drawing.Size(180, 22);
-            this.mIconThemeClassic.Text = "Classic";
-            this.mIconThemeClassic.Click += new System.EventHandler(this.mIconThemeClassic_Click);
-            // 
-            // mIconThemeMinimal
-            // 
-            this.mIconThemeMinimal.Name = "mIconThemeMinimal";
-            this.mIconThemeMinimal.Size = new System.Drawing.Size(180, 22);
-            this.mIconThemeMinimal.Text = "Minimal";
-            this.mIconThemeMinimal.Click += new System.EventHandler(this.mIconThemeMinimal_Click);
-            // 
             // FormMain
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(986, 503);
             this.ContextMenuStrip = this.contextMenuStrip1;
@@ -1797,9 +1804,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
         private System.Windows.Forms.ToolStripMenuItem скрытьПанельДействийToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
-        private System.Windows.Forms.ToolStripMenuItem увеличитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem уменьшитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сброситьМаштабToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mIncreaseScale;
+        private System.Windows.Forms.ToolStripMenuItem mReduceScale;
+        private System.Windows.Forms.ToolStripMenuItem mResetScale;
         private System.Windows.Forms.ToolStripMenuItem отладкаToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem расширенияToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;

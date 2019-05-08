@@ -9,80 +9,145 @@ namespace ProgLib.Windows.Forms.VSCode
 {
     public class VSCodeToolStripRenderer : ToolStripRenderer
     {
-        public VSCodeToolStripRenderer(VSCodeTheme Theme)
+        public VSCodeToolStripRenderer()
         {
-            this.Theme = Theme;
-            this.GetTheme(Theme);
-            this.ControlBox = new VSCodeControlBox(VSCodeIconTheme.Classic);
-            this.Settings = true;
+            this.GetTheme(VSCodeTheme.Light, VSCodeIconTheme.Classic);
+            this._settings = true;
 
-            Index = 0;
-            Count = 0;
-            Counter = true;
+            this.Zeroing();
         }
 
-        public VSCodeToolStripRenderer(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
+        public VSCodeToolStripRenderer(Boolean Settings)
         {
-            this.Theme = Theme;
-            this.GetTheme(Theme);
-            this.ControlBox = new VSCodeControlBox(IconTheme);
-            this.Settings = true;
+            this.GetTheme(VSCodeTheme.Light, VSCodeIconTheme.Classic);
+            this._settings = Settings;
 
-            Index = 0;
-            Count = 0;
-            Counter = true;
+            this.Zeroing();
+        }
+
+        public VSCodeToolStripRenderer(VSCodeTheme Theme)
+        {
+            this.GetTheme(Theme, VSCodeIconTheme.Classic);
+            this._settings = true;
+
+            this.Zeroing();
         }
 
         public VSCodeToolStripRenderer(VSCodeTheme Theme, Boolean Settings)
         {
-            this.Theme = Theme;
-            this.GetTheme(Theme);
-            this.ControlBox = new VSCodeControlBox(VSCodeIconTheme.Classic);
-            this.Settings = Settings;
+            this.GetTheme(Theme, VSCodeIconTheme.Classic);
+            this._settings = Settings;
 
-            Index = 0;
-            Count = 0;
-            Counter = true;
+            this.Zeroing();
         }
 
+        public VSCodeToolStripRenderer(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
+        {
+            this.GetTheme(Theme, IconTheme);
+            this._settings = true;
+
+            this.Zeroing();
+        }
+        
         #region Variables
 
-        private Int32 Index;
-        private Int32 Count;
-        private Boolean Counter;
+        private Int32 _index, _count;
+        private Boolean _counter, _settings;
+        private VSCodeTheme _vsCodeTheme;
+        private VSCodeControlBox _vsCodeControlBox;
 
         #endregion
 
         #region Properties
 
-        private Boolean Settings { get; set; }
-        public VSCodeTheme Theme { get; private set; }
-        public VSCodeControlBox ControlBox { get; private set; }
+        public Color BackColor
+        {
+            get;
+            private set;
+        }
+        public Color ForeColor
+        {
+            get;
+            private set;
+        }
+        public Color DisabledForeColor
+        {
+            get;
+            private set;
+        }
+        public Color SelectColor
+        {
+            get;
+            private set;
+        }
 
-        public Color BackColor { get; private set; }
-        public Color ForeColor { get; private set; }
-        public Color DisabledForeColor { get; private set; }
-        public Color SelectColor { get; private set; }
+        public Color DropDownMenuBackColor
+        {
+            get;
+            private set;
+        }
+        public Color DropDownMenuForeColor
+        {
+            get;
+            private set;
+        }
+        public Color DropDownMenuSelectForeColor
+        {
+            get;
+            private set;
+        }
+        public Color DropDownMenuSelectColor
+        {
+            get;
+            private set;
+        }
 
-        public Color DropDownMenuBackColor { get; private set; }
-        public Color DropDownMenuForeColor { get; private set; }
-        public Color DropDownMenuSelectForeColor { get; private set; }
-        public Color DropDownMenuSelectColor { get; private set; }
+        public Color SeparatorColor
+        {
+            get;
+            private set;
+        }
+        public Color CheckColor
+        {
+            get;
+            private set;
+        }
+        public Color SelectCheckColor
+        {
+            get;
+            private set;
+        }
+        public Color ArrowColor
+        {
+            get;
+            private set;
+        }
+        public Color SelectArrowColor
+        {
+            get;
+            private set;
+        }
 
-        public Color SeparatorColor { get; private set; }
-        public Color CheckColor { get; private set; }
-        public Color SelectCheckColor { get; private set; }
-        public Color ArrowColor { get; private set; }
-        public Color SelectArrowColor { get; private set; }
-
-        public Color CloseColor { get; private set; }
-        public Color WindowBackColor { get; private set; }
-        public Color SidebarBackColor { get; private set; }
+        public Color CloseColor
+        {
+            get;
+            private set;
+        }
+        public Color WindowBackColor
+        {
+            get;
+            private set;
+        }
+        public Color SidebarBackColor
+        {
+            get;
+            private set;
+        }
 
         #endregion
 
         #region Method
-
+        
         /// <summary>
         /// Конвертирует список клавиш в <see cref="String"/>.
         /// </summary>
@@ -91,16 +156,33 @@ namespace ProgLib.Windows.Forms.VSCode
         private String KeysToString(Keys Keys)
         {
             KeysConverter KC = new KeysConverter();
-            String ShortcutKeys = KC.ConvertToString(Keys).ToUpper();
+            String ShortcutKeys = KC.ConvertToString(Keys);
 
-            return (ShortcutKeys != "NONE") ? ShortcutKeys : "";
+            ShortcutKeys = ShortcutKeys.Replace("Ctrl", "CTRL");
+            ShortcutKeys = ShortcutKeys.Replace("Shift", "SHIFT");
+            ShortcutKeys = ShortcutKeys.Replace("Alt", "ALT");
+
+            ShortcutKeys = ShortcutKeys.Replace("Oemplus", "=");
+            ShortcutKeys = ShortcutKeys.Replace("OemMinus", "_");
+
+            return (ShortcutKeys != "None") ? ShortcutKeys : "";
+        }
+
+        /// <summary>
+        /// Обнуление переменных.
+        /// </summary>
+        private void Zeroing()
+        {
+            _index = 0;
+            _count = 0;
+            _counter = true;
         }
 
         /// <summary>
         /// Задаёт цветовую палитру, в зависимости от выбранной темы.
         /// </summary>
         /// <param name="Theme"></param>
-        private void GetTheme(VSCodeTheme Theme)
+        private void GetTheme(VSCodeTheme Theme, VSCodeIconTheme Icontheme)
         {
             switch (Theme)
             {
@@ -346,6 +428,9 @@ namespace ProgLib.Windows.Forms.VSCode
                     this.SidebarBackColor = Color.FromArgb(0, 36, 81);
                     break;
             }
+
+            _vsCodeTheme = Theme;
+            _vsCodeControlBox = new VSCodeControlBox(Icontheme);
         }
 
         /// <summary>
@@ -394,14 +479,14 @@ namespace ProgLib.Windows.Forms.VSCode
 
         private Int32 GetCount(ToolStripItem[] Items)
         {
-            Int32 _count = 0;
+            Int32 Count = 0;
             foreach (ToolStripItem Item in Items)
             {
-                _count += 1;
-                _count += GetCount(GetItems(Item));
+                Count += 1;
+                Count += GetCount(GetItems(Item));
             }
 
-            return _count;
+            return Count;
         }
 
         /// <summary>
@@ -453,7 +538,7 @@ namespace ProgLib.Windows.Forms.VSCode
         // Отрисовка выделенного Item в главном меню
         protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
         {
-            if (this.Settings)
+            if (this._settings)
             {
                 Form Parent = null;
 
@@ -465,11 +550,11 @@ namespace ProgLib.Windows.Forms.VSCode
                     foreach (ToolStripItem _item in GetItems(_menuStrip.Items)) UMargin(GetItems(_item));
 
                     _menuStrip.Padding = new Padding(0);
-                    
-                    if (Counter)
+
+                    if (_counter)
                     {
-                        Count = GetCount(GetItems(_menuStrip.Items));
-                        Counter = false;
+                        _count = GetCount(GetItems(_menuStrip.Items));
+                        _counter = false;
                     }
                 }
 
@@ -479,38 +564,37 @@ namespace ProgLib.Windows.Forms.VSCode
                     ContextMenuStrip _contextMenuStrip = e.Item.GetCurrentParent() as ContextMenuStrip;
                     UMargin(GetItems(_contextMenuStrip.Items));
 
-                    if (Counter)
+                    if (_counter)
                     {
-                        Count = GetCount(GetItems(_contextMenuStrip.Items));
-                        Counter = false;
+                        _count = GetCount(GetItems(_contextMenuStrip.Items));
+                        _counter = false;
                     }
                 }
 
                 switch (e.Item.Name)
                 {
                     case "mmMinimum":
-                        e.Item.Image = ControlBox.Minimum(Theme);
-                        e.Item.Padding = new Padding(12, 0, 12, 0);
+                        e.Item.Image = _vsCodeControlBox.Minimum(_vsCodeTheme);
+                        e.Item.Padding = new Padding(12, 4, 12, 4);
                         break;
 
                     case "mmMaximum":
-                        e.Item.Image = (Parent != null) ? ControlBox.Maximum(Theme, Parent.WindowState) : ControlBox.Maximum(Theme, FormWindowState.Normal);
-                        e.Item.Padding = new Padding(12, 0, 12, 0);
+                        e.Item.Image = (Parent != null) ? _vsCodeControlBox.Maximum(_vsCodeTheme, Parent.WindowState) : _vsCodeControlBox.Maximum(_vsCodeTheme, FormWindowState.Normal);
+                        e.Item.Padding = new Padding(12, 4, 12, 4);
                         break;
 
                     case "mmClose":
-                        e.Item.Image = ControlBox.Close(Theme);
-                        e.Item.Padding = new Padding(12, 0, 12, 0);
+                        e.Item.Image = _vsCodeControlBox.Close(_vsCodeTheme);
+                        e.Item.Padding = new Padding(12, 4, 12, 4);
                         break;
 
                     default:
-                        if (e.Item.IsOnDropDown)
-                            e.Item.Padding = new Padding(0);
+                        e.Item.Padding = (e.Item.IsOnDropDown) ? new Padding(0) : new Padding(4);
                         break;
                 }
 
-                Index++;
-                if (Count == Index) this.Settings = false;
+                _index++;
+                if (_count == _index) this._settings = false;
             }
             
             if (e.Item.Enabled)
@@ -549,6 +633,8 @@ namespace ProgLib.Windows.Forms.VSCode
                             new SolidBrush(this.SelectColor),
                             new Rectangle(0, 0, e.Item.Width, e.Item.Height));
                     }
+
+                    (e.Item as ToolStripMenuItem).DropDown.Padding = new Padding(10);
                 }
 
                 // Выделение Item в выпадающем меню
@@ -565,9 +651,14 @@ namespace ProgLib.Windows.Forms.VSCode
         protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
         {
             String ShortcutKeys = KeysToString((e.Item as ToolStripMenuItem).ShortcutKeys);
-            Int32 W = TextRenderer.MeasureText(
-                ShortcutKeys,
-                new Font("Segoe UI", 7.5F, FontStyle.Regular)).Width;
+            Int32 W = TextRenderer.MeasureText(ShortcutKeys, e.Item.Font).Width;
+            Int32 H = TextRenderer.MeasureText(ShortcutKeys, e.Item.Font).Height;
+
+            //if (MenuStrip != null)
+            //{
+            //    //MenuStrip.Size = new Size(MenuStrip.Width, H);
+            //    MenuStrip.Width = H;
+            //}
 
             Color _foreColor = this.DropDownMenuForeColor;
             Color _selectForeColor = this.DropDownMenuSelectForeColor;

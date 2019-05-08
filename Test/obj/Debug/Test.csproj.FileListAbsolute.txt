@@ -41,4 +41,4 @@ C:\Users\Александр Макаров\Desktop\ProgLib\Test\obj\Debug\Test.c
 C:\Users\Александр Макаров\Desktop\ProgLib\Test\obj\Debug\Test.exe
 C:\Users\Александр Макаров\Desktop\ProgLib\Test\obj\Debug\Test.pdb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.FormMain.resources
-D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.Frameworks.Form_MaterialSkin.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\Test\obj\Debug\Test.Demonstration.Form_MaterialSkin.resources

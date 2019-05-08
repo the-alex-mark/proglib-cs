@@ -11,6 +11,7 @@ namespace NAudio.Utils
     /// <summary>
     /// A thread-safe Progress Log Control
     /// </summary>
+    [DesignTimeVisible(false)]
     public partial class ProgressLog : UserControl
     {
         /// <summary>

@@ -10,6 +10,7 @@ namespace NAudio.Gui
     /// <summary>
     /// Summary description for Fader.
     /// </summary>
+    [DesignTimeVisible(false)]
     public class Fader : System.Windows.Forms.Control
     {
         private int minimum;

@@ -7,10 +7,11 @@ using System.Windows.Forms;
 
 namespace NAudio.Gui
 {
-	/// <summary>
-	/// Pan slider control
-	/// </summary>
-	public class PanSlider : System.Windows.Forms.UserControl
+    /// <summary>
+    /// Pan slider control
+    /// </summary>
+    [DesignTimeVisible(false)]
+    public class PanSlider : System.Windows.Forms.UserControl
 	{
 		/// <summary>
 		/// Required designer variable.

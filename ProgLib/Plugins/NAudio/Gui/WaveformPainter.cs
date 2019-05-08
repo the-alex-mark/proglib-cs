@@ -11,6 +11,7 @@ namespace NAudio.Gui
     /// <summary>
     /// Windows Forms control for painting audio waveforms
     /// </summary>
+    [DesignTimeVisible(false)]
     public partial class WaveformPainter : Control
     {
         Pen foregroundPen;

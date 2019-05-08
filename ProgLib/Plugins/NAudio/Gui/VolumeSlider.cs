@@ -10,6 +10,7 @@ namespace NAudio.Gui
     /// <summary>
     /// VolumeSlider control
     /// </summary>
+    [DesignTimeVisible(false)]
     public class VolumeSlider : System.Windows.Forms.UserControl
     {
         /// <summary>

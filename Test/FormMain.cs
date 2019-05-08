@@ -24,7 +24,7 @@ using ProgLib.Windows.Forms.Material;
 using ProgLib.Windows.Forms.Minimal;
 using ProgLib.Windows.Forms.VSCode;
 
-using Test.Frameworks;
+using Test.Demonstration;
 
 namespace Test
 {
@@ -159,10 +159,10 @@ namespace Test
         }
 
         #region Variables
-
-        private FormWindowState _windowState;
+        
         private VSCodeTheme _vsCodeTheme;
         private VSCodeIconTheme _vsCodeIconTheme;
+        private FormWindowState _windowState;
 
         #endregion
 
@@ -287,7 +287,7 @@ namespace Test
 
         private void Form1_Load(Object sender, EventArgs e)
         {
-            // Установка максимального размера завёртывания формы
+            // Установка максимального размера развёртывания формы
             MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             _windowState = this.WindowState;
 
@@ -295,6 +295,24 @@ namespace Test
             _vsCodeTheme = VSCodeTheme.Red;
             _vsCodeIconTheme = VSCodeIconTheme.Minimal;
             UTheme(_vsCodeTheme, _vsCodeIconTheme);
+        }
+
+        private void mIncreaseScale_Click(Object sender, EventArgs e)
+        {
+            foreach (ToolStripItem Item in MainMenu.Items)
+                Item.Font = new Font(Item.Font.FontFamily.Name, Item.Font.Size + 2, Item.Font.Style);
+        }
+
+        private void mReduceScale_Click(Object sender, EventArgs e)
+        {
+            foreach (ToolStripItem Item in MainMenu.Items)
+                Item.Font = new Font(Item.Font.FontFamily.Name, Item.Font.Size - 2, Item.Font.Style);
+        }
+
+        private void mResetScale_Click(Object sender, EventArgs e)
+        {
+            foreach (ToolStripItem Item in MainMenu.Items)
+                Item.Font = new Font(Item.Font.FontFamily.Name, 7.5F, Item.Font.Style);
         }
     }
 }
