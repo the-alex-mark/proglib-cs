@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="MainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>127, 17</value>
+  </metadata>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>237, 17</value>
+  </metadata>
+  <metadata name="minimalToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="textCode1.ServiceColors" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAD5Qcm9nTGliLCBWZXJzaW9uPTUuMC4wLjAsIEN1bHR1cmU9bmV1
+        dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbAwDAAAAUVN5c3RlbS5EcmF3aW5nLCBWZXJzaW9uPTQuMC4w
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAI1By
+        b2dMaWIuV2luZG93cy5Gb3Jtcy5TZXJ2aWNlQ29sb3JzBgAAACg8Q29sbGFwc2VNYXJrZXJGb3JlQ29s
+        b3I+a19fQmFja2luZ0ZpZWxkKDxDb2xsYXBzZU1hcmtlckJhY2tDb2xvcj5rX19CYWNraW5nRmllbGQq
+        PENvbGxhcHNlTWFya2VyQm9yZGVyQ29sb3I+a19fQmFja2luZ0ZpZWxkJjxFeHBhbmRNYXJrZXJGb3Jl
+        Q29sb3I+a19fQmFja2luZ0ZpZWxkJjxFeHBhbmRNYXJrZXJCYWNrQ29sb3I+a19fQmFja2luZ0ZpZWxk
+        KDxFeHBhbmRNYXJrZXJCb3JkZXJDb2xvcj5rX19CYWNraW5nRmllbGQEBAQEBAQUU3lzdGVtLkRyYXdp
+        bmcuQ29sb3IDAAAAFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAAABRTeXN0ZW0uRHJhd2luZy5Db2xvcgMA
+        AAAUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAAFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAAABRTeXN0ZW0u
+        RHJhd2luZy5Db2xvcgMAAAACAAAABfz///8UU3lzdGVtLkRyYXdpbmcuQ29sb3IEAAAABG5hbWUFdmFs
+        dWUKa25vd25Db2xvcgVzdGF0ZQEAAAAJBwcDAAAACgAAAAAAAAAAlgABAAH7/////P///woAAAAAAAAA
+        AKQAAQAB+v////z///8KAAAAAAAAAACWAAEAAfn////8////CgAAAAAAAAAAjQABAAH4/////P///woA
+        AAAAAAAAAKQAAQAB9/////z///8KAAAAAAAAAACWAAEACw==
+</value>
+  </data>
+  <data name="textCode1.Text" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace ProgLib.Network.Tcp
+{
+    /// &lt;summary&gt;
+    /// Предоставляет методы для работы с сервером протокола TCP/IP
+    /// &lt;/summary&gt;
+    public class TcpServer
+    {
+        /// &lt;summary&gt;
+        /// 
+        /// &lt;/summary&gt;
+        /// &lt;param name="Port"&gt;Номер порта, связанный с адресом, или любой доступный порт&lt;/param&gt;
+        /// &lt;param name="Backlog"&gt;Максимальное количество возможных подключений&lt;/param&gt;
+        public TcpServer(Int32 Port, Int32 Backlog)
+        {
+            // Инициализация сервера
+            _server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            _server.Bind(new IPEndPoint(IPAddress.Any, Port));
+            _server.Listen(Backlog);
+
+            // Получение порта
+            _port = Port;
+        }
+
+        /// &lt;summary&gt;
+        /// 
+        /// &lt;/summary&gt;
+        /// &lt;param name="Address"&gt;IP&lt;/param&gt;
+        /// &lt;param name="Port"&gt;Номер порта, связанный с адресом, или любой доступный порт&lt;/param&gt;
+        /// &lt;param name="Backlog"&gt;Максимальное количество возможных подключений&lt;/param&gt;
+        public TcpServer(IPAddress Address, Int32 Port, Int32 Backlog)
+        {
+            // Инициализация сервера
+            _server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            _server.Bind(new IPEndPoint(Address, Port));
+            _server.Listen(Backlog);
+
+            // Получение порта
+            _port = Port;
+        }
+
+        #region Global Variables
+
+        // Настройки сервера
+        private Socket _server;
+        private Int32 _port;
+        private String _data = null;
+
+        // Внешний поток
+        private Thread _flow;
+
+        // Событие при получении данных от клиента
+        public event HandledEventArgs Receiver;
+        public delegate void HandledEventArgs(Object sender, TcpEventArgs eventArgs);
+
+        #endregion
+
+        #region Additional method
+
+        /// &lt;summary&gt;
+        /// Получает имя клиента из указанного сокета.
+        /// &lt;/summary&gt;
+        /// &lt;param name="Client"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static String GetHostName(Socket Client)
+        {
+            String IP = ((IPEndPoint)Client.RemoteEndPoint).Address.ToString();
+            return Dns.GetHostEntry(IP).HostName;
+        }
+
+        /// &lt;summary&gt;
+        /// Преобразует строку в массив байтов.
+        /// &lt;/summary&gt;
+        /// &lt;param name="Value"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static Byte[] GetBytes(String Value)
+        {
+            return Encoding.UTF8.GetBytes(Value);
+        }
+
+        /// &lt;summary&gt;
+        /// Преобразует массив байт в строчное представление.
+        /// &lt;/summary&gt;
+        /// &lt;param name="Value"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static String GetString(Byte[] Value)
+        {
+            return Encoding.UTF8.GetString(
+                Value.TakeWhile((v, index) =&gt; Value.Skip(index).Any(w =&gt; w != 0x00)).ToArray());
+        }
+
+        /// &lt;summary&gt;
+        /// Преобразует массив байт в строчное представление.
+        /// &lt;/summary&gt;
+        /// &lt;param name="Value"&gt;&lt;/param&gt;
+        /// &lt;param name="Count"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static String GetString(Byte[] Value, Int32 Count)
+        {
+            return Encoding.UTF8.GetString(Value, 0, Count);
+        }
+
+        #endregion
+
+        /// &lt;summary&gt;
+        /// Запускает процесс получения данных.
+        /// &lt;/summary&gt;
+        public void Start()
+        {
+            Stop();
+
+            _flow = new Thread(new ThreadStart(Listener));
+            _flow.IsBackground = true;
+            _flow.Start();
+        }
+
+        /// &lt;summary&gt;
+        /// Запускает процесс получения и трансляции данных.
+        /// &lt;/summary&gt;
+        /// &lt;param name="Data"&gt;Транслируемые данные&lt;/param&gt;
+        public void Start(String Data)
+        {
+            _data = Data;
+            Start();
+        }
+
+        /// &lt;summary&gt;
+        /// Метод получения данных от клиента.
+        /// &lt;/summary&gt;
+        private void Listener()
+        {
+            while (true)
+            {
+                try
+                {
+                    // Получение клиентского сокета
+                    Socket _client = _server.Accept();
+
+                    // Получение входящих данных
+                    Byte[] _buffer = new Byte[10000];
+                    do
+                    {
+                        // Получение данных, отправленные клиентом
+                        Int32 _length = _client.Receive(_buffer, 0, _client.Available, SocketFlags.None);
+                        Receiver?.Invoke(this, new TcpEventArgs(_client, _buffer, _length));
+                    }
+                    while (_client.Available &gt; 0);
+
+                    if (_data != "" &amp;&amp; _data != null)
+                    {
+                        // Отправка данных клиенту
+                        _client.Send(TcpServer.GetBytes(_data));
+                    }
+
+                    // Закрытие клиентского сокета
+                    //_client.Shutdown(SocketShutdown.Both);
+                    _client.Close();
+                }
+                catch /*(Exception Error)*/ { /*MessageBox.Show(Error.Message, "Exception");*/ }
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Отправляет данные другому серверу.
+        /// &lt;/summary&gt;
+        /// &lt;param name="Server"&gt;Имя сервера&lt;/param&gt;
+        /// &lt;param name="Data"&gt;Передаваемые данные&lt;/param&gt;
+        public void Send(String Server, String Data)
+        {
+            try
+            {
+                // Инициализация клиентского сокета
+                Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                _client.Connect(Server, _port);
+
+                // Отправление данных на сервер
+                _client.Send(TcpServer.GetBytes(Data));
+
+                // Закрытие клиентского сокета
+                _client.Shutdown(SocketShutdown.Both);
+                _client.Close();
+            }
+            catch (Exception Error) { throw Error; }
+        }
+
+        /// &lt;summary&gt;
+        /// Отправляет данные другому серверу.
+        /// &lt;/summary&gt;
+        /// &lt;param name="Server"&gt;Имя сервера&lt;/param&gt;
+        /// &lt;param name="Port"&gt;Порт, по которому будет осуществляться передача данных&lt;/param&gt;
+        /// &lt;param name="Data"&gt;Передаваемые данные&lt;/param&gt;
+        public static void Send(String Server, Int32 Port, String Data)
+        {
+            try
+            {
+                // Инициализация клиентского сокета
+                Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                _client.Connect(Server, Port);
+
+                // Отправление данных на сервер
+                _client.Send(TcpServer.GetBytes(Data));
+
+                // Закрытие клиентского сокета
+                _client.Shutdown(SocketShutdown.Both);
+                _client.Close();
+            }
+            catch (Exception Error) { throw Error; }
+        }
+
+        /// &lt;summary&gt;
+        /// Завершает процесс получения данных.
+        /// &lt;/summary&gt;
+        public void Stop()
+        {
+            if (_flow != null)
+                _flow.Interrupt();
+
+            _flow = null;
+            _data = null;
+        }
+
+        /// &lt;summary&gt;
+        /// Завершает работу сервера и освобождает все связанные ресурсы.
+        /// &lt;/summary&gt;
+        public void Close()
+        {
+            Stop();
+            _server.Close();
+        }
+
+        /// &lt;summary&gt;
+        /// Освобождает все ресурсы, используемые текущим экземпляром класса &lt;see cref="TcpServer"/&gt;.
+        /// &lt;/summary&gt;
+        public void Dispose()
+        {
+            Close();
+            _server.Dispose();
+        }
+    }
+}
+</value>
+  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>58</value>
+  </metadata>
+</root>

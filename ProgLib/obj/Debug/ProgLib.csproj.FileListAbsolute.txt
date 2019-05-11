@@ -47,8 +47,8 @@ D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Deb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\Un4seen.Bass.SplashScreen.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.Cyotek.ColorDialog.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.Cyotek.HSBSlider.resources
-D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\FastColoredTextBoxNS.FastColoredTextBox.resources
-D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\FastColoredTextBoxNS.FindForm.resources
-D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\FastColoredTextBoxNS.GoToForm.resources
-D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\FastColoredTextBoxNS.HotkeysEditorForm.resources
-D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\FastColoredTextBoxNS.ReplaceForm.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.TextCode.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.FindForm.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.GoToForm.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.HotkeysEditorForm.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.ReplaceForm.resources

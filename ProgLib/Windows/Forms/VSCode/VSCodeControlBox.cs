@@ -9,12 +9,6 @@ using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.VSCode
 {
-    public enum VSCodeIconTheme
-    {
-        Classic,
-        Minimal
-    }
-
     public class VSCodeControlBox
     {
         public VSCodeControlBox(VSCodeIconTheme Theme)

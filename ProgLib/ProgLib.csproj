@@ -1345,72 +1345,72 @@
     <Compile Include="Windows\Forms\Cyotek\ScreenColorPicker.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\AutocompleteItem.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\AutocompleteMenu.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\AutocompleteItem.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\AutocompleteMenu.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\Bookmarks.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\Char.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\CommandManager.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\Commands.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\DocumentMap.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Bookmarks.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Char.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\CommandManager.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Commands.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\DocumentMap.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\EncodingDetector.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\ExportToHTML.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\ExportToRTF.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\FastColoredTextBox.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\EncodingDetector.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\ExportToHTML.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\ExportToRTF.cs" />
+    <Compile Include="Windows\Forms\TextCode.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\FileTextSource.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\FindForm.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\FileTextSource.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\FindForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\FindForm.Designer.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\FindForm.Designer.cs">
       <DependentUpon>FindForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\GoToForm.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\GoToForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\GoToForm.Designer.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\GoToForm.Designer.cs">
       <DependentUpon>GoToForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\Hints.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\Hotkeys.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\HotkeysEditorForm.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Hints.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Hotkeys.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\HotkeysEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\HotkeysEditorForm.Designer.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\HotkeysEditorForm.Designer.cs">
       <DependentUpon>HotkeysEditorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\LimitedStack.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\Line.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\LinesAccessor.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\MacrosManager.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\Place.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\PlatformType.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\Range.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\ReplaceForm.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\LimitedStack.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Line.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\LinesAccessor.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\MacrosManager.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Place.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\PlatformType.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Range.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\ReplaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\ReplaceForm.Designer.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\ReplaceForm.Designer.cs">
       <DependentUpon>ReplaceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\Ruler.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Ruler.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\Ruler.Designer.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Ruler.Designer.cs">
       <DependentUpon>Ruler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\Style.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\SyntaxDescriptor.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\SyntaxHighlighter.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\TextSource.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\TypeDescriptor.cs" />
-    <Compile Include="Windows\Forms\FastColoredTextBox\UnfocusablePanel.cs">
+    <Compile Include="Windows\Forms\!Прочее\TextCode\Style.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\SyntaxDescriptor.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\SyntaxHighlighter.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\TextSource.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\TypeDescriptor.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\UnfocusablePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\FastColoredTextBox\VisualMarker.cs" />
+    <Compile Include="Windows\Forms\!Прочее\TextCode\VisualMarker.cs" />
     <Compile Include="Windows\Forms\FormExpansion.cs" />
     <Compile Include="Windows\Forms\Material\ColorScheme.cs" />
     <Compile Include="Windows\Forms\Material\DrawHelper.cs" />
@@ -1513,8 +1513,10 @@
     <Compile Include="Windows\Forms\MouseMessageFilter.cs" />
     <Compile Include="Windows\Forms\Enum.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeControlBox.cs" />
+    <Compile Include="Windows\Forms\VSCode\VSCodeIconTheme.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeTheme.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeToolStripRenderer.cs" />
+    <Compile Include="Windows\Forms\VSCode\VSCodeToolStripSettings.cs" />
     <Compile Include="Windows\Forms\Window.cs" />
     <Compile Include="Windows\Taskbar\NativeMethods.cs" />
     <Compile Include="Windows\Taskbar\TaskbarHelper.cs" />
@@ -1556,19 +1558,19 @@
     <EmbeddedResource Include="Windows\Forms\Cyotek\HSBSlider.resx">
       <DependentUpon>HSBSlider.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Forms\FastColoredTextBox\FastColoredTextBox.resx">
-      <DependentUpon>FastColoredTextBox.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\Forms\TextCode.resx">
+      <DependentUpon>TextCode.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Forms\FastColoredTextBox\FindForm.resx">
+    <EmbeddedResource Include="Windows\Forms\!Прочее\TextCode\FindForm.resx">
       <DependentUpon>FindForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Forms\FastColoredTextBox\GoToForm.resx">
+    <EmbeddedResource Include="Windows\Forms\!Прочее\TextCode\GoToForm.resx">
       <DependentUpon>GoToForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Forms\FastColoredTextBox\HotkeysEditorForm.resx">
+    <EmbeddedResource Include="Windows\Forms\!Прочее\TextCode\HotkeysEditorForm.resx">
       <DependentUpon>HotkeysEditorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Forms\FastColoredTextBox\ReplaceForm.resx">
+    <EmbeddedResource Include="Windows\Forms\!Прочее\TextCode\ReplaceForm.resx">
       <DependentUpon>ReplaceForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -1576,7 +1578,7 @@
     <None Include="Resources\CellTransparentBackground.png" />
     <None Include="Resources\Roboto-Medium.ttf" />
     <None Include="Resources\Roboto-Regular.ttf" />
-    <None Include="Windows\Forms\FastColoredTextBox\SyntaxHighlighter.cs.old" />
+    <None Include="Windows\Forms\!Прочее\TextCode\SyntaxHighlighter.cs.old" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Hide.png" />

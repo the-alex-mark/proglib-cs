@@ -11,50 +11,27 @@ namespace ProgLib.Windows.Forms.VSCode
     {
         public VSCodeToolStripRenderer()
         {
-            this.GetTheme(VSCodeTheme.Light, VSCodeIconTheme.Classic);
-            this._settings = true;
-
-            this.Zeroing();
-        }
-
-        public VSCodeToolStripRenderer(Boolean Settings)
-        {
-            this.GetTheme(VSCodeTheme.Light, VSCodeIconTheme.Classic);
-            this._settings = Settings;
-
-            this.Zeroing();
+            SetTheme(VSCodeTheme.Light);
+            _vsCodeSettings = null;
         }
 
         public VSCodeToolStripRenderer(VSCodeTheme Theme)
         {
-            this.GetTheme(Theme, VSCodeIconTheme.Classic);
-            this._settings = true;
-
-            this.Zeroing();
+            SetTheme(Theme);
+            _vsCodeSettings = null;
         }
 
-        public VSCodeToolStripRenderer(VSCodeTheme Theme, Boolean Settings)
+        public VSCodeToolStripRenderer(VSCodeTheme Theme, VSCodeToolStripSettings Settings)
         {
-            this.GetTheme(Theme, VSCodeIconTheme.Classic);
-            this._settings = Settings;
-
-            this.Zeroing();
-        }
-
-        public VSCodeToolStripRenderer(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
-        {
-            this.GetTheme(Theme, IconTheme);
-            this._settings = true;
-
-            this.Zeroing();
+            SetTheme(Theme);
+            SetMenu(Settings.Menu);
+            _vsCodeSettings = Settings;
         }
         
         #region Variables
-
-        private Int32 _index, _count;
-        private Boolean _counter, _settings;
+        
         private VSCodeTheme _vsCodeTheme;
-        private VSCodeControlBox _vsCodeControlBox;
+        private VSCodeToolStripSettings _vsCodeSettings;
 
         #endregion
 
@@ -167,22 +144,12 @@ namespace ProgLib.Windows.Forms.VSCode
 
             return (ShortcutKeys != "None") ? ShortcutKeys : "";
         }
-
-        /// <summary>
-        /// Обнуление переменных.
-        /// </summary>
-        private void Zeroing()
-        {
-            _index = 0;
-            _count = 0;
-            _counter = true;
-        }
-
+        
         /// <summary>
         /// Задаёт цветовую палитру, в зависимости от выбранной темы.
         /// </summary>
         /// <param name="Theme"></param>
-        private void GetTheme(VSCodeTheme Theme, VSCodeIconTheme Icontheme)
+        private void SetTheme(VSCodeTheme Theme)
         {
             switch (Theme)
             {
@@ -430,7 +397,52 @@ namespace ProgLib.Windows.Forms.VSCode
             }
 
             _vsCodeTheme = Theme;
-            _vsCodeControlBox = new VSCodeControlBox(Icontheme);
+        }
+
+        private void SetMenu(ToolStrip Menu)
+        {
+            if (Menu is MenuStrip)
+            {
+                MenuStrip _menuStrip = Menu as MenuStrip;
+                _menuStrip.Padding = new Padding(0);
+
+                foreach (ToolStripItem _item in GetItems(_menuStrip.Items))
+                    SetMargin(GetItems(_item));
+            }
+
+            if (Menu is ContextMenuStrip)
+            {
+                ContextMenuStrip _contextMenuStrip = Menu as ContextMenuStrip;
+                SetMargin(GetItems(_contextMenuStrip.Items));
+            }
+        }
+
+        /// <summary>
+        /// Задаёт Margin первому и последнему элементам списка.
+        /// </summary>
+        /// <param name="Items"></param>
+        private void SetMargin(ToolStripItem[] Items)
+        {
+            switch (Items.Length)
+            {
+                case 0:
+                    break;
+
+                case 1:
+                    Items[0].Margin = new Padding(0, 2, 0, 3);
+                    break;
+
+                default:
+                    Items[0].Margin = new Padding(0, 2, 0, 0);
+                    Items[Items.Length - 1].Margin = new Padding(0, 0, 0, 3);
+                    break;
+            }
+
+            if (Items.Length > 0)
+            {
+                foreach (ToolStripItem Item in Items)
+                    SetMargin(GetItems(Item));
+            }
         }
 
         /// <summary>
@@ -488,35 +500,7 @@ namespace ProgLib.Windows.Forms.VSCode
 
             return Count;
         }
-
-        /// <summary>
-        /// Задаёт Margin первому и последнему элементам списка.
-        /// </summary>
-        /// <param name="Items"></param>
-        private void UMargin(ToolStripItem[] Items)
-        {
-            switch (Items.Length)
-            {
-                case 0:
-                    break;
-
-                case 1:
-                    Items[0].Margin = new Padding(0, 1, 0, 2);
-                    break;
-
-                default:
-                    Items[0].Margin = new Padding(0, 1, 0, 0);
-                    Items[Items.Length - 1].Margin = new Padding(0, 0, 0, 2);
-                    break;
-            }
-
-            if (Items.Length > 0)
-            {
-                foreach (ToolStripItem Item in Items)
-                    UMargin(GetItems(Item));
-            }
-        }
-
+        
         #endregion
 
         // Отрисовка фонового цвета главного меню
@@ -538,63 +522,31 @@ namespace ProgLib.Windows.Forms.VSCode
         // Отрисовка выделенного Item в главном меню
         protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
         {
-            if (this._settings)
+            if (_vsCodeSettings != null)
             {
-                Form Parent = null;
-
-                // Настройка "MenuStrip"
-                if (!e.Item.IsOnDropDown && e.Item.GetCurrentParent() is MenuStrip)
-                {
-                    MenuStrip _menuStrip = e.Item.GetCurrentParent() as MenuStrip;
-                    if (_menuStrip.Parent is Form) Parent = _menuStrip.Parent as Form;
-                    foreach (ToolStripItem _item in GetItems(_menuStrip.Items)) UMargin(GetItems(_item));
-
-                    _menuStrip.Padding = new Padding(0);
-
-                    if (_counter)
-                    {
-                        _count = GetCount(GetItems(_menuStrip.Items));
-                        _counter = false;
-                    }
-                }
-
-                // Настройка "ContextMenuStrip"
-                if (e.Item.GetCurrentParent() is ContextMenuStrip)
-                {
-                    ContextMenuStrip _contextMenuStrip = e.Item.GetCurrentParent() as ContextMenuStrip;
-                    UMargin(GetItems(_contextMenuStrip.Items));
-
-                    if (_counter)
-                    {
-                        _count = GetCount(GetItems(_contextMenuStrip.Items));
-                        _counter = false;
-                    }
-                }
-
                 switch (e.Item.Name)
                 {
                     case "mmMinimum":
-                        e.Item.Image = _vsCodeControlBox.Minimum(_vsCodeTheme);
+                        e.Item.Image = _vsCodeSettings.ControlBox.Minimum(_vsCodeTheme);
                         e.Item.Padding = new Padding(12, 4, 12, 4);
                         break;
 
                     case "mmMaximum":
-                        e.Item.Image = (Parent != null) ? _vsCodeControlBox.Maximum(_vsCodeTheme, Parent.WindowState) : _vsCodeControlBox.Maximum(_vsCodeTheme, FormWindowState.Normal);
+                        e.Item.Image = (_vsCodeSettings.Form != null) ? _vsCodeSettings.ControlBox.Maximum(_vsCodeTheme, _vsCodeSettings.Form.WindowState) : _vsCodeSettings.ControlBox.Maximum(_vsCodeTheme, FormWindowState.Normal);
                         e.Item.Padding = new Padding(12, 4, 12, 4);
                         break;
 
                     case "mmClose":
-                        e.Item.Image = _vsCodeControlBox.Close(_vsCodeTheme);
+                        e.Item.Image = _vsCodeSettings.ControlBox.Close(_vsCodeTheme);
                         e.Item.Padding = new Padding(12, 4, 12, 4);
                         break;
 
                     default:
-                        e.Item.Padding = (e.Item.IsOnDropDown) ? new Padding(0) : new Padding(4);
+                        e.Item.Padding = (e.Item.IsOnDropDown) 
+                            ? new Padding((e.Item.Font.Size <= 7.5F) ? 0 : 2) 
+                            : new Padding(4);
                         break;
                 }
-
-                _index++;
-                if (_count == _index) this._settings = false;
             }
             
             if (e.Item.Enabled)
@@ -652,13 +604,12 @@ namespace ProgLib.Windows.Forms.VSCode
         {
             String ShortcutKeys = KeysToString((e.Item as ToolStripMenuItem).ShortcutKeys);
             Int32 W = TextRenderer.MeasureText(ShortcutKeys, e.Item.Font).Width;
-            Int32 H = TextRenderer.MeasureText(ShortcutKeys, e.Item.Font).Height;
+            Int32 H = TextRenderer.MeasureText("Text", e.Item.Font).Height;
 
-            //if (MenuStrip != null)
-            //{
-            //    //MenuStrip.Size = new Size(MenuStrip.Width, H);
-            //    MenuStrip.Width = H;
-            //}
+            //Font _font = e.Item.Font;
+            Font _font = new Font(e.Item.Font.Name, e.Item.Font.Size - 0.5F, e.Item.Font.Style);
+            
+            Int32 _leftAndRightPadding = H + 5;
 
             Color _foreColor = this.DropDownMenuForeColor;
             Color _selectForeColor = this.DropDownMenuSelectForeColor;
@@ -672,8 +623,8 @@ namespace ProgLib.Windows.Forms.VSCode
                 TextRenderer.DrawText(
                     e.Graphics,
                     e.Item.Text,
-                    (e.Item as ToolStripMenuItem).Font,
-                    new Rectangle(18, 0, e.Item.Width, e.Item.Height),
+                    _font,
+                    new Rectangle(_leftAndRightPadding, 0, e.Item.Width, e.Item.Height),
                     (e.Item.Enabled) ? _selectForeColor : _disabledFontColor,
                     (e.Item.Enabled) ? _selectColor : _backColor,
                     TextFormatFlags.VerticalCenter | TextFormatFlags.Left | TextFormatFlags.EndEllipsis);
@@ -683,21 +634,21 @@ namespace ProgLib.Windows.Forms.VSCode
                     TextRenderer.DrawText(
                         e.Graphics,
                         ShortcutKeys,
-                        (e.Item as ToolStripMenuItem).Font,
-                        new Rectangle(e.Item.Width - W - 17, 0, W, e.Item.Height),
+                        _font,
+                        new Rectangle(e.Item.Width - W - _leftAndRightPadding, 0, W, e.Item.Height),
                         (e.Item.Enabled) ? _selectForeColor : _disabledFontColor,
                         (e.Item.Enabled) ? _selectColor : _backColor,
                         TextFormatFlags.VerticalCenter | TextFormatFlags.Right | TextFormatFlags.EndEllipsis);
                 }
             }
 
-            else if (e.Item.IsOnDropDown && e.Item.Selected == false)
+            else if (e.Item.IsOnDropDown && !e.Item.Selected)
             {
                 TextRenderer.DrawText(
                     e.Graphics,
                     e.Item.Text,
-                    (e.Item as ToolStripMenuItem).Font,
-                    new Rectangle(18, 0, e.Item.Width, e.Item.Height),
+                    _font,
+                    new Rectangle(_leftAndRightPadding, 0, e.Item.Width, e.Item.Height),
                     (e.Item.Enabled) ? _foreColor : _disabledFontColor,
                     _backColor,
                     TextFormatFlags.VerticalCenter | TextFormatFlags.Left | TextFormatFlags.EndEllipsis);
@@ -707,8 +658,8 @@ namespace ProgLib.Windows.Forms.VSCode
                     TextRenderer.DrawText(
                         e.Graphics,
                         ShortcutKeys,
-                        (e.Item as ToolStripMenuItem).Font,
-                        new Rectangle(e.Item.Width - W - 17, 0, W, e.Item.Height),
+                        _font,
+                        new Rectangle(e.Item.Width - W - _leftAndRightPadding, 0, W, e.Item.Height),
                         (e.Item.Enabled) ? _foreColor : _disabledFontColor,
                         _backColor,
                         TextFormatFlags.VerticalCenter | TextFormatFlags.Right | TextFormatFlags.EndEllipsis);
@@ -721,7 +672,7 @@ namespace ProgLib.Windows.Forms.VSCode
                 TextRenderer.DrawText(
                     e.Graphics,
                     e.Item.Text,
-                    (e.Item as ToolStripMenuItem).Font,
+                    _font,
                     new Rectangle(0, 0, e.Item.Width, e.Item.Height),
                     (e.Item.Enabled) ? this.ForeColor : _disabledFontColor,
                     Color.Transparent,
@@ -734,9 +685,12 @@ namespace ProgLib.Windows.Forms.VSCode
         {
             base.OnRenderSeparator(e);
 
+            Int32 H = TextRenderer.MeasureText("Text", e.Item.Font).Height;
+            Int32 _leftAndRightPadding = H - 5;
+
             e.Graphics.FillRectangle(
                 new SolidBrush(this.SeparatorColor),
-                new Rectangle(6, 3, e.Item.Width - 12, 1));
+                new Rectangle(_leftAndRightPadding, 3, e.Item.Width - (_leftAndRightPadding * 2), 1));
         }
 
         // Отрисовка стрелки
@@ -745,11 +699,16 @@ namespace ProgLib.Windows.Forms.VSCode
             Rectangle _arrowRectangle = new Rectangle(e.ArrowRectangle.Location, e.ArrowRectangle.Size);
             _arrowRectangle.Inflate(-3, -6);
 
-            Point[] _lines = new Point[]
+            Int32 H = TextRenderer.MeasureText("Text", e.Item.Font).Height;
+            Int32 _leftAndRightPadding = e.Item.Width - H + 2;
+
+            Single _centerHeight = _arrowRectangle.Top + _arrowRectangle.Height / 2;
+
+            PointF[] _lines = new PointF[]
             {
-                new Point(_arrowRectangle.Left + 2, _arrowRectangle.Top),
-                new Point(_arrowRectangle.Right + 2, _arrowRectangle.Top + _arrowRectangle.Height / 2),
-                new Point(_arrowRectangle.Left + 2, _arrowRectangle.Top + _arrowRectangle.Height)
+                new PointF(_leftAndRightPadding - 4, _centerHeight - 4),
+                new PointF(_leftAndRightPadding, _centerHeight),
+                new PointF(_leftAndRightPadding - 4, _centerHeight + 4)
             };
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -764,11 +723,14 @@ namespace ProgLib.Windows.Forms.VSCode
             Rectangle _imageRectangle = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);
             _imageRectangle.Inflate(-4, -6);
 
+            Int32 H = TextRenderer.MeasureText("Text", e.Item.Font).Height;
+            Int32 _leftAndRightPadding = H - 3;
+
             Point[] _lines = new Point[]
             {
-                new Point(_imageRectangle.Left/* - 1*/, (_imageRectangle.Bottom - _imageRectangle.Height / 2)),
-                new Point((_imageRectangle.Left + _imageRectangle.Width / 3)/* - 1*/,  _imageRectangle.Bottom),
-                new Point(_imageRectangle.Right - 2, _imageRectangle.Top - 1)
+                new Point(_leftAndRightPadding, (_imageRectangle.Bottom - _imageRectangle.Height / 2)),
+                new Point((_leftAndRightPadding + _imageRectangle.Width / 3),  _imageRectangle.Bottom),
+                new Point(_leftAndRightPadding + 6, _imageRectangle.Top - 1)
             };
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;

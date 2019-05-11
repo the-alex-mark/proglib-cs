@@ -174,7 +174,7 @@ namespace Test
         /// <param name="Theme"></param>
         private void UTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
-            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, IconTheme);
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
             MainMenu.Renderer = _renderer;
             contextMenuStrip1.Renderer = _renderer;
             BackColor = _renderer.WindowBackColor;
@@ -313,6 +313,12 @@ namespace Test
         {
             foreach (ToolStripItem Item in MainMenu.Items)
                 Item.Font = new Font(Item.Font.FontFamily.Name, 7.5F, Item.Font.Style);
+        }
+
+        private void mTextCodeControl_Click(Object sender, EventArgs e)
+        {
+            Form_TextCode F_TC = new Form_TextCode();
+            F_TC.ShowDialog();
         }
     }
 }

@@ -125,6 +125,8 @@
             this.mAdobeSkin = new System.Windows.Forms.ToolStripMenuItem();
             this.mMaterialSkin = new System.Windows.Forms.ToolStripMenuItem();
             this.mMinimalSkin = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator39 = new System.Windows.Forms.ToolStripSeparator();
+            this.mTextCodeControl = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mAddImage = new System.Windows.Forms.ToolStripMenuItem();
             this.mDelImage = new System.Windows.Forms.ToolStripMenuItem();
@@ -221,6 +223,8 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimalToolTip1 = new ProgLib.Windows.Forms.Minimal.MinimalToolTip();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.MainMenu.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -251,6 +255,7 @@
             // mmClose
             // 
             this.mmClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mmClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.mmClose.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.mmClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mmClose.Name = "mmClose";
@@ -973,7 +978,9 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mAdobeSkin,
             this.mMaterialSkin,
-            this.mMinimalSkin});
+            this.mMinimalSkin,
+            this.toolStripSeparator39,
+            this.mTextCodeControl});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(257, 22);
             this.toolStripMenuItem1.Text = "Пользовательские элементы управления";
@@ -981,21 +988,33 @@
             // mAdobeSkin
             // 
             this.mAdobeSkin.Name = "mAdobeSkin";
-            this.mAdobeSkin.Size = new System.Drawing.Size(105, 22);
+            this.mAdobeSkin.Size = new System.Drawing.Size(110, 22);
             this.mAdobeSkin.Text = "Adobe";
             // 
             // mMaterialSkin
             // 
             this.mMaterialSkin.Name = "mMaterialSkin";
-            this.mMaterialSkin.Size = new System.Drawing.Size(105, 22);
+            this.mMaterialSkin.Size = new System.Drawing.Size(110, 22);
             this.mMaterialSkin.Text = "Material";
             this.mMaterialSkin.Click += new System.EventHandler(this.mMaterialSkin_Click);
             // 
             // mMinimalSkin
             // 
             this.mMinimalSkin.Name = "mMinimalSkin";
-            this.mMinimalSkin.Size = new System.Drawing.Size(105, 22);
+            this.mMinimalSkin.Size = new System.Drawing.Size(110, 22);
             this.mMinimalSkin.Text = "Minimal";
+            // 
+            // toolStripSeparator39
+            // 
+            this.toolStripSeparator39.Name = "toolStripSeparator39";
+            this.toolStripSeparator39.Size = new System.Drawing.Size(107, 6);
+            // 
+            // mTextCodeControl
+            // 
+            this.mTextCodeControl.Name = "mTextCodeControl";
+            this.mTextCodeControl.Size = new System.Drawing.Size(110, 22);
+            this.mTextCodeControl.Text = "TextCode";
+            this.mTextCodeControl.Click += new System.EventHandler(this.mTextCodeControl_Click);
             // 
             // toolStripSeparator3
             // 
@@ -1570,7 +1589,9 @@
             this.toolStripSeparator36,
             this.проверитьНаличиеОбновленийToolStripMenuItem,
             this.toolStripSeparator37,
-            this.оПрограммеToolStripMenuItem});
+            this.оПрограммеToolStripMenuItem,
+            this.toolStripComboBox1,
+            this.toolStripTextBox1});
             this.справкаToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
@@ -1687,6 +1708,16 @@
             this.minimalToolTip1.Font = new System.Drawing.Font("Century Gothic", 8F);
             this.minimalToolTip1.ForeColor = System.Drawing.Color.Black;
             this.minimalToolTip1.OwnerDraw = true;
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
             // 
             // FormMain
             // 
@@ -1903,6 +1934,10 @@
         private System.Windows.Forms.ToolStripMenuItem темаИконокToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mIconThemeClassic;
         private System.Windows.Forms.ToolStripMenuItem mIconThemeMinimal;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator39;
+        private System.Windows.Forms.ToolStripMenuItem mTextCodeControl;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
     }
 }
 
