@@ -8,6 +8,7 @@ using ProgLib.Animations.Material;
 
 namespace ProgLib.Windows.Forms.Material
 {
+    [ToolboxBitmap(typeof(System.Windows.Forms.RadioButton))]
     public class MaterialRadioButton : RadioButton, IMaterialControl
     {
         [Browsable(false)]

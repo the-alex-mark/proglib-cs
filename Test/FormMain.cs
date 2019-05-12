@@ -177,7 +177,10 @@ namespace Test
             VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
             MainMenu.Renderer = _renderer;
             contextMenuStrip1.Renderer = _renderer;
+            vsCodeTabSelector1.Theme = Theme;
+
             BackColor = _renderer.WindowBackColor;
+            SideBar.BackColor = _renderer.SidebarBackColor;
         }
 
         #endregion

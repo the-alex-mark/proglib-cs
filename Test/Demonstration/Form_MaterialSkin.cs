@@ -14,7 +14,7 @@ namespace Test.Demonstration
             // Initialize MaterialSkinManager
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-			materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+			materialSkinManager.Theme = MaterialSkinManager.MeaterialTheme.Light;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Green600, Primary.Green700, Primary.Green200, Accent.Red100, TextShade.WHITE);
 
             // Add dummy data to the listview
@@ -43,7 +43,7 @@ namespace Test.Demonstration
 
         private void materialButton1_Click(object sender, EventArgs e)
         {
-            materialSkinManager.Theme = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialSkinManager.Themes.LIGHT : MaterialSkinManager.Themes.DARK;
+            materialSkinManager.Theme = materialSkinManager.Theme == MaterialSkinManager.MeaterialTheme.Dark ? MaterialSkinManager.MeaterialTheme.Light : MaterialSkinManager.MeaterialTheme.Dark;
         }
 
 	    private int colorSchemeIndex;

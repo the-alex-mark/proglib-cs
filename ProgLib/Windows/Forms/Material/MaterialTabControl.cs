@@ -1,9 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.Material
 {
+    [ToolboxBitmap(typeof(System.Windows.Forms.TabControl))]
     public class MaterialTabControl : TabControl, IMaterialControl
     {
         [Browsable(false)]

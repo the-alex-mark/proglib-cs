@@ -8,6 +8,7 @@ using ProgLib.Animations.Material;
 
 namespace ProgLib.Windows.Forms.Material
 {
+    [ToolboxBitmap(typeof(System.Windows.Forms.CheckBox))]
     public class MaterialCheckBox : CheckBox, IMaterialControl
     {
         [Browsable(false)]

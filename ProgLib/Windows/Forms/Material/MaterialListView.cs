@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.Material
 {
+    [ToolboxBitmap(typeof(System.Windows.Forms.ListView))]
     public class MaterialListView : ListView, IMaterialControl
     {
         [Browsable(false)]

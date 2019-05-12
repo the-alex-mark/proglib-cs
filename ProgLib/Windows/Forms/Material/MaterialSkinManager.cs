@@ -19,8 +19,8 @@ namespace ProgLib.Windows.Forms.Material
         private readonly List<MaterialForm> _formsToManage = new List<MaterialForm>();
 
         //Theme
-        private Themes _theme;
-        public Themes Theme
+        private MeaterialTheme _theme;
+        public MeaterialTheme Theme
         {
             get { return _theme; }
             set
@@ -41,10 +41,10 @@ namespace ProgLib.Windows.Forms.Material
             }
         }
 
-        public enum Themes : byte
+        public enum MeaterialTheme : byte
         {
-            LIGHT,
-            DARK
+            Light,
+            Dark
         }
 
         //Constant color values
@@ -122,62 +122,62 @@ namespace ProgLib.Windows.Forms.Material
 
         public Color GetPrimaryTextColor()
         {
-            return Theme == Themes.LIGHT ? PRIMARY_TEXT_BLACK : PRIMARY_TEXT_WHITE;
+            return Theme == MeaterialTheme.Light ? PRIMARY_TEXT_BLACK : PRIMARY_TEXT_WHITE;
         }
 
         public Brush GetPrimaryTextBrush()
         {
-            return Theme == Themes.LIGHT ? PRIMARY_TEXT_BLACK_BRUSH : PRIMARY_TEXT_WHITE_BRUSH;
+            return Theme == MeaterialTheme.Light ? PRIMARY_TEXT_BLACK_BRUSH : PRIMARY_TEXT_WHITE_BRUSH;
         }
 
         public Color GetSecondaryTextColor()
         {
-            return Theme == Themes.LIGHT ? SECONDARY_TEXT_BLACK : SECONDARY_TEXT_WHITE;
+            return Theme == MeaterialTheme.Light ? SECONDARY_TEXT_BLACK : SECONDARY_TEXT_WHITE;
         }
 
         public Brush GetSecondaryTextBrush()
         {
-            return Theme == Themes.LIGHT ? SECONDARY_TEXT_BLACK_BRUSH : SECONDARY_TEXT_WHITE_BRUSH;
+            return Theme == MeaterialTheme.Light ? SECONDARY_TEXT_BLACK_BRUSH : SECONDARY_TEXT_WHITE_BRUSH;
         }
 
         public Color GetDisabledOrHintColor()
         {
-            return Theme == Themes.LIGHT ? DISABLED_OR_HINT_TEXT_BLACK : DISABLED_OR_HINT_TEXT_WHITE;
+            return Theme == MeaterialTheme.Light ? DISABLED_OR_HINT_TEXT_BLACK : DISABLED_OR_HINT_TEXT_WHITE;
         }
 
         public Brush GetDisabledOrHintBrush()
         {
-            return Theme == Themes.LIGHT ? DISABLED_OR_HINT_TEXT_BLACK_BRUSH : DISABLED_OR_HINT_TEXT_WHITE_BRUSH;
+            return Theme == MeaterialTheme.Light ? DISABLED_OR_HINT_TEXT_BLACK_BRUSH : DISABLED_OR_HINT_TEXT_WHITE_BRUSH;
         }
 
         public Color GetDividersColor()
         {
-            return Theme == Themes.LIGHT ? DIVIDERS_BLACK : DIVIDERS_WHITE;
+            return Theme == MeaterialTheme.Light ? DIVIDERS_BLACK : DIVIDERS_WHITE;
         }
 
         public Brush GetDividersBrush()
         {
-            return Theme == Themes.LIGHT ? DIVIDERS_BLACK_BRUSH : DIVIDERS_WHITE_BRUSH;
+            return Theme == MeaterialTheme.Light ? DIVIDERS_BLACK_BRUSH : DIVIDERS_WHITE_BRUSH;
         }
 
         public Color GetCheckboxOffColor()
         {
-            return Theme == Themes.LIGHT ? CHECKBOX_OFF_LIGHT : CHECKBOX_OFF_DARK;
+            return Theme == MeaterialTheme.Light ? CHECKBOX_OFF_LIGHT : CHECKBOX_OFF_DARK;
         }
 
         public Brush GetCheckboxOffBrush()
         {
-            return Theme == Themes.LIGHT ? CHECKBOX_OFF_LIGHT_BRUSH : CHECKBOX_OFF_DARK_BRUSH;
+            return Theme == MeaterialTheme.Light ? CHECKBOX_OFF_LIGHT_BRUSH : CHECKBOX_OFF_DARK_BRUSH;
         }
 
         public Color GetCheckBoxOffDisabledColor()
         {
-            return Theme == Themes.LIGHT ? CHECKBOX_OFF_DISABLED_LIGHT : CHECKBOX_OFF_DISABLED_DARK;
+            return Theme == MeaterialTheme.Light ? CHECKBOX_OFF_DISABLED_LIGHT : CHECKBOX_OFF_DISABLED_DARK;
         }
 
         public Brush GetCheckBoxOffDisabledBrush()
         {
-            return Theme == Themes.LIGHT ? CHECKBOX_OFF_DISABLED_LIGHT_BRUSH : CHECKBOX_OFF_DISABLED_DARK_BRUSH;
+            return Theme == MeaterialTheme.Light ? CHECKBOX_OFF_DISABLED_LIGHT_BRUSH : CHECKBOX_OFF_DISABLED_DARK_BRUSH;
         }
 
         public Brush GetRaisedButtonBackgroundBrush()
@@ -192,37 +192,37 @@ namespace ProgLib.Windows.Forms.Material
 
         public Color GetFlatButtonHoverBackgroundColor()
         {
-            return Theme == Themes.LIGHT ? FLAT_BUTTON_BACKGROUND_HOVER_LIGHT : FLAT_BUTTON_BACKGROUND_HOVER_DARK;
+            return Theme == MeaterialTheme.Light ? FLAT_BUTTON_BACKGROUND_HOVER_LIGHT : FLAT_BUTTON_BACKGROUND_HOVER_DARK;
         }
 
         public Brush GetFlatButtonHoverBackgroundBrush()
         {
-            return Theme == Themes.LIGHT ? FLAT_BUTTON_BACKGROUND_HOVER_LIGHT_BRUSH : FLAT_BUTTON_BACKGROUND_HOVER_DARK_BRUSH;
+            return Theme == MeaterialTheme.Light ? FLAT_BUTTON_BACKGROUND_HOVER_LIGHT_BRUSH : FLAT_BUTTON_BACKGROUND_HOVER_DARK_BRUSH;
         }
 
         public Color GetFlatButtonPressedBackgroundColor()
         {
-            return Theme == Themes.LIGHT ? FLAT_BUTTON_BACKGROUND_PRESSED_LIGHT : FLAT_BUTTON_BACKGROUND_PRESSED_DARK;
+            return Theme == MeaterialTheme.Light ? FLAT_BUTTON_BACKGROUND_PRESSED_LIGHT : FLAT_BUTTON_BACKGROUND_PRESSED_DARK;
         }
 
         public Brush GetFlatButtonPressedBackgroundBrush()
         {
-            return Theme == Themes.LIGHT ? FLAT_BUTTON_BACKGROUND_PRESSED_LIGHT_BRUSH : FLAT_BUTTON_BACKGROUND_PRESSED_DARK_BRUSH;
+            return Theme == MeaterialTheme.Light ? FLAT_BUTTON_BACKGROUND_PRESSED_LIGHT_BRUSH : FLAT_BUTTON_BACKGROUND_PRESSED_DARK_BRUSH;
         }
 
         public Brush GetFlatButtonDisabledTextBrush()
         {
-            return Theme == Themes.LIGHT ? FLAT_BUTTON_DISABLEDTEXT_LIGHT_BRUSH : FLAT_BUTTON_DISABLEDTEXT_DARK_BRUSH;
+            return Theme == MeaterialTheme.Light ? FLAT_BUTTON_DISABLEDTEXT_LIGHT_BRUSH : FLAT_BUTTON_DISABLEDTEXT_DARK_BRUSH;
         }
 
         public Brush GetCmsSelectedItemBrush()
         {
-            return Theme == Themes.LIGHT ? CMS_BACKGROUND_HOVER_LIGHT_BRUSH : CMS_BACKGROUND_HOVER_DARK_BRUSH;
+            return Theme == MeaterialTheme.Light ? CMS_BACKGROUND_HOVER_LIGHT_BRUSH : CMS_BACKGROUND_HOVER_DARK_BRUSH;
         }
 
         public Color GetApplicationBackgroundColor()
         {
-            return Theme == Themes.LIGHT ? BACKGROUND_LIGHT : BACKGROUND_DARK;
+            return Theme == MeaterialTheme.Light ? BACKGROUND_LIGHT : BACKGROUND_DARK;
         }
 
         //Roboto font
@@ -243,7 +243,7 @@ namespace ProgLib.Windows.Forms.Material
             ROBOTO_MEDIUM_10 = new Font(LoadFont(Resources.Roboto_Medium), 10f);
             ROBOTO_REGULAR_11 = new Font(LoadFont(Resources.Roboto_Regular), 11f);
             ROBOTO_MEDIUM_11 = new Font(LoadFont(Resources.Roboto_Medium), 11f);
-            Theme = Themes.LIGHT;
+            Theme = MeaterialTheme.Light;
             ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.Material
@@ -6,6 +7,7 @@ namespace ProgLib.Windows.Forms.Material
     /// <summary>
     /// Material design-like progress bar
     /// </summary>
+    [ToolboxBitmap(typeof(System.Windows.Forms.ProgressBar))]
     public class MaterialProgressBar : ProgressBar, IMaterialControl
     {
         /// <summary>

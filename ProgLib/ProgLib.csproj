@@ -1514,6 +1514,9 @@
     <Compile Include="Windows\Forms\Enum.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeControlBox.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeIconTheme.cs" />
+    <Compile Include="Windows\Forms\VSCode\VSCodeTabSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Windows\Forms\VSCode\VSCodeTheme.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeToolStripRenderer.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeToolStripSettings.cs" />

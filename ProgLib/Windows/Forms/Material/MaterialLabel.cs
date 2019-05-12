@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.Material
 {
+    [ToolboxBitmap(typeof(System.Windows.Forms.Label))]
     public class MaterialLabel : Label, IMaterialControl
     {
         [Browsable(false)]
