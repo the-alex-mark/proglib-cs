@@ -16,7 +16,7 @@ namespace ProgLib
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>
-        private static String ToFirstUpper(this String Value)
+        public static String ToFirstUpper(this String Value)
         {
             if (Value.Length > 0)
             {
@@ -32,7 +32,7 @@ namespace ProgLib
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>
-        private static String ToFirstsUpper(this String Value)
+        public static String ToFirstsUpper(this String Value)
         {
             String Result = Value;
 
@@ -55,7 +55,7 @@ namespace ProgLib
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>
-        private static String TransformRegister(this String Value)
+        public static String TransformRegister(this String Value)
         {
             String Result = Value;
 
