@@ -112,6 +112,7 @@
     <Compile Include="Diagnostics\SoundDevice.cs" />
     <Compile Include="Diagnostics\SystemInfo.cs" />
     <Compile Include="Diagnostics\VideoController.cs" />
+    <Compile Include="ImageExpansion.cs" />
     <Compile Include="IO\IniDocument.cs" />
     <Compile Include="IO\IniKey.cs" />
     <Compile Include="IO\IniSection.cs" />
@@ -1201,6 +1202,7 @@
     <Compile Include="Plugins\TagLib\Xmp\XmpNodeType.cs" />
     <Compile Include="Plugins\TagLib\Xmp\XmpNodeVisitor.cs" />
     <Compile Include="Plugins\TagLib\Xmp\XmpTag.cs" />
+    <Compile Include="StringExpansion.cs" />
     <Compile Include="Text\Encoding\Barcode\BarcodeCommon.cs" />
     <Compile Include="Text\Encoding\Barcode\BarcodeLib.cs" />
     <Compile Include="Text\Encoding\Barcode\BarcodeLib.Designer.cs">
@@ -1274,7 +1276,7 @@
     <Compile Include="Text\Encoding\UTF32.cs" />
     <Compile Include="Text\Encoding\UTF7.cs" />
     <Compile Include="Text\Encoding\UTF8.cs" />
-    <Compile Include="Text\StringTable.cs" />
+    <Compile Include="Data\StringTable.cs" />
     <Compile Include="Text\FontFromResources.cs" />
     <Compile Include="Windows\Forms\Adobe\AdobeComboBox.cs">
       <SubType>Component</SubType>
