@@ -1820,7 +1820,6 @@
             this.vsCodeTabSelector1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(133)))), ((int)(((byte)(133)))));
             this.vsCodeTabSelector1.Location = new System.Drawing.Point(36, 24);
             this.vsCodeTabSelector1.Name = "vsCodeTabSelector1";
-            this.vsCodeTabSelector1.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             this.vsCodeTabSelector1.Size = new System.Drawing.Size(950, 26);
             this.vsCodeTabSelector1.TabIndex = 9;
             this.vsCodeTabSelector1.Text = "vsCodeTabSelector1";

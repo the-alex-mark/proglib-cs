@@ -1,14 +1,6 @@
-﻿using ProgLib.Animations.Material;
-using ProgLib.Drawing;
-using ProgLib.Windows.Forms.Material;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProgLib.Windows.Forms.VSCode
@@ -18,28 +10,19 @@ namespace ProgLib.Windows.Forms.VSCode
         public VSCodeTabSelector()
         {
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
-            SelectColor = MetroColors.Blue;
             this.Theme = VSCodeTheme.Red;
+            _hover = false;
+            _hoverSelectIndex = -1;
             Height = 48;
-
-            _animationManager = new AnimationManager
-            {
-                AnimationType = AnimationType.EaseOut,
-                Increment = 0.04
-            };
-            _animationManager.OnAnimationProgress += sender => Invalidate();
         }
 
         #region Variables
 
         private TabControl _baseTabControl;
-
-        private Int32 _previousSelectedTabIndex;
-        private Point _animationSource;
-        private readonly AnimationManager _animationManager;
+        private Boolean _hover;
+        private Int32 _hoverSelectIndex;
 
         private List<Rectangle> _tabRects;
-        private Color _selectColor;
         private VSCodeTheme _theme;
         private const Int32 TAB_HEADER_PADDING = 24;
         private const Int32 TAB_INDICATOR_HEIGHT = 2;
@@ -47,17 +30,7 @@ namespace ProgLib.Windows.Forms.VSCode
         #endregion
 
         #region Properties
-
-        public Color SelectColor
-        {
-            get { return _selectColor; }
-            set
-            {
-                _selectColor = value;
-                Invalidate();
-            }
-        }
-
+        
         public VSCodeTheme Theme
         {
             get { return _theme; }
@@ -77,17 +50,11 @@ namespace ProgLib.Windows.Forms.VSCode
             {
                 _baseTabControl = value;
                 if (_baseTabControl == null) return;
-                _previousSelectedTabIndex = _baseTabControl.SelectedIndex;
-                _baseTabControl.Deselected += (sender, args) =>
+                _baseTabControl.ControlAdded += delegate
                 {
-                    _previousSelectedTabIndex = _baseTabControl.SelectedIndex;
+                    Invalidate();
                 };
                 _baseTabControl.SelectedIndexChanged += (sender, args) =>
-                {
-                    _animationManager.SetProgress(0);
-                    _animationManager.StartNewAnimation(AnimationDirection.In);
-                };
-                _baseTabControl.ControlAdded += delegate
                 {
                     Invalidate();
                 };
@@ -154,6 +121,26 @@ namespace ProgLib.Windows.Forms.VSCode
 
         #endregion
 
+        protected override void OnMouseDoubleClick(MouseEventArgs e)
+        {
+            base.OnMouseDoubleClick(e);
+
+            if (_tabRects.Count > 0)
+            {
+                if (e.Location.X > _tabRects[_tabRects.Count - 1].Right)
+                {
+                    _baseTabControl.TabPages.Add("new");
+                }
+            }
+            else
+            {
+                _baseTabControl.TabPages.Add("new");
+            }
+
+            UpdateTabRects();
+            Invalidate();
+        }
+
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
@@ -163,13 +150,60 @@ namespace ProgLib.Windows.Forms.VSCode
             {
                 if (_tabRects[i].Contains(e.Location))
                 {
-                    _baseTabControl.SelectedIndex = i;
+                    Rectangle _bounds = new Rectangle((_tabRects[i].X + _tabRects[i].Width) - 15, (Height / 2) - 6, 9, 10);
+
+                    if (_bounds.Contains(e.Location))
+                    {
+                        _baseTabControl.TabPages[i].Dispose();
+
+                        _hoverSelectIndex = -1;
+                        _hover = false;
+                        UpdateTabRects();
+                    }
+                    else
+                    {
+                        _baseTabControl.SelectedIndex = i;
+                    }
+
+                    Invalidate();
+                }
+            }
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+
+            if (_tabRects == null) UpdateTabRects();
+            for (var i = 0; i < _tabRects.Count; i++)
+            {
+                if (_tabRects[_tabRects.Count - 1].Right >= e.Location.X)
+                {
+                    if (_tabRects[i].Contains(e.Location))
+                    {
+                        _hoverSelectIndex = i;
+                        _hover = true;
+                    }
+                }
+                else
+                {
+                    _hoverSelectIndex = -1;
+                    _hover = false;
                 }
             }
 
-            _animationSource = e.Location;
+            Invalidate();
         }
 
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+
+            _hoverSelectIndex = -1;
+            _hover = false;
+            Invalidate();
+        }
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.Clear(BackColor);
@@ -191,6 +225,14 @@ namespace ProgLib.Windows.Forms.VSCode
                 {
                     VSCodeControlBox ControlBox = new VSCodeControlBox(VSCodeIconTheme.Minimal);
                     e.Graphics.DrawImage(ControlBox.Close(this.Theme), new PointF((currentRectangle.X + currentRectangle.Width) - 16, (Height / 2) - 6));
+                }
+                else
+                {
+                    if (_hover && _tabRects[_hoverSelectIndex] == currentRectangle)
+                    {
+                        VSCodeControlBox ControlBox = new VSCodeControlBox(VSCodeIconTheme.Minimal);
+                        e.Graphics.DrawImage(ControlBox.Close(this.Theme), new PointF((currentRectangle.X + currentRectangle.Width) - 16, (Height / 2) - 6));
+                    }
                 }
 
                 // Отрисовка заголовка
