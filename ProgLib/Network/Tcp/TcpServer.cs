@@ -145,7 +145,7 @@ namespace ProgLib.Network.Tcp
                     Socket _client = _server.Accept();
 
                     // Получение входящих данных
-                    Byte[] _buffer = new Byte[10000];
+                    Byte[] _buffer = new Byte[2000000];
                     do
                     {
                         // Получение данных, отправленные клиентом
