@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+
+using ProgLib.IO;
 
 namespace ProgLib.Network.Tcp
 {
@@ -26,8 +26,10 @@ namespace ProgLib.Network.Tcp
             _server.Bind(new IPEndPoint(IPAddress.Any, Port));
             _server.Listen(Backlog);
 
-            // Получение порта
+            // Получение настроек сервера
+            _address = IPAddress.Any;
             _port = Port;
+            _backlog = Backlog;
         }
 
         /// <summary>
@@ -43,27 +45,39 @@ namespace ProgLib.Network.Tcp
             _server.Bind(new IPEndPoint(Address, Port));
             _server.Listen(Backlog);
 
-            // Получение порта
+            // Получение настроек сервера
+            _address = Address;
             _port = Port;
+            _backlog = Backlog;
         }
 
-        #region Global Variables
+        #region Variables
 
         // Настройки сервера
         private Socket _server;
         private Int32 _port;
+        private IPAddress _address;
+        private Int32 _backlog;
         private String _data = null;
 
         // Внешний поток
         private Thread _flow;
 
-        // Событие при получении данных от клиента
-        public event HandledEventArgs Receiver;
-        public delegate void HandledEventArgs(Object sender, TcpEventArgs eventArgs);
+        /// <summary>
+        /// Событие при получении данных от клиента.
+        /// </summary>
+        public event TcpReceiverEventHandler Receiver;
+        public delegate void TcpReceiverEventHandler(Object sender, TcpReceiverEventArgs eventArgs);
+
+        /// <summary>
+        /// Событие при возникновении ошибок в работе сервера.
+        /// </summary>
+        public event TcpErrorEventHandler Error;
+        public delegate void TcpErrorEventHandler(Object sender, TcpErrorEventArgs eventArgs);
 
         #endregion
 
-        #region Additional method
+        #region Method
 
         /// <summary>
         /// Получает имя клиента из указанного сокета.
@@ -81,6 +95,7 @@ namespace ProgLib.Network.Tcp
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>
+        [Obsolete("")]
         public static Byte[] GetBytes(String Value)
         {
             return Encoding.UTF8.GetBytes(Value);
@@ -91,6 +106,7 @@ namespace ProgLib.Network.Tcp
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>
+        [Obsolete("")]
         public static String GetString(Byte[] Value)
         {
             return Encoding.UTF8.GetString(
@@ -103,6 +119,7 @@ namespace ProgLib.Network.Tcp
         /// <param name="Value"></param>
         /// <param name="Count"></param>
         /// <returns></returns>
+        [Obsolete("")]
         public static String GetString(Byte[] Value, Int32 Count)
         {
             return Encoding.UTF8.GetString(Value, 0, Count);
@@ -118,6 +135,7 @@ namespace ProgLib.Network.Tcp
             Stop();
 
             _flow = new Thread(new ThreadStart(Listener));
+            //_flow.SetApartmentState(ApartmentState.STA);
             _flow.IsBackground = true;
             _flow.Start();
         }
@@ -135,6 +153,11 @@ namespace ProgLib.Network.Tcp
         /// <summary>
         /// Метод получения данных от клиента.
         /// </summary>
+        /// <exception cref="SocketException"></exception>
+        /// <exception cref="ObjectDisposedException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="SecurityException"></exception>
         private void Listener()
         {
             while (true)
@@ -145,14 +168,21 @@ namespace ProgLib.Network.Tcp
                     Socket _client = _server.Accept();
 
                     // Получение входящих данных
-                    Byte[] _buffer = new Byte[2000000];
+                    BytesBuilder _bytes = new BytesBuilder();
                     do
                     {
-                        // Получение данных, отправленные клиентом
-                        Int32 _length = _client.Receive(_buffer, 0, _client.Available, SocketFlags.None);
-                        Receiver?.Invoke(this, new TcpEventArgs(_client, _buffer, _length));
+                        Byte[] _buffer = new Byte[1024];
+                        Int32 _length = _client.Receive(_buffer);
+
+                        _bytes.Append(_buffer, _length, false);
                     }
                     while (_client.Available > 0);
+
+                    Byte[] __data = _bytes.ToArray();
+                    _bytes.Dispose();
+
+                    // Обработка события при получении данных
+                    Receiver?.Invoke(this, new TcpReceiverEventArgs(_client, __data, __data.Length));
 
                     if (_data != "" && _data != null)
                     {
@@ -161,43 +191,35 @@ namespace ProgLib.Network.Tcp
                     }
 
                     // Закрытие клиентского сокета
-                    //_client.Shutdown(SocketShutdown.Both);
+                    _client.Shutdown(SocketShutdown.Both);
                     _client.Close();
                 }
-                catch /*(Exception Error)*/ { /*MessageBox.Show(Error.Message, "Exception");*/ }
+                catch (Exception Exception)
+                {
+                    // Обработка события при возникновении ошибок в работе сервера
+                    Error?.Invoke(this, new TcpErrorEventArgs(Exception));
+                }
             }
         }
 
-        /// <summary>
-        /// Отправляет данные другому серверу.
-        /// </summary>
-        /// <param name="Server">Имя сервера</param>
-        /// <param name="Data">Передаваемые данные</param>
-        public void Send(String Server, String Data)
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="SocketException"></exception>
+        /// <exception cref="ObjectDisposedException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
+        public Boolean Send(String Server, Byte[] Buffer)
         {
-            try
-            {
-                // Инициализация клиентского сокета
-                Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                _client.Connect(Server, _port);
-
-                // Отправление данных на сервер
-                _client.Send(TcpServer.GetBytes(Data));
-
-                // Закрытие клиентского сокета
-                _client.Shutdown(SocketShutdown.Both);
-                _client.Close();
-            }
-            catch (Exception Error) { throw Error; }
+            return Send(Server, _port, Buffer);
         }
 
-        /// <summary>
-        /// Отправляет данные другому серверу.
-        /// </summary>
-        /// <param name="Server">Имя сервера</param>
-        /// <param name="Port">Порт, по которому будет осуществляться передача данных</param>
-        /// <param name="Data">Передаваемые данные</param>
-        public static void Send(String Server, Int32 Port, String Data)
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="SocketException"></exception>
+        /// <exception cref="ObjectDisposedException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
+        public Boolean Send(String Server, Int32 Port, Byte[] Buffer)
         {
             try
             {
@@ -206,18 +228,27 @@ namespace ProgLib.Network.Tcp
                 _client.Connect(Server, Port);
 
                 // Отправление данных на сервер
-                _client.Send(TcpServer.GetBytes(Data));
+                _client.Send(Buffer);
 
                 // Закрытие клиентского сокета
                 _client.Shutdown(SocketShutdown.Both);
                 _client.Close();
+
+                return true;
             }
-            catch (Exception Error) { throw Error; }
+            catch (Exception Exception)
+            {
+                // Обработка события при возникновении ошибок в работе сервера
+                Error?.Invoke(this, new TcpErrorEventArgs(Exception));
+
+                return false;
+            }
         }
 
         /// <summary>
         /// Завершает процесс получения данных.
         /// </summary>
+        /// <exception cref="SecurityException"></exception>
         public void Stop()
         {
             if (_flow != null)

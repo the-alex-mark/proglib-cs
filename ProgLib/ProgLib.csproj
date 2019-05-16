@@ -113,13 +113,15 @@
     <Compile Include="Diagnostics\SystemInfo.cs" />
     <Compile Include="Diagnostics\VideoController.cs" />
     <Compile Include="ImageExpansion.cs" />
+    <Compile Include="IO\BytesBuilder.cs" />
     <Compile Include="IO\IniDocument.cs" />
     <Compile Include="IO\IniKey.cs" />
     <Compile Include="IO\IniSection.cs" />
     <Compile Include="Network\Network.cs" />
     <Compile Include="Network\LocalNetwork.cs" />
+    <Compile Include="Network\Tcp\TcpErrorEventArgs.cs" />
     <Compile Include="Network\Tcp\TcpServer.cs" />
-    <Compile Include="Network\Tcp\TcpEventArgs.cs" />
+    <Compile Include="Network\Tcp\TcpReceiverEventArgs.cs" />
     <Compile Include="Network\TypeServer.cs" />
     <Compile Include="Numerics\Binary.cs" />
     <Compile Include="Numerics\Hexadecimal.cs" />
