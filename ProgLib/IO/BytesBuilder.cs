@@ -1,503 +1,96 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ProgLib.IO
 {
     /// <summary>
-    /// Provides similar functionality to a StringBuilder, but for bytes
+    /// Предоставляет изменяемый массив байтов.
+    /// Этот класс не наследуется.
     /// </summary>
-    /// <remarks>
-    /// To fill the builder, construct a new, empty builder, and call the
-    /// appropriate Append method overloads. 
-    /// To read data from the builder, either use Rewind on an existing 
-    /// builder, or construct a new builder by passing it the byte array
-    /// from a previous builder - which you can get with the ToArray 
-    /// method.
-    /// </remarks>
-    /// <example>
-    ///      
-    ///    ByteArrayBuilder bab = new ByteArrayBuilder();
-    ///    string[] lines = File.ReadAllLines(@"D:\Temp\myText.txt");
-    ///    bab.Append(lines.Length);
-    ///    foreach (string s in lines)
-    ///        {
-    ///        bab.Append(s);
-    ///        }
-    ///    byte[] data = bab.ToArray();
-    ///  ...       
-    ///    ByteArrayBuilder babOut = new ByteArrayBuilder(data);
-    ///    int count = bab.GetInt();
-    ///    string[] linesOut = new string[count];
-    ///    for (int lineNo = 0; lineNo &lt; count; lineNo++)
-    ///        {
-    ///        linesOut[lineNo](babOut.GetString());
-    ///        }
-    /// </example>
-    public class BytesBuilder : IDisposable
+    public sealed class BytesBuilder : IDisposable
     {
-        #region Constants
         /// <summary>
-        /// True in a byte form of the Line
-        /// </summary>
-        const byte streamTrue = (byte)1;
-        /// <summary>
-        /// False in the byte form of a line
-        /// </summary>
-        const byte streamFalse = (byte)0;
-        #endregion
-
-        #region Fields
-        #region Internal
-        /// <summary>
-        /// Holds the actual bytes.
-        /// </summary>
-        MemoryStream store = new MemoryStream();
-        #endregion
-
-        #region Property bases
-        #endregion
-        #endregion
-
-        #region Properties
-        /// <summary>
-        /// Bytes in the store.
-        /// </summary>
-        public int Length
-        {
-            get { return (int)store.Length; }
-        }
-        #endregion
-
-        #region Regular Expressions
-        #endregion
-
-        #region Enums
-        #endregion
-
-        #region Constructors
-        /// <summary>
-        /// Create a new, empty builder ready to be filled.
+        /// Создайте новый пустой конструктор, готовый к заполнению.
         /// </summary>
         public BytesBuilder()
         {
+
         }
+
         /// <summary>
-        /// Create a new builder from a set of data
+        /// Создание нового построителя из набора данных
         /// </summary>
-        /// <param name="data">Data to preset the builder from</param>
-        public BytesBuilder(byte[] data)
+        /// <param name="data">Данные для представления построителя из</param>
+        public BytesBuilder(Byte[] data)
         {
-            store.Close();
-            store.Dispose();
-            store = new MemoryStream(data);
+            _store.Close();
+            _store.Dispose();
+            _store = new MemoryStream(data);
         }
+
         /// <summary>
-        /// Create a new builder from the Base64 string representation of an 
-        /// existing instance.
-        /// The Base64 representation can be retrieved using the ToString override
+        /// Создайте новый конструктор из строкового представления Base64 существующего экземпляра.
+        /// Представление Base64 можно получить с помощью переопределения ToString.
         /// </summary>
-        /// <param name="base64">Base64 string representation of an 
-        /// existing instance.</param>
-        public BytesBuilder(string base64)
+        /// <param name="base64">Base64 строковое представление существующего экземпляра.</param>
+        public BytesBuilder(String base64)
         {
-            store.Close();
-            store.Dispose();
-            store = new MemoryStream(Convert.FromBase64String(base64));
+            _store.Close();
+            _store.Dispose();
+            _store = new MemoryStream(Convert.FromBase64String(base64));
         }
+
+        #region Constants
+
+        /// <summary>
+        /// "true" в двоичной форме
+        /// </summary>
+        private const byte _streamTrue = (byte)1;
+        /// <summary>
+        /// "false" в байтовой форме
+        /// </summary>
+        private const byte _streamFalse = (byte)0;
+
         #endregion
 
-        #region Events
-        #region Event Constructors
+        #region Fields
+
+        /// <summary>
+        /// Содержит фактические байты
+        /// </summary>
+        private MemoryStream _store = new MemoryStream();
+        
         #endregion
 
-        #region Event Handlers
-        #endregion
+        #region Properties
+
+        /// <summary>
+        /// Количество байт
+        /// </summary>
+        public int Length
+        {
+            get { return (int)_store.Length; }
+        }
+
         #endregion
 
-        #region Public Methods
-        #region Append overloads
-        /// <summary>
-        /// Adds a bool to an array
-        /// </summary>
-        /// <param name="b">Value to append to existing builder data</param>
-        public void Append(bool b)
-        {
-            store.WriteByte(b ? streamTrue : streamFalse);
-        }
-        /// <summary>
-        /// Adds a byte to an array
-        /// </summary>
-        /// <param name="b">Value to append to existing builder data</param>
-        public void Append(byte b)
-        {
-            store.WriteByte(b);
-        }
-        /// <summary>
-        /// Добавляет массив байтов в массив
-        /// </summary>
-        /// <param name="b">Значение для добавления к существующим данным застройщика </param>
-        /// <param name="addLength">
-        /// Если true, длина добавляется перед значением.
-        /// Это позволяет извлекать отдельные элементы обратно в исходную форму ввода.
-        /// </param>
-        public void Append(byte[] b, bool addLength = true)
-        {
-            if (addLength) Append(b.Length);
-            AddBytes(b);
-        }
-        public void Append(byte[] b, int count, bool addLength = true)
-        {
-            if (addLength) Append(b.Length);
-            AddBytes(b, count);
-        }
-        /// <summary>
-        /// Adds a char to an array
-        /// </summary>
-        /// <param name="c">Value to append to existing builder data</param>
-        public void Append(char c)
-        {
-            store.WriteByte((byte)c);
-        }
-        /// <summary>
-        /// Adds an array of characters to an array
-        /// </summary>
-        /// <param name="c">Value to append to existing builder data</param>
-        /// <param name="addLength">
-        /// If true, the length is added before the value.
-        /// This allows extraction of individual elements back to the original input form.
-        /// </param>
-        public void Append(char[] c, bool addLength = true)
-        {
-            if (addLength) Append(c.Length);
-            Append(System.Text.Encoding.Unicode.GetBytes(c));
-        }
-        /// <summary>
-        /// Adds a DateTime to an array
-        /// </summary>
-        /// <param name="dt">Value to append to existing builder data</param>
-        public void Append(DateTime dt)
-        {
-            Append(dt.Ticks);
-        }
-        /// <summary>
-        /// Adds a decimal value to an array
-        /// </summary>
-        /// <param name="d">Value to append to existing builder data</param>
-        public void Append(decimal d)
-        {
-            // GetBits always returns four ints.
-            // We store them in a specific order so that they can be recovered later.
-            int[] bits = decimal.GetBits(d);
-            Append(bits[0]);
-            Append(bits[1]);
-            Append(bits[2]);
-            Append(bits[3]);
-        }
-        /// <summary>
-        /// Adds a double to an array
-        /// </summary>
-        /// <param name="d">Value to append to existing builder data</param>
-        public void Append(double d)
-        {
-            AddBytes(BitConverter.GetBytes(d));
-        }
-        /// <summary>
-        /// Adds a float to an array
-        /// </summary>
-        /// <param name="f">Value to append to existing builder data</param>
-        public void Append(float f)
-        {
-            AddBytes(BitConverter.GetBytes(f));
-        }
-        /// <summary>
-        /// Adds a Guid to an array
-        /// </summary>
-        /// <param name="g">Value to append to existing builder data</param>
-        public void Append(Guid g)
-        {
-            Append(g.ToByteArray());
-        }
-        /// <summary>
-        /// Adds an integer to an array
-        /// </summary>
-        /// <param name="i">Value to append to existing builder data</param>
-        public void Append(int i)
-        {
-            AddBytes(BitConverter.GetBytes(i));
-        }
-        /// <summary>
-        /// Adds a long integer to an array
-        /// </summary>
-        /// <param name="l">Value to append to existing builder data</param>
-        public void Append(long l)
-        {
-            AddBytes(BitConverter.GetBytes(l));
-        }
-        /// <summary>
-        /// Adds a short integer to an array
-        /// </summary>
-        /// <param name="i">Value to append to existing builder data</param>
-        public void Append(short i)
-        {
-            AddBytes(BitConverter.GetBytes(i));
-        }
-        /// <summary>
-        /// Adds a string to an array
-        /// </summary>
-        /// <param name="s">Value to append to existing builder data</param>
-        /// <param name="addLength">
-        /// If true, the length is added before the value.
-        /// This allows extraction of individual elements back to the original input form.
-        /// </param>
-        public void Append(string s, bool addLength = true)
-        {
-            byte[] data = System.Text.Encoding.Unicode.GetBytes(s);
-            if (addLength) Append(data.Length);
-            AddBytes(data);
-        }
-        /// <summary>
-        /// Adds an unsigned integer to an array
-        /// </summary>
-        /// <param name="ui">Value to append to existing builder data</param>
-        public void Append(uint ui)
-        {
-            AddBytes(BitConverter.GetBytes(ui));
-        }
-        /// <summary>
-        /// Adds a unsigned long integer to an array
-        /// </summary>
-        /// <param name="ul">Value to append to existing builder data</param>
-        public void Append(ulong ul)
-        {
-            AddBytes(BitConverter.GetBytes(ul));
-        }
-        /// <summary>
-        /// Adds a unsigned short integer to an array
-        /// </summary>
-        /// <param name="us">Value to append to existing builder data</param>
-        public void Append(ushort us)
-        {
-            AddBytes(BitConverter.GetBytes(us));
-        }
-        #endregion
+        #region Methods
 
-        #region Extraction
         /// <summary>
-        /// Gets a bool from an array
-        /// </summary>
-        /// <returns></returns>
-        public bool GetBool()
-        {
-            return store.ReadByte() == streamTrue;
-        }
-        /// <summary>
-        /// Gets a byte from an array
-        /// </summary>
-        /// <returns></returns>
-        public byte GetByte()
-        {
-            return (byte)store.ReadByte();
-        }
-        /// <summary>
-        /// Gets an array of bytes from an array
-        /// </summary>
-        /// <returns></returns>
-        public byte[] GetByteArray()
-        {
-            int length = GetInt();
-            return GetBytes(length);
-        }
-        /// <summary>
-        /// Gets a char from an array
-        /// </summary>
-        /// <returns></returns>
-        public char GetChar()
-        {
-            return (char)store.ReadByte();
-        }
-        /// <summary>
-        /// Gets an array of characters from an array
-        /// </summary>
-        /// <returns></returns>
-        public char[] GetCharArray()
-        {
-            int length = GetInt();
-            return System.Text.Encoding.Unicode.GetChars(GetBytes(length));
-        }
-        /// <summary>
-        /// Gets a DateTime value from an array
-        /// </summary>
-        /// <returns></returns>
-        public DateTime GetDateTime()
-        {
-            return new DateTime(GetLong());
-        }
-        /// <summary>
-        /// Gets a decimal value from an array
-        /// </summary>
-        /// <returns></returns>
-        public decimal GetDecimal()
-        {
-            // GetBits always returns four ints.
-            // We store them in a specific order so that they can be recovered later.
-            int[] bits = new int[] { GetInt(), GetInt(), GetInt(), GetInt() };
-            return new decimal(bits);
-        }
-        /// <summary>
-        /// Gets a double from an array
-        /// </summary>
-        /// <returns></returns>
-        public double GetDouble()
-        {
-            return BitConverter.ToDouble(GetBytes(8), 0);
-        }
-        /// <summary>
-        /// Gets a float from an array
-        /// </summary>
-        /// <returns></returns>
-        public float GetFloat()
-        {
-            return BitConverter.ToSingle(GetBytes(4), 0);
-        }
-        /// <summary>
-        /// Gets a Guid from an array
-        /// </summary>
-        /// <returns></returns>
-        public Guid GetGuid()
-        {
-            return new Guid(GetByteArray());
-        }
-        /// <summary>
-        /// Gets an integer from an array
-        /// </summary>
-        /// <returns></returns>
-        public int GetInt()
-        {
-            return BitConverter.ToInt32(GetBytes(4), 0);
-        }
-        /// <summary>
-        /// Gets a long integer from an array
-        /// </summary>
-        /// <returns></returns>
-        public long GetLong()
-        {
-            return BitConverter.ToInt64(GetBytes(8), 0);
-        }
-        /// <summary>
-        /// Gets a short integer from an array
-        /// </summary>
-        /// <returns></returns>
-        public short GetShort()
-        {
-            return BitConverter.ToInt16(GetBytes(2), 0);
-        }
-        /// <summary>
-        /// Gets a string from an array
-        /// </summary>
-        /// <returns></returns>
-        public string GetString()
-        {
-            int length = GetInt();
-            return System.Text.Encoding.Unicode.GetString(GetBytes(length));
-        }
-        /// <summary>
-        /// Gets an unsigned integer from an array
-        /// </summary>
-        /// <returns></returns>
-        public uint GetUint()
-        {
-            return BitConverter.ToUInt32(GetBytes(4), 0);
-        }
-        /// <summary>
-        /// Gets a unsigned long integer from an array
-        /// </summary>
-        /// <returns></returns>
-        public ulong GetUlong()
-        {
-            return BitConverter.ToUInt64(GetBytes(8), 0);
-        }
-        /// <summary>
-        /// Gets a unsigned short integer from an array
-        /// </summary>
-        /// <returns></returns>
-        public ushort GetUshort()
-        {
-            return BitConverter.ToUInt16(GetBytes(2), 0);
-        }
-        #endregion
-
-        #region Interaction
-        /// <summary>
-        /// Clear all content from the builder
-        /// </summary>
-        public void Clear()
-        {
-            store.Close();
-            store.Dispose();
-            store = new MemoryStream();
-        }
-        /// <summary>
-        /// Rewind the builder ready to read data
-        /// </summary>
-        public void Rewind()
-        {
-            store.Seek(0, SeekOrigin.Begin);
-        }
-        /// <summary>
-        /// Set an absolute position in the builder.
-        /// **WARNING**
-        /// If you add any variable size objects to the builder, the results of
-        /// reading after a Seek to a non-zero value are unpredictable.
-        /// A builder does not store just objects - for some it stores additional
-        /// information as well.
-        /// </summary>
-        /// <param name="position"></param>
-        public void Seek(int position)
-        {
-            store.Seek((long)position, SeekOrigin.Begin);
-        }
-        /// <summary>
-        /// Returns the builder as an array of bytes
-        /// </summary>
-        /// <returns></returns>
-        public byte[] ToArray()
-        {
-            byte[] data = new byte[Length];
-            Array.Copy(store.GetBuffer(), data, Length);
-            return data;
-        }
-        #endregion
-        #endregion
-
-        #region Overrides
-        /// <summary>
-        /// Returns a text based (Base64) string version of the current content
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return Convert.ToBase64String(ToArray());
-        }
-        #endregion
-
-        #region Private Methods
-        /// <summary>
-        /// Add a string of raw bytes to the store
+        /// Добавьте строку необработанных байтов в хранилище
         /// </summary>
         /// <param name="b"></param>
         private void AddBytes(byte[] b)
         {
-            store.Write(b, 0, b.Length);
+            _store.Write(b, 0, b.Length);
         }
 
         private void AddBytes(byte[] b, int coint)
         {
-            store.Write(b, 0, coint);
+            _store.Write(b, 0, coint);
         }
+
         /// <summary>
         /// Reads a specific number of bytes from the store
         /// </summary>
@@ -508,7 +101,7 @@ namespace ProgLib.IO
             byte[] data = new byte[length];
             if (length > 0)
             {
-                int read = store.Read(data, 0, length);
+                int read = _store.Read(data, 0, length);
                 if (read != length)
                 {
                     throw new ApplicationException("Buffer did not contain " + length + " bytes");
@@ -516,17 +109,408 @@ namespace ProgLib.IO
             }
             return data;
         }
-        #endregion
 
-        #region IDisposable Implememntation
+        #endregion
+        
         /// <summary>
-        /// Dispose of this builder and it's resources
+        /// Добавляет данные типа <see cref="Boolean"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(Boolean Value)
+        {
+            _store.WriteByte(Value ? _streamTrue : _streamFalse);
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="Byte"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(Byte Value)
+        {
+            _store.WriteByte(Value);
+        }
+
+        /// <summary>
+        /// Добавляет массив типа <see cref="Byte"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        /// <param name="AddLength">Если "true" - длина добавляется перед значением
+        /// (это позволяет извлекать отдельные элементы обратно в исходную форму ввода).
+        /// </param>
+        public void Append(Byte[] Value, Boolean AddLength = true)
+        {
+            if (AddLength) Append(Value.Length);
+            AddBytes(Value);
+        }
+
+        /// <summary>
+        /// Добавляет массив типа <see cref="Byte"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        /// <param name="Count">Количество добавляемых байтов</param>
+        /// <param name="AddLength">Если "true" - длина добавляется перед значением
+        /// (это позволяет извлекать отдельные элементы обратно в исходную форму ввода).</param>
+        public void Append(Byte[] Value, Int32 Count, Boolean AddLength = true)
+        {
+            if (AddLength) Append(Value.Length);
+            AddBytes(Value, Count);
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="Char"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(Char Value)
+        {
+            _store.WriteByte((byte)Value);
+        }
+
+        /// <summary>
+        /// Добавляет массив типа <see cref="Char"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        /// <param name="AddLength">Если "true" - длина добавляется перед значением
+        /// (это позволяет извлекать отдельные элементы обратно в исходную форму ввода).</param>
+        public void Append(Char[] Value, Boolean AddLength = true)
+        {
+            if (AddLength) Append(Value.Length);
+            Append(Encoding.Unicode.GetBytes(Value));
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="DateTime"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(DateTime Value)
+        {
+            Append(Value.Ticks);
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="Decimal"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(Decimal Value)
+        {
+            // GetBits always returns four ints.
+            // We store them in a specific order so that they can be recovered later.
+            int[] bits = decimal.GetBits(Value);
+            Append(bits[0]);
+            Append(bits[1]);
+            Append(bits[2]);
+            Append(bits[3]);
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="Double"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(Double Value)
+        {
+            AddBytes(BitConverter.GetBytes(Value));
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="Single"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(Single Value)
+        {
+            AddBytes(BitConverter.GetBytes(Value));
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="Guid"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(Guid Value)
+        {
+            Append(Value.ToByteArray());
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="Int16"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(Int16 Value)
+        {
+            AddBytes(BitConverter.GetBytes(Value));
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="Int32"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(Int32 Value)
+        {
+            AddBytes(BitConverter.GetBytes(Value));
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="Int64"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(Int64 Value)
+        {
+            AddBytes(BitConverter.GetBytes(Value));
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="String"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value">Value to append to existing builder data</param>
+        /// <param name="AddLength">Если "true" - длина добавляется перед значением
+        /// (это позволяет извлекать отдельные элементы обратно в исходную форму ввода).</param>
+        public void Append(String Value, Boolean AddLength = true)
+        {
+            byte[] data = Encoding.Unicode.GetBytes(Value);
+            if (AddLength) Append(data.Length);
+            AddBytes(data);
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="Int64"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(UInt16 Value)
+        {
+            AddBytes(BitConverter.GetBytes(Value));
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="UInt32"/> в текущий поток.
+        /// </summary>
+        /// <param name="Value"></param>
+        public void Append(UInt32 Value)
+        {
+            AddBytes(BitConverter.GetBytes(Value));
+        }
+
+        /// <summary>
+        /// Добавляет данные типа <see cref="UInt64"/> в текущий поток.
+        /// </summary>
+        /// <param name="ul"></param>
+        public void Append(UInt64 Value)
+        {
+            AddBytes(BitConverter.GetBytes(Value));
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="Boolean"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Boolean GetBoolean()
+        {
+            return _store.ReadByte() == _streamTrue;
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="Byte"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Byte GetByte()
+        {
+            return (byte)_store.ReadByte();
+        }
+
+        /// <summary>
+        /// Получает массив типа <see cref="Byte"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Byte[] GetByteArray()
+        {
+            int length = GetInt();
+            return GetBytes(length);
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="Char"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Char GetChar()
+        {
+            return (char)_store.ReadByte();
+        }
+
+        /// <summary>
+        /// Получает массив типа <see cref="Char"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Char[] GetCharArray()
+        {
+            int length = GetInt();
+            return System.Text.Encoding.Unicode.GetChars(GetBytes(length));
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="DateTime"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public DateTime GetDateTime()
+        {
+            return new DateTime(GetLong());
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="Decimal"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Decimal GetDecimal()
+        {
+            // GetBits always returns four ints.
+            // We store them in a specific order so that they can be recovered later.
+            int[] bits = new int[] { GetInt(), GetInt(), GetInt(), GetInt() };
+            return new decimal(bits);
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="Double"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Double GetDouble()
+        {
+            return BitConverter.ToDouble(GetBytes(8), 0);
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="Single"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Single GetFloat()
+        {
+            return BitConverter.ToSingle(GetBytes(4), 0);
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="Guid"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Guid GetGuid()
+        {
+            return new Guid(GetByteArray());
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="Int16"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Int16 GetShort()
+        {
+            return BitConverter.ToInt16(GetBytes(2), 0);
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="Int32"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Int32 GetInt()
+        {
+            return BitConverter.ToInt32(GetBytes(4), 0);
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="Int64"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public Int64 GetLong()
+        {
+            return BitConverter.ToInt64(GetBytes(8), 0);
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="String"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public String GetString()
+        {
+            int length = GetInt();
+            return System.Text.Encoding.Unicode.GetString(GetBytes(length));
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="UInt16"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public UInt16 GetUshort()
+        {
+            return BitConverter.ToUInt16(GetBytes(2), 0);
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="UInt32"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public UInt32 GetUint()
+        {
+            return BitConverter.ToUInt32(GetBytes(4), 0);
+        }
+
+        /// <summary>
+        /// Получает данные типа <see cref="UInt64"/> из текущего потока.
+        /// </summary>
+        /// <returns></returns>
+        public UInt64 GetUlong()
+        {
+            return BitConverter.ToUInt64(GetBytes(8), 0);
+        }
+
+        /// <summary>
+        /// Очищает данные.
+        /// </summary>
+        public void Clear()
+        {
+            _store.Close();
+            _store.Dispose();
+            _store = new MemoryStream();
+        }
+
+        /// <summary>
+        /// Задаёт начальное значение для положения в текущем потоке.
+        /// </summary>
+        public void Rewind()
+        {
+            _store.Seek(0, SeekOrigin.Begin);
+        }
+
+        /// <summary>
+        /// Задаёт указанное значение для положения в текущем потоке.
+        /// WARNING:
+        /// При добавлении в построитель объектов переменного размера результаты чтения после поиска ненулевого значения непредсказуемы.
+        /// Построитель хранит не только объекты - для некоторых он также хранит дополнительную информацию.
+        /// </summary>
+        /// <param name="position"></param>
+        public void Seek(int position)
+        {
+            _store.Seek((long)position, SeekOrigin.Begin);
+        }
+
+        /// <summary>
+        /// Возвращает поток в виде массива байтов.
+        /// </summary>
+        /// <returns></returns>
+        public byte[] ToArray()
+        {
+            byte[] data = new byte[Length];
+            Array.Copy(_store.GetBuffer(), data, Length);
+            return data;
+        }
+
+        /// <summary>
+        /// Возвращает данные класса <see cref="BytesBuilder"/> в строковом представлении (Base64).
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Convert.ToBase64String(ToArray());
+        }
+                
+        /// <summary>
+        /// Освобождает все ресурсы, используемые объектом <see cref="BytesBuilder"/>.
         /// </summary>
         public void Dispose()
         {
-            store.Close();
-            store.Dispose();
+            _store.Close();
+            _store.Dispose();
         }
-        #endregion
     }
 }
