@@ -11,7 +11,7 @@ namespace ProgLib.IO
     public sealed class BytesBuilder : IDisposable
     {
         /// <summary>
-        /// Создайте новый пустой конструктор, готовый к заполнению.
+        /// Инициализирует пустой конструктор, готовый к заполнению.
         /// </summary>
         public BytesBuilder()
         {
@@ -19,9 +19,9 @@ namespace ProgLib.IO
         }
 
         /// <summary>
-        /// Создание нового построителя из набора данных
+        /// Инициализирует конструктор из набора данных.
         /// </summary>
-        /// <param name="data">Данные для представления построителя из</param>
+        /// <param name="data"></param>
         public BytesBuilder(Byte[] data)
         {
             _store.Close();
@@ -30,10 +30,9 @@ namespace ProgLib.IO
         }
 
         /// <summary>
-        /// Создайте новый конструктор из строкового представления Base64 существующего экземпляра.
-        /// Представление Base64 можно получить с помощью переопределения ToString.
+        /// Инициализирует конструктор из строкового представления (Base64) существующего экземпляра.
         /// </summary>
-        /// <param name="base64">Base64 строковое представление существующего экземпляра.</param>
+        /// <param name="base64"></param>
         public BytesBuilder(String base64)
         {
             _store.Close();

@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-
+using System.Windows.Forms;
 using ProgLib.IO;
 
 namespace ProgLib.Network.Tcp
@@ -58,7 +58,7 @@ namespace ProgLib.Network.Tcp
         private Int32 _port;
         private IPAddress _address;
         private Int32 _backlog;
-        private String _data = null;
+        private Byte[] _data = null;
 
         // Внешний поток
         private Thread _flow;
@@ -143,10 +143,10 @@ namespace ProgLib.Network.Tcp
         /// <summary>
         /// Запускает процесс получения и трансляции данных.
         /// </summary>
-        /// <param name="Data">Транслируемые данные</param>
-        public void Start(String Data)
+        /// <param name="Buffer">Транслируемые данные</param>
+        public void Start(Byte[] Buffer)
         {
-            _data = Data;
+            _data = Buffer;
             Start();
         }
 
@@ -165,34 +165,46 @@ namespace ProgLib.Network.Tcp
                 try
                 {
                     // Получение клиентского сокета
-                    Socket _client = _server.Accept();
+                    Socket Client = _server.Accept();
+                    
+                    #region Получение входящих данных (Способ №1)
+
+                    //// Получение входящих данных
+                    //BytesBuilder Bytes = new BytesBuilder();
+                    //while (Client.Available > 0)
+                    //{
+                    //    Byte[] Buffer = new Byte[50000];
+                    //    Int32 Length = Client.Receive(Buffer);
+
+                    //    Bytes.Append(Buffer, Length, false);
+                    //}
+
+                    #endregion
+
+                    #region Получение входящих данных (Способ №2)
 
                     // Получение входящих данных
-                    BytesBuilder _bytes = new BytesBuilder();
-                    do
-                    {
-                        Byte[] _buffer = new Byte[1024];
-                        Int32 _length = _client.Receive(_buffer);
+                    BytesBuilder Bytes = new BytesBuilder();
+                    Byte[] Buffer = new Byte[1024];
+                    Int32 Length = 0;
+                    while ((Length = Client.Receive(Buffer)) > 0)
+                        Bytes.Append(Buffer, Length, false);
 
-                        _bytes.Append(_buffer, _length, false);
-                    }
-                    while (_client.Available > 0);
-
-                    Byte[] __data = _bytes.ToArray();
-                    _bytes.Dispose();
+                    #endregion
 
                     // Обработка события при получении данных
-                    Receiver?.Invoke(this, new TcpReceiverEventArgs(_client, __data, __data.Length));
+                    Receiver?.Invoke(this, new TcpReceiverEventArgs(Client, Bytes.ToArray(), Bytes.ToArray().Length));
+                    Bytes.Dispose();
 
-                    if (_data != "" && _data != null)
+                    if (_data != null)
                     {
                         // Отправка данных клиенту
-                        _client.Send(TcpServer.GetBytes(_data));
+                        Client.Send(_data);
                     }
 
                     // Закрытие клиентского сокета
-                    _client.Shutdown(SocketShutdown.Both);
-                    _client.Close();
+                    Client.Shutdown(SocketShutdown.Both);
+                    Client.Close();
                 }
                 catch (Exception Exception)
                 {
