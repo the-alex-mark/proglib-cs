@@ -19,7 +19,7 @@ namespace ProgLib.IO
         }
 
         /// <summary>
-        /// Инициализирует конструктор из набора данных.
+        /// Инициализирует конструктор из байтового набора данных.
         /// </summary>
         /// <param name="data"></param>
         public BytesBuilder(Byte[] data)
