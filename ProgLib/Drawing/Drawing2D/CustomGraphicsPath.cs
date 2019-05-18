@@ -8,6 +8,9 @@ using System.Drawing.Drawing2D;
 
 namespace ProgLib.Drawing.Drawing2D
 {
+    /// <summary>
+    /// Предоставляет различные сложные фигуры для их дальнейшей отрисовки.
+    /// </summary>
     public static class CustomGraphicsPath
     {
         /// <summary>

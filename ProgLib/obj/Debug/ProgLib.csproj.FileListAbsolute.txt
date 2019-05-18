@@ -52,3 +52,4 @@ D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Deb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.GoToForm.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.HotkeysEditorForm.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.ReplaceForm.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\ProgLib.xml
