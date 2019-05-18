@@ -1,25 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace ProgLib.Drawing.Drawing2D
 {
     /// <summary>
-    /// Предоставляет различные сложные фигуры для их дальнейшей отрисовки.
+    /// Предоставляет различные сложные фигуры.
     /// </summary>
-    public static class CustomGraphicsPath
+    public static class Figure
     {
         /// <summary>
-        /// Добавляет прямоугольник с загруглёнными углами, заданный структурой <see cref="System.Drawing.Rectangle"/>.
+        /// Прямоугольник с закруглёнными углами.
         /// </summary>
-        /// <param name="Radius"></param>
-        /// <param name="Rectangle"></param>
+        /// <param name="Radius">Величина округления углов (в пикселях)</param>
+        /// <param name="Rectangle">Положение и размеры фигуры</param>
         /// <returns></returns>
-        public static System.Drawing.Drawing2D.GraphicsPath Superellipse(Radius Radius, Rectangle Rectangle)
+        public static GraphicsPath Superellipse(Radius Radius, Rectangle Rectangle)
         {
             System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
 
@@ -52,7 +49,7 @@ namespace ProgLib.Drawing.Drawing2D
         /// <param name="SweepAngle"></param>
         /// <param name="Radius"></param>
         /// <returns></returns>
-        public static System.Drawing.Drawing2D.GraphicsPath EllipseByDegrees(Point Center, Int32 StartAngle, Int32 SweepAngle, Int32 Radius)
+        public static GraphicsPath EllipseByDegrees(Point Center, Int32 StartAngle, Int32 SweepAngle, Int32 Radius)
         {
             System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
             GP.AddArc(new Rectangle(Center.X - Radius, Center.Y - Radius, Radius * 2, Radius * 2), StartAngle, SweepAngle);
@@ -71,7 +68,7 @@ namespace ProgLib.Drawing.Drawing2D
         /// <param name="StartAngle"></param>
         /// <param name="SweepAngle"></param>
         /// <returns></returns>
-        public static System.Drawing.Drawing2D.GraphicsPath EllipseByDegrees(Rectangle Rectangle, Int32 StartAngle, Int32 SweepAngle)
+        public static GraphicsPath EllipseByDegrees(Rectangle Rectangle, Int32 StartAngle, Int32 SweepAngle)
         {
             Point Center = new Point(Rectangle.Width / 2, Rectangle.Height / 2);
             Int32 Radius = Rectangle.Width / 2;
@@ -87,26 +84,26 @@ namespace ProgLib.Drawing.Drawing2D
         }
 
         /// <summary>
-        /// Смешивает цвета (значение переменной "Blend" должно быть от 0 до 255)
+        /// Смешвает два цвета.
         /// </summary>
         /// <param name="BackgroundColor"></param>
         /// <param name="FrontColor"></param>
-        /// <param name="Blend">Значение должно быть от 0 до 255</param>
+        /// <param name="Blend">Величина смешивания (от 0 до 255)</param>
         /// <returns></returns>
         public static Color BlendColor(Color BackgroundColor, Color FrontColor, Int32 Blend)
         {
             if (Enumerable.Range(0, 256).Contains(Blend))
             {
-                Double Ratio = Blend / 255d;
-                Int32 R = (int)((BackgroundColor.R * (1d - Ratio)) + (FrontColor.R * Ratio));
-                Int32 G = (int)((BackgroundColor.G * (1d - Ratio)) + (FrontColor.G * Ratio));
-                Int32 B = (int)((BackgroundColor.B * (1d - Ratio)) + (FrontColor.B * Ratio));
+                Double Ratio = Blend / 255D;
+                Int32 R = (int)((BackgroundColor.R * (1D - Ratio)) + (FrontColor.R * Ratio));
+                Int32 G = (int)((BackgroundColor.G * (1D - Ratio)) + (FrontColor.G * Ratio));
+                Int32 B = (int)((BackgroundColor.B * (1D - Ratio)) + (FrontColor.B * Ratio));
 
                 return Color.FromArgb(R, G, B);
             }
             else
             {
-                throw new Exception("Значение переменной \"Blend\" должно быть от 0 до 255");
+                throw new Exception("Значение переменной \"Blend\" должно быть от 0 до 255!");
             }
         }
     }

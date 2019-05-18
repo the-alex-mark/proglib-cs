@@ -423,14 +423,14 @@ namespace ProgLib.Windows.Forms.Adobe
                         G.SmoothingMode = SmoothingMode.AntiAlias;
 
                         // Отрисовка фона
-                        G.FillPath(new SolidBrush(_backgtoundColor), CustomGraphicsPath.Superellipse(new Radius(5, 5, 5, 5), new Rectangle(0, 0, Width - 1, Height - 1)));
-                        G.FillPath(new SolidBrush(_backgtoundColor), CustomGraphicsPath.Superellipse(new Radius(0, 5, 5, 0), new Rectangle(Width - 17, 0, 17, Height)));
+                        G.FillPath(new SolidBrush(_backgtoundColor), Figure.Superellipse(new Radius(5, 5, 5, 5), new Rectangle(0, 0, Width - 1, Height - 1)));
+                        G.FillPath(new SolidBrush(_backgtoundColor), Figure.Superellipse(new Radius(0, 5, 5, 0), new Rectangle(Width - 17, 0, 17, Height)));
                         
                         // Отрисовка стрелки
                         G.DrawImage(Arrow(_arrowColor), new Point(Width - 16, (Height / 2) - (Arrow(_arrowColor).Height / 2)));
 
                         // Отрисовка границ
-                        G.DrawPath(new Pen(_borderColor, 1), CustomGraphicsPath.Superellipse(new Radius(5, 5, 5, 5), new Rectangle(0, 0, Width - 1, Height - 1)));
+                        G.DrawPath(new Pen(_borderColor, 1), Figure.Superellipse(new Radius(5, 5, 5, 5), new Rectangle(0, 0, Width - 1, Height - 1)));
 
                         // Отрисовка текста
                         TextRenderer.DrawText(
@@ -452,14 +452,14 @@ namespace ProgLib.Windows.Forms.Adobe
                         G.SmoothingMode = SmoothingMode.AntiAlias;
 
                         // Отрисовка фона
-                        G.FillPath(new SolidBrush(_backgtoundColor), CustomGraphicsPath.Superellipse(new Radius(5, 5, 0, 0), new Rectangle(0, 0, Width - 1, Height - 1)));
-                        G.FillPath(new SolidBrush(_backgtoundColor), CustomGraphicsPath.Superellipse(new Radius(0, 5, 0, 0), new Rectangle(Width - 17, 0, 17, Height)));
+                        G.FillPath(new SolidBrush(_backgtoundColor), Figure.Superellipse(new Radius(5, 5, 0, 0), new Rectangle(0, 0, Width - 1, Height - 1)));
+                        G.FillPath(new SolidBrush(_backgtoundColor), Figure.Superellipse(new Radius(0, 5, 0, 0), new Rectangle(Width - 17, 0, 17, Height)));
                         
                         // Отрисовка стрелки
                         G.DrawImage(Arrow(_arrowColor), new Point(Width - 16, (Height / 2) - (Arrow(_arrowColor).Height / 2)));
 
                         // Отрисовка границ
-                        G.DrawPath(new Pen(_borderColor, 1), CustomGraphicsPath.Superellipse(new Radius(5, 5, 0, 0), new Rectangle(0, 0, Width - 1, Height)));
+                        G.DrawPath(new Pen(_borderColor, 1), Figure.Superellipse(new Radius(5, 5, 0, 0), new Rectangle(0, 0, Width - 1, Height)));
 
                         // Отрисовка текста
                         TextRenderer.DrawText(

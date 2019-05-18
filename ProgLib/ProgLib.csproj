@@ -24,6 +24,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet />
     <DocumentationFile>bin\Debug\ProgLib.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -1240,7 +1241,7 @@
     <Compile Include="Windows\Forms\Direction.cs" />
     <Compile Include="Drawing\CMYK.cs" />
     <Compile Include="Drawing\Convert.cs" />
-    <Compile Include="Drawing\Drawing2D\CustomGraphicsPath.cs" />
+    <Compile Include="Drawing\Drawing2D\Figure.cs" />
     <Compile Include="Drawing\MetroBrushes.cs" />
     <Compile Include="Drawing\MetroColors.cs" />
     <Compile Include="Network\Mail\MailRecipient.cs" />
