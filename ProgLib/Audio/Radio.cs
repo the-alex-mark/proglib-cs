@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProgLib.Audio
 {
     /// <summary>
-    /// Класс для работы с интернет радиостанциями
+    /// Предоставляет методы для работы с интернет радиостанцией
     /// </summary>
     public class Radio : Record
     {
         /// <summary>
-        /// Объявляет экземпляр для работы с интернет радиостанцией
+        /// Инициализирует экземпляр типа <see cref="Radio"/> для работы с интернет радиостанцией.
         /// </summary>
-        /// <param name="File"></param>
+        /// <param name="URL"></param>
         public Radio(String URL)
         {
             if (URL.ToLower().StartsWith("http", StringComparison.CurrentCultureIgnoreCase) || URL.ToLower().StartsWith("www", StringComparison.CurrentCultureIgnoreCase))
@@ -26,22 +22,30 @@ namespace ProgLib.Audio
         }
 
         /// <summary>
-        /// Объявляет экземпляр для работы с интернет радиостанцией
+        /// Инициализирует экземпляр типа <see cref="Radio"/> для работы с интернет радиостанцией.
         /// </summary>
-        /// <param name="File"></param>
+        /// <param name="Name"></param>
+        /// <param name="URL"></param>
         public Radio(String Name, String URL)
         {
-            if (URL.ToLower().StartsWith("http", StringComparison.CurrentCultureIgnoreCase) || URL.ToLower().StartsWith("www", StringComparison.CurrentCultureIgnoreCase))
+            if (URL.IsRadio())
             {
                 this.Name = Name;
                 this.URL = URL;
             }
-            else { throw new Exception("Данный URL-Адрес не является адресом интернет радиостанции."); }
+            else { throw new Exception("Данная строка не является адресом интернет радиостанции."); }
         }
+
+        #region Properties
 
         /// <summary>
         /// Название радиостации
         /// </summary>
-        public String Name { get; }
+        public String Name
+        {
+            get;
+        }
+
+        #endregion
     }
 }

@@ -747,7 +747,7 @@ namespace ProgLib.Windows.Forms.Cyotek
             {
                 Control parent;
 
-                this.OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc
+                this.OnPaintBackground(e);
 
                 // if the parent is using a transparent color, it's likely to be something like a TabPage in a tab control
                 // so we'll draw the parent background instead, to avoid having an ugly solid color
@@ -761,9 +761,7 @@ namespace ProgLib.Windows.Forms.Cyotek
                 {
                     e.Graphics.FillPie(_brush, this.ClientRectangle, 0, 360);
                 }
-
-                // HACK: smooth out the edge of the wheel.
-                // https://github.com/cyotek/Cyotek.Windows.Forms.ColorPicker/issues/1 - the linked source doesn't do this hack yet draws with a smoother edge
+                
                 e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 using (Pen pen = new Pen(this.BackColor, 2))
                 {

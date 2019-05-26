@@ -441,7 +441,7 @@ namespace ProgLib.Windows.Forms.Cyotek
             base.OnPaint(e);
             //this.UpdateSnapshot();
 
-            this.OnPaintBackground(e); // HACK: Самый простой способ поддержки таких вещей, как BackgroundImage, BackgroundImageLayout и т. д
+            this.OnPaintBackground(e);
 
             // draw the current snapshot, if present
             if (this.SnapshotImage != null)

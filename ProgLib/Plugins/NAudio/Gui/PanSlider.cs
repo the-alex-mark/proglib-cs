@@ -31,8 +31,6 @@ namespace NAudio.Gui
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-
-			// TODO: Add any initialization after the InitComponent call
 		}
 
 		/// <summary>

@@ -166,7 +166,7 @@ namespace NAudio.Mixer
             }
             else if (IsCustom)
             {
-                mixerControlDetails.hwndOwner = IntPtr.Zero; // TODO: special cases
+                mixerControlDetails.hwndOwner = IntPtr.Zero;
             }
             else
             {

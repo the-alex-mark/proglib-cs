@@ -722,8 +722,7 @@ namespace TagLib.Png
 
 			// render the XMP data itself
 			ByteVector xmp_data = xmp.Render ();
-
-			// TODO check uint size.
+            
 			chunk.Add (ByteVector.FromUInt ((uint)xmp_data.Count + (uint)XMP_CHUNK_HEADER.Length));
 			chunk.Add (iTXt_CHUNK_TYPE);
 			chunk.Add (XMP_CHUNK_HEADER);

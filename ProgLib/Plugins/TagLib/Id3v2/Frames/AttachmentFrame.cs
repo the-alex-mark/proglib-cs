@@ -299,27 +299,26 @@ namespace TagLib.Id3v2
 		}
 
 
-		#endregion
+        #endregion
 
 
 
-		#region Public Properties
+        #region Public Properties
 
-		/// <summary>
-		///    Gets and sets the text encoding to use when storing the
-		///    current instance.
-		/// </summary>
-		/// <value>
-		///    A <see cref="string" /> containing the text encoding to
-		///    use when storing the current instance.
-		/// </value>
-		/// <remarks>
-		///    This encoding is overridden when rendering if <see
-		///    cref="Tag.ForceDefaultEncoding" /> is <see
-		///    langword="true" /> or the render version does not support
-		///    it.
-		/// </remarks>
-		public StringType TextEncoding {
+        /// <summary>
+        /// Возвращает и задает текстовую кодировку, используемую при хранении текущего экземпляра.
+        /// </summary>
+        /// <value>
+        ///    A <see cref="string" /> containing the text encoding to
+        ///    use when storing the current instance.
+        /// </value>
+        /// <remarks>
+        ///    This encoding is overridden when rendering if <see
+        ///    cref="Tag.ForceDefaultEncoding" /> is <see
+        ///    langword="true" /> or the render version does not support
+        ///    it.
+        /// </remarks>
+        public StringType TextEncoding {
 			get {
 				if (file != null)
 					Load ();
@@ -333,15 +332,14 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		/// <summary>
-		///    Gets and sets the mime-type of the picture stored in the
-		///    current instance.
-		/// </summary>
-		/// <value>
-		///    A <see cref="string" /> containing the mime-type of the
-		///    picture stored in the current instance.
-		/// </value>
-		public string MimeType {
+        /// <summary>
+        /// Возвращает и задает MIME-тип изображения, хранящегося в текущем экземпляре.
+        /// </summary>
+        /// <value>
+        ///    A <see cref="string" /> containing the mime-type of the
+        ///    picture stored in the current instance.
+        /// </value>
+        public string MimeType {
 			get {
 				if (file != null)
 					Load ();
@@ -360,20 +358,19 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		/// <summary>
-		///    Gets and sets the object type stored in the current
-		///    instance.
-		/// </summary>
-		/// <value>
-		///    A <see cref="PictureType" /> containing the object type
-		///    stored in the current instance.
-		/// </value>
-		/// <remarks>
-		///    For a General Object Frame, use: 
-		///    <see cref="PictureType.NotAPicture" />.
-		///    Other types will make it a Picture Frame
-		/// </remarks>
-		public PictureType Type {
+        /// <summary>
+        /// Возвращает и задает тип объекта, хранящийся в текущем экземпляре.
+        /// </summary>
+        /// <value>
+        ///    A <see cref="PictureType" /> containing the object type
+        ///    stored in the current instance.
+        /// </value>
+        /// <remarks>
+        ///    For a General Object Frame, use: 
+        ///    <see cref="PictureType.NotAPicture" />.
+        ///    Other types will make it a Picture Frame
+        /// </remarks>
+        public PictureType Type {
 			get {
 				if (file != null)
 					Load ();
@@ -397,15 +394,14 @@ namespace TagLib.Id3v2
 		}
 
 
-		/// <summary>
-		///    Gets and sets a filename of the picture stored in the
-		///    current instance.
-		/// </summary>
-		/// <value>
-		///    A <see cref="string" /> object containing a fielname, with
-		///    extension, of the picture stored in the current instance.
-		/// </value>
-		public string Filename {
+        /// <summary>
+        /// Возвращает и задает имя файла изображения, хранящегося в текущем экземпляре.
+        /// </summary>
+        /// <value>
+        ///    A <see cref="string" /> object containing a fielname, with
+        ///    extension, of the picture stored in the current instance.
+        /// </value>
+        public string Filename {
 			get {
 				if (file != null)
 					Load ();
@@ -419,19 +415,18 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		/// <summary>
-		///    Gets and sets the description stored in the current
-		///    instance.
-		/// </summary>
-		/// <value>
-		///    A <see cref="string" /> containing the description
-		///    stored in the current instance.
-		/// </value>
-		/// <remarks>
-		///    There should only be one frame with a matching
-		///    description and type per tag.
-		/// </remarks>
-		public string Description {
+        /// <summary>
+        /// Возвращает и задает описание, хранящееся в текущем экземпляре.
+        /// </summary>
+        /// <value>
+        ///    A <see cref="string" /> containing the description
+        ///    stored in the current instance.
+        /// </value>
+        /// <remarks>
+        ///    There should only be one frame with a matching
+        ///    description and type per tag.
+        /// </remarks>
+        public string Description {
 			get {
 				if (file != null)
 					Load ();
@@ -450,15 +445,14 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		/// <summary>
-		///    Gets and sets the image data stored in the current
-		///    instance.
-		/// </summary>
-		/// <value>
-		///    A <see cref="ByteVector" /> containing the image data
-		///    stored in the current instance.
-		/// </value>
-		public ByteVector Data {
+        /// <summary>
+        /// Возвращает и задает данные изображения, хранящиеся в текущем экземпляре.
+        /// </summary>
+        /// <value>
+        ///    A <see cref="ByteVector" /> containing the image data
+        ///    stored in the current instance.
+        /// </value>
+        public ByteVector Data {
 			get {
 				if (file != null)
 					Load ();
@@ -475,10 +469,10 @@ namespace TagLib.Id3v2
 		}
 
 
-		/// <summary>
-		///    Gets an indication whether the object is loaded.
-		/// </summary>
-		public bool IsLoaded {
+        /// <summary>
+        /// Возвращает указание, загружен ли объект.
+        /// </summary>
+        public bool IsLoaded {
 			get {
 				return data != null || raw_data != null;
 			}
@@ -965,7 +959,7 @@ namespace TagLib.Id3v2
 	///    generic way or getting and setting pictures which is preferable
 	///    to format specific code.</para>
 	/// </remarks>
-	[Obsolete ("Use AttachementFrame instead")]
+	[Obsolete ("Вместо этого используйте AttachementFrame")]
 	public class AttachedPictureFrame : AttachmentFrame
 	{
 		#region Constructors
@@ -1092,7 +1086,7 @@ namespace TagLib.Id3v2
 	///    used for storing files and other objects relevant to the file but
 	///    not supported by other frames.</para>
 	/// </remarks>
-	[Obsolete ("Use AttachementFrame instead")]
+	[Obsolete ("Вместо этого используйте AttachementFrame")]
 	public class GeneralEncapsulatedObjectFrame : AttachmentFrame
 	{
 

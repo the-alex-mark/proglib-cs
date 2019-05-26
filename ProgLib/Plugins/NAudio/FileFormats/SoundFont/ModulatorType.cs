@@ -74,7 +74,6 @@ namespace NAudio.SoundFont
 			
 		internal ModulatorType(ushort raw) 
 		{
-			// TODO: map this to fields
 			polarity = ((raw & 0x0200) == 0x0200);
 			direction = ((raw & 0x0100) == 0x0100);
 			midiContinuousController = ((raw & 0x0080) == 0x0080);

@@ -96,7 +96,6 @@ namespace NAudio.Wave
                 bytesRead = input.Read(frame.RawData, 4, bytesRequired);
                 if (bytesRead < bytesRequired)
                 {
-                    // TODO: could have an option to suppress this, although it does indicate a corrupt file
                     // for now, caller should handle this exception
                     throw new EndOfStreamException("Unexpected end of stream before frame complete");
                 }
@@ -127,7 +126,6 @@ namespace NAudio.Wave
         {
             if ((headerBytes[0] == 0xFF) && ((headerBytes[1] & 0xE0) == 0xE0))
             {
-                // TODO: could do with a bitstream class here
                 frame.MpegVersion = (MpegVersion) ((headerBytes[1] & 0x18) >> 3);
                 if (frame.MpegVersion == MpegVersion.Reserved)
                 {

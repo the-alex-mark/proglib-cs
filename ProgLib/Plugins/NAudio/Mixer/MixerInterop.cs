@@ -3,8 +3,6 @@ using System;
 using System.Runtime.InteropServices;
 using NAudio.Wave;
 
-// TODO: add function help from MSDN
-// TODO: Create enums for flags parameters
 namespace NAudio.Mixer
 {
     class MixerInterop

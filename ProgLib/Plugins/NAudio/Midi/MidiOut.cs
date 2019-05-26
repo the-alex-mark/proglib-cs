@@ -69,7 +69,6 @@ namespace NAudio.Midi
         /// </summary>
         public int Volume 
         {
-            // TODO: Volume can be accessed by device ID
             get 
             {
                 int volume = 0;

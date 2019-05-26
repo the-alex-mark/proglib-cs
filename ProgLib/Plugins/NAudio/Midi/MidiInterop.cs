@@ -84,7 +84,6 @@ namespace NAudio.Midi
         public static extern MmResult midiInGetDevCaps(IntPtr deviceId, out MidiInCapabilities capabilities, int size);
 
         // http://msdn.microsoft.com/en-us/library/dd798454%28VS.85%29.aspx
-        // TODO: review this, probably doesn't work
         [DllImport("winmm.dll")]
         public static extern MmResult midiInGetErrorText(int err, string lpText, int uSize);
 
@@ -145,7 +144,6 @@ namespace NAudio.Midi
         public static extern MmResult midiOutGetDevCaps(IntPtr deviceNumber, out MidiOutCapabilities caps, int uSize);
 
         // http://msdn.microsoft.com/en-us/library/dd798470%28VS.85%29.aspx
-        // TODO: review, probably doesn't work
         [DllImport("winmm.dll")]
         public static extern MmResult midiOutGetErrorText(IntPtr err, string lpText, int uSize);
 
@@ -224,22 +222,18 @@ namespace NAudio.Midi
         // http://msdn.microsoft.com/en-us/library/dd798492%28VS.85%29.aspx
         [DllImport("winmm.dll")]
         public static extern MmResult midiStreamStop(IntPtr hMidiStream);
-
-        // TODO: this is general MM interop
+        
         public const int CALLBACK_FUNCTION = 0x30000;
         public const int CALLBACK_NULL = 0;
 
         // http://msdn.microsoft.com/en-us/library/dd757347%28VS.85%29.aspx
-        // TODO: not sure this is right
         [StructLayout(LayoutKind.Sequential)]
         public struct MMTIME
         {
             public int wType;
             public int u;
         }
-
-        // TODO: check for ANSI strings in these structs
-        // TODO: check for WORD params
+        
         [StructLayout(LayoutKind.Sequential)]
         public struct MIDIEVENT
         {

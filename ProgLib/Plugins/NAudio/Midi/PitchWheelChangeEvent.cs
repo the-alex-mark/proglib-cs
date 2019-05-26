@@ -20,8 +20,7 @@ namespace NAudio.Midi
             byte b1 = br.ReadByte();
             byte b2 = br.ReadByte();
             if((b1 & 0x80) != 0) 
-            {
-                // TODO: might be a follow-on				
+            {			
                 throw new FormatException("Invalid pitchwheelchange byte 1");
             }
             if((b2 & 0x80) != 0) 

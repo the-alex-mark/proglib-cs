@@ -848,12 +848,8 @@ namespace TagLib
 			// See the notes in find() for an explanation of this
 			// algorithm.
 
-			for (buffer = ReadBlock (read_size); buffer.Count > 0; buffer = ReadBlock (read_size)) {
-
-				// TODO: (1) previous partial match
-
-				// (2) pattern contained in current buffer
-
+			for (buffer = ReadBlock (read_size); buffer.Count > 0; buffer = ReadBlock (read_size))
+            {
 				long location = buffer.RFind (pattern);
 				if (location >= 0) {
 					file_stream.Position = original_position;

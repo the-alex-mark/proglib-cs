@@ -308,7 +308,6 @@ namespace NAudio.Wave
         {
             get
             {
-                // TODO: investigate forcing 20ms
                 return sourceStream.BlockAlign;
             }
         }

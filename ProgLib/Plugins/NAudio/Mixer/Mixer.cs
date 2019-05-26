@@ -35,7 +35,6 @@ namespace NAudio.Mixer
             this.mixerHandle = (IntPtr)mixerIndex;
             this.mixerHandleType = MixerFlags.Mixer;
 			
-			// TODO: optionally support really opening the mixer device
             //MmException.Try(MixerInterop.mixerOpen(out mixerHandle, mixerIndex, IntPtr.Zero, IntPtr.Zero, 0), "mixerOpen");
 		}
 

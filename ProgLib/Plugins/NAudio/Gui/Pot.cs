@@ -10,13 +10,6 @@ namespace NAudio.Gui
 {
     /// <summary>
     /// Control that represents a potentiometer
-    /// TODO list:
-    /// Optional Log scale
-    /// Optional reverse scale
-    /// Keyboard control
-    /// Optional bitmap mode
-    /// Optional complete draw mode
-    /// Tooltip support
     /// </summary>
     [DesignTimeVisible(false)]
     public partial class Pot : UserControl

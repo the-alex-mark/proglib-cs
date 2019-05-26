@@ -40,7 +40,6 @@ namespace NAudio.MediaFoundation
         /// <summary>
         /// Converts a Media Foundation audio media type to a WAVEFORMATEX structure.
         /// </summary>
-        /// TODO: try making second parameter out WaveFormatExtraData
         [DllImport("mfplat.dll", ExactSpelling = true, PreserveSig = false)]
         internal static extern void MFCreateWaveFormatExFromMFMediaType(IMFMediaType pMFType, ref IntPtr ppWF, ref int pcbSize, int flags = 0);
 

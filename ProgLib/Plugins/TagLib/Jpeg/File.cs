@@ -531,11 +531,6 @@ namespace TagLib.Jpeg
 		/// </remarks>
 		void ReadAPP13Segment (ushort length)
 		{
-			// TODO: if both IPTC-IIM and XMP metadata is contained in a file, we should read
-			// a IPTC-IIM checksum and compare that with the checksum built over the IIM block.
-			// Depending on the result we should prefer the information from XMP or IIM.
-			// Right now we always prefer XMP.
-
 			var data = ReadBlock (length);
 
 			// The APP13 segment consists of:

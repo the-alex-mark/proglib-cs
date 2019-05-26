@@ -268,7 +268,6 @@ namespace NAudio.Wave
                 // Call the convertor
                 unsafe
                 {
-                    // TODO : check if it's better to lock the buffer at initialization?
                     fixed (void* pBuffer = &waveBuffer[0])
                     {
                         convertor(new IntPtr(pBuffer), outputChannels, NumberOfOutputChannels, nbSamples);

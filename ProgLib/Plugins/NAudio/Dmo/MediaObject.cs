@@ -470,8 +470,6 @@ namespace NAudio.Dmo
             return (flags & DmoInputStatusFlags.DMO_INPUT_STATUSF_ACCEPT_DATA) == DmoInputStatusFlags.DMO_INPUT_STATUSF_ACCEPT_DATA;
         }
 
-        // TODO: there are still several IMediaObject functions to be wrapped
-
         #region IDisposable Members
 
         /// <summary>

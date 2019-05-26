@@ -19,7 +19,6 @@ namespace NAudio.Midi
         /// <param name="length">the data length</param>
         public TrackSequenceNumberEvent(BinaryReader br, int length)
         {
-            // TODO: there is a form of the TrackSequenceNumberEvent that
             // has a length of zero
             if(length != 2) 
             {

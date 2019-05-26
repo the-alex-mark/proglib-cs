@@ -283,7 +283,6 @@ namespace NAudio.Wave
         /// </summary>
         public MixerLine GetMixerLine()
         {
-            // TODO use mixerGetID instead to see if this helps with XP
             MixerLine mixerLine;
             if (waveInHandle != IntPtr.Zero)
             {

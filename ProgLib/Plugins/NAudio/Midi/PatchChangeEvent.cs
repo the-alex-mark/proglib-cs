@@ -18,8 +18,7 @@ namespace NAudio.Midi
         {
             return patchNames[patchNumber];
         }
-
-        // TODO: localize
+        
         private static readonly string[] patchNames = new string[] 
         {
             "Acoustic Grand","Bright Acoustic","Electric Grand","Honky-Tonk","Electric Piano 1","Electric Piano 2","Harpsichord","Clav",
@@ -49,7 +48,6 @@ namespace NAudio.Midi
             patch = br.ReadByte();
             if ((patch & 0x80) != 0)
             {
-                // TODO: might be a follow-on
                 throw new FormatException("Invalid patch");
             }
         }

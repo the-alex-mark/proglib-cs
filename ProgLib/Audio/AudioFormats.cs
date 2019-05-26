@@ -59,9 +59,23 @@ namespace ProgLib.Audio
             }
         }
         
-        public static String Playlist
+        public static String[] Playlist
         {
-            get { return ".m3u"; }
+            get
+            {
+                return new String[]
+                {
+                    ".asx",
+                    ".aimppl",
+                    ".aimppl4",
+                    ".cue",
+                    ".m3u",
+                    ".m3u8",
+                    ".pls",
+                    ".wax",
+                    ".xspf"
+                };
+            }
         }
     }
 }

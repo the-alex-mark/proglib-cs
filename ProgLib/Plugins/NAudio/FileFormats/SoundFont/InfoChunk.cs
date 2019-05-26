@@ -112,7 +112,7 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: check format
+				
 				waveTableSoundEngine = value;
 			}
 		}
@@ -128,7 +128,7 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: check format
+				
 				bankName = value;
 			}
 		}
@@ -143,7 +143,7 @@ namespace NAudio.SoundFont
 				return dataROM;
 			}
 			set {
-				// TODO: check format
+				
 				dataROM = value;
 			}
 		}
@@ -159,7 +159,7 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: check format
+				
 				creationDate = value;
 			}
 		}
@@ -175,7 +175,7 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: check format
+				
 				author = value;
 			}
 		}
@@ -191,7 +191,7 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: check format
+				
 				targetProduct = value;
 			}
 		}
@@ -207,7 +207,7 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: check format
+				
 				copyright = value;
 			}
 		}
@@ -223,7 +223,7 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: check format
+				
 				comments = value;
 			}
 		}
@@ -239,7 +239,7 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: check format
+				
 				tools = value;
 			}
 		}

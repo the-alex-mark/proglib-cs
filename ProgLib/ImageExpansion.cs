@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TagLib;
 
 namespace ProgLib
 {
@@ -50,6 +51,27 @@ namespace ProgLib
                 return Image.FromStream(new MemoryStream(Convert.FromBase64String(Value)));
             }
             catch { throw new Exception("Входной параметр \"Value\" имел неверный формат"); }
+        }
+
+        public static Image ToImage(this IPicture Value)
+        {
+            return (Value != null) 
+                ? Image.FromStream(new System.IO.MemoryStream(Value.Data.Data)) 
+                : null;
+        }
+
+        public static IPicture ToIPicture(this Image Value)
+        {
+            TagLib.Id3v2.AttachmentFrame Picture = new TagLib.Id3v2.AttachmentFrame
+            {
+                Type = PictureType.Media,
+                Description = "",
+                MimeType = System.Net.Mime.MediaTypeNames.Image.Jpeg,
+                Data = Value.ToByteArray(),
+                TextEncoding = TagLib.StringType.UTF16
+            };
+
+            return Picture;
         }
     }
 }

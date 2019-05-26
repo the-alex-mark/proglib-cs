@@ -106,7 +106,6 @@ namespace TagLib.Xmp
 		///    The children of the current instance.
 		/// </value>
 		public List<XmpNode> Children {
-			// TODO: do not return a list, because it can be modified elsewhere
 			get { return children ?? new List<XmpNode> (); }
 		}
 
@@ -272,9 +271,7 @@ namespace TagLib.Xmp
 		public void Accept (XmpNodeVisitor visitor)
 		{
 			visitor.Visit (this);
-
-			// TODO: what is with the qualifiers ?
-			// either add them to be also visited, or add a comment
+            
 			if (children != null) {
 				foreach (XmpNode child in children) {
 					child.Accept (visitor);
@@ -319,7 +316,6 @@ namespace TagLib.Xmp
 
 			} else if (Type == XmpNodeType.Bag) {
 				var node = XmpTag.CreateNode (parent.OwnerDocument, Name, Namespace);
-				// TODO: Add all qualifiers.
 				if (QualifierCount > 0)
 					throw new NotImplementedException ();
 				var bag = XmpTag.CreateNode (parent.OwnerDocument, XmpTag.BAG_URI, XmpTag.RDF_NS);
@@ -330,7 +326,6 @@ namespace TagLib.Xmp
 
 			} else if (Type == XmpNodeType.Alt) {
 				var node = XmpTag.CreateNode (parent.OwnerDocument, Name, Namespace);
-				// TODO: Add all qualifiers.
 				if (QualifierCount > 0)
 					throw new NotImplementedException ();
 				var bag = XmpTag.CreateNode (parent.OwnerDocument, XmpTag.ALT_URI, XmpTag.RDF_NS);
@@ -341,7 +336,6 @@ namespace TagLib.Xmp
 
 			} else if (Type == XmpNodeType.Seq) {
 				var node = XmpTag.CreateNode (parent.OwnerDocument, Name, Namespace);
-				// TODO: Add all qualifiers.
 				if (QualifierCount > 0)
 					throw new NotImplementedException ();
 				var bag = XmpTag.CreateNode (parent.OwnerDocument, XmpTag.SEQ_URI, XmpTag.RDF_NS);

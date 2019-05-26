@@ -75,18 +75,22 @@
     <Compile Include="Animations\Metro\DelayedCall.cs" />
     <Compile Include="Animations\Metro\ExpandAnimation.cs" />
     <Compile Include="Animations\Metro\MoveAnimation.cs" />
-    <Compile Include="Audio\Audio.cs" />
+    <Compile Include="Audio\AudioExpansion.cs" />
     <Compile Include="Audio\AudioFormats.cs" />
+    <Compile Include="Audio\AudioTags.cs" />
+    <Compile Include="Audio\AudioType.cs" />
+    <Compile Include="Audio\Controls\AudioTags.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Audio\Controls\AudioTags.Designer.cs">
+      <DependentUpon>AudioTags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Audio\Playlist.cs" />
     <Compile Include="Audio\Radio.cs" />
     <Compile Include="Audio\Record.cs" />
     <Compile Include="Audio\Song.cs" />
-    <Compile Include="Audio\Tags\AudioTagsAll.cs" />
-    <Compile Include="Audio\Tags\AudioTagsID3v1.cs" />
-    <Compile Include="Audio\Tags\AudioTagsID3v2.cs" />
-    <Compile Include="Audio\Tags\AudioTags.cs" />
     <Compile Include="Audio\Visualization\Device.cs" />
-    <Compile Include="Audio\Visualization\Spectrum.cs">
+    <Compile Include="Audio\Controls\Spectrum.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Audio\Visualization\SpectrumAnalyzer.cs" />
@@ -94,10 +98,9 @@
     <Compile Include="Data\Access\AccessResult.cs" />
     <Compile Include="Data\Access\AccessDataBase.cs" />
     <Compile Include="Data\CSharp\CSharpResult.cs" />
-    <Compile Include="Data\CSharp\Project.cs" />
-    <Compile Include="Data\CSharp\Property.cs" />
-    <Compile Include="Data\CSharp\Resource.cs" />
-    <Compile Include="Data\CSharp\Resources.cs" />
+    <Compile Include="Data\CSharp\CSharpProject.cs" />
+    <Compile Include="Data\CSharp\CSharpProjectResource.cs" />
+    <Compile Include="Data\CSharp\CSharpProjectResources.cs" />
     <Compile Include="Data\TSQL\TSqlResult.cs" />
     <Compile Include="Data\TSQL\TSqlDataBase.cs" />
     <Compile Include="Data\TSQL\TSqlServer.cs" />
@@ -1535,6 +1538,9 @@
     <Compile Include="Windows\Taskbar\UnsupportedWindowsException.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Audio\Controls\AudioTags.resx">
+      <DependentUpon>AudioTags.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Plugins\Bass.Net\Un4seen\Bass\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ProgLib.Audio
 {
     /// <summary>
-    /// Базовый класс для работы с медиа файлами
+    /// Базовый класс для работы с медиа.
     /// </summary>
     public class Record
     {

@@ -33,9 +33,17 @@ namespace ProgLib.Data.CSharp
             this.Message = Message;
         }
 
+        #region Properties
+
         /// <summary>
         /// Возвращает статус выволнения компиляции проекта
         /// </summary>
-        public String Message { get; set; }
+        public String Message
+        {
+            get;
+            set;
+        }
+
+        #endregion
     }
 }

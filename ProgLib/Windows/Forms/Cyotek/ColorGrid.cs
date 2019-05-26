@@ -1599,7 +1599,7 @@ namespace ProgLib.Windows.Forms.Cyotek
 
                 Debug.Print(e.ClipRectangle.Size == this.ClientSize ? "Performing full paint!" : "Performing partial paint!");
 
-                this.OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc as the PaintBackground event is no longer being called
+                this.OnPaintBackground(e);
 
                 // draw a design time dotted grid
                 if (this.DesignMode)

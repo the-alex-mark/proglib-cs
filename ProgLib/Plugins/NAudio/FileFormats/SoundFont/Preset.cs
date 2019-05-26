@@ -28,7 +28,7 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: validate
+				
 				name = value;
 			}			
 		}
@@ -44,7 +44,7 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: validate
+				
 				patchNumber = value;
 			}
 		}
@@ -61,7 +61,7 @@ namespace NAudio.SoundFont
 			set 
 			{
 				// 0 - 127, GM percussion bank is 128
-				// TODO: validate
+				
 				bank = value;
 			}
 		}

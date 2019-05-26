@@ -52,9 +52,7 @@ namespace TagLib.Mpeg4
 		/// <summary>
 		///    Contains the combined tag.
 		/// </summary>
-		/// <remarks>
-		///    TODO: Add support for ID3v2 tags.
-		/// </remarks>
+		/// <remarks></remarks>
 		CombinedTag tag;
 
 		/// <summary>
@@ -359,7 +357,6 @@ namespace TagLib.Mpeg4
 		/// </param>
 		void Read (ReadStyle propertiesStyle)
 		{
-			// TODO: Support Id3v2 boxes!!!
 			tag = new CombinedTag ();
 			Mode = AccessMode.Read;
 			try {

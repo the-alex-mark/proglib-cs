@@ -20,8 +20,7 @@ namespace NAudio.Wave.Asio
         {
             SampleConvertor convertor = null;
             bool is2Channels = waveFormat.Channels == 2;
-
-            // TODO : IMPLEMENTS OTHER CONVERTOR TYPES
+            
             switch (asioType)
             {
                 case AsioSampleType.Int32LSB:

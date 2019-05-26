@@ -88,10 +88,6 @@ namespace TagLib.Mpeg4
 			width = file.ReadBlock (2).ToUShort ();
 			height = file.ReadBlock (2).ToUShort ();
 
-			/*
-			TODO: What are the children anyway?
-			children = LoadChildren (file);
-			*/
 		}
 
 		#endregion

@@ -1,65 +1,69 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProgLib.Audio.Tags;
 
 namespace ProgLib.Audio
 {
     /// <summary>
-    /// Класс для работы с аудио файлами
+    /// Предоставляет методы для работы со звуковыми файлами.
     /// </summary>
     public class Song : Record
     {
         /// <summary>
-        /// Объявляет экземпляр для работы с аудио файлом.
+        /// Инициализирует экземпляр типа <see cref="Song"/> для работы с аудио файлом.
         /// </summary>
-        /// <param name="File"></param>
-        public Song(String File)
+        /// <param name="URL"></param>
+        public Song(String URL)
         {
-            if (System.IO.File.Exists(File))
+            if (System.IO.File.Exists(URL))
             {
-                this.URL = File;
-                this.Tags = new AudioTags(File);
+                this.URL = URL;
+                this.Tags = new AudioTags(URL);
 
-                TagLib.File AudioFile = TagLib.File.Create(File, TagLib.ReadStyle.Average);
-                System.IO.FileInfo FI = new System.IO.FileInfo(File);
+                TagLib.File AudioFile = TagLib.File.Create(URL, TagLib.ReadStyle.Average);
+                System.IO.FileInfo FI = new System.IO.FileInfo(URL);
 
                 this.Format = FI.Extension.ToUpper().Remove(0, 1);
                 this.Bitrate = AudioFile.Properties.AudioBitrate;
                 this.Time = AudioFile.Properties.Duration;
             }
-            else
-            {
-                this.URL = File;
-                this.Tags = new AudioTags();
-
-                this.Format = "";
-                this.Bitrate = 0;
-                this.Time = new TimeSpan();
-            }
+            else { throw new Exception("Неверное расположение файла!"); }
         }
+
+        #region Properties
 
         /// <summary>
         /// Метаданные
         /// </summary>
-        public AudioTags Tags { get; set; }
+        public AudioTags Tags
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Тип файла
         /// </summary>
-        public String Format { get; }
+        public String Format
+        {
+            get;
+        }
 
         /// <summary>
         /// Битрейт
         /// </summary>
-        public Int32 Bitrate { get; }
+        public Int32 Bitrate
+        {
+            get;
+        }
 
         /// <summary>
         /// Продолжительность
         /// </summary>
-        public TimeSpan Time { get; }
+        public TimeSpan Time
+        {
+            get;
+        }
+
+        #endregion
 
         /// <summary>
         /// Проверяет файл на существование.
@@ -67,7 +71,7 @@ namespace ProgLib.Audio
         /// <returns></returns>
         public Boolean Exists()
         {
-            return System.IO.File.Exists(URL);
+            return System.IO.File.Exists(this.URL);
         }
     }
 }

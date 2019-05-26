@@ -26,7 +26,5 @@ namespace NAudio.Mixer
 		protected override void GetDetails(IntPtr pDetails)
 		{
 		}
-
-		// TODO: provide a way of getting / setting data
 	}
 }

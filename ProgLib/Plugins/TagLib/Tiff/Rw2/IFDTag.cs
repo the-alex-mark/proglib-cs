@@ -48,7 +48,6 @@ namespace TagLib.Tiff.Rw2
 		///    <para>Panasonic stores these in a somewhat unstandard location.</para>
 		/// </remarks>
 		public override uint? ISOSpeedRatings {
-			// TODO: The value in JPGFromRAW should probably be used as well.
 			get {
 				return Structure.GetLongValue (0, (ushort)PanasonicMakerNoteEntryTag.ISO);
 			}

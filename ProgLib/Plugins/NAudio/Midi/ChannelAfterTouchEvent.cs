@@ -19,7 +19,6 @@ namespace NAudio.Midi
             afterTouchPressure = br.ReadByte();
             if ((afterTouchPressure & 0x80) != 0)
             {
-                // TODO: might be a follow-on
                 throw new FormatException("Invalid afterTouchPressure");
             }
         }

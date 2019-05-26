@@ -322,8 +322,6 @@ namespace ProgLib.Windows.Forms.Cyotek
             }
             else
             {
-                // TODO: This is much much slower than the lookup based find
-
                 result = -1;
 
                 for (int i = 0; i < this.Count; i++)
@@ -415,9 +413,7 @@ namespace ProgLib.Windows.Forms.Cyotek
             if (this.Count > 0)
             {
                 Comparison<Color> sortDelegate;
-
-                // HACK: This is a bit nasty
-
+                
                 switch (sortOrder)
                 {
                     case ColorCollectionSortOrder.Brightness:

@@ -1216,11 +1216,8 @@ namespace ProgLib.Text.Encoding.Barcode
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects).
-                }
 
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
+                }
 
                 try
                 {
@@ -1244,8 +1241,7 @@ namespace ProgLib.Text.Encoding.Barcode
                 disposedValue = true;
             }
         }
-
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        
         // ~Barcode() {
         //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
         //   Dispose(false);
@@ -1256,7 +1252,6 @@ namespace ProgLib.Text.Encoding.Barcode
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
         #endregion

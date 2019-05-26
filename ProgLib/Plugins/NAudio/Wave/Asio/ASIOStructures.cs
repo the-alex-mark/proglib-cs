@@ -138,7 +138,6 @@ namespace NAudio.Wave.Asio
     {
         public uint hi;
         public uint lo;
-        // TODO: IMPLEMENT AN EASY WAY TO CONVERT THIS TO double  AND long
     };
 
     [Flags]

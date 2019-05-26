@@ -23,7 +23,6 @@ namespace NAudio.SoundFont
 			}
 			set 
 			{
-				// TODO: validate
 				name = value;
 			}
 		}

@@ -157,9 +157,6 @@ namespace TagLib.Ogg
 			// If you don't understand this, you're not alone.
 			// It is confusing as Hell.
 
-			// TODO: Document this method, in the mean time, there
-			// is always http://xiph.org/ogg/doc/framing.html
-
 			if (pages_read == 0) {
 				change = 0;
 				return new Page[0];

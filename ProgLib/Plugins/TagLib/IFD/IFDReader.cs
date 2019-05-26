@@ -528,8 +528,7 @@ namespace TagLib.IFD
 				file.MarkAsCorrupt ("Invalid item type");
 				return null;
 			}
-
-			// TODO: We should ignore unreadable values, erroring for now until we have sufficient coverage.
+            
 			throw new NotImplementedException ($"Unknown type/count {type}/{count} ({offset})");
 		}
 
@@ -860,10 +859,6 @@ namespace TagLib.IFD
 					ushort magic = header.Mid (12, 2).ToUShort (is_bigendian);
 
 					if (magic == 42) {
-
-						// TODO: the max_offset value is not correct here. However, some nikon files have offsets to a sub-ifd
-						// (preview image) which are not stored with the other makernote data. Therfore, we keep the max_offset
-						// for now. (It is just an upper bound for some checks. So if it is too big, it doesn't matter)
 						var reader = new Nikon3MakernoteReader (file, makernote_endian, ifd_structure, makernote_offset + 10, 8, max_offset - offset - 10);
 
 						reader.Read ();

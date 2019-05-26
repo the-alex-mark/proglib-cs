@@ -14,27 +14,28 @@ namespace ProgLib.Drawing.Drawing2D
         /// Прямоугольник с закруглёнными углами.
         /// </summary>
         /// <param name="Radius">Величина округления углов (в пикселях)</param>
-        /// <param name="Rectangle">Положение и размеры фигуры</param>
+        /// <param name="Bounds">Прямоугольник, представляющий границы для изображаемого элемента</param>
         /// <returns></returns>
-        public static GraphicsPath Superellipse(Radius Radius, Rectangle Rectangle)
+        public static GraphicsPath Superellipse(Radius Radius, Rectangle Bounds)
         {
-            System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
+            GraphicsPath GP = new GraphicsPath();
+            Bounds = new Rectangle(Bounds.X, Bounds.Y, Bounds.X + Bounds.Width, Bounds.Y + Bounds.Height);
 
             if (Radius.LeftTop != 0)
-                GP.AddArc(new Rectangle(Rectangle.X, Rectangle.Y, Radius.LeftTop * 2, Radius.LeftTop * 2), 180, 90);
-            else GP.AddLine(new Point(Rectangle.X, Rectangle.Y), new Point(Rectangle.X, Rectangle.Y));
+                GP.AddArc(new Rectangle(Bounds.X, Bounds.Y, Radius.LeftTop * 2, Radius.LeftTop * 2), 180, 90);
+            else GP.AddLine(new Point(Bounds.X, Bounds.Y), new Point(Bounds.X, Bounds.Y));
 
             if (Radius.RightTop != 0)
-                GP.AddArc(new Rectangle(Rectangle.Width - Radius.RightTop * 2, Rectangle.Y, Radius.RightTop * 2, Radius.RightTop * 2), 270, 90);
-            else GP.AddLine(new Point(Rectangle.Width, Rectangle.Y), new Point(Rectangle.Width, Rectangle.Y));
+                GP.AddArc(new Rectangle(Bounds.Width - Radius.RightTop * 2, Bounds.Y, Radius.RightTop * 2, Radius.RightTop * 2), 270, 90);
+            else GP.AddLine(new Point(Bounds.Width, Bounds.Y), new Point(Bounds.Width, Bounds.Y));
 
             if (Radius.RightBottom != 0)
-                GP.AddArc(new Rectangle(Rectangle.Width - Radius.RightBottom * 2, Rectangle.Height - Radius.RightBottom * 2, Radius.RightBottom * 2, Radius.RightBottom * 2), 0, 90);
-            else GP.AddLine(new Point(Rectangle.Width, Rectangle.Height), new Point(Rectangle.Width, Rectangle.Height));
+                GP.AddArc(new Rectangle(Bounds.Width - Radius.RightBottom * 2, Bounds.Height - Radius.RightBottom * 2, Radius.RightBottom * 2, Radius.RightBottom * 2), 0, 90);
+            else GP.AddLine(new Point(Bounds.Width, Bounds.Height), new Point(Bounds.Width, Bounds.Height));
 
             if (Radius.LeftBottom != 0)
-                GP.AddArc(new Rectangle(Rectangle.X, Rectangle.Height - Radius.LeftBottom * 2, Radius.LeftBottom * 2, Radius.LeftBottom * 2), 90, 90);
-            else GP.AddLine(new Point(Rectangle.X, Rectangle.Height), new Point(Rectangle.X, Rectangle.Height));
+                GP.AddArc(new Rectangle(Bounds.X, Bounds.Height - Radius.LeftBottom * 2, Radius.LeftBottom * 2, Radius.LeftBottom * 2), 90, 90);
+            else GP.AddLine(new Point(Bounds.X, Bounds.Height), new Point(Bounds.X, Bounds.Height));
 
             GP.CloseFigure();
 

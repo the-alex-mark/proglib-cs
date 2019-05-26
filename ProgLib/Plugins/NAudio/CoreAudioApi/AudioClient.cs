@@ -129,13 +129,7 @@ namespace NAudio.CoreAudioApi
                 return minimumDevicePeriod;
             }
         }
-
-        // TODO: GetService:
-        // IID_IAudioSessionControl
-        // IID_IAudioStreamVolume
-        // IID_IChannelAudioVolume
-        // IID_ISimpleAudioVolume
-
+        
         /// <summary>
         /// Gets the AudioClockClient service
         /// </summary>

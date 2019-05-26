@@ -59,7 +59,6 @@ namespace NAudio.Wave
         {
             this.waveFormatTag = WaveFormatEncoding.Adpcm;
             
-            // TODO: validate sampleRate, bitsPerSample
             this.extraSize = 32;
             switch(this.sampleRate)
             {

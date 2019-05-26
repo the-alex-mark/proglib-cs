@@ -201,7 +201,7 @@ namespace NAudio.Dsp
                     sreq /= 2;
                     goto again; // try again with half the size
                 }
-                // todo: notify of error?
+
                 sreq = sz;
             }
 
@@ -468,7 +468,6 @@ namespace NAudio.Dsp
             }
             else
             {
-                // TODO: bug here
                 Array.Copy(m_rsinbuf, localin + isrcpos * nch, m_rsinbuf, localin, m_samples_in_rsinbuf * nch);
             }
 
@@ -689,12 +688,10 @@ namespace NAudio.Dsp
 
             double denormal_filter(float x)
             {
-                // TODO: implement denormalisation
                 return x;
             }
             double denormal_filter(double x)
             {
-                // TODO: implement denormalisation
                 return x;
             }
 

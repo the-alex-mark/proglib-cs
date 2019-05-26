@@ -109,7 +109,7 @@ namespace NAudio.Dsp
             var cosw0 = Math.Cos(w0);
             var sinw0 = Math.Sin(w0);
             var alpha = sinw0 / (2 * q);
-            var a = Math.Pow(10, dbGain / 40);     // TODO: should we square root this value?
+            var a = Math.Pow(10, dbGain / 40);
 
             var b0 = 1 + alpha * a;
             var b1 = -2 * cosw0;
@@ -264,7 +264,7 @@ namespace NAudio.Dsp
             var w0 = 2 * Math.PI * cutoffFrequency / sampleRate;
             var cosw0 = Math.Cos(w0);
             var sinw0 = Math.Sin(w0);
-            var a = Math.Pow(10, dbGain / 40);     // TODO: should we square root this value?
+            var a = Math.Pow(10, dbGain / 40);
             var alpha = sinw0 / 2 * Math.Sqrt((a + 1 / a) * (1 / shelfSlope - 1) + 2);
             var temp = 2 * Math.Sqrt(a) * alpha;
             
@@ -290,7 +290,7 @@ namespace NAudio.Dsp
             var w0 = 2 * Math.PI * cutoffFrequency / sampleRate;
             var cosw0 = Math.Cos(w0);
             var sinw0 = Math.Sin(w0);
-            var a = Math.Pow(10, dbGain / 40);     // TODO: should we square root this value?
+            var a = Math.Pow(10, dbGain / 40);
             var alpha = sinw0 / 2 * Math.Sqrt((a + 1 / a) * (1 / shelfSlope - 1) + 2);
             var temp = 2 * Math.Sqrt(a) * alpha;
 

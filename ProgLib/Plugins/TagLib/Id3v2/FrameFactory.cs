@@ -173,12 +173,10 @@ namespace TagLib.Id3v2
 				header.Flags |= FrameFlags.TagAlterPreservation;
 				return new UnknownFrame (data, position, header, version);
 			}
-
-			// TODO: Support Compression.
+            
 			if ((header.Flags & FrameFlags.Compression) != 0)
 				throw new System.NotImplementedException ();
-
-			// TODO: Support Encryption.
+            
 			if ((header.Flags & FrameFlags.Encryption) != 0)
 				throw new System.NotImplementedException ();
 

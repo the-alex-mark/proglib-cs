@@ -31,7 +31,7 @@ namespace ProgLib.Audio.Visualization
             this.Init();
         }
 
-        #region Global Variables
+        #region Variables
 
         private List<String> _devace = new List<String>();
 
@@ -51,10 +51,16 @@ namespace ProgLib.Audio.Visualization
 
         #endregion
 
+        #region Properties
+
         /// <summary>
         /// Количество данных
         /// </summary>
-        public Int32 Count { get; set; }
+        public Int32 Count
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Интервал обновления данных
@@ -65,6 +71,8 @@ namespace ProgLib.Audio.Visualization
             set { _timer.Interval = value; }
         }
 
+        #endregion
+        
         private void Init()
         {
             Boolean Result = false;

@@ -154,9 +154,7 @@ namespace NAudio.MediaFoundation
         /// </summary>
         [FieldDescription("WMSP2")]
         public static readonly Guid WMMEDIASUBTYPE_WMSP2 = new Guid("0000000b-0000-0010-8000-00aa00389b71");
-
-
-        // TODO: find out what these are, and add them:
+        
         // {00000031-0000-0010-8000-00aa00389b71} // probably GSM610 ACM wrapper
 
     }

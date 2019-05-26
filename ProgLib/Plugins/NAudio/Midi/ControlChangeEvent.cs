@@ -22,7 +22,6 @@ namespace NAudio.Midi
             controllerValue = br.ReadByte();
             if((c & 0x80) != 0) 
             {
-                // TODO: might be a follow-on
                 throw new InvalidDataException("Invalid controller");
             }
             controller = (MidiController) c;

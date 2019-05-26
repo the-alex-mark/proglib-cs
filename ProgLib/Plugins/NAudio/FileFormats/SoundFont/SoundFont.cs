@@ -126,7 +126,5 @@ namespace NAudio.SoundFont
 			return String.Format("Info Chunk:\r\n{0}\r\nPresets Chunk:\r\n{1}",
 									info,presetsChunk);
 		}
-
-		// TODO: save / save as function
 	}
 }

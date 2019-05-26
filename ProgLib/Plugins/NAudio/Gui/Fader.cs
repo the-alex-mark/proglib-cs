@@ -109,7 +109,7 @@ namespace NAudio.Gui
                 dragging = true;
                 dragY = e.Y - sliderRectangle.Y;
             }
-            // TODO: are we over the fader
+
             base.OnMouseDown (e);
         }
 

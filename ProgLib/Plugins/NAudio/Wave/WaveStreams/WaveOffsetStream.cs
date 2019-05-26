@@ -32,7 +32,6 @@ namespace NAudio.Wave
         {
             if (sourceStream.WaveFormat.Encoding != WaveFormatEncoding.Pcm)
                 throw new ArgumentException("Only PCM supported");
-            // TODO: add support for IEEE float + perhaps some others -
             // anything with a fixed bytes per sample
             
             this.sourceStream = sourceStream;

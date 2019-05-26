@@ -31,10 +31,10 @@ using System;
 
 namespace TagLib
 {
-	/// <summary>
-	///    Specifies the type of content appearing in the picture.
-	/// </summary>
-	public enum PictureType
+    /// <summary>
+    /// Указывает тип содержимого, отображаемого на рисунке.
+    /// </summary>
+    public enum PictureType
 	{
 		/// <summary>
 		///    The picture is of a type other than those specified.
@@ -154,11 +154,10 @@ namespace TagLib
 
 	}
 
-	/// <summary>
-	///    This interface provides generic information about a picture,
-	///    including its contents, as used by various formats.
-	/// </summary>
-	public interface IPicture
+    /// <summary>
+    /// Этот интерфейс предоставляет общие сведения о картине, включая ее содержимое, используемые различными форматами.
+    /// </summary>
+    public interface IPicture
 	{
 		/// <summary>
 		///    Gets and sets the mime-type of the picture data
@@ -216,11 +215,10 @@ namespace TagLib
 		ByteVector Data { get; set; }
 	}
 
-	/// <summary>
-	///    This class implements <see cref="IPicture" /> and provides
-	///    mechanisms for loading pictures from files.
-	/// </summary>
-	public class Picture : IPicture
+    /// <summary>
+    /// Этот класс реализует <see cref="Picture"/> и предоставляет механизмы загрузки изображений из файлов.
+    /// </summary>
+    public class Picture : IPicture
 	{
 
 		#region Constants
