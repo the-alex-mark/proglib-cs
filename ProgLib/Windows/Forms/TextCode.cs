@@ -81,7 +81,7 @@ namespace ProgLib.Windows.Forms
         private bool isChanged;
         private bool isLineSelect;
         private bool isReplaceMode;
-        private Language language;
+        private ComputerLanguage language;
         private Keys lastModifiers;
         private Point lastMouseCoord;
         private DateTime lastNavigatedDateTime;
@@ -169,7 +169,7 @@ namespace ProgLib.Windows.Forms
             LeftBracket2 = '\x0';
             RightBracket2 = '\x0';
             SyntaxHighlighter = new SyntaxHighlighter(this);
-            language = Language.Custom;
+            language = ComputerLanguage.Custom;
             PreferredLineWidth = 0;
             needRecalc = true;
             lastNavigatedDateTime = DateTime.Now;
@@ -979,9 +979,9 @@ namespace ProgLib.Windows.Forms
         /// Language for highlighting by built-in highlighter.
         /// </summary>
         [Browsable(true)]
-        [DefaultValue(typeof (Language), "Custom")]
+        [DefaultValue(typeof (ComputerLanguage), "Custom")]
         [Description("Язык для выделения встроенным маркером.")]
-        public Language Language
+        public ComputerLanguage Language
         {
             get { return language; }
             set
@@ -4702,7 +4702,7 @@ namespace ProgLib.Windows.Forms
 
             EventHandler<AutoIndentEventArgs> calculator = AutoIndentNeeded;
             if (calculator == null)
-                if (Language != Language.Custom && SyntaxHighlighter != null)
+                if (Language != ComputerLanguage.Custom && SyntaxHighlighter != null)
                     calculator = SyntaxHighlighter.AutoIndentNeeded;
                 else
                     calculator = CalcAutoIndentShiftByCodeFolding;
@@ -7239,7 +7239,7 @@ namespace ProgLib.Windows.Forms
 
             if (SyntaxHighlighter != null)
             {
-                if (Language == Language.Custom && !string.IsNullOrEmpty(DescriptionFile))
+                if (Language == ComputerLanguage.Custom && !string.IsNullOrEmpty(DescriptionFile))
                     SyntaxHighlighter.HighlightSyntax(DescriptionFile, range);
                 else
                     SyntaxHighlighter.HighlightSyntax(Language, range);

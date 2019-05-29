@@ -6,11 +6,43 @@ using System.Text;
 using System.Threading.Tasks;
 
 using ProgLib.Data;
+using ProgLib.Text;
 
 namespace ProgLib
 {
     public static class StringExpansion
     {
+        // TODO: Завершить работу над функцией поиска подстроки
+        public static Boolean Like(this String Value1, String Value2)
+        {
+
+
+
+            return false;
+        }
+
+        /// <summary>
+        /// Преобразует кириллистический текст в латинский, в указанном формате.
+        /// </summary>
+        /// <param name="Text">Преобразуемый текст</param>
+        /// <param name="Type">Формат преобразования</param>
+        /// <returns></returns>
+        public static String ToLatin(String Text, TranslitType Type = TranslitType.ISO)
+        {
+            return Translit.ToLatin(Text, Type);
+        }
+
+        /// <summary>
+        /// Преобразует латинский текст в кириллистический, в указанном формате.
+        /// </summary>
+        /// <param name="Text">Преобразуемый текст</param>
+        /// <param name="Type">Формат преобразования</param>
+        /// <returns></returns>
+        public static String ToCyrillic(String Text, TranslitType Type = TranslitType.ISO)
+        {
+            return Translit.ToCyrillic(Text, Type);
+        }
+
         /// <summary>
         /// Возвращает копию этой строки, с переверённой первой буквой в верхний регистр.
         /// </summary>
@@ -18,13 +50,7 @@ namespace ProgLib
         /// <returns></returns>
         public static String ToFirstUpper(this String Value)
         {
-            if (Value.Length > 0)
-            {
-                String Temp = Value.ToLower();
-                return Temp[0].ToString().ToUpper() + Temp.Substring(1);
-            }
-
-            else return Value;
+            return FontRegister.ToFirstsUpper(Value);
         }
 
         /// <summary>
@@ -34,20 +60,7 @@ namespace ProgLib
         /// <returns></returns>
         public static String ToFirstsUpper(this String Value)
         {
-            String Result = Value;
-
-            if (Value.Length > 0)
-            {
-                Result = "";
-
-                String[] Words = Value.ToLower().Split(' ');
-                foreach (String Word in Words)
-                    Result += Word[0].ToString().ToUpper() + Word.Substring(1) + " ";
-
-                return Result;
-            }
-
-            else return Result;
+            return FontRegister.ToFirstsUpper(Value);
         }
 
         /// <summary>
@@ -57,18 +70,7 @@ namespace ProgLib
         /// <returns></returns>
         public static String TransformRegister(this String Value)
         {
-            String Result = Value;
-
-            if (Value.Length > 0)
-            {
-                Result = "";
-                foreach (Char Symbol in Value)
-                    Result += (Char.IsLower(Symbol)) ? Symbol.ToString().ToUpper() : Symbol.ToString().ToLower();
-
-                return Result;
-            }
-
-            else return Result;
+            return FontRegister.TransformRegister(Value);
         }
 
         /// <summary>

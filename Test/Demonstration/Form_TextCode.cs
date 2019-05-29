@@ -305,7 +305,7 @@ namespace Test.Demonstration
             textCode1.Dock = DockStyle.Fill;
             textCode1.BorderStyle = BorderStyle.Fixed3D;
             textCode1.LeftPadding = 17;
-            textCode1.Language = Language.CSharp;
+            textCode1.Language = ComputerLanguage.CSharp;
             //textCode1.AddStyle(sameWordsStyle);//same words style
                                                //var tab = new FATabStripItem((fileName != null) ? Path.GetFileName(fileName) : "[new]", tb);
                                                //tab.Tag = fileName;

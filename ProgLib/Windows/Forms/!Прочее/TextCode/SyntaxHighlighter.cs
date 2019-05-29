@@ -144,32 +144,32 @@ namespace ProgLib.Windows.Forms
         /// <summary>
         /// Highlights syntax for given language
         /// </summary>
-        public virtual void HighlightSyntax(Language language, Range range)
+        public virtual void HighlightSyntax(ComputerLanguage language, Range range)
         {
             switch (language)
             {
-                case Language.CSharp:
+                case ComputerLanguage.CSharp:
                     CSharpSyntaxHighlight(range);
                     break;
-                case Language.VB:
+                case ComputerLanguage.VB:
                     VBSyntaxHighlight(range);
                     break;
-                case Language.HTML:
+                case ComputerLanguage.HTML:
                     HTMLSyntaxHighlight(range);
                     break;
-                case Language.XML:
+                case ComputerLanguage.XML:
                     XMLSyntaxHighlight(range);
                     break;
-                case Language.SQL:
+                case ComputerLanguage.SQL:
                     SQLSyntaxHighlight(range);
                     break;
-                case Language.PHP:
+                case ComputerLanguage.PHP:
                     PHPSyntaxHighlight(range);
                     break;
-                case Language.JS:
+                case ComputerLanguage.JS:
                     JScriptSyntaxHighlight(range);
                     break;
-                case Language.Lua:
+                case ComputerLanguage.Lua:
                     LuaSyntaxHighlight(range);
                     break;
                 default:
@@ -201,31 +201,31 @@ namespace ProgLib.Windows.Forms
         public virtual void AutoIndentNeeded(object sender, AutoIndentEventArgs args)
         {
             var tb = (sender as TextCode);
-            Language language = tb.Language;
+            ComputerLanguage language = tb.Language;
             switch (language)
             {
-                case Language.CSharp:
+                case ComputerLanguage.CSharp:
                     CSharpAutoIndentNeeded(sender, args);
                     break;
-                case Language.VB:
+                case ComputerLanguage.VB:
                     VBAutoIndentNeeded(sender, args);
                     break;
-                case Language.HTML:
+                case ComputerLanguage.HTML:
                     HTMLAutoIndentNeeded(sender, args);
                     break;
-                case Language.XML:
+                case ComputerLanguage.XML:
                     XMLAutoIndentNeeded(sender, args);
                     break;
-                case Language.SQL:
+                case ComputerLanguage.SQL:
                     SQLAutoIndentNeeded(sender, args);
                     break;
-                case Language.PHP:
+                case ComputerLanguage.PHP:
                     PHPAutoIndentNeeded(sender, args);
                     break;
-                case Language.JS:
+                case ComputerLanguage.JS:
                     CSharpAutoIndentNeeded(sender, args);
                     break; //JS like C#
-                case Language.Lua:
+                case ComputerLanguage.Lua:
                     LuaAutoIndentNeeded(sender, args);
                     break;
                 default:
@@ -367,7 +367,7 @@ namespace ProgLib.Windows.Forms
         /// Uses the given <paramref name="doc"/> to parse a XML description and adds it as syntax descriptor. 
         /// The syntax descriptor is used for highlighting when 
         /// <list type="bullet">
-        ///     <item>Language property of FCTB is set to <see cref="Language.Custom"/></item>
+        ///     <item>Language property of FCTB is set to <see cref="ComputerLanguage.Custom"/></item>
         ///     <item>DescriptionFile property of FCTB has the same value as the method parameter <paramref name="descriptionFileName"/></item>
         /// </list>
         /// </summary>
@@ -612,11 +612,11 @@ namespace ProgLib.Windows.Forms
                     RegexCompiledOption);
         }
 
-        public void InitStyleSchema(Language lang)
+        public void InitStyleSchema(ComputerLanguage lang)
         {
             switch (lang)
             {
-                case Language.CSharp:
+                case ComputerLanguage.CSharp:
                     StringStyle = BrownStyle;
                     CommentStyle = GreenStyle;
                     NumberStyle = MagentaStyle;
@@ -625,14 +625,14 @@ namespace ProgLib.Windows.Forms
                     KeywordStyle = BlueStyle;
                     CommentTagStyle = GrayStyle;
                     break;
-                case Language.VB:
+                case ComputerLanguage.VB:
                     StringStyle = BrownStyle;
                     CommentStyle = GreenStyle;
                     NumberStyle = MagentaStyle;
                     ClassNameStyle = BoldStyle;
                     KeywordStyle = BlueStyle;
                     break;
-                case Language.HTML:
+                case ComputerLanguage.HTML:
                     CommentStyle = GreenStyle;
                     TagBracketStyle = BlueStyle;
                     TagNameStyle = MaroonStyle;
@@ -640,7 +640,7 @@ namespace ProgLib.Windows.Forms
                     AttributeValueStyle = BlueStyle;
                     HtmlEntityStyle = RedStyle;
                     break;
-                case Language.XML:
+                case ComputerLanguage.XML:
                     CommentStyle = GreenStyle;
                     XmlTagBracketStyle = BlueStyle;
                     XmlTagNameStyle = MaroonStyle;
@@ -649,20 +649,20 @@ namespace ProgLib.Windows.Forms
                     XmlEntityStyle = RedStyle;
                     XmlCDataStyle = BlackStyle;
                     break;
-                case Language.JS:
+                case ComputerLanguage.JS:
                     StringStyle = BrownStyle;
                     CommentStyle = GreenStyle;
                     NumberStyle = MagentaStyle;
                     KeywordStyle = BlueStyle;
                     break;
-                case Language.Lua:
+                case ComputerLanguage.Lua:
                     StringStyle = BrownStyle;
                     CommentStyle = GreenStyle;
                     NumberStyle = MagentaStyle;
                     KeywordStyle = BlueBoldStyle;
                     FunctionsStyle = MaroonStyle;
                     break;
-                case Language.PHP:
+                case ComputerLanguage.PHP:
                     StringStyle = RedStyle;
                     CommentStyle = GreenStyle;
                     NumberStyle = RedStyle;
@@ -671,7 +671,7 @@ namespace ProgLib.Windows.Forms
                     KeywordStyle2 = BlueStyle;
                     KeywordStyle3 = GrayStyle;
                     break;
-                case Language.SQL:
+                case ComputerLanguage.SQL:
                     StringStyle = RedStyle;
                     CommentStyle = GreenStyle;
                     NumberStyle = MagentaStyle;
@@ -1412,7 +1412,7 @@ namespace ProgLib.Windows.Forms
     /// <summary>
     /// Language
     /// </summary>
-    public enum Language
+    public enum ComputerLanguage
     {
         Custom,
         CSharp,

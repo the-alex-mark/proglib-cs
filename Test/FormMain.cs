@@ -25,6 +25,7 @@ using ProgLib.Windows.Forms.Minimal;
 using ProgLib.Windows.Forms.VSCode;
 
 using Test.Demonstration;
+using ProgLib.Text;
 
 namespace Test
 {

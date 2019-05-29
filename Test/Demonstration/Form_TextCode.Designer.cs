@@ -794,7 +794,7 @@
             this.textCode1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.textCode1.Font = new System.Drawing.Font("Consolas", 9.75F);
             this.textCode1.IsReplaceMode = false;
-            this.textCode1.Language = ProgLib.Windows.Forms.Language.CSharp;
+            this.textCode1.Language = ProgLib.Windows.Forms.ComputerLanguage.CSharp;
             this.textCode1.LeftBracket = '(';
             this.textCode1.LeftBracket2 = '{';
             this.textCode1.LeftPadding = 17;

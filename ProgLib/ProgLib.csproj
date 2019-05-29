@@ -122,6 +122,7 @@
     <Compile Include="IO\IniDocument.cs" />
     <Compile Include="IO\IniKey.cs" />
     <Compile Include="IO\IniSection.cs" />
+    <Compile Include="Language.cs" />
     <Compile Include="Network\Network.cs" />
     <Compile Include="Network\LocalNetwork.cs" />
     <Compile Include="Network\Tcp\TcpErrorEventArgs.cs" />
@@ -1240,6 +1241,11 @@
     <Compile Include="Text\Encoding\Barcode\Symbologies\UPCE.cs" />
     <Compile Include="Text\Encoding\Barcode\Symbologies\UPCSupplement2.cs" />
     <Compile Include="Text\Encoding\Barcode\Symbologies\UPCSupplement5.cs" />
+    <Compile Include="Text\FontRegister.cs" />
+    <Compile Include="Text\Translit.cs" />
+    <Compile Include="Text\TranslitAlphabet.cs" />
+    <Compile Include="Text\TranslitMode.cs" />
+    <Compile Include="Text\TranslitType.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Windows\Forms\Direction.cs" />
     <Compile Include="Drawing\CMYK.cs" />

@@ -14,7 +14,7 @@ namespace ProgLib.Text
         /// <param name="Search">Искомый текст</param>
         /// <param name="Value">Текст, с которым сравнивается искомый текст</param>
         /// <returns></returns>
-        public static Int32 EditorialDistance(String Search, String Value)
+        public static Int32 LevenshteinDistance(String Search, String Value)
         {
             if (Search == null) throw new ArgumentNullException("Search");
             if (Value == null) throw new ArgumentNullException("Value");
@@ -52,13 +52,13 @@ namespace ProgLib.Text
 
             foreach (String Text in Values)
             {
-                Minimum = (Minimum <= EditorialDistance(Search, Text))
-                    ? EditorialDistance(Search, Text)
+                Minimum = (Minimum <= LevenshteinDistance(Search, Text))
+                    ? LevenshteinDistance(Search, Text)
                     : Minimum;
             }
 
             foreach (String Text in Values)
-                if (Minimum == EditorialDistance(Search, Text)) Result.Add(Text);
+                if (Minimum == LevenshteinDistance(Search, Text)) Result.Add(Text);
 
             return Result.ToArray();
         }
