@@ -3,7 +3,7 @@
 namespace ProgLib.Audio
 {
     /// <summary>
-    /// Предоставляет метаданные звукового файла.
+    /// Предоставляет свойства и методы для работы с метаданными звукового файла.
     /// </summary>
     public class AudioTags
     {
@@ -17,7 +17,7 @@ namespace ProgLib.Audio
         }
 
         /// <summary>
-        /// Инициализирует экземпляр класса <see cref="AudioTags"/> для работы с метаданными звукового файла.
+        /// Инициализирует новый экземпляр класса <see cref="AudioTags"/> для работы с метаданными звукового файла.
         /// </summary>
         /// <param name="File"></param>
         public AudioTags(String File)

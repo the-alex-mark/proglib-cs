@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
+using ProgLib.Data;
+
 namespace ProgLib.Diagnostics
 {
     /// <summary>
@@ -196,45 +198,114 @@ namespace ProgLib.Diagnostics
         /// <summary>
         /// Преобразует значение данного экземпляра в еквивалентное ему строковое представление.
         /// </summary>
+        /// <param name="Language">Язык программирования</param>
         /// <returns></returns>
-        public override String ToString()
+        public String ToString(ComputerLanguage Language)
         {
-            List<String> Result = new List<String>
+            List<String> Result;
+
+            switch (Language)
             {
-                "using System.Reflection;",
-                "using System.Runtime.CompilerServices;",
-                "using System.Runtime.InteropServices;",
-                "",
-                "// Общие сведения об этой сборке.",
-                $"[assembly: AssemblyTitle(\"{this.Title}\")]",
-                $"[assembly: AssemblyDescription(\"{this.Description}\")]",
-                $"[assembly: AssemblyConfiguration(\"{this.Configuration}\")]",
-                $"[assembly: AssemblyCompany(\"{this.Company}\")]",
-                $"[assembly: AssemblyProduct(\"{this.Product}\")]",
-                $"[assembly: AssemblyCopyright(\"{this.Copyright}\")]",
-                $"[assembly: AssemblyTrademark(\"{this.Trademark}\")]",
-                $"[assembly: AssemblyCulture(\"{this.Culture}\")]",
-                "",
-                "// Видимостьтипов данной сборки для компонентов COM.",
-                $"[assembly: ComVisible({this.ComVisible.ToString().ToLower()})]",
-                "",
-                "// Сведения о версии сборки.",
-                $"[assembly: AssemblyVersion(\"{this.Version.ToString()}\")]",
-                $"[assembly: AssemblyFileVersion(\"{this.FileVersion.ToString()}\")]"
-            };
+                case ComputerLanguage.CSharp:
+                    Result = new List<String>
+                    {
+                        "using System.Reflection;",
+                        "using System.Runtime.CompilerServices;",
+                        "using System.Runtime.InteropServices;",
+                        "",
+                        "// Общие сведения об этой сборке предоставляются следующим набором набора атрибутов.",
+                        "// Измените значения этих атрибутов, чтобы изменить сведения, связанные со сборкой.",
+                        $"[assembly: AssemblyTitle(\"{this.Title}\")]",
+                        $"[assembly: AssemblyDescription(\"{this.Description}\")]",
+                        $"[assembly: AssemblyConfiguration(\"{this.Configuration}\")]",
+                        $"[assembly: AssemblyCompany(\"{this.Company}\")]",
+                        $"[assembly: AssemblyProduct(\"{this.Product}\")]",
+                        $"[assembly: AssemblyCopyright(\"{this.Copyright}\")]",
+                        $"[assembly: AssemblyTrademark(\"{this.Trademark}\")]",
+                        $"[assembly: AssemblyCulture(\"{this.Culture}\")]",
+                        "",
+                        "// Установка значения False для параметра ComVisible делает типы в этой сборке невидимыми для компонентов COM.",
+                        "// Если необходимо обратиться к типу в этой сборке через COM, задайте атрибуту ComVisible значение TRUE для этого типа.",
+                        $"[assembly: ComVisible({this.ComVisible.ToString().ToLower()})]",
+                        "",
+                        "// Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM",
+                        "// [assembly: Guid(\"\")]",
+                        "",
+                        "// Сведения о версии сборки состоят из следующих четырех значений:",
+                        "//",
+                        "//      Основной номер версии",
+                        "//      Дополнительный номер версии",
+                        "//      Номер сборки",
+                        "//      Редакция",
+                        "//",
+                        "// Можно задать все значения или принять номер сборки и номер редакции по умолчанию, используя \"*\", как показано ниже:",
+                        "// [assembly: AssemblyVersion(\"1.0.*\")]",
+                        "",
+                        "// Сведения о версии сборки.",
+                        $"[assembly: AssemblyVersion(\"{this.Version.ToString()}\")]",
+                        $"[assembly: AssemblyFileVersion(\"{this.FileVersion.ToString()}\")]"
+                    };
+                    break;
+
+                case ComputerLanguage.VisualBasic:
+                    Result = new List<String>
+                    {
+                        "Imports System",
+                        "Imports System.Reflection",
+                        "Imports System.Runtime.InteropServices",
+                        "",
+                        "' Общие сведения об этой сборке предоставляются следующим набором атрибутов.",
+                        "' Измените значения этих атрибутов, чтобы изменить общие сведения об этой сборке.",
+                        $"<Assembly: AssemblyTitle(\"{this.Title}\")>",
+                        $"<Assembly: AssemblyDescription(\"{this.Description}\")>",
+                        $"<assembly: AssemblyConfiguration(\"{this.Configuration}\")>",
+                        $"<Assembly: AssemblyCompany(\"{this.Company}\")>",
+                        $"<Assembly: AssemblyProduct(\"{this.Product}\")>",
+                        $"<Assembly: AssemblyCopyright(\"{this.Copyright}\")>",
+                        $"<Assembly: AssemblyTrademark(\"{this.Trademark}\")>",
+                        $"<assembly: AssemblyCulture(\"{this.Culture}\")>",
+                        "",
+                        $"<Assembly: ComVisible(\"{this.ComVisible.ToString().ToLower()}\")>",
+                        "",
+                        "' Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM",
+                        "' <Assembly: Guid(\"\")>",
+                        "",
+                        "' Сведения о версии сборки состоят из следующих четырех значений:",
+                        "'",
+                        "'      Основной номер версии",
+                        "'      Дополнительный номер версии",
+                        "'      Номер сборки",
+                        "'      Редакция",
+                        "'",
+                        "' Можно задать все значения или принять номер сборки и номер редакции по умолчанию, используя \"*\", как показано ниже:",
+                        "' <Assembly: AssemblyVersion(\"1.0.*\")>",
+                        "",
+                        $"<Assembly: AssemblyVersion(\"{this.Version.ToString()}\")>",
+                        $"<Assembly: AssemblyFileVersion(\"{this.FileVersion.ToString()}\")>",
+                    };
+                    break;
+
+                default:
+                    Result = new List<String>
+                    {
+                        ""
+                    };
+                    break;
+            }
 
             return Result.Aggregate("", (Content, Item) => Content += Item + Environment.NewLine);
         }
 
         /// <summary>
-        /// Сохраняет данные в файл "AssemblyInfo.cs".
+        /// Сохраняет данные в файл "AssemblyInfo.*".
         /// </summary>
-        /// <param name="File"></param>
-        public void Save(String File)
+        /// <param name="File">Расположение файла</param>
+        /// <param name="Language">Язык программирования</param>
+        public void Save(String File, ComputerLanguage Language)
         {
             using (FileStream FS = new FileStream(File, FileMode.Create))
             {
-                Byte[] Buffer = new UTF8Encoding(true).GetBytes(ToString());
+                Byte[] Buffer = new UTF8Encoding(true).GetBytes(ToString(Language));
                 FS.Write(Buffer, 0, Buffer.Length);
 
                 FS.Close();

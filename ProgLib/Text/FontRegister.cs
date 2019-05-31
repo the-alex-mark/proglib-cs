@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProgLib.Text
 {
@@ -12,17 +8,25 @@ namespace ProgLib.Text
     public class FontRegister
     {
         /// <summary>
-        /// Возвращает копию этой строки, переведённую в верхний регистр.
+        /// Возвращает копию этой строки, с переверённой первой буквой в верхний регистр.
+        /// Пример: "Как в предложениях".
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>
-        public static String ToUpper(String Value)
+        public static String ToFirstUpper(String Value)
         {
-            return Value.ToUpper();
+            if (Value.Length > 0)
+            {
+                String Temp = Value.ToLower();
+                return Temp[0].ToString().ToUpper() + ((Temp.Length > 1) ? Temp.Substring(1) : "");
+            }
+
+            else return Value;
         }
 
         /// <summary>
         /// Возвращает копию этой строки, переведённую в нижний регистр.
+        /// Пример: "все строчные".
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>
@@ -32,23 +36,19 @@ namespace ProgLib.Text
         }
 
         /// <summary>
-        /// Возвращает копию этой строки, с переверённой первой буквой в верхний регистр.
+        /// Возвращает копию этой строки, переведённую в верхний регистр.
+        /// Пример: "ВСЕ ПРОПИСНЫЕ".
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>
-        public static String ToFirstUpper(String Value)
+        public static String ToUpper(String Value)
         {
-            if (Value.Length > 0)
-            {
-                String Temp = Value.ToLower();
-                return Temp[0].ToString().ToUpper() + Temp.Substring(1);
-            }
-
-            else return Value;
+            return Value.ToUpper();
         }
-
+        
         /// <summary>
         /// Возвращает копию этой строки, с переведённой каждой первой буквой слова в верхний регистр.
+        /// Пример: "Начинать С Прописных".
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>
@@ -62,7 +62,10 @@ namespace ProgLib.Text
 
                 String[] Words = Value.ToLower().Split(' ');
                 foreach (String Word in Words)
-                    Result += Word[0].ToString().ToUpper() + Word.Substring(1) + " ";
+                {
+                    if (Word.Length > 0)
+                        Result += Word[0].ToString().ToUpper() + Word.Substring(1) + " ";
+                }
 
                 return Result;
             }
@@ -72,6 +75,7 @@ namespace ProgLib.Text
 
         /// <summary>
         /// Возвращает копию этой строки, изменяя регистр каждого символа на обратный.
+        /// Пример: "иЗМЕНИТЬ РЕГИСТР".
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>

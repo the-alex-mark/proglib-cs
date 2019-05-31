@@ -29,7 +29,7 @@ namespace ProgLib.Data.CSharp
             this.Output = Environment.CurrentDirectory;
             this.Framework = "";
             this.Parameters = null;
-            this.Resources = new CSharpProjectResources();
+            this.Resources = new AssemblyResources();
 
             Libraries = new List<String>()
             {
@@ -107,7 +107,7 @@ namespace ProgLib.Data.CSharp
         /// <summary>
         /// Список ресурсов
         /// </summary>
-        public CSharpProjectResources Resources
+        public AssemblyResources Resources
         {
             get;
             set;
@@ -175,7 +175,7 @@ namespace ProgLib.Data.CSharp
                 #region Установка параметров компилятора
 
                 // Создание файла c информацией о сборке
-                this.AssemblyInfo.Save(_fileAssemblyInfo);
+                this.AssemblyInfo.Save(_fileAssemblyInfo, ComputerLanguage.CSharp);
                 _files.Add(_fileAssemblyInfo);
 
                 // Предоставляет дотуп к экземплярам генератора кода C# и компилятора кода
@@ -226,7 +226,7 @@ namespace ProgLib.Data.CSharp
                         this.Parameters.EmbeddedResources.Add(_fileResources);
                     }
 
-                    this.Resources.Save(this, _fileResourcesDesigner);
+                    this.Resources.Save(this.Name, _fileResourcesDesigner, ComputerLanguage.CSharp);
                     _files.Add(_fileResourcesDesigner);
                 }
 

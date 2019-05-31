@@ -1,27 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProgLib.Audio
 {
     /// <summary>
-    /// Класс для работы с плейлистами.
+    /// Предоставляет методы для работы с файлами плейлистов.
     /// </summary>
     public class Playlist
     {
         /// <summary>
-        /// Инициализирует экземпляр для работы с плейлистом.
-        /// </summary>
-        public Playlist()
-        {
-            this.Name = "";
-            this.Records = new List<Record>();
-        }
-
-        /// <summary>
-        /// Инициализирует экземпляр для работы с плейлистом.
+        /// Инициализирует новый экземпляр для работы с плейлистом.
         /// </summary>
         /// <param name="Name"></param>
         public Playlist(String Name)
@@ -31,7 +20,7 @@ namespace ProgLib.Audio
         }
 
         /// <summary>
-        /// Инициализирует экземпляр для работы с плейлистом.
+        /// Инициализирует новый экземпляр для работы с плейлистом.
         /// </summary>
         /// <param name="Name">Назвние плейлиста</param>
         /// <param name="Addresses">Список записей</param>
@@ -60,15 +49,28 @@ namespace ProgLib.Audio
             this.Records = Records.ToList();
         }
 
+        #region Properties
+
         /// <summary>
         /// Название плейлиста
         /// </summary>
-        public String Name { get; set; }
+        public String Name
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Список записей
         /// </summary>
-        public List<Record> Records { get; set; }
+        public List<Record> Records
+        {
+            get;
+            set;
+        
+}
+
+        #endregion
 
         /// <summary>
         /// Получает данные из файла плейлиста.
@@ -78,10 +80,7 @@ namespace ProgLib.Audio
         public static Playlist Load(String File)
         {
             String[] Content = System.IO.File.ReadAllLines(File);
-            Playlist _playlist = new Playlist
-            {
-                Name = System.IO.Path.GetFileNameWithoutExtension(File)
-            };
+            Playlist _playlist = new Playlist(System.IO.Path.GetFileNameWithoutExtension(File));
 
             if (Content[0].Trim().ToUpper() == "#EXTM3U")
             {

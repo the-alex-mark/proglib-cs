@@ -7,7 +7,7 @@ namespace ProgLib.Audio
     public static class AudioExpansion
     {
         /// <summary>
-        /// Проверка, является ли строка адресом звукового файла.
+        /// Проверяет, является ли строка адресом звукового файла.
         /// </summary>
         /// <param name="URL"></param>
         /// <returns></returns>
@@ -26,7 +26,7 @@ namespace ProgLib.Audio
         }
 
         /// <summary>
-        /// Проверяет, является ли строка адресом интернет радиостанцию.
+        /// Проверяет, является ли строка адресом интернет радиостанции.
         /// </summary>
         /// <param name="URL"></param>
         /// <returns></returns>

@@ -177,6 +177,7 @@ namespace ProgLib.Text
         /// <summary>
         /// Пользовательский словарь
         /// </summary>
+        /// TODO: Заполнить пользовательский алфавит
         private static Dictionary<String, String> Custom = new Dictionary<String, String>
         {
             { "а", "a" },

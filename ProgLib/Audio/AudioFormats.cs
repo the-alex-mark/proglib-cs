@@ -8,6 +8,9 @@ namespace ProgLib.Audio
 {
     public class AudioFormats
     {
+        /// <summary>
+        /// Возврящает список форматов звуковых файлов.
+        /// </summary>
         public static String[] Song
         {
             get
@@ -59,6 +62,9 @@ namespace ProgLib.Audio
             }
         }
         
+        /// <summary>
+        /// Возвращает список форматов файлов плейлистов.
+        /// </summary>
         public static String[] Playlist
         {
             get
