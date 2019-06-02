@@ -292,13 +292,6 @@ namespace Test
 
         private void Form1_Load(Object sender, EventArgs e)
         {
-            //CSharpProjectResources _resources = new CSharpProjectResources();
-            //_resources.Add(new CSharpProjectResource("_nameOne", new Bitmap(16, 16)));
-            //_resources.Add(new CSharpProjectResource("_nameTwo", "Привет"));
-            //String S = _resources.ToString(new CSharpProject("Тестовая_сборка"));
-            //Clipboard.Clear();
-            //Clipboard.SetText(S);
-
             // Установка максимального размера развёртывания формы
             MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             _windowState = this.WindowState;

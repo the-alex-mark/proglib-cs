@@ -8,13 +8,13 @@ namespace ProgLib.Data
     public enum ComputerLanguage
     {
         /// <summary>
-        /// C#
+        /// Visual C#
         /// </summary>
         CSharp,
 
         /// <summary>
-        /// VB
+        /// Visual Basic
         /// </summary>
-        VisualBasic
+        Basic
     }
 }

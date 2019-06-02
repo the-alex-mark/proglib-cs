@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-
 using ProgLib.Data;
 
 namespace ProgLib.Diagnostics
@@ -168,7 +167,7 @@ namespace ProgLib.Diagnostics
         }
 
         #endregion
-
+        
         /// <summary>
         /// Получает сведения о сборке.
         /// </summary>
@@ -194,7 +193,7 @@ namespace ProgLib.Diagnostics
 
             return _assemblyInfo;
         }
-
+        
         /// <summary>
         /// Преобразует значение данного экземпляра в еквивалентное ему строковое представление.
         /// </summary>
@@ -247,7 +246,7 @@ namespace ProgLib.Diagnostics
                     };
                     break;
 
-                case ComputerLanguage.VisualBasic:
+                case ComputerLanguage.Basic:
                     Result = new List<String>
                     {
                         "Imports System",
@@ -288,7 +287,19 @@ namespace ProgLib.Diagnostics
                 default:
                     Result = new List<String>
                     {
-                        ""
+                        $"Title: {this.Title}",
+                        $"Description: {this.Description}",
+                        $"Configuration: {this.Configuration}",
+                        $"Company: {this.Company}",
+                        $"Product: {this.Product}",
+                        $"Copyright: {this.Copyright}",
+                        $"Trademark: {this.Trademark}",
+                        $"Culture: {this.Culture}",
+                        "",
+                        $"ComVisible: {this.ComVisible.ToString().ToLower()}",
+                        "",
+                        $"Version: {this.Version.ToString()}",
+                        $"FileVersion: {this.FileVersion.ToString()}",
                     };
                     break;
             }

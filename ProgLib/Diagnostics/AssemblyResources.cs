@@ -215,12 +215,73 @@ namespace ProgLib.Diagnostics
                     Result.Add("}");
                     break;
 
-                default:
-                    Result = new List<String>
+                case ComputerLanguage.Basic:
+                    Result = new List<String>()
                     {
-                        ""
+                        "Option Strict On",
+                        "Option Explicit On",
+                        "",
+                        "Imports System",
+                        "",
+                        "Namespace My.Resources",
+                        "",
+                        "    ''' <summary>",
+                        "    ''' Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.",
+                        "    ''' </summary>",
+                        "    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute(\"System.Resources.Tools.StronglyTypedResourceBuilder\", \"15.0.0.0\"),  _",
+                        "     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _",
+                        "     Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _",
+                        "     Global.Microsoft.VisualBasic.HideModuleNameAttribute()>  _",
+                        "    Friend Module Resources",
+                        "",
+                        "        Private resourceMan As Global.System.Resources.ResourceManager",
+                        "        Private resourceCulture As Global.System.Globalization.CultureInfo",
+                        "",
+                        "        ''' <summary>",
+                        "        ''' Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.",
+                        "        ''' </summary>",
+                        "        <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _",
+                        "        Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager",
+                        "            Get",
+                        "                If Object.ReferenceEquals(resourceMan, Nothing) Then",
+                        "                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(\"" + Assembly + ".Resources\", GetType(Resources).Assembly)",
+                        "                    resourceMan = temp",
+                        "                End If",
+                        "                Return resourceMan",
+                        "            End Get",
+                        "        End Property",
+                        "",
+                        "        ''' <summary>",
+                        "        ''' Перезаписывает свойство CurrentUICulture текущего потока для всех обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.",
+                        "        ''' </summary>",
+                        "        <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _",
+                        "        Friend Property Culture() As Global.System.Globalization.CultureInfo",
+                        "            Get Return resourceCulture End Get",
+                        "            Set resourceCulture = value End Set",
+                        "        End Property"
                     };
+
+                    foreach (KeyValuePair<String, Object> Resource in List)
+                    {
+                        Result.Add("");
+                        Result.Add("        ''' <summary>");
+                        Result.Add("        ''' Поиск локализованного ресурса типа " + Resource.Value.GetType().ToString() + ".");
+                        Result.Add("        ''' </summary>");
+                        Result.Add("        Friend ReadOnly Property " + Resource.Key + "() As " + Resource.Value.GetType().ToString() + "");
+                        Result.Add("            Get");
+                        Result.Add("                Dim obj As Object = ResourceManager.GetObject(\"" + Resource.Key + "\", resourceCulture)");
+                        Result.Add("                Return CType(obj, " + Resource.Value.GetType().ToString() + ")");
+                        Result.Add("            End Get");
+                        Result.Add("        End Property");
+                    }
+
+                    Result.Add("");
+                    Result.Add("    End Module");
+                    Result.Add("End Namespace");
                     break;
+
+                default:
+                    return this.GetType().ToString();
             }
             
             return Result.Aggregate("", (Content, Item) => Content += Item + Environment.NewLine);
@@ -237,7 +298,7 @@ namespace ProgLib.Diagnostics
             {
                 foreach (KeyValuePair<String, Object> Resource in List)
                     RW.AddResource(Resource.Key, Resource.Value);
-
+                
                 RW.Close();
                 RW.Dispose();
             }
@@ -246,10 +307,10 @@ namespace ProgLib.Diagnostics
         /// <summary>
         /// Сохраняет данные в файл "Resources.Designer.*".
         /// </summary>
-        /// <param name="Assembly">Имя сборки</param>
         /// <param name="File">Расположение файла</param>
+        /// <param name="Assembly">Имя сборки</param>
         /// <param name="Language">Язык программирования</param>
-        public void Save(String Assembly, String File, ComputerLanguage Language)
+        public void Save(String File, String Assembly, ComputerLanguage Language)
         {
             using (FileStream FS = new FileStream(File, FileMode.Create))
             {

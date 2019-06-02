@@ -1529,6 +1529,7 @@
     <Compile Include="Windows\Forms\Minimal\Win32.cs" />
     <Compile Include="Windows\Forms\MouseMessageFilter.cs" />
     <Compile Include="Windows\Forms\Enum.cs" />
+    <Compile Include="Windows\Forms\VSCode\About.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeControlBox.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeIconTheme.cs" />
     <Compile Include="Windows\Forms\VSCode\VSCodeTabSelector.cs">
