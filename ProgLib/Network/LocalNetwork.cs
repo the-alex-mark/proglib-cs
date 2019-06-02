@@ -27,7 +27,7 @@ namespace ProgLib.Network
             [MarshalAs(UnmanagedType.LPWStr)]string ServerName, // Должно быть null
             int Level, out IntPtr BufPtr,
             int PrefMaxLen, ref int EntriesRead,
-            ref int TotalEntries, TypeServer ServerType,
+            ref int TotalEntries, ServerType ServerType,
             [MarshalAs(UnmanagedType.LPWStr)] string Domain, // null для входа в домен
             int ResumeHandle);
 
@@ -108,7 +108,7 @@ namespace ProgLib.Network
         /// </summary>
         /// <param name="Type">Тип сервера</param>
         /// <returns></returns>
-        public static String[] GetServers(TypeServer Type)
+        public static String[] GetServers(ServerType Type)
         {
             ServerInfo Info;
             IntPtr pInfo = IntPtr.Zero;

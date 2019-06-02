@@ -3,10 +3,10 @@
 namespace ProgLib.Network
 {
     /// <summary>
-    /// Типы серверов.
+    /// Тип сервера
     /// </summary>
     [Flags]
-    public enum TypeServer : uint
+    public enum ServerType : uint
     {
         All = 0xffffffff,
         Workstation = 0x00000001,
