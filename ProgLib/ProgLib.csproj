@@ -101,7 +101,6 @@
     <Compile Include="Data\Compiler.cs" />
     <Compile Include="Data\CSharp\CSharpResult.cs" />
     <Compile Include="Data\CSharp\CSharpProject.cs" />
-    <Compile Include="Data\CSharp\CSharpProjectResource.cs" />
     <Compile Include="Diagnostics\AssemblyResources.cs" />
     <Compile Include="Data\TSQL\TSqlResult.cs" />
     <Compile Include="Data\TSQL\TSqlDataBase.cs" />
