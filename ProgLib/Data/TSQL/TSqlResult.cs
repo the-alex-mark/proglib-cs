@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgLib.Data.TSQL
+namespace ProgLib.Data.TSql
 {
     public struct TSqlResult
     {

@@ -14,7 +14,6 @@ using ProgLib.Diagnostics;
 using ProgLib.Audio;
 using ProgLib.Audio.Visualization;
 using ProgLib.Data.Access;
-using ProgLib.Data.TSQL;
 using ProgLib.Network;
 using ProgLib.Text.Encoding.QRCode;
 using ProgLib.Text.Encoding.Barcode;
@@ -300,6 +299,9 @@ namespace Test
             _vsCodeTheme = VSCodeTheme.Red;
             _vsCodeIconTheme = VSCodeIconTheme.Minimal;
             UTheme(_vsCodeTheme, _vsCodeIconTheme);
+
+            var f = ProgLib.Drawing.Convert.ToColor(new ProgLib.Drawing.HSL(118, 0.32D, 0.45D));
+            MessageBox.Show($"rgb({f.Item1}; {f.Item2}; {f.Item3})");
         }
 
         private void mIncreaseScale_Click(Object sender, EventArgs e)

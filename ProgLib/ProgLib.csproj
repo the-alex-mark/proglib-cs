@@ -25,6 +25,7 @@
     <CodeAnalysisRuleSet />
     <DocumentationFile>bin\Debug\ProgLib.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,6 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet />
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -45,6 +47,7 @@
     <Reference Include="System.ComponentModel.Composition.Registration" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
@@ -55,6 +58,7 @@
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Management.Instrumentation" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -101,10 +105,12 @@
     <Compile Include="Data\Compiler.cs" />
     <Compile Include="Data\CSharp\CSharpResult.cs" />
     <Compile Include="Data\CSharp\CSharpProject.cs" />
+    <Compile Include="Data\MySql\MySqlDataBase.cs" />
+    <Compile Include="Data\MySql\MySqlResult.cs" />
     <Compile Include="Diagnostics\AssemblyResources.cs" />
-    <Compile Include="Data\TSQL\TSqlResult.cs" />
-    <Compile Include="Data\TSQL\TSqlDataBase.cs" />
-    <Compile Include="Data\TSQL\TSqlServer.cs" />
+    <Compile Include="Data\TSql\TSqlResult.cs" />
+    <Compile Include="Data\TSql\TSqlDataBase.cs" />
+    <Compile Include="Data\TSql\TSqlServer.cs" />
     <Compile Include="Diagnostics\AssemblyInfo.cs" />
     <Compile Include="Diagnostics\BaseBoard.cs" />
     <Compile Include="Diagnostics\BIOS.cs" />
@@ -118,6 +124,7 @@
     <Compile Include="Diagnostics\SoundDevice.cs" />
     <Compile Include="Diagnostics\SystemInfo.cs" />
     <Compile Include="Diagnostics\VideoController.cs" />
+    <Compile Include="Drawing\FullColor.cs" />
     <Compile Include="ImageExpansion.cs" />
     <Compile Include="IO\BytesBuilder.cs" />
     <Compile Include="IO\IniDocument.cs" />
@@ -547,6 +554,130 @@
     <Compile Include="Plugins\Ionic.Zip\Zlib\ZlibCodec.cs" />
     <Compile Include="Plugins\Ionic.Zip\Zlib\ZlibConstants.cs" />
     <Compile Include="Plugins\Ionic.Zip\Zlib\ZlibStream.cs" />
+    <Compile Include="Plugins\MySql.Data\Authentication\AuthenticationManager.cs" />
+    <Compile Include="Plugins\MySql.Data\Authentication\CachingSha2AuthenticationPlugin.cs" />
+    <Compile Include="Plugins\MySql.Data\Authentication\MySQLAuthenticationPlugin.cs" />
+    <Compile Include="Plugins\MySql.Data\Authentication\MySqlPemReader.cs" />
+    <Compile Include="Plugins\MySql.Data\Authentication\NativePasswordPlugins.cs" />
+    <Compile Include="Plugins\MySql.Data\Authentication\Sha256AuthenticationPlugin.cs" />
+    <Compile Include="Plugins\MySql.Data\Authentication\WindowsAuthenticationPlugin.cs" />
+    <Compile Include="Plugins\MySql.Data\BulkLoader.cs" />
+    <Compile Include="Plugins\MySql.Data\CharSetMap.cs" />
+    <Compile Include="Plugins\MySql.Data\command.cs" />
+    <Compile Include="Plugins\MySql.Data\CommandBuilder.cs" />
+    <Compile Include="Plugins\MySql.Data\common\Cache.cs" />
+    <Compile Include="Plugins\MySql.Data\common\ContextString.cs" />
+    <Compile Include="Plugins\MySql.Data\common\LowResolutionStopwatch.cs" />
+    <Compile Include="Plugins\MySql.Data\common\MyNetworkStream.cs" />
+    <Compile Include="Plugins\MySql.Data\common\MySqlTokenizer.cs" />
+    <Compile Include="Plugins\MySql.Data\common\NamedPipeStream.cs" />
+    <Compile Include="Plugins\MySql.Data\common\NativeMethods.cs" />
+    <Compile Include="Plugins\MySql.Data\common\Platform.cs" />
+    <Compile Include="Plugins\MySql.Data\common\QueryNormalizer.cs" />
+    <Compile Include="Plugins\MySql.Data\common\SharedMemoryStream.cs" />
+    <Compile Include="Plugins\MySql.Data\common\StreamCreator.cs" />
+    <Compile Include="Plugins\MySql.Data\common\StringUtility.cs" />
+    <Compile Include="Plugins\MySql.Data\common\Version.cs" />
+    <Compile Include="Plugins\MySql.Data\CompressedStream.cs" />
+    <Compile Include="Plugins\MySql.Data\Connection.cs" />
+    <Compile Include="Plugins\MySql.Data\Crypt.cs" />
+    <Compile Include="Plugins\MySql.Data\dataadapter.cs" />
+    <Compile Include="Plugins\MySql.Data\datareader.cs" />
+    <Compile Include="Plugins\MySql.Data\Driver.cs" />
+    <Compile Include="Plugins\MySql.Data\Exception.cs" />
+    <Compile Include="Plugins\MySql.Data\extensions\NonRT\MySqlCommand.cs" />
+    <Compile Include="Plugins\MySql.Data\extensions\NonRT\MySqlConnection.cs" />
+    <Compile Include="Plugins\MySql.Data\extensions\NonRT\MySqlConnectionStringBuilder.cs" />
+    <Compile Include="Plugins\MySql.Data\extensions\NonRT\MySqlDataReader.cs" />
+    <Compile Include="Plugins\MySql.Data\extensions\NonRT\MySqlDateTime.cs" />
+    <Compile Include="Plugins\MySql.Data\extensions\NonRT\MySqlParameter.cs" />
+    <Compile Include="Plugins\MySql.Data\extensions\NonRT\MySqlParameterCollection.cs" />
+    <Compile Include="Plugins\MySql.Data\extensions\NonRT\MySqlTrace.cs" />
+    <Compile Include="Plugins\MySql.Data\extensions\NonRT\MySqlTransaction.cs" />
+    <Compile Include="Plugins\MySql.Data\Field.cs" />
+    <Compile Include="Plugins\MySql.Data\Installer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Plugins\MySql.Data\Interceptors\CommandInterceptor.cs" />
+    <Compile Include="Plugins\MySql.Data\Interceptors\ExceptionInterceptor.cs" />
+    <Compile Include="Plugins\MySql.Data\Interceptors\Interceptor.cs" />
+    <Compile Include="Plugins\MySql.Data\ISSchemaProvider.cs" />
+    <Compile Include="Plugins\MySql.Data\Memcached\BinaryClient.cs" />
+    <Compile Include="Plugins\MySql.Data\Memcached\Client.cs" />
+    <Compile Include="Plugins\MySql.Data\Memcached\MemcachedException.cs" />
+    <Compile Include="Plugins\MySql.Data\Memcached\TextClient.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlClientFactory.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlClientPermission.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlClientPermissionAttribute.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlConfiguration.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlConnectionStringBuilder.cs" />
+    <Compile Include="Plugins\MySql.Data\MysqlDefs.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlError.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlHelper.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlPacket.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlPool.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlPoolManager.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlPromotableTransaction.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlScript.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlSecurityPermission.cs" />
+    <Compile Include="Plugins\MySql.Data\MySqlStream.cs" />
+    <Compile Include="Plugins\MySql.Data\NativeDriver.cs" />
+    <Compile Include="Plugins\MySql.Data\parameter.cs" />
+    <Compile Include="Plugins\MySql.Data\parameter_collection.cs" />
+    <Compile Include="Plugins\MySql.Data\PerformanceMonitor.cs" />
+    <Compile Include="Plugins\MySql.Data\PreparableStatement.cs" />
+    <Compile Include="Plugins\MySql.Data\ProcedureCache.cs" />
+    <Compile Include="Plugins\MySql.Data\Properties\Resources.Designer.cs" />
+    <Compile Include="Plugins\MySql.Data\Replication\ReplicationConfiguration.cs" />
+    <Compile Include="Plugins\MySql.Data\Replication\ReplicationManager.cs" />
+    <Compile Include="Plugins\MySql.Data\Replication\ReplicationRoundRobinServerGroup.cs" />
+    <Compile Include="Plugins\MySql.Data\Replication\ReplicationServer.cs" />
+    <Compile Include="Plugins\MySql.Data\Replication\ReplicationServerGroup.cs" />
+    <Compile Include="Plugins\MySql.Data\ResultSet.cs" />
+    <Compile Include="Plugins\MySql.Data\Schema.cs" />
+    <Compile Include="Plugins\MySql.Data\SchemaProvider.cs" />
+    <Compile Include="Plugins\MySql.Data\Statement.cs" />
+    <Compile Include="Plugins\MySql.Data\StoredProcedure.cs" />
+    <Compile Include="Plugins\MySql.Data\SystemPerformanceMonitor.cs" />
+    <Compile Include="Plugins\MySql.Data\TableCache.cs" />
+    <Compile Include="Plugins\MySql.Data\TimedStream.cs" />
+    <Compile Include="Plugins\MySql.Data\TracingDriver.cs" />
+    <Compile Include="Plugins\MySql.Data\transaction.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MetaData.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlBinary.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlBit.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlByte.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlConversionException.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlDateTime.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlDecimal.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlDouble.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlGeometry.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlGuid.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlInt16.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlInt32.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlInt64.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlSingle.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlString.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlTime.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlUByte.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlUInt16.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlUInt32.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlUInt64.cs" />
+    <Compile Include="Plugins\MySql.Data\Types\MySqlValue.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\Adler32.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\Deflate.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\InfBlocks.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\InfCodes.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\Inflate.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\InfTree.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\StaticTree.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\SupportClass.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\Tree.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\ZInputStream.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\Zlib.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\ZOutputStream.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\ZStream.cs" />
+    <Compile Include="Plugins\MySql.Data\zlib\ZStreamException.cs" />
     <Compile Include="Plugins\NAudio\Codecs\ALawDecoder.cs" />
     <Compile Include="Plugins\NAudio\Codecs\ALawEncoder.cs" />
     <Compile Include="Plugins\NAudio\Codecs\G722Codec.cs" />
@@ -962,6 +1093,22 @@
     <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveOffsetStream.cs" />
     <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveOutBuffer.cs" />
     <Compile Include="Plugins\NAudio\Wave\WaveStreams\WaveStream.cs" />
+    <Compile Include="Plugins\System.ValueTuple\FxResources\System\ValueTuple\SR.Designer.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ITupleInternal.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\Numerics\Hashing\HashHelpers.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\Runtime\CompilerServices\TupleElementNamesAttribute.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\Runtime\CompilerServices\__BlockReflectionAttribute.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\SR.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\TupleExtensions.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.2.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.3.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.4.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.5.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.6.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.7.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.8.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.9.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.cs" />
     <Compile Include="Plugins\TagLib\Aac\AudioHeader.cs" />
     <Compile Include="Plugins\TagLib\Aac\BitStream.cs" />
     <Compile Include="Plugins\TagLib\Aac\File.cs" />
@@ -1552,6 +1699,7 @@
     <EmbeddedResource Include="Plugins\Bass.Net\Un4seen\Bass\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\MySql.Data\Properties\Resources.resx" />
     <EmbeddedResource Include="Plugins\NAudio\Gui\Fader.resx">
       <DependentUpon>Fader.cs</DependentUpon>
     </EmbeddedResource>
@@ -1570,6 +1718,7 @@
     <EmbeddedResource Include="Plugins\NAudio\Utils\ProgressLog.resx">
       <DependentUpon>ProgressLog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\System.ValueTuple\FxResources\System\ValueTuple\SR.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -1617,6 +1766,21 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Plugins\MySql.Data\docs\MySqlCommand.xml" />
+    <Content Include="Plugins\MySql.Data\docs\MySqlCommandBuilder.xml" />
+    <Content Include="Plugins\MySql.Data\docs\MySqlConnection.xml" />
+    <Content Include="Plugins\MySql.Data\docs\MySqlConnectionStringBuilder.xml" />
+    <Content Include="Plugins\MySql.Data\docs\MySqlDataAdapter.xml" />
+    <Content Include="Plugins\MySql.Data\docs\MySqlDataReader.xml" />
+    <Content Include="Plugins\MySql.Data\docs\MySqlException.xml" />
+    <Content Include="Plugins\MySql.Data\docs\MySqlHelper.xml" />
+    <Content Include="Plugins\MySql.Data\docs\MySqlParameter.xml" />
+    <Content Include="Plugins\MySql.Data\docs\MySqlParameterCollection.xml" />
+    <Content Include="Plugins\MySql.Data\docs\MySqlTransaction.xml" />
+    <Content Include="Plugins\MySql.Data\Properties\keywords.txt" />
+    <Content Include="Plugins\MySql.Data\Properties\ReservedWords.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

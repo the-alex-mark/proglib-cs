@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
-namespace ProgLib.Data.TSQL
+namespace ProgLib.Data.TSql
 {
     /// <summary>
     /// Предоставляет методы для работы с базой данных SqlServer.

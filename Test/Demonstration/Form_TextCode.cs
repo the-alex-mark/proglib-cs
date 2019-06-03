@@ -14,7 +14,6 @@ using ProgLib.Diagnostics;
 using ProgLib.Audio;
 using ProgLib.Audio.Visualization;
 using ProgLib.Data.Access;
-using ProgLib.Data.TSQL;
 using ProgLib.Network;
 using ProgLib.Text.Encoding.QRCode;
 using ProgLib.Text.Encoding.Barcode;

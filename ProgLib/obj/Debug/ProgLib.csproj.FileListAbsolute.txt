@@ -54,3 +54,5 @@ D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Deb
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Windows.Forms.ReplaceForm.resources
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\ProgLib.xml
 D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Audio.Controls.AudioTags.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Plugins.System.ValueTuple.FxResources.System.ValueTuple.SR.resources
+D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\obj\Debug\ProgLib.Plugins.MySql.Data.Properties.Resources.resources

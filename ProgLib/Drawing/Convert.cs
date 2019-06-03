@@ -5,6 +5,24 @@ namespace ProgLib.Drawing
 {
     public static class Convert
     {
+        public static (Int32, Int32, Int32) ToRgb(Color Color)
+        {
+            var tuple = (5, 10);
+            return (5, 5, 5);
+        }
+
+        private static (int, int) GetValues()
+        {
+            var result = (1, 3);
+            return result;
+        }
+
+        public static (Int32, Int32, Int32) ToColor(this HSL Color)
+        {
+            Color C = System.Drawing.Color.FromArgb(ToRGB(Color).R, ToRGB(Color).G, ToRGB(Color).B);
+            return (C.R, C.G, C.B);
+        }
+
         public static Color ToColor(this RGB Color)
         {
             return System.Drawing.Color.FromArgb(Color.R, Color.G, Color.B);
@@ -17,10 +35,10 @@ namespace ProgLib.Drawing
         {
             return System.Drawing.Color.FromArgb(ToRGB(Color).R, ToRGB(Color).G, ToRGB(Color).B);
         }
-        public static Color ToColor(this HSL Color)
-        {
-            return System.Drawing.Color.FromArgb(ToRGB(Color).R, ToRGB(Color).G, ToRGB(Color).B);
-        }
+        //public static Color ToColor(this HSL Color)
+        //{
+        //    return System.Drawing.Color.FromArgb(ToRGB(Color).R, ToRGB(Color).G, ToRGB(Color).B);
+        //}
         public static Color ToColor(this CMYK Color)
         {
             return System.Drawing.Color.FromArgb(ToRGB(Color).R, ToRGB(Color).G, ToRGB(Color).B);
@@ -275,7 +293,10 @@ namespace ProgLib.Drawing
         }
         public static HSL ToHSL(this RGB Color)
         {
-            HSL HSL = new HSL();
+            //HSL HSL = new HSL();
+
+            Int32 _h;
+            Double _s, _l;
 
             Double R = (Color.R / 255.0f);
             Double G = (Color.G / 255.0f);
@@ -285,14 +306,14 @@ namespace ProgLib.Drawing
             Double Maximum = Math.Max(Math.Max(R, G), B);
             Double Delta = Maximum - Minimum;
 
-            HSL.L = (Maximum + Minimum) / 2;
+            _l = (Maximum + Minimum) / 2;
 
             Double H = 0;
 
-            if (Delta == 0) { HSL.S = 0.0f; }
+            if (Delta == 0) { _s = 0.0f; }
             else
             {
-                HSL.S = (HSL.L <= 0.5) ? (Delta / (Maximum + Minimum)) : (Delta / (2 - Maximum - Minimum));
+                _s = (_l <= 0.5) ? (Delta / (Maximum + Minimum)) : (Delta / (2 - Maximum - Minimum));
 
                 if (R == Maximum)
                     H = ((G - B) / 6) / Delta;
@@ -305,7 +326,7 @@ namespace ProgLib.Drawing
                 if (H > 1) H -= 1;
             }
 
-            return new HSL((int)Math.Round(H * 360), Math.Round((HSL.S * 100) / 100, 2), Math.Round((HSL.L * 100) / 100, 2));
+            return new HSL((int)Math.Round(H * 360), Math.Round((_s * 100) / 100, 2), Math.Round((_l * 100) / 100, 2));
         }
         public static HSL ToHSL(this RGBA Color)
         {
