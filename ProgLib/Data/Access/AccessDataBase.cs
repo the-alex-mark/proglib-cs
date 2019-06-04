@@ -18,6 +18,16 @@ namespace ProgLib.Data.Access
         /// Инициализирует новый экземпляр класса <see cref="AccessDataBase"/> и осуществляет подключение по указанным данным.
         /// </summary>
         /// <param name="ConnectionString">Строка подключения</param>
+        public AccessDataBase(OleDbConnectionStringBuilder ConnectionString)
+        {
+            Connection = new OleDbConnection(ConnectionString.ToString());
+            Connection.Open();
+        }
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="AccessDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="ConnectionString">Строка подключения</param>
         public AccessDataBase(String ConnectionString)
         {
             Connection = new OleDbConnection(ConnectionString);

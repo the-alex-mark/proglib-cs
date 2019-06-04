@@ -14,6 +14,16 @@ namespace ProgLib.Data.TSql
         /// Инициализирует новый экземпляр класса <see cref="TSqlDataBase"/> и осуществляет подключение по указанным данным.
         /// </summary>
         /// <param name="ConnectionString">Строка подключения</param>
+        public TSqlDataBase(SqlConnectionStringBuilder ConnectionString)
+        {
+            Connection = new SqlConnection(ConnectionString.ToString());
+            Connection.Open();
+        }
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="TSqlDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="ConnectionString">Строка подключения</param>
         public TSqlDataBase(String ConnectionString)
         {
             Connection = new SqlConnection(ConnectionString);

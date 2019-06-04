@@ -232,11 +232,13 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.SideBar = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.vsCodeTabSelector1 = new ProgLib.Windows.Forms.VSCode.VSCodeTabSelector();
             this.minimalToolTip1 = new ProgLib.Windows.Forms.Minimal.MinimalToolTip();
             this.MainMenu.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenu
@@ -1804,6 +1806,15 @@
             this.SideBar.TabIndex = 10;
             this.SideBar.Visible = false;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(48, 56);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(926, 435);
+            this.dataGridView1.TabIndex = 11;
+            // 
             // vsCodeTabSelector1
             // 
             this.vsCodeTabSelector1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1832,6 +1843,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(986, 503);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.vsCodeTabSelector1);
             this.Controls.Add(this.SideBar);
             this.Controls.Add(this.tabControl1);
@@ -1846,6 +1858,7 @@
             this.MainMenu.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2057,6 +2070,7 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Panel SideBar;
         private ProgLib.Windows.Forms.VSCode.VSCodeTabSelector vsCodeTabSelector1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

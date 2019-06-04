@@ -19,6 +19,16 @@ namespace ProgLib.Data.MySql
         /// Инициализирует новый экземпляр класса <see cref="MySqlDataBase"/> и осуществляет подключение по указанным данным.
         /// </summary>
         /// <param name="ConnectionString">Строка подключения</param>
+        public MySqlDataBase(MySqlConnectionStringBuilder ConnectionString)
+        {
+            Connection = new MySqlConnection(ConnectionString.ToString());
+            Connection.Open();
+        }
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="MySqlDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="ConnectionString">Строка подключения</param>
         public MySqlDataBase(String ConnectionString)
         {
             Connection = new MySqlConnection(ConnectionString);
