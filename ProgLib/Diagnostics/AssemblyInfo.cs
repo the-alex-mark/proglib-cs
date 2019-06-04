@@ -199,13 +199,13 @@ namespace ProgLib.Diagnostics
         /// </summary>
         /// <param name="Language">Язык программирования</param>
         /// <returns></returns>
-        public String ToString(ComputerLanguage Language)
+        public String ToString(CompilerLanguage Language)
         {
             List<String> Result;
 
             switch (Language)
             {
-                case ComputerLanguage.CSharp:
+                case CompilerLanguage.CSharp:
                     Result = new List<String>
                     {
                         "using System.Reflection;",
@@ -246,7 +246,7 @@ namespace ProgLib.Diagnostics
                     };
                     break;
 
-                case ComputerLanguage.Basic:
+                case CompilerLanguage.Basic:
                     Result = new List<String>
                     {
                         "Imports System",
@@ -312,7 +312,7 @@ namespace ProgLib.Diagnostics
         /// </summary>
         /// <param name="File">Расположение файла</param>
         /// <param name="Language">Язык программирования</param>
-        public void Save(String File, ComputerLanguage Language)
+        public void Save(String File, CompilerLanguage Language)
         {
             using (FileStream FS = new FileStream(File, FileMode.Create))
             {

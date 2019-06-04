@@ -14,7 +14,7 @@ namespace ProgLib.Data
         /// Инициализирует новый экземпляр класса <see cref="Compiler"/>
         /// </summary>
         /// <param name="Language">Язык программирования, используемый для сборки проекта</param>
-        public Compiler(ComputerLanguage Language)
+        public Compiler(CompilerLanguage Language)
         {
             // Установка языка программирования обрабатываемый компилятором
             this.Language = Language;
@@ -51,7 +51,7 @@ namespace ProgLib.Data
         /// <summary>
         /// Язык компилятора
         /// </summary>
-        private ComputerLanguage Language
+        private CompilerLanguage Language
         {
             get;
             set;
@@ -132,7 +132,7 @@ namespace ProgLib.Data
         /// </summary>
         /// <param name="Name">Имя сборки</param>
         /// <param name="Language">Язык программирования</param>
-        public Project(String Name, ComputerLanguage Language)
+        public Project(String Name, CompilerLanguage Language)
         {
             this.Name = Name.Replace(new Char[] { ' ', '?', '!', '@', '`', '~', '$', '%', '^', ':', '&', '*', '(', ')', '=', '+', '<', '>', ',', '/', '\\', '\"', '«', '»', '—', '-', '№', '#' }, '_');
             this.Language = Language;
@@ -169,7 +169,7 @@ namespace ProgLib.Data
         /// <summary>
         /// Язык компилятора
         /// </summary>
-        public ComputerLanguage Language
+        public CompilerLanguage Language
         {
             get;
             private set;

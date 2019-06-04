@@ -144,13 +144,13 @@ namespace ProgLib.Diagnostics
         /// <param name="Assembly">Имя сборки</param>
         /// <param name="Language">Язык программирования</param>
         /// <returns></returns>
-        public String ToString(String Assembly, ComputerLanguage Language)
+        public String ToString(String Assembly, CompilerLanguage Language)
         {
             List<String> Result;
 
             switch (Language)
             {
-                case ComputerLanguage.CSharp:
+                case CompilerLanguage.CSharp:
                     Result = new List<String>()
                     {
                         "namespace " + Assembly + ".Properties",
@@ -215,7 +215,7 @@ namespace ProgLib.Diagnostics
                     Result.Add("}");
                     break;
 
-                case ComputerLanguage.Basic:
+                case CompilerLanguage.Basic:
                     Result = new List<String>()
                     {
                         "Option Strict On",
@@ -310,7 +310,7 @@ namespace ProgLib.Diagnostics
         /// <param name="File">Расположение файла</param>
         /// <param name="Assembly">Имя сборки</param>
         /// <param name="Language">Язык программирования</param>
-        public void Save(String File, String Assembly, ComputerLanguage Language)
+        public void Save(String File, String Assembly, CompilerLanguage Language)
         {
             using (FileStream FS = new FileStream(File, FileMode.Create))
             {

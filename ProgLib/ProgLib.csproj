@@ -99,7 +99,7 @@
     </Compile>
     <Compile Include="Audio\Visualization\SpectrumAnalyzer.cs" />
     <Compile Include="Audio\Visualization\SpectrumAnalyzerEventArgs.cs" />
-    <Compile Include="Data\ComputerLanguage.cs" />
+    <Compile Include="Data\CompilerLanguage.cs" />
     <Compile Include="Data\Access\AccessResult.cs" />
     <Compile Include="Data\Access\AccessDataBase.cs" />
     <Compile Include="Data\Compiler.cs" />

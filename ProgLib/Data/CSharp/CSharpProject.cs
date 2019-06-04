@@ -175,7 +175,7 @@ namespace ProgLib.Data.CSharp
                 #region Установка параметров компилятора
 
                 // Создание файла c информацией о сборке
-                this.AssemblyInfo.Save(_fileAssemblyInfo, ComputerLanguage.CSharp);
+                this.AssemblyInfo.Save(_fileAssemblyInfo, CompilerLanguage.CSharp);
                 _files.Add(_fileAssemblyInfo);
 
                 // Предоставляет дотуп к экземплярам генератора кода C# и компилятора кода
@@ -226,7 +226,7 @@ namespace ProgLib.Data.CSharp
                         this.Parameters.EmbeddedResources.Add(_fileResources);
                     }
 
-                    this.Resources.Save(this.Name, _fileResourcesDesigner, ComputerLanguage.CSharp);
+                    this.Resources.Save(this.Name, _fileResourcesDesigner, CompilerLanguage.CSharp);
                     _files.Add(_fileResourcesDesigner);
                 }
 

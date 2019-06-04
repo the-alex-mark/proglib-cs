@@ -5,7 +5,7 @@ namespace ProgLib.Data
     /// <summary>
     /// Список языков программирования.
     /// </summary>
-    public enum ComputerLanguage
+    public enum CompilerLanguage
     {
         /// <summary>
         /// Visual C#
