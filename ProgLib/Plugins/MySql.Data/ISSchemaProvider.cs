@@ -28,7 +28,7 @@ using System.Globalization;
 using System.Diagnostics;
 using MySql.Data.Types;
 using System.Collections;
-using MySql.Data.MySqlClient.Properties;
+using ProgLib.Properties;
 using System.Collections.Generic;
 
 namespace MySql.Data.MySqlClient

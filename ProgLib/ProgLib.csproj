@@ -627,7 +627,6 @@
     <Compile Include="Plugins\MySql.Data\PerformanceMonitor.cs" />
     <Compile Include="Plugins\MySql.Data\PreparableStatement.cs" />
     <Compile Include="Plugins\MySql.Data\ProcedureCache.cs" />
-    <Compile Include="Plugins\MySql.Data\Properties\Resources.Designer.cs" />
     <Compile Include="Plugins\MySql.Data\Replication\ReplicationConfiguration.cs" />
     <Compile Include="Plugins\MySql.Data\Replication\ReplicationManager.cs" />
     <Compile Include="Plugins\MySql.Data\Replication\ReplicationRoundRobinServerGroup.cs" />
@@ -1358,6 +1357,11 @@
     <Compile Include="Plugins\TagLib\Xmp\XmpNodeType.cs" />
     <Compile Include="Plugins\TagLib\Xmp\XmpNodeVisitor.cs" />
     <Compile Include="Plugins\TagLib\Xmp\XmpTag.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="StringExpansion.cs" />
     <Compile Include="Text\Encoding\Barcode\BarcodeCommon.cs" />
     <Compile Include="Text\Encoding\Barcode\BarcodeLib.cs" />
@@ -1403,11 +1407,6 @@
     <Compile Include="Drawing\MetroColors.cs" />
     <Compile Include="Network\Mail\MailRecipient.cs" />
     <Compile Include="Network\Mail\MailSender.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Text\Encoding\QRCode\Corner.cs" />
     <Compile Include="Text\Encoding\QRCode\Finder.cs" />
     <Compile Include="Text\Encoding\QRCode\Perspective.cs" />
@@ -1699,7 +1698,6 @@
     <EmbeddedResource Include="Plugins\Bass.Net\Un4seen\Bass\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Plugins\MySql.Data\Properties\Resources.resx" />
     <EmbeddedResource Include="Plugins\NAudio\Gui\Fader.resx">
       <DependentUpon>Fader.cs</DependentUpon>
     </EmbeddedResource>
@@ -1721,8 +1719,8 @@
     <EmbeddedResource Include="Plugins\System.ValueTuple\FxResources\System\ValueTuple\SR.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Forms\Cyotek\ColorDialog.resx">
       <DependentUpon>ColorDialog.cs</DependentUpon>
@@ -1779,8 +1777,7 @@
     <Content Include="Plugins\MySql.Data\docs\MySqlParameter.xml" />
     <Content Include="Plugins\MySql.Data\docs\MySqlParameterCollection.xml" />
     <Content Include="Plugins\MySql.Data\docs\MySqlTransaction.xml" />
-    <Content Include="Plugins\MySql.Data\Properties\keywords.txt" />
-    <Content Include="Plugins\MySql.Data\Properties\ReservedWords.txt" />
+    <None Include="Resources\keywords.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

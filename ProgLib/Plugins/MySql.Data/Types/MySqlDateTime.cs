@@ -24,6 +24,7 @@ using System;
 using System.Data;
 using System.IO;
 using MySql.Data.MySqlClient;
+using ProgLib.Properties;
 using System.Globalization;
 
 
@@ -192,7 +193,7 @@ namespace MySql.Data.Types
       set
       {
         if (value < 0 || value > 999)
-          throw new ArgumentOutOfRangeException("Millisecond", MySqlClient.Properties.Resources.InvalidMillisecondValue);
+          throw new ArgumentOutOfRangeException("Millisecond", Resources.InvalidMillisecondValue);
         millisecond = value;
         microsecond = value * 1000;
       }
@@ -207,7 +208,7 @@ namespace MySql.Data.Types
       set
       {
         if (value < 0 || value > 999999)
-          throw new ArgumentOutOfRangeException("Microsecond", MySqlClient.Properties.Resources.InvalidMicrosecondValue);
+          throw new ArgumentOutOfRangeException("Microsecond", Resources.InvalidMicrosecondValue);
         microsecond = value;
         millisecond = value / 1000;
       }

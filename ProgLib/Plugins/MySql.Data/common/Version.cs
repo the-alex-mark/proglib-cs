@@ -22,7 +22,7 @@
 
 using System;
 using MySql.Data.MySqlClient;
-using MySql.Data.MySqlClient.Properties;
+using ProgLib.Properties;
 
 namespace MySql.Data.Common
 {

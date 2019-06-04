@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
-using MySql.Data.MySqlClient.Properties;
+using ProgLib.Properties;
 #if NETSTANDARD1_3
 using AliasText = MySql.Data.MySqlClient.Framework.NetStandard1_3;
 #else

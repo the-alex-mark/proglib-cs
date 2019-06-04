@@ -26,6 +26,8 @@ using ProgLib.Windows.Forms.VSCode;
 using Test.Demonstration;
 using ProgLib.Text;
 using ProgLib.Data.CSharp;
+using ProgLib.Data.MySql;
+using MySql.Data.MySqlClient;
 
 namespace Test
 {
@@ -299,9 +301,6 @@ namespace Test
             _vsCodeTheme = VSCodeTheme.Red;
             _vsCodeIconTheme = VSCodeIconTheme.Minimal;
             UTheme(_vsCodeTheme, _vsCodeIconTheme);
-
-            var f = ProgLib.Drawing.Convert.ToColor(new ProgLib.Drawing.HSL(118, 0.32D, 0.45D));
-            MessageBox.Show($"rgb({f.Item1}; {f.Item2}; {f.Item3})");
         }
 
         private void mIncreaseScale_Click(Object sender, EventArgs e)

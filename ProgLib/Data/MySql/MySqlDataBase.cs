@@ -11,16 +11,47 @@ using System.Threading.Tasks;
 namespace ProgLib.Data.MySql
 {
     /// <summary>
-    /// Предоставляет методы для работы с базой данных Access.
+    /// Предоставляет методы для работы с базой данных MySql.
     /// </summary>
     public class MySqlDataBase
     {
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="MySqlDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="ConnectionString">Строка подключения</param>
         public MySqlDataBase(String ConnectionString)
         {
             Connection = new MySqlConnection(ConnectionString);
             Connection.Open();
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="MySqlDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="Server">Имя сервера</param>
+        /// <param name="DataBase">Имя базы данных</param>
+        /// <param name="User">Пользователь</param>
+        /// <param name="Password">Пароль</param>
+        public MySqlDataBase(String Server, String DataBase, String User, String Password)
+        {
+            Connection = new MySqlConnection($"Server={Server};Database={DataBase};User Id={User};Password={Password}");
+            Connection.Open();
+        }
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="MySqlDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="Server">Имя сервера</param>
+        /// <param name="Port">Номер порта</param>
+        /// <param name="DataBase">Имя базы данных</param>
+        /// <param name="User">Пользователь</param>
+        /// <param name="Password">Пароль</param>
+        public MySqlDataBase(String Server, Int32 Port, String DataBase, String User, String Password)
+        {
+            Connection = new MySqlConnection($"Server={Server};Port={Port};Database={DataBase};User Id={User};Password={Password}");
+            Connection.Open();
+        }
+        
         #region Variables
 
         private MySqlConnection Connection;
@@ -42,8 +73,17 @@ namespace ProgLib.Data.MySql
         /// <returns></returns>
         public MySqlResult ShowTables()
         {
-            return this.Request("Select MSysObjects.Name from MSysObjects " +
-                                "Where Left([Name], 1) <> '~' and Left([Name], 4) <> 'MSys' and MSysObjects.Type In(1, 4, 6) and [Name] <> 'f_9E8203D96A754B0890DAF9414007C362_Data'");
+            return this.Request("Show Tables;");
+        }
+
+        /// <summary>
+        /// Получает структуру таблицы.
+        /// </summary>
+        /// <param name="Table"></param>
+        /// <returns></returns>
+        public MySqlResult Describe(String Table)
+        {
+            return this.Request($"Describe {Table};");
         }
 
         /// <summary>

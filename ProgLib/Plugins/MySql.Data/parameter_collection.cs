@@ -24,7 +24,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient.Properties;
+using ProgLib.Properties;
 
 namespace MySql.Data.MySqlClient
 {

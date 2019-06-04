@@ -10,12 +10,23 @@ namespace ProgLib.Data.TSql
     /// </summary>
     public class TSqlDataBase
     {
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="TSqlDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="ConnectionString">Строка подключения</param>
         public TSqlDataBase(String ConnectionString)
         {
             Connection = new SqlConnection(ConnectionString);
             Connection.Open();
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="TSqlDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="Server">Имя сервера</param>
+        /// <param name="DataBase">Имя базы данных</param>
+        /// <param name="User">Пользователь</param>
+        /// <param name="Password">Пароль</param>
         public TSqlDataBase(String Server, String DataBase = "master", String User = "", String Password = "")
         {
             String ConnectionString

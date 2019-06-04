@@ -23,7 +23,7 @@
 using System;
 using System.IO;
 using MySql.Data.MySqlClient;
-using MySql.Data.MySqlClient.Properties;
+using ProgLib.Properties;
 using Microsoft.Win32.SafeHandles;
 using System.Threading;
 using System.Diagnostics;

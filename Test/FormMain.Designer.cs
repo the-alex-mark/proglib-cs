@@ -232,8 +232,8 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.SideBar = new System.Windows.Forms.Panel();
-            this.minimalToolTip1 = new ProgLib.Windows.Forms.Minimal.MinimalToolTip();
             this.vsCodeTabSelector1 = new ProgLib.Windows.Forms.VSCode.VSCodeTabSelector();
+            this.minimalToolTip1 = new ProgLib.Windows.Forms.Minimal.MinimalToolTip();
             this.MainMenu.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -1804,14 +1804,6 @@
             this.SideBar.TabIndex = 10;
             this.SideBar.Visible = false;
             // 
-            // minimalToolTip1
-            // 
-            this.minimalToolTip1.BackColor = System.Drawing.Color.Gainsboro;
-            this.minimalToolTip1.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.minimalToolTip1.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.minimalToolTip1.ForeColor = System.Drawing.Color.Black;
-            this.minimalToolTip1.OwnerDraw = true;
-            // 
             // vsCodeTabSelector1
             // 
             this.vsCodeTabSelector1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1824,6 +1816,14 @@
             this.vsCodeTabSelector1.TabIndex = 9;
             this.vsCodeTabSelector1.Text = "vsCodeTabSelector1";
             this.vsCodeTabSelector1.Theme = ProgLib.Windows.Forms.VSCode.VSCodeTheme.Red;
+            // 
+            // minimalToolTip1
+            // 
+            this.minimalToolTip1.BackColor = System.Drawing.Color.Gainsboro;
+            this.minimalToolTip1.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.minimalToolTip1.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.minimalToolTip1.ForeColor = System.Drawing.Color.Black;
+            this.minimalToolTip1.OwnerDraw = true;
             // 
             // FormMain
             // 

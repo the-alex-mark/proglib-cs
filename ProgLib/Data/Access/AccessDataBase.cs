@@ -14,42 +14,62 @@ namespace ProgLib.Data.Access
     /// </summary>
     public class AccessDataBase
     {
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="AccessDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="ConnectionString">Строка подключения</param>
         public AccessDataBase(String ConnectionString)
         {
             Connection = new OleDbConnection(ConnectionString);
             Connection.Open();
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="AccessDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="DataBase">Расположения базы данных</param>
         public AccessDataBase(FileInfo DataBase)
         {
             Connection = new OleDbConnection($"Provider={GetProvider(DataBase.Extension)};Data Source={DataBase.FullName};");
             Connection.Open();
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="AccessDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="DataBase">Расположение базы данных</param>
+        /// <param name="Password">Пароль</param>
         public AccessDataBase(FileInfo DataBase, String Password)
         {
             Connection = new OleDbConnection($"Provider={GetProvider(DataBase.Extension)};Data Source={DataBase.FullName};Jet OLEDB:Database Password={Password};");
             Connection.Open();
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="AccessDataBase"/> и осуществляет подключение по указанным данным.
+        /// </summary>
+        /// <param name="DataBase">Имя базы данных</param>
+        /// <param name="SystemDataBase">Имя системной базы данных (для работы некоторых функций)</param>
+        /// <param name="User">Пользователь</param>
+        /// <param name="Password">Пароль</param>
         public AccessDataBase(FileInfo DataBase, FileInfo SystemDataBase, String User, String Password)
         {
             Connection = new OleDbConnection($"Provider={GetProvider(DataBase.Extension)};Data Source={DataBase.FullName};Jet OLEDB:System Database={SystemDataBase.FullName};User ID={User};Password={Password};");
             Connection.Open();
         }
 
-        #region Global Variables
+        #region Variables
 
         private OleDbConnection Connection;
 
         #endregion
 
-        #region Additional method
+        #region Methods
 
         /// <summary>
         /// Получает провайдер для подключения к базе данных исходя из расширения её файла.
         /// </summary>
-        /// <param name="DataBase"></param>
+        /// <param name="Extension">Расширение файла базы данных</param>
         /// <returns></returns>
         private String GetProvider(String Extension)
         {

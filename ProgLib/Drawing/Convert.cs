@@ -5,24 +5,6 @@ namespace ProgLib.Drawing
 {
     public static class Convert
     {
-        public static (Int32, Int32, Int32) ToRgb(Color Color)
-        {
-            var tuple = (5, 10);
-            return (5, 5, 5);
-        }
-
-        private static (int, int) GetValues()
-        {
-            var result = (1, 3);
-            return result;
-        }
-
-        public static (Int32, Int32, Int32) ToColor(this HSL Color)
-        {
-            Color C = System.Drawing.Color.FromArgb(ToRGB(Color).R, ToRGB(Color).G, ToRGB(Color).B);
-            return (C.R, C.G, C.B);
-        }
-
         public static Color ToColor(this RGB Color)
         {
             return System.Drawing.Color.FromArgb(Color.R, Color.G, Color.B);
@@ -35,10 +17,10 @@ namespace ProgLib.Drawing
         {
             return System.Drawing.Color.FromArgb(ToRGB(Color).R, ToRGB(Color).G, ToRGB(Color).B);
         }
-        //public static Color ToColor(this HSL Color)
-        //{
-        //    return System.Drawing.Color.FromArgb(ToRGB(Color).R, ToRGB(Color).G, ToRGB(Color).B);
-        //}
+        public static Color ToColor(this HSL Color)
+        {
+            return System.Drawing.Color.FromArgb(ToRGB(Color).R, ToRGB(Color).G, ToRGB(Color).B);
+        }
         public static Color ToColor(this CMYK Color)
         {
             return System.Drawing.Color.FromArgb(ToRGB(Color).R, ToRGB(Color).G, ToRGB(Color).B);

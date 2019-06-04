@@ -21,7 +21,7 @@
 // 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA
 
 
-using MySql.Data.MySqlClient.Properties;
+using ProgLib.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -141,7 +141,7 @@ namespace MySql.Data.MySqlClient.Replication
           catch
           {
             MySqlTrace.LogWarning(0,
-              string.Format(Properties.Resources.Replication_ConnectionAttemptFailed, server1.Name));
+              string.Format(Resources.Replication_ConnectionAttemptFailed, server1.Name));
           }
           finally
           {

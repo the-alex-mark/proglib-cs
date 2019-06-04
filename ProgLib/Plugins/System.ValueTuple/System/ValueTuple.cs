@@ -19,7 +19,9 @@ namespace System
 			return obj is ValueTuple;
 		}
 
-        /// <summary>Возвращает значение, указывающее, равен ли данный экземпляр указанному значению.</summary>
+        /// <summary>
+        /// Возвращает значение, указывающее, равен ли данный экземпляр указанному значению.
+        /// </summary>
         /// <param name="other">Экземпляр для сравнения с этим экземпляром.</param>
         /// <returns></returns>
         public Boolean Equals(ValueTuple other)
@@ -32,7 +34,7 @@ namespace System
 			return other is ValueTuple;
 		}
 
-		int IComparable.CompareTo(object other)
+        Int32 IComparable.CompareTo(Object other)
 		{
 			if (other == null)
 			{
@@ -45,7 +47,9 @@ namespace System
 			return 0;
 		}
 
-        /// <summary>Сравнивает этот экземпляр с указанным экземпляром и возвращает указание их относительных значений.</summary>
+        /// <summary>
+        /// Сравнивает этот экземпляр с указанным экземпляром и возвращает указание их относительных значений.
+        /// </summary>
         /// <param name="other">Пример для сравнения.</param>
         /// <returns></returns>
         public Int32 CompareTo(ValueTuple other)
@@ -53,7 +57,7 @@ namespace System
 			return 0;
 		}
 
-		int IStructuralComparable.CompareTo(object other, IComparer comparer)
+        Int32 IStructuralComparable.CompareTo(Object other, IComparer comparer)
 		{
 			if (other == null)
 			{
@@ -75,12 +79,12 @@ namespace System
 			return 0;
 		}
 
-		int IStructuralEquatable.GetHashCode(IEqualityComparer comparer)
+        Int32 IStructuralEquatable.GetHashCode(IEqualityComparer comparer)
 		{
 			return 0;
 		}
 
-		int ITupleInternal.GetHashCode(IEqualityComparer comparer)
+        Int32 ITupleInternal.GetHashCode(IEqualityComparer comparer)
 		{
 			return 0;
 		}
@@ -89,17 +93,17 @@ namespace System
         /// Возвращает строку, представляющую значение этого <see cref="ValueTuple"/> экземпляра.
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        public override String ToString()
 		{
 			return "()";
 		}
 
-		string ITupleInternal.ToStringEnd()
+		String ITupleInternal.ToStringEnd()
 		{
 			return ")";
 		}
 
-		int ITupleInternal.Size
+        Int32 ITupleInternal.Size
 		{
 			get
 			{
@@ -127,31 +131,37 @@ namespace System
 			return new ValueTuple<T1>(item1);
 		}
 
-		/// <summary>Creates a new struct 2-tuple, or pair.</summary>
+		/// <summary>
+        /// Creates a new struct 2-tuple, or pair.
+        /// </summary>
 		/// <typeparam name="T1">The type of the first component of the tuple.</typeparam>
 		/// <typeparam name="T2">The type of the second component of the tuple.</typeparam>
 		/// <param name="item1">The value of the first component of the tuple.</param>
 		/// <param name="item2">The value of the second component of the tuple.</param>
-		/// <returns>A 2-tuple (pair) whose value is (item1, item2).</returns>
+		/// <returns></returns>
 		public static ValueTuple<T1, T2> Create<T1, T2>(T1 item1, T2 item2)
 		{
 			return new ValueTuple<T1, T2>(item1, item2);
 		}
 
-		/// <summary>Creates a new struct 3-tuple, or triple.</summary>
+		/// <summary>
+        /// Creates a new struct 3-tuple, or triple.
+        /// </summary>
 		/// <typeparam name="T1">The type of the first component of the tuple.</typeparam>
 		/// <typeparam name="T2">The type of the second component of the tuple.</typeparam>
 		/// <typeparam name="T3">The type of the third component of the tuple.</typeparam>
 		/// <param name="item1">The value of the first component of the tuple.</param>
 		/// <param name="item2">The value of the second component of the tuple.</param>
 		/// <param name="item3">The value of the third component of the tuple.</param>
-		/// <returns>A 3-tuple (triple) whose value is (item1, item2, item3).</returns>
+		/// <returns></returns>
 		public static ValueTuple<T1, T2, T3> Create<T1, T2, T3>(T1 item1, T2 item2, T3 item3)
 		{
 			return new ValueTuple<T1, T2, T3>(item1, item2, item3);
 		}
 
-		/// <summary>Creates a new struct 4-tuple, or quadruple.</summary>
+		/// <summary>
+        /// Creates a new struct 4-tuple, or quadruple.
+        /// </summary>
 		/// <typeparam name="T1">The type of the first component of the tuple.</typeparam>
 		/// <typeparam name="T2">The type of the second component of the tuple.</typeparam>
 		/// <typeparam name="T3">The type of the third component of the tuple.</typeparam>
@@ -160,13 +170,15 @@ namespace System
 		/// <param name="item2">The value of the second component of the tuple.</param>
 		/// <param name="item3">The value of the third component of the tuple.</param>
 		/// <param name="item4">The value of the fourth component of the tuple.</param>
-		/// <returns>A 4-tuple (quadruple) whose value is (item1, item2, item3, item4).</returns>
+		/// <returns></returns>
 		public static ValueTuple<T1, T2, T3, T4> Create<T1, T2, T3, T4>(T1 item1, T2 item2, T3 item3, T4 item4)
 		{
 			return new ValueTuple<T1, T2, T3, T4>(item1, item2, item3, item4);
 		}
 
-		/// <summary>Creates a new struct 5-tuple, or quintuple.</summary>
+		/// <summary>
+        /// Creates a new struct 5-tuple, or quintuple.
+        /// </summary>
 		/// <typeparam name="T1">The type of the first component of the tuple.</typeparam>
 		/// <typeparam name="T2">The type of the second component of the tuple.</typeparam>
 		/// <typeparam name="T3">The type of the third component of the tuple.</typeparam>
@@ -177,13 +189,15 @@ namespace System
 		/// <param name="item3">The value of the third component of the tuple.</param>
 		/// <param name="item4">The value of the fourth component of the tuple.</param>
 		/// <param name="item5">The value of the fifth component of the tuple.</param>
-		/// <returns>A 5-tuple (quintuple) whose value is (item1, item2, item3, item4, item5).</returns>
+		/// <returns></returns>
 		public static ValueTuple<T1, T2, T3, T4, T5> Create<T1, T2, T3, T4, T5>(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5)
 		{
 			return new ValueTuple<T1, T2, T3, T4, T5>(item1, item2, item3, item4, item5);
 		}
 
-		/// <summary>Creates a new struct 6-tuple, or sextuple.</summary>
+		/// <summary>
+        /// Creates a new struct 6-tuple, or sextuple.
+        /// </summary>
 		/// <typeparam name="T1">The type of the first component of the tuple.</typeparam>
 		/// <typeparam name="T2">The type of the second component of the tuple.</typeparam>
 		/// <typeparam name="T3">The type of the third component of the tuple.</typeparam>
@@ -196,13 +210,15 @@ namespace System
 		/// <param name="item4">The value of the fourth component of the tuple.</param>
 		/// <param name="item5">The value of the fifth component of the tuple.</param>
 		/// <param name="item6">The value of the sixth component of the tuple.</param>
-		/// <returns>A 6-tuple (sextuple) whose value is (item1, item2, item3, item4, item5, item6).</returns>
+		/// <returns></returns>
 		public static ValueTuple<T1, T2, T3, T4, T5, T6> Create<T1, T2, T3, T4, T5, T6>(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6)
 		{
 			return new ValueTuple<T1, T2, T3, T4, T5, T6>(item1, item2, item3, item4, item5, item6);
 		}
 
-		/// <summary>Creates a new struct 7-tuple, or septuple.</summary>
+		/// <summary>
+        /// Creates a new struct 7-tuple, or septuple.
+        /// </summary>
 		/// <typeparam name="T1">The type of the first component of the tuple.</typeparam>
 		/// <typeparam name="T2">The type of the second component of the tuple.</typeparam>
 		/// <typeparam name="T3">The type of the third component of the tuple.</typeparam>
@@ -217,13 +233,15 @@ namespace System
 		/// <param name="item5">The value of the fifth component of the tuple.</param>
 		/// <param name="item6">The value of the sixth component of the tuple.</param>
 		/// <param name="item7">The value of the seventh component of the tuple.</param>
-		/// <returns>A 7-tuple (septuple) whose value is (item1, item2, item3, item4, item5, item6, item7).</returns>
+		/// <returns></returns>
 		public static ValueTuple<T1, T2, T3, T4, T5, T6, T7> Create<T1, T2, T3, T4, T5, T6, T7>(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7)
 		{
 			return new ValueTuple<T1, T2, T3, T4, T5, T6, T7>(item1, item2, item3, item4, item5, item6, item7);
 		}
 
-		/// <summary>Creates a new struct 8-tuple, or octuple.</summary>
+		/// <summary>
+        /// Creates a new struct 8-tuple, or octuple.
+        /// </summary>
 		/// <typeparam name="T1">The type of the first component of the tuple.</typeparam>
 		/// <typeparam name="T2">The type of the second component of the tuple.</typeparam>
 		/// <typeparam name="T3">The type of the third component of the tuple.</typeparam>
@@ -240,43 +258,43 @@ namespace System
 		/// <param name="item6">The value of the sixth component of the tuple.</param>
 		/// <param name="item7">The value of the seventh component of the tuple.</param>
 		/// <param name="item8">The value of the eighth component of the tuple.</param>
-		/// <returns>An 8-tuple (octuple) whose value is (item1, item2, item3, item4, item5, item6, item7, item8).</returns>
+		/// <returns></returns>
 		public static ValueTuple<T1, T2, T3, T4, T5, T6, T7, ValueTuple<T8>> Create<T1, T2, T3, T4, T5, T6, T7, T8>(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7, T8 item8)
 		{
 			return new ValueTuple<T1, T2, T3, T4, T5, T6, T7, ValueTuple<T8>>(item1, item2, item3, item4, item5, item6, item7, ValueTuple.Create<T8>(item8));
 		}
 
-		internal static int CombineHashCodes(int h1, int h2)
+		internal static Int32 CombineHashCodes(Int32 h1, Int32 h2)
 		{
 			return HashHelpers.Combine(HashHelpers.Combine(HashHelpers.RandomSeed, h1), h2);
 		}
 
-		internal static int CombineHashCodes(int h1, int h2, int h3)
+		internal static Int32 CombineHashCodes(Int32 h1, Int32 h2, Int32 h3)
 		{
 			return HashHelpers.Combine(ValueTuple.CombineHashCodes(h1, h2), h3);
 		}
 
-		internal static int CombineHashCodes(int h1, int h2, int h3, int h4)
+		internal static Int32 CombineHashCodes(Int32 h1, Int32 h2, Int32 h3, Int32 h4)
 		{
 			return HashHelpers.Combine(ValueTuple.CombineHashCodes(h1, h2, h3), h4);
 		}
 
-		internal static int CombineHashCodes(int h1, int h2, int h3, int h4, int h5)
+		internal static Int32 CombineHashCodes(Int32 h1, Int32 h2, Int32 h3, Int32 h4, Int32 h5)
 		{
 			return HashHelpers.Combine(ValueTuple.CombineHashCodes(h1, h2, h3, h4), h5);
 		}
 
-		internal static int CombineHashCodes(int h1, int h2, int h3, int h4, int h5, int h6)
+		internal static Int32 CombineHashCodes(Int32 h1, Int32 h2, Int32 h3, Int32 h4, Int32 h5, Int32 h6)
 		{
 			return HashHelpers.Combine(ValueTuple.CombineHashCodes(h1, h2, h3, h4, h5), h6);
 		}
 
-		internal static int CombineHashCodes(int h1, int h2, int h3, int h4, int h5, int h6, int h7)
+		internal static Int32 CombineHashCodes(Int32 h1, Int32 h2, Int32 h3, Int32 h4, Int32 h5, Int32 h6, Int32 h7)
 		{
 			return HashHelpers.Combine(ValueTuple.CombineHashCodes(h1, h2, h3, h4, h5, h6), h7);
 		}
 
-		internal static int CombineHashCodes(int h1, int h2, int h3, int h4, int h5, int h6, int h7, int h8)
+		internal static Int32 CombineHashCodes(Int32 h1, Int32 h2, Int32 h3, Int32 h4, Int32 h5, Int32 h6, Int32 h7, Int32 h8)
 		{
 			return HashHelpers.Combine(ValueTuple.CombineHashCodes(h1, h2, h3, h4, h5, h6, h7), h8);
 		}
