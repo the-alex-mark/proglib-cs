@@ -27,7 +27,6 @@ using Test.Demonstration;
 using ProgLib.Text;
 using ProgLib.Data.CSharp;
 using ProgLib.Data.MySql;
-using MySql.Data.MySqlClient;
 using ProgLib.Data.TSql;
 
 namespace Test
@@ -303,12 +302,12 @@ namespace Test
             _vsCodeIconTheme = VSCodeIconTheme.Minimal;
             UTheme(_vsCodeTheme, _vsCodeIconTheme);
 
-            //MySqlDataBase _dataBase = new MySqlDataBase("mysql.j576709.myjino.ru", "j576709_testing", "j576709", "makarov123");
+            MySqlDataBase _dataBase = new MySqlDataBase("mysql.j576709.myjino.ru", "j576709_testing", "j576709", "makarov123");
             //MySqlDataBase _dataBase = new MySqlDataBase("localhost", "book_макаров", "root", "makarov123");
-            //MySqlResult _result = _dataBase.Request("Select * from USERS;");
+            MySqlResult _result = _dataBase.Request("Select * from USERS;");
 
-            //dataGridView1.DataSource = _result.Table;
-            //_dataBase.Dispose();
+            dataGridView1.DataSource = _result.Table;
+            _dataBase.Dispose();
         }
 
         private void mIncreaseScale_Click(Object sender, EventArgs e)

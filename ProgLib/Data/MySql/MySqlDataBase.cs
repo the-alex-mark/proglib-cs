@@ -1,12 +1,6 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
-using System.Data.OleDb;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.MySqlClient;
 
 namespace ProgLib.Data.MySql
 {
