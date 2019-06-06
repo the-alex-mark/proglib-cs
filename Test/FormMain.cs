@@ -13,7 +13,6 @@ using ProgLib;
 using ProgLib.Diagnostics;
 using ProgLib.Audio;
 using ProgLib.Audio.Visualization;
-using ProgLib.Data.Access;
 using ProgLib.Network;
 using ProgLib.Text.Encoding.QRCode;
 using ProgLib.Text.Encoding.Barcode;
@@ -26,8 +25,9 @@ using ProgLib.Windows.Forms.VSCode;
 using Test.Demonstration;
 using ProgLib.Text;
 using ProgLib.Data.CSharp;
+using ProgLib.Data.Sql;
 using ProgLib.Data.MySql;
-using ProgLib.Data.TSql;
+using ProgLib.Data.OleDb;
 
 namespace Test
 {
@@ -302,12 +302,12 @@ namespace Test
             _vsCodeIconTheme = VSCodeIconTheme.Minimal;
             UTheme(_vsCodeTheme, _vsCodeIconTheme);
 
-            MySqlDataBase _dataBase = new MySqlDataBase("mysql.j576709.myjino.ru", "j576709_testing", "j576709", "makarov123");
-            //MySqlDataBase _dataBase = new MySqlDataBase("localhost", "book_макаров", "root", "makarov123");
-            MySqlResult _result = _dataBase.Request("Select * from USERS;");
+            //MySqlDataBase _dataBase = new MySqlDataBase("mysql.j576709.myjino.ru", "j576709_testing", "j576709", "makarov123");
+            ////MySqlDataBase _dataBase = new MySqlDataBase("localhost", "book_макаров", "root", "makarov123");
+            //MySqlResult _result = _dataBase.Request("Select * from USERS;");
 
-            dataGridView1.DataSource = _result.Table;
-            _dataBase.Dispose();
+            //dataGridView1.DataSource = _result.Table;
+            //_dataBase.Dispose();
         }
 
         private void mIncreaseScale_Click(Object sender, EventArgs e)

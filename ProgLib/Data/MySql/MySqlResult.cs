@@ -1,28 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProgLib.Data.MySql
 {
+    /// <summary>
+    /// Представляет результат при выполении запроса к базе данных MySql.
+    /// </summary>
     public class MySqlResult
     {
-        public MySqlResult(DataTable Table, String Status)
-        {
-            this.Table = Table;
-            this.Status = Status;
-        }
-        
         /// <summary>
-        /// Возвращает результат выполнения запроса на выборку.
+        /// Инициализирует новый экземпляр класса <see cref="MySqlResult"/>.
         /// </summary>
-        public DataTable Table { get; set; }
+        /// <param name="Message"></param>
+        public MySqlResult(String Message)
+        {
+            this.Table = new DataTable();
+            this.Message = Message;
+        }
 
         /// <summary>
-        /// Возвращает статус выволнения запроса.
+        /// Инициализирует новый экземпляр класса <see cref="MySqlResult"/>.
         /// </summary>
-        public String Status { get; set; }
+        /// <param name="Table"></param>
+        /// <param name="Message"></param>
+        public MySqlResult(DataTable Table, String Message)
+        {
+            this.Table = Table;
+            this.Message = Message;
+        }
+
+        #region Properties
+
+        /// <summary>
+        /// Результат выполнения запроса на выборку
+        /// </summary>
+        public DataTable Table
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Статус выволнения запроса
+        /// </summary>
+        public String Message
+        {
+            get;
+        }
+
+        #endregion
     }
 }
