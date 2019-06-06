@@ -28,7 +28,6 @@ using System.Drawing;
 
 namespace System.Data.MySqlClient
 {
-  [ToolboxBitmap(typeof(MySqlCommand), "MySqlClient.MySqlResources.command.bmp")]
   [DesignerCategory("Code")]
   public sealed partial class MySqlCommand : DbCommand
   {

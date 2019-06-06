@@ -111,7 +111,7 @@ namespace ProgLib.Data.MySql
         }
 
         /// <summary>
-        /// Закрывает подключение к базе данных.
+        /// Закрывает подключение к источнику данных.
         /// </summary>
         public void Close()
         {

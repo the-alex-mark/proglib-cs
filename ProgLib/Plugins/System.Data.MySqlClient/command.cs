@@ -39,8 +39,10 @@ using System.Data.MySqlClient.Replication;
 
 namespace System.Data.MySqlClient
 {
-  /// <include file='docs/mysqlcommand.xml' path='docs/ClassSummary/*'/> 
-  public sealed partial class MySqlCommand : ICloneable, IDisposable
+    /// <summary>
+    /// Представляет оператор MySql или хранимую процедуру, применяемую к источнику данных.
+    /// </summary>
+    public sealed partial class MySqlCommand : ICloneable, IDisposable
   {
     MySqlConnection connection;
     MySqlTransaction curTransaction;
@@ -64,40 +66,49 @@ namespace System.Data.MySqlClient
     private static List<string> keywords = null;
     private bool disposed = false;
 
-    /// <include file='docs/mysqlcommand.xml' path='docs/ctor1/*'/>
-    public MySqlCommand()
-    {
-      cmdType = CommandType.Text;
-      parameters = new MySqlParameterCollection(this);
-      cmdText = String.Empty;
-      useDefaultTimeout = true;
-      Constructor();
-    }
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="MySqlCommand"/>.
+        /// </summary>
+        public MySqlCommand()
+        {
+          cmdType = CommandType.Text;
+          parameters = new MySqlParameterCollection(this);
+          cmdText = String.Empty;
+          useDefaultTimeout = true;
+          Constructor();
+        }
 
-    partial void Constructor();
+        partial void Constructor();
 
-    /// <include file='docs/mysqlcommand.xml' path='docs/ctor2/*'/>
-    public MySqlCommand(string cmdText)
-      : this()
-    {
-      CommandText = cmdText;
-    }
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="MySqlCommand"/> текстом запроса.
+        /// </summary>
+        /// <param name="cmdText">Текст запроса</param>
+        public MySqlCommand(String cmdText) : this()
+        {
+            CommandText = cmdText;
+        }
 
-    /// <include file='docs/mysqlcommand.xml' path='docs/ctor3/*'/>
-    public MySqlCommand(string cmdText, MySqlConnection connection)
-      : this(cmdText)
-    {
-      Connection = connection;
-    }
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="MySqlCommand"/> текстом запроса и подключением <see cref="MySqlConnection"/>.
+        /// </summary>
+        /// <param name="cmdText">Текст запроса</param>
+        /// <param name="connection"><see cref="MySqlConnection"/> представляет подключение к источнику данных</param>
+        public MySqlCommand(String cmdText, MySqlConnection connection) : this(cmdText)
+        {
+            Connection = connection;
+        }
 
-    /// <include file='docs/mysqlcommand.xml' path='docs/ctor4/*'/>
-    public MySqlCommand(string cmdText, MySqlConnection connection,
-            MySqlTransaction transaction)
-      :
-      this(cmdText, connection)
-    {
-      curTransaction = transaction;
-    }
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="MySqlCommand"/> текстом запроса, подключением S<see cref="MySqlConnection"/> и транзакцией <see cref="MySqlCommand.Transaction"/>.
+        /// </summary>
+        /// <param name="cmdText">Текст запроса</param>
+        /// <param name="connection"><see cref="MySqlConnection"/> представляет подключение к источнику данных.</param>
+        /// <param name="transaction">Транзакция, в которой выполняется команда <see cref="MySqlCommand"/></param>
+        public MySqlCommand(String cmdText, MySqlConnection connection, MySqlTransaction transaction) : this(cmdText, connection)
+        {
+            curTransaction = transaction;
+        }
 
     #region Destructor
 #if !RT
