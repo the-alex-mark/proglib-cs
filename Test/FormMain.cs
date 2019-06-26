@@ -29,6 +29,8 @@ using ProgLib.Data.Sql;
 using ProgLib.Data.MySql;
 using ProgLib.Data.OleDb;
 
+using ProColor = ProgLib.Drawing.FullColor;
+
 namespace Test
 {
     public partial class FormMain : Form
@@ -301,13 +303,64 @@ namespace Test
             _vsCodeTheme = VSCodeTheme.Red;
             _vsCodeIconTheme = VSCodeIconTheme.Minimal;
             UTheme(_vsCodeTheme, _vsCodeIconTheme);
-            
+
             //MySqlDataBase _dataBase = new MySqlDataBase("mysql.j576709.myjino.ru", "j576709_testing", "j576709", "makarov123");
             ////MySqlDataBase _dataBase = new MySqlDataBase("localhost", "book_макаров", "root", "makarov123");
             //MySqlResult _result = _dataBase.Request("Select * from USERS;");
 
             //dataGridView1.DataSource = _result.Table;
             //_dataBase.Dispose();
+
+
+            //ProColor _color = ProColor.FromArgb(255, 222, 95, 180);
+            //ProColor _color = ProColor.FromHsb(320, 57, 87);
+            //ProColor _color = ProColor.FromHsl(320, 78, 31);
+            //MessageBox.Show($"rgb({_color.Red}, {_color.Green}, {_color.Blue})");
+            //MessageBox.Show(_color.ToString(ProgLib.Drawing.ColorModel.Rgb));
+            //MessageBox.Show(_color.ToString(ProgLib.Drawing.ColorModel.Hsl));
+
+            //using (ScriptEngine engine = new ScriptEngine("jscript"))
+            //{
+            //    ParsedScript parsed = engine.Parse(
+            //        //"function RGBToHex(r,g,b) { " +
+            //        //"  r = r.toString(16); " +
+            //        //"  g = g.toString(16); " +
+            //        //"  b = b.toString(16); " +
+            //        //" " +
+            //        //"  if (r.length == 1) " +
+            //        //"    r = \"0\" + r; " +
+            //        //"  if (g.length == 1) " +
+            //        //"    g = \"0\" + g; " +
+            //        //"  if (b.length == 1) " +
+            //        //"    b = \"0\" + b; " +
+            //        //" " +
+            //        //"  return \"#\" + r + g + b; " +
+            //        //"}; " +
+            //        //" " +
+            //        "function hexToRGB(h) { " +
+            //        "let r = 0, g = 0, b = 0; " +
+            //        "" +
+            //        //"  // 3 digits " +
+            //        "if (h.length == 4) { " +
+            //        "r = \"0x\" + h[1] + h[1]; " +
+            //        "g = \"0x\" + h[2] + h[2]; " +
+            //        "b = \"0x\" + h[3] + h[3]; " +
+            //        " " +
+            //        //"  // 6 digits " +
+            //        "  } else if (h.length == 7) { " +
+            //        "    r = \"0x\" + h[1] + h[2]; " +
+            //        "    g = \"0x\" + h[3] + h[4]; " +
+            //        "    b = \"0x\" + h[5] + h[6]; " +
+            //        "  } " +
+            //        "   " +
+            //        "  return \"rgb(\"+ +r + \",\" + +g + \",\" + +b + \")\"; " +
+            //        "}; ");
+
+            //    //ParsedScript parsed = engine.Parse("function MyFunc(x){return 1+2+x}");
+            //    //MessageBox.Show(parsed.CallMethod("MyFunc", new Object[] { 145, 75, 245 }).ToString());
+            //    MessageBox.Show(parsed.CallMethod("RGBToHex", 154, 75, 245).ToString());
+            //    //MessageBox.Show(parsed.CallMethod("hexToRGB", "#f5862d").ToString());
+            //}
         }
 
         private void mIncreaseScale_Click(Object sender, EventArgs e)

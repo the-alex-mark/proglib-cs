@@ -124,6 +124,7 @@
     <Compile Include="Diagnostics\SoundDevice.cs" />
     <Compile Include="Diagnostics\SystemInfo.cs" />
     <Compile Include="Diagnostics\VideoController.cs" />
+    <Compile Include="Drawing\ColorModel.cs" />
     <Compile Include="Drawing\FullColor.cs" />
     <Compile Include="ImageExpansion.cs" />
     <Compile Include="IO\BytesBuilder.cs" />
@@ -1363,6 +1364,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEngine.cs" />
     <Compile Include="StringExpansion.cs" />
     <Compile Include="Text\Encoding\Barcode\BarcodeCommon.cs" />
     <Compile Include="Text\Encoding\Barcode\BarcodeLib.cs" />
@@ -1394,6 +1396,7 @@
     <Compile Include="Text\Encoding\Barcode\Symbologies\UPCE.cs" />
     <Compile Include="Text\Encoding\Barcode\Symbologies\UPCSupplement2.cs" />
     <Compile Include="Text\Encoding\Barcode\Symbologies\UPCSupplement5.cs" />
+    <Compile Include="Text\Encoding\Encryption.cs" />
     <Compile Include="Text\FontRegister.cs" />
     <Compile Include="Text\Translit.cs" />
     <Compile Include="Text\TranslitAlphabet.cs" />
