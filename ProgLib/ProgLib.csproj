@@ -99,6 +99,7 @@
     </Compile>
     <Compile Include="Audio\Visualization\SpectrumAnalyzer.cs" />
     <Compile Include="Audio\Visualization\SpectrumAnalyzerEventArgs.cs" />
+    <Compile Include="ColorExpansion.cs" />
     <Compile Include="Data\CompilerLanguage.cs" />
     <Compile Include="Data\OleDb\OleDbResult.cs" />
     <Compile Include="Data\OleDb\OleDbDataBase.cs" />
@@ -125,7 +126,7 @@
     <Compile Include="Diagnostics\SystemInfo.cs" />
     <Compile Include="Diagnostics\VideoController.cs" />
     <Compile Include="Drawing\ColorModel.cs" />
-    <Compile Include="Drawing\FullColor.cs" />
+    <Compile Include="Drawing\ColorConverter.cs" />
     <Compile Include="ImageExpansion.cs" />
     <Compile Include="IO\BytesBuilder.cs" />
     <Compile Include="IO\IniDocument.cs" />

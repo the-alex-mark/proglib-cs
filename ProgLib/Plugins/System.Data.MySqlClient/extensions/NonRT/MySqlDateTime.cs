@@ -36,7 +36,7 @@ namespace MySql.Data.Types
 
     sbyte IConvertible.ToSByte(IFormatProvider provider)
     {
-      // TODO:  Add MySqlDateTime.ToSByte implementation
+      // Add MySqlDateTime.ToSByte implementation
       return 0;
     }
 

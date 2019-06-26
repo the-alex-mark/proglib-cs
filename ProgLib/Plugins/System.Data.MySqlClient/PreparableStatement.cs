@@ -131,25 +131,25 @@ namespace System.Data.MySqlClient
         base.Execute();
         return;
       }
+      
+            //support long data here
+            // create our null bitmap
 
-      //TODO: support long data here
-      // create our null bitmap
+            // we check this because Mono doesn't ignore the case where nullMapBytes
+            // is zero length.
+            //            if (nullMapBytes.Length > 0)
+            //          {
+            //            byte[] bits = packet.Buffer;
+            //          nullMap.CopyTo(bits, 
+            //        nullMap.CopyTo(nullMapBytes, 0);
 
-      // we check this because Mono doesn't ignore the case where nullMapBytes
-      // is zero length.
-      //            if (nullMapBytes.Length > 0)
-      //          {
-      //            byte[] bits = packet.Buffer;
-      //          nullMap.CopyTo(bits, 
-      //        nullMap.CopyTo(nullMapBytes, 0);
-
-      // start constructing our packet
-      //            if (Parameters.Count > 0)
-      //              nullMap.CopyTo(packet.Buffer, nullMapPosition);
-      //if (parameters != null && parameters.Count > 0)
-      //else
-      //	packet.WriteByte( 0 );
-      //TODO:  only send rebound if parms change
+            // start constructing our packet
+            //            if (Parameters.Count > 0)
+            //              nullMap.CopyTo(packet.Buffer, nullMapPosition);
+            //if (parameters != null && parameters.Count > 0)
+            //else
+            //	packet.WriteByte( 0 );
+            //only send rebound if parms change
 
       // now write out all non-null values
       packet.Position = dataPosition;
