@@ -60,7 +60,7 @@ namespace ProgLib.Windows.Forms.Cyotek
             set
             {
                 _hue = value;
-                ActiveColor = new HSB(Hue, 1, 1).ToColor();
+                ActiveColor = ColorConvert.FromHsb(Hue, 1, 1);
                 Invalidate();
             }
         }

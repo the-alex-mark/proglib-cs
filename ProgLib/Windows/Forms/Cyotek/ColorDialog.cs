@@ -123,7 +123,7 @@ namespace ProgLib.Windows.Forms.Cyotek
             foreach (PropertyInfo _property in _listProperty)
             {
                 _control.Items.Add(_property.Name);
-                _listColors.Add(new ColorInfo(Color.FromName(_property.Name), _property.Name, Color.FromName(_property.Name).ToHEX()));
+                _listColors.Add(new ColorInfo(Color.FromName(_property.Name), _property.Name, Color.FromName(_property.Name).ToHtml()));
             }
             
             _control.BackColor = _control.Parent.BackColor;

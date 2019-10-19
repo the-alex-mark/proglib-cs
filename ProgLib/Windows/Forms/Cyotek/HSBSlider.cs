@@ -25,14 +25,14 @@ namespace ProgLib.Windows.Forms.Cyotek
 
         public Color Color
         {
-            get { return new HSB(SBSlider.Hue, (double)SBSlider.Saturation / 100, (double)SBSlider.Brightness / 100).ToColor(); }
+            get { return ColorConvert.FromHsb(SBSlider.Hue, (double)SBSlider.Saturation / 100, (double)SBSlider.Brightness / 100); }
             set
             {
-                HueSlider.Value = value.ToHSB().H;
+                HueSlider.Value = value.ToHsb().Hue;
                 
-                SBSlider.Hue = value.ToHSB().H;
-                SBSlider.Saturation = (int)(value.ToHSB().S * 100);
-                SBSlider.Brightness = (int)(value.ToHSB().B * 100);
+                SBSlider.Hue = value.ToHsb().Hue;
+                SBSlider.Saturation = (int)(value.ToHsb().Saturation * 100);
+                SBSlider.Brightness = (int)(value.ToHsb().Brightness * 100);
             }
         }
 

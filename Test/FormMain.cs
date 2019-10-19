@@ -28,7 +28,7 @@ using ProgLib.Data.CSharp;
 using ProgLib.Data.Sql;
 using ProgLib.Data.MySql;
 using ProgLib.Data.OleDb;
-
+using ProgLib.Drawing;
 
 namespace Test
 {

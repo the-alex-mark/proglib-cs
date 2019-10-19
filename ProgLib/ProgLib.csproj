@@ -126,7 +126,7 @@
     <Compile Include="Diagnostics\SystemInfo.cs" />
     <Compile Include="Diagnostics\VideoController.cs" />
     <Compile Include="Drawing\ColorModel.cs" />
-    <Compile Include="Drawing\ColorConverter.cs" />
+    <Compile Include="Drawing\ColorConvert.cs" />
     <Compile Include="ImageExpansion.cs" />
     <Compile Include="IO\BytesBuilder.cs" />
     <Compile Include="IO\IniDocument.cs" />
@@ -1404,9 +1404,8 @@
     <Compile Include="Text\TranslitMode.cs" />
     <Compile Include="Text\TranslitType.cs" />
     <Compile Include="Unit.cs" />
+    <Compile Include="Windows\Forms\Cyotek\HSB.cs" />
     <Compile Include="Windows\Forms\Direction.cs" />
-    <Compile Include="Drawing\CMYK.cs" />
-    <Compile Include="Drawing\Convert.cs" />
     <Compile Include="Drawing\Drawing2D\Figure.cs" />
     <Compile Include="Drawing\MetroBrushes.cs" />
     <Compile Include="Drawing\MetroColors.cs" />
@@ -1421,14 +1420,6 @@
     <Compile Include="Text\Encoding\QRCode\QREncoder.cs" />
     <Compile Include="Text\Encoding\QRCode\ReedSolomon.cs" />
     <Compile Include="Drawing\Radius.cs" />
-    <Compile Include="Drawing\HSB.cs" />
-    <Compile Include="Drawing\HSL.cs" />
-    <Compile Include="Drawing\HSLA.cs" />
-    <Compile Include="Drawing\Lab.cs" />
-    <Compile Include="Drawing\RGB.cs" />
-    <Compile Include="Drawing\RGBA.cs" />
-    <Compile Include="Drawing\XYZ.cs" />
-    <Compile Include="Drawing\YCbCr.cs" />
     <Compile Include="Expansion.cs" />
     <Compile Include="IO\Archive.cs" />
     <Compile Include="IO\File.cs" />

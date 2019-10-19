@@ -11,6 +11,8 @@ namespace ProgLib.Drawing
     /// </summary>
     public enum ColorModel
     {
+        Html,
+        Hex,
         Rgb,
         Rgba,
         Hsb,
