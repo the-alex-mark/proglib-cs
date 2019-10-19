@@ -81,7 +81,7 @@ namespace ProgLib
         /// <returns></returns>
         public static String ToFirstUpper(this String Value)
         {
-            return FontRegister.ToFirstUpper(Value);
+            return TextRegister.ToFirstUpper(Value);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace ProgLib
         /// <returns></returns>
         public static String ToFirstsUpper(this String Value)
         {
-            return FontRegister.ToFirstsUpper(Value);
+            return TextRegister.ToFirstsUpper(Value);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace ProgLib
         /// <returns></returns>
         public static String TransformRegister(this String Value)
         {
-            return FontRegister.TransformRegister(Value);
+            return TextRegister.TransformRegister(Value);
         }
 
         /// <summary>
@@ -111,9 +111,9 @@ namespace ProgLib
         /// </summary>
         /// <param name="Table"></param>
         /// <returns></returns>
-        public static StringDataTable ToStringTable(this DataTable Table)
+        public static StringTable ToStringTable(this DataTable Table)
         {
-            return new StringDataTable(Table);
+            return new StringTable(Table);
         }
 
         /// <summary>
@@ -122,9 +122,9 @@ namespace ProgLib
         /// <param name="Table"></param>
         /// <param name="Format"></param>
         /// <returns></returns>
-        public static String ToStringTable(this DataTable Table, StringDataTableFormat Format = StringDataTableFormat.Default)
+        public static String ToStringTable(this DataTable Table, StringTableFormat Format = StringTableFormat.Default)
         {
-            return new StringDataTable(Table).Result(Format);
+            return new StringTable(Table).Result(Format);
         }
     }
 }

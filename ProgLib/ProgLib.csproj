@@ -36,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet />
     <LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -1398,11 +1399,19 @@
     <Compile Include="Text\Encoding\Barcode\Symbologies\UPCSupplement2.cs" />
     <Compile Include="Text\Encoding\Barcode\Symbologies\UPCSupplement5.cs" />
     <Compile Include="Text\Encoding\Encryption.cs" />
-    <Compile Include="Text\FontRegister.cs" />
+    <Compile Include="Text\FontInfo.cs" />
+    <Compile Include="Text\TextRegister.cs" />
+    <Compile Include="Text\TypefaceStyle.cs" />
+    <Compile Include="Text\TypefaceWeight.cs" />
+    <Compile Include="Text\GlyphTypeface.cs" />
+    <Compile Include="Text\StringTable.cs" />
+    <Compile Include="Text\StringTableFormat.cs" />
+    <Compile Include="Text\StringTableOptions.cs" />
     <Compile Include="Text\Translit.cs" />
     <Compile Include="Text\TranslitAlphabet.cs" />
     <Compile Include="Text\TranslitMode.cs" />
     <Compile Include="Text\TranslitType.cs" />
+    <Compile Include="Text\Typeface.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Windows\Forms\Cyotek\HSB.cs" />
     <Compile Include="Windows\Forms\Direction.cs" />
@@ -1432,7 +1441,6 @@
     <Compile Include="Text\Encoding\UTF32.cs" />
     <Compile Include="Text\Encoding\UTF7.cs" />
     <Compile Include="Text\Encoding\UTF8.cs" />
-    <Compile Include="Data\StringTable.cs" />
     <Compile Include="Text\FontFromResources.cs" />
     <Compile Include="Windows\Forms\Adobe\AdobeComboBox.cs">
       <SubType>Component</SubType>
