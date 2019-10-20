@@ -140,9 +140,9 @@
     <Compile Include="Network\Tcp\TcpServer.cs" />
     <Compile Include="Network\Tcp\TcpReceiverEventArgs.cs" />
     <Compile Include="Network\TypeServer.cs" />
-    <Compile Include="Numerics\Binary.cs" />
-    <Compile Include="Numerics\Hexadecimal.cs" />
-    <Compile Include="Numerics\Octal.cs" />
+    <Compile Include="Binary.cs" />
+    <Compile Include="Hexadecimal.cs" />
+    <Compile Include="Octal.cs" />
     <Compile Include="Plugins\Bass.Net\Bass.cs" />
     <Compile Include="Plugins\Bass.Net\PrivateImplementationDetails.cs" />
     <Compile Include="Plugins\Bass.Net\radio42\Multimedia\Midi\Midi.cs" />
