@@ -71,16 +71,16 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animations\Animation.cs" />
-    <Compile Include="Animations\Material\AnimationDirection.cs" />
-    <Compile Include="Animations\Material\AnimationManager.cs" />
-    <Compile Include="Animations\Material\Animations.cs" />
-    <Compile Include="Animations\Metro\AnimationBase.cs" />
-    <Compile Include="Animations\Metro\ColorBlendAnimation.cs" />
-    <Compile Include="Animations\Metro\DelayedCall.cs" />
-    <Compile Include="Animations\Metro\ExpandAnimation.cs" />
-    <Compile Include="Animations\Metro\MoveAnimation.cs" />
-    <Compile Include="Audio\AudioExpansion.cs" />
+    <Compile Include="Animation\Animate.cs" />
+    <Compile Include="Animation\Material\AnimationDirection.cs" />
+    <Compile Include="Animation\Material\AnimationManager.cs" />
+    <Compile Include="Animation\Material\Animations.cs" />
+    <Compile Include="Animation\Metro\AnimationBase.cs" />
+    <Compile Include="Animation\Metro\ColorBlendAnimation.cs" />
+    <Compile Include="Animation\Metro\DelayedCall.cs" />
+    <Compile Include="Animation\Metro\ExpandAnimation.cs" />
+    <Compile Include="Animation\Metro\MoveAnimation.cs" />
+    <Compile Include="AudioExpansion.cs" />
     <Compile Include="Audio\AudioFormats.cs" />
     <Compile Include="Audio\AudioTags.cs" />
     <Compile Include="Audio\AudioType.cs" />

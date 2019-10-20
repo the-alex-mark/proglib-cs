@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
-using ProgLib.Animations.Material;
+using ProgLib.Animation.Material;
 
 namespace ProgLib.Windows.Forms.Material
 {

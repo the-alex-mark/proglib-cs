@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProgLib.Animations.Metro;
-using ProgLib.Animations;
+using ProgLib.Animation.Metro;
+using ProgLib.Animation;
 
 namespace ProgLib.Windows.Forms
 {
@@ -108,8 +104,8 @@ namespace ProgLib.Windows.Forms
             Form.Height = 0;
             Form.DesktopLocation = new Point(BS[2], BS[3]);
 
-            Animation.Size(Form, new Size(BS[0], BS[1]), TransitionType.EaseInQuad, 10);
-            Animation.Move(Form, new Point(BS[2], BS[3]), TransitionType.EaseOutCubic, 10);
+            Animate.Size(Form, new Size(BS[0], BS[1]), TransitionType.EaseInQuad, 10);
+            Animate.Move(Form, new Point(BS[2], BS[3]), TransitionType.EaseOutCubic, 10);
         }
 
         /// <summary>
@@ -206,8 +202,8 @@ namespace ProgLib.Windows.Forms
             { for (; ; ) if (Form.Height < 5) Environment.Exit(0); });
             TH.Start();
 
-            Animation.Size(Form, new Size(BS[0], 0), TransitionType.EaseInQuad, 10);
-            Animation.Move(Form, new Point(BS[2], BS[3] + BS[1] / 2), TransitionType.EaseOutCubic, 10);
+            Animate.Size(Form, new Size(BS[0], 0), TransitionType.EaseInQuad, 10);
+            Animate.Move(Form, new Point(BS[2], BS[3] + BS[1] / 2), TransitionType.EaseOutCubic, 10);
         }
     }
 }
