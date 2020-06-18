@@ -182,25 +182,25 @@ namespace ProgLib.Text
             var builder = new StringBuilder();
 
             // найдите самый длинный столбец, выполнив поиск в каждой строке
-            var columnLengths = ColumnLengths();
+            List<Int32> columnLengths = ColumnLengths();
 
             // создание строкового формата с заполнением
-            var format = Format(columnLengths);
+            String format = Format(columnLengths);
 
             // найти самую длинную отформатированную строку
-            var columnHeaders = string.Format(format, Columns.ToArray());
+            String columnHeaders = String.Format(format, Columns.ToArray());
 
             // добавить каждую строку
-            var results = Rows.Select(row => string.Format(format, row)).ToList();
+            List<String> results = Rows.Select(row => String.Format(format, row)).ToList();
 
             // создание разделителя
-            var divider = Regex.Replace(columnHeaders, @"[^|]", "-");
-            var dividerPlus = divider.Replace("|", "+");
+            String divider = Regex.Replace(columnHeaders, @"[^|]", "-");
+            String dividerPlus = divider.Replace("|", "+");
 
             builder.AppendLine(dividerPlus);
             builder.AppendLine(columnHeaders);
 
-            foreach (var row in results)
+            foreach (String row in results)
             {
                 builder.AppendLine(dividerPlus);
                 builder.AppendLine(row);
