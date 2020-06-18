@@ -6,5 +6,7 @@
 * Bass.Net
 * [DotNetZip](https://github.com/DinoChiesa/DotNetZip)
 * [NAudio](https://github.com/naudio/NAudio)
+* [MaterialSkin](https://github.com/IgnaceMaes/MaterialSkin)
+* [MetroFramework](https://github.com/thielj/MetroFramework)
 * [MySqlClient](https://github.com/mysql/mysql-connector-net)
 * [TagLib](https://github.com/taglib/taglib)
