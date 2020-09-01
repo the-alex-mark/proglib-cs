@@ -92,7 +92,6 @@
     <Compile Include="Data\CompilerLanguage.cs" />
     <Compile Include="Data\OleDb\OleDbResult.cs" />
     <Compile Include="Data\OleDb\OleDbDataBase.cs" />
-    <Compile Include="Data\Compiler.cs" />
     <Compile Include="Data\CSharp\CSharpResult.cs" />
     <Compile Include="Data\CSharp\CSharpProject.cs" />
     <Compile Include="Data\MySql\MySqlDataBase.cs" />
