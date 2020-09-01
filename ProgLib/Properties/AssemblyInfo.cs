@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("ProgLib")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Многофункциональная библиотека стандарта .NET Framework")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Alex Mark")]
+[assembly: AssemblyCompany("Александр Макаров")]
 [assembly: AssemblyProduct("ProgLib")]
-[assembly: AssemblyCopyright("Copyright © Alex Mark 2015-2019")]
+[assembly: AssemblyCopyright("Copyright © Александр Макаров 2015-2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номер сборки и номер редакции по умолчанию.
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("5.0.0.0")]
-[assembly: AssemblyFileVersion("5.0.0.0")]
+[assembly: AssemblyVersion("2020.09.0.0")]
+[assembly: AssemblyFileVersion("2020.09.0.0")]

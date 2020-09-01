@@ -19,7 +19,7 @@ namespace ProgLib.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -57,26 +57,6 @@ namespace ProgLib.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        public static byte[] bass {
-            get {
-                object obj = ResourceManager.GetObject("bass", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        public static byte[] basswasapi {
-            get {
-                object obj = ResourceManager.GetObject("basswasapi", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         
@@ -167,17 +147,7 @@ namespace ProgLib.Properties {
         ///DETERMINISTIC
         ///DISTINCT
         ///DISTINCTROW
-        ///DIV
-        ///DO
-        ///DOUBLE
-        ///DROP
-        ///DUAL
-        ///EACH
-        ///ELSE
-        ///ELSEIF
-        ///ENCLOSED
-        ///END
-        ///ESC [остаток строки не уместился]&quot;;.
+        ///D [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string keywords {
             get {
