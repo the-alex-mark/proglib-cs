@@ -1128,9 +1128,6 @@
     <Compile Include="Windows\Forms\Cyotek\ScreenColorPicker.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\Forms\TextCode.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Windows\Forms\FormExpansion.cs" />
     <Compile Include="Windows\Forms\Material\ColorScheme.cs" />
     <Compile Include="Windows\Forms\Material\DrawHelper.cs" />
@@ -1279,9 +1276,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Forms\Cyotek\HSBSlider.resx">
       <DependentUpon>HSBSlider.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Forms\TextCode.resx">
-      <DependentUpon>TextCode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
