@@ -714,6 +714,22 @@
     <Compile Include="Plugins\System.Data.MySqlClient\zlib\ZOutputStream.cs" />
     <Compile Include="Plugins\System.Data.MySqlClient\zlib\ZStream.cs" />
     <Compile Include="Plugins\System.Data.MySqlClient\zlib\ZStreamException.cs" />
+    <Compile Include="Plugins\System.ValueTuple\FxResources\System\ValueTuple\SR.Designer.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ITupleInternal.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\Numerics\Hashing\HashHelpers.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\Runtime\CompilerServices\TupleElementNamesAttribute.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\Runtime\CompilerServices\__BlockReflectionAttribute.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\SR.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\TupleExtensions.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.2.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.3.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.4.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.5.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.6.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.7.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.8.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.9.cs" />
+    <Compile Include="Plugins\System.ValueTuple\System\ValueTuple.cs" />
     <Compile Include="Plugins\TagLib\Aac\AudioHeader.cs" />
     <Compile Include="Plugins\TagLib\Aac\BitStream.cs" />
     <Compile Include="Plugins\TagLib\Aac\File.cs" />
@@ -1252,6 +1268,7 @@
     <EmbeddedResource Include="Plugins\NAudio\Utils\ProgressLog.resx">
       <DependentUpon>ProgressLog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\System.ValueTuple\FxResources\System\ValueTuple\SR.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
